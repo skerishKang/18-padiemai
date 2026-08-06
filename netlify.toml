@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "hugo && cp static/index.html public/index.html"
+  command = "hugo && cp static/html/index1.html public/index.html"
   environment = { HUGO_VERSION = "0.146.0" }
 
 [[ignore_files]]
@@ -12,4 +12,4 @@
     "temp_files.txt",
     "temp_tree.txt",
     "tree.md"
-  ] 
+  ]
