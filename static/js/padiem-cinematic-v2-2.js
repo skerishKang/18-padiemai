@@ -6,25 +6,14 @@ metaDescription: "PADIEM — AI로 산업과 공공, 콘텐츠의 일을 다시 
 navCta: "프로젝트 상담",
 topIntro: "기술을 소개하는 데서 멈추지 않습니다. 산업과 공공의 실제 업무를 분석하고, 사람이 체감하는 변화로 연결합니다.",
 headline: "AI로 일을<span class=\"line2\">다시 <span class=\"accent\">설계합니다.</span></span>",
-path: [
-["2016", "<strong>Technology Origin</strong> · 개인 파디엠 창업 · Safety IoT"],
-["2018", "<strong>PADIEM Co., Ltd.</strong> · 법인 설립"],
-["2020", "<strong>AI & Software</strong> · 전환 기반 구축"],
-["2021–24", "<strong>Vision & Multimodal</strong> · 영상·음성 AI"],
-["2025–NOW", "<strong>Generative AI · AX</strong> · Public AI Agent"],
-],
+path: [["2016", "<strong>Technology Origin</strong> · 개인 파디엠 창업 · Safety IoT"],["2018", "<strong>PADIEM Co., Ltd.</strong> · 법인 설립"],["2020", "<strong>AI & Software</strong> · 전환 기반 구축"],["2021–24", "<strong>Vision & Multimodal</strong> · 영상·음성 AI"],["2025–NOW", "<strong>Generative AI · AX</strong> · Public AI Agent"]],
 signalFoot: ["Concept → System → Field", "10 YEARS OF EXECUTION"],
 solutionsIntro: "파디엠의 AI는 답변만 생성하지 않습니다. 데이터를 읽고, 업무의 다음 단계를 연결하며, 조직의 실행 속도를 높입니다.",
 solutionsTitle: "기술을<br/>현장의 실행 언어로.",
 solutionsBody: "AI 전략 수립부터 업무자동화, 공공 서비스 설계, 음성·영상 멀티모달 구현까지. 파디엠은 개별 기술을 나열하지 않고 고객의 업무 흐름 전체를 다시 설계합니다.",
 solutionsPrimary: "기술 역량 보기",
 solutionsSecondary: "AI 도입 상담",
-capabilityBodies: [
-"문서·견적·보고·교육·지식 검색을 실제 업무 프로세스와 연결하는 기업 AI 전환.",
-"주민의 한 문장을 정책·행정 경로와 실행 가능한 민원 작성으로 연결하는 공공 AI.",
-"음성인식·번역·TTS·립싱크·영상 생성을 연결하는 다국어 콘텐츠 기술.",
-"센서·영상·위치·모바일·클라우드를 결합해 위험을 감지하고 대응하는 안전 기술.",
-],
+capabilityBodies: ["문서·견적·보고·교육·지식 검색을 실제 업무 프로세스와 연결하는 기업 AI 전환.","주민의 한 문장을 정책·행정 경로와 실행 가능한 민원 작성으로 연결하는 공공 AI.","음성인식·번역·TTS·립싱크·영상 생성을 연결하는 다국어 콘텐츠 기술.","센서·영상·위치·모바일·클라우드를 결합해 위험을 감지하고 대응하는 안전 기술."],
 evolutionIntro: "파디엠의 경쟁력은 단일 모델이 아니라 아이디어를 제품·사업·현장 성과로 끝까지 연결한 실행 경험에 있습니다.",
 evolutionTitle: "10년의 기술이<br/>하나의 실행체계로.",
 focusLabels: ["제조", "물류", "에너지", "대학·교육", "공공행정", "안전", "콘텐츠"],
@@ -41,34 +30,22 @@ multimodal: { accent:"239,196,123", kicker:"SOLUTIONS 03", title:"Multimodal Con
 safety: { accent:"138,211,184", kicker:"SOLUTIONS 04", title:"Safety · Vision AI", lead:"센서와 영상 데이터를 분석해 현장의 위험을 감지하고 대응 흐름을 연결합니다.", items:["영상 기반 위험 감지","현장 안전 모니터링","IoT 센서 연계","위치 기반 서비스","모바일·클라우드 연결","이상 상황 알림과 대응 지원"] },
 about: { accent:"228,188,116", kicker:"COMPANY", title:"주식회사 파디엠", titleLines:["주식회사","파디엠"], lead:"주식회사 파디엠은 2018년 5월 설립된 AI·소프트웨어 기술기업으로, 산업과 공공 현장의 문제를 기술로 해결합니다.", paragraphs:["파디엠은 위험 상황에서 영상·사진·위치 정보를 전송하는 안전 IoT 기술을 개발하며 현장 안전 기술의 기반을 만들었습니다.","이후 음성인식·음성합성·실시간 번역·통역, 영상 생성, 자동 요약, 컴퓨터 비전과 멀티모달 AI로 기술 영역을 확장했으며, 현재는 생성형 AI·업무자동화(AX)와 공공 AI 에이전트를 중심으로 기업과 기관의 실제 업무 전환을 지원합니다."], sections:[{label:"01 · COMPANY",title:"회사",items:["주식회사 파디엠 · PADIEM Co., Ltd.","2018년 5월 법인 설립"]},{label:"02 · TECHNOLOGY",title:"기술",items:["Safety IoT · 시민 안전","음성·언어 AI","Vision · Multimodal AI","Generative AI · AX","Public AI Agent"]},{label:"03 · SERVICES",title:"서비스",items:["AI 시스템 개발","AI 모델 개발","AI·AX 도입","AI 교육·컨설팅"]}] },
 team: { accent:"153,194,229", kicker:"TEAM", title:"Leadership", lead:"파디엠을 이끄는 두 명의 리더를 소개합니다.", leadership:[{role:"CEO · FOUNDER",name:"강혜림",image:"/images/about/ceo.png",alt:"주식회사 파디엠 CEO 강혜림",summary:"공공안전 문제를 AI 기술과 사업으로 연결하는 창업자",facts:["경찰대학교 공공안전행정 박사","광주인공지능청년협회 회장","올해의 청년기업인 중소벤처기업부 장관상","세계여성발명대회 대상·금상·동상"]},{role:"CTO",name:"강철원",summary:"AI 기술을 제품과 서비스로 구현하는 기술 리더",image:"/images/about/cto.png",alt:"주식회사 파디엠 CTO 강철원",facts:[{school:"University of Illinois Urbana-Champaign",field:"Computer Science · Data Science"},"경찰대학교 공공안전행정","산업통상자원부 장관상"]}] },
-inquiry: { accent:"143,207,255", kicker:"CONTACT", title:"Project Inquiry", lead:"현재 해결하려는 업무와 문제를 알려주시면 적용 가능한 AI 방식부터 함께 검토합니다.", items:["기업 AI 도입","공공 AI 서비스","맞춤형 기술 개발","AI 교육·컨설팅","사업 제휴","기타 프로젝트"], inquiry:true },
-},
-},
+inquiry: { accent:"143,207,255", kicker:"CONTACT", title:"Project Inquiry", lead:"현재 해결하려는 업무와 문제를 알려주시면 적용 가능한 AI 방식부터 함께 검토합니다.", items:["기업 AI 도입","공공 AI 서비스","맞춤형 기술 개발","AI 교육·컨설팅","사업 제휴","기타 프로젝트"], inquiry:true }
+}},
 en: {
 metaTitle: "PADIEM — Redesigning Work with AI",
 metaDescription: "PADIEM is an AI and software company redesigning work across industry, public services, and content.",
 navCta: "Project Consultation",
 topIntro: "We go beyond introducing technology. We analyze real workflows across industry and the public sector, then turn AI into changes people can actually experience.",
 headline: "Redesigning Work<span class=\"line2\">with <span class=\"accent\">AI.</span></span>",
-path: [
-["2016", "<strong>Technology Origin</strong> · Safety IoT"],
-["2018", "<strong>PADIEM Co., Ltd.</strong> · Incorporated"],
-["2020", "<strong>AI & Software</strong> · Transformation Foundation"],
-["2021–24", "<strong>Vision & Multimodal</strong> · Visual and Voice AI"],
-["2025–NOW", "<strong>Generative AI · AX</strong> · Public AI Agent"],
-],
+path: [["2016", "<strong>Technology Origin</strong> · Safety IoT"],["2018", "<strong>PADIEM Co., Ltd.</strong> · Incorporated"],["2020", "<strong>AI & Software</strong> · Transformation Foundation"],["2021–24", "<strong>Vision & Multimodal</strong> · Visual and Voice AI"],["2025–NOW", "<strong>Generative AI · AX</strong> · Public AI Agent"]],
 signalFoot: ["Concept → System → Field", "10 YEARS OF EXECUTION"],
 solutionsIntro: "PADIEM AI does more than generate answers. It reads data, connects the next step in a workflow, and accelerates execution across organizations.",
 solutionsTitle: "Turning Technology<br/>into Field Execution.",
 solutionsBody: "From AI strategy and workflow automation to public-service design and multimodal voice and video systems, PADIEM redesigns the entire workflow rather than presenting isolated technologies.",
 solutionsPrimary: "Explore Capabilities",
 solutionsSecondary: "AI Consultation",
-capabilityBodies: [
-"Enterprise AI transformation connecting documents, estimates, reports, training, and knowledge search to real workflows.",
-"Public AI that turns a resident's request into understandable policy guidance and actionable administrative steps.",
-"Multilingual content technology connecting speech recognition, translation, TTS, lip sync, and video generation.",
-"Safety technology combining sensors, video, location, mobile, and cloud systems to detect risk and support response.",
-],
+capabilityBodies: ["Enterprise AI transformation connecting documents, estimates, reports, training, and knowledge search to real workflows.","Public AI that turns a resident's request into understandable policy guidance and actionable administrative steps.","Multilingual content technology connecting speech recognition, translation, TTS, lip sync, and video generation.","Safety technology combining sensors, video, location, mobile, and cloud systems to detect risk and support response."],
 evolutionIntro: "PADIEM's strength is not a single model, but a decade of execution connecting ideas to products, businesses, and measurable field outcomes.",
 evolutionTitle: "A Decade of Technology.<br/>One Execution System.",
 focusLabels: ["Manufacturing", "Logistics", "Energy", "Higher Education", "Public Administration", "Safety", "Content"],
@@ -85,175 +62,19 @@ multimodal: { accent:"239,196,123", kicker:"SOLUTIONS 03", title:"Multimodal Con
 safety: { accent:"138,211,184", kicker:"SOLUTIONS 04", title:"Safety · Vision AI", lead:"We analyze sensor and video data to detect risk and connect the field response workflow.", items:["Video-Based Risk Detection","Field Safety Monitoring","IoT Sensor Integration","Location-Based Services","Mobile and Cloud Integration","Incident Alerts and Response Support"] },
 about: { accent:"228,188,116", kicker:"COMPANY", title:"PADIEM Co., Ltd.", titleLines:["PADIEM","Co., Ltd."], lead:"Founded in May 2018, PADIEM is an AI and software company solving real problems across industry and the public sector.", paragraphs:["PADIEM established its field-safety foundation by developing Safety IoT technology that transmits video, images, and location data during emergencies.","We later expanded into speech recognition, text-to-speech, real-time translation and interpretation, video generation, automated summarization, computer vision, and multimodal AI. Today, we focus on generative AI, workflow automation, and public AI agents that transform how companies and institutions work."], sections:[{label:"01 · COMPANY",title:"Company",items:["PADIEM Co., Ltd.","Incorporated in May 2018"]},{label:"02 · TECHNOLOGY",title:"Technology",items:["Safety IoT · Public Safety","Speech and Language AI","Vision · Multimodal AI","Generative AI · AX","Public AI Agent"]},{label:"03 · SERVICES",title:"Services",items:["AI System Development","AI Model Development","AI and AX Adoption","AI Training and Consulting"]}] },
 team: { accent:"153,194,229", kicker:"TEAM", title:"Leadership", lead:"Meet the two leaders guiding PADIEM.", leadership:[{role:"CEO · FOUNDER",name:"Hyerim Kang",image:"/images/about/ceo.png",alt:"Hyerim Kang, CEO of PADIEM",summary:"A founder connecting public-safety challenges with AI technology and business.",facts:["Ph.D. in Public Safety Administration, Korean National Police University","Chair, Gwangju AI Youth Association","Minister of SMEs and Startups Award, Young Entrepreneur of the Year","Grand Prize, Gold and Bronze Awards, Korea International Women's Invention Exposition"]},{role:"CTO",name:"Cheolwon Kang",summary:"A technology leader turning AI into products and services.",image:"/images/about/cto.png",alt:"Cheolwon Kang, CTO of PADIEM",facts:[{school:"University of Illinois Urbana-Champaign",field:"Computer Science · Data Science"},"Public Safety Administration, Korean National Police University","Minister of Trade, Industry and Energy Award"]}] },
-inquiry: { accent:"143,207,255", kicker:"CONTACT", title:"Project Inquiry", lead:"Tell us about the workflow or problem you are trying to solve, and we will review the most practical AI approach with you.", items:["Enterprise AI Adoption","Public AI Services","Custom Technology Development","AI Training and Consulting","Business Partnerships","Other Projects"], inquiry:true },
-},
-},
-};
-
-const overlay = document.getElementById("overlay");
-const kicker = document.getElementById("overlayKicker");
-const title = document.getElementById("overlayTitle");
-const lead = document.getElementById("overlayLead");
-const body = document.getElementById("overlayBody");
-const closeBtn = overlay.querySelector(".overlay-close");
-let lastTrigger = null;
-let currentPanelKey = null;
-
-const browserLanguage = (() => {
-const values = Array.isArray(navigator.languages) && navigator.languages.length ? navigator.languages : [navigator.language];
-if (!values || !values[0]) return "ko";
-return values.some((value) => /^ko(?:-|$)/i.test(value || "")) ? "ko" : "en";
-})();
-let currentLanguage = localStorage.getItem("padiem-language") || browserLanguage;
-if (!COPY[currentLanguage]) currentLanguage = "ko";
-
-const style = document.createElement("style");
-style.textContent = `
-.nav-links{gap:clamp(18px,2.2vw,36px)}
-.lang-switch{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-label);font-size:10px;letter-spacing:.08em;white-space:nowrap}
-.lang-button{appearance:none;border:0;background:transparent;padding:5px 2px;cursor:pointer;color:rgba(255,255,255,.42);font-family:inherit;font-size:inherit;letter-spacing:inherit;transition:color .2s ease,opacity .2s ease}
-.lang-button:hover,.lang-button.active{color:#fff}
-.lang-separator{color:rgba(255,255,255,.22);font-size:9px}
-body[data-lang="en"]{letter-spacing:-.006em}
-body[data-lang="en"] .headline,body[data-lang="en"] .section-title,body[data-lang="en"] .contact-title{letter-spacing:-.045em}
-@media(max-width:1080px){.nav-links{gap:16px}.nav-link{font-size:11px}.lang-switch{font-size:9px}.nav-cta{padding-left:13px;padding-right:13px}}
-@media(max-width:760px){.lang-switch-mobile{display:inline-flex;position:fixed;right:18px;top:82px;z-index:52;padding:7px 10px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(5,12,21,.38);backdrop-filter:blur(14px)}}
-@media(min-width:761px){.lang-switch-mobile{display:none!important}}
-`;
-document.head.appendChild(style);
-
-const createLanguageSwitch = (mobile = false) => {
-const wrapper = document.createElement("div");
-wrapper.className = mobile ? "lang-switch lang-switch-mobile" : "lang-switch";
-wrapper.setAttribute("aria-label", "Language");
-wrapper.innerHTML = `<button class="lang-button" type="button" data-lang-choice="ko" aria-label="한국어">KO</button><span class="lang-separator">/</span><button class="lang-button" type="button" data-lang-choice="en" aria-label="English">EN</button>`;
-wrapper.querySelectorAll("[data-lang-choice]").forEach((button) => {
-button.addEventListener("click", () => applyLanguage(button.dataset.langChoice, true));
-});
-return wrapper;
-};
-const navLinks = document.querySelector(".nav-links");
-if (navLinks) navLinks.appendChild(createLanguageSwitch(false));
-document.body.appendChild(createLanguageSwitch(true));
-
-const setText = (selector, value) => {
-const element = document.querySelector(selector);
-if (element) element.textContent = value;
-};
-const setHTML = (selector, value) => {
-const element = document.querySelector(selector);
-if (element) element.innerHTML = value;
-};
-const setLinkLabel = (selector, value) => {
-const element = document.querySelector(selector);
-if (!element) return;
-const svg = element.querySelector("svg");
-element.innerHTML = `${value}${svg ? svg.outerHTML : ""}`;
-};
-const renderPath = (rows) => rows.map(([year, name], index) => `<span class="path-year mono">${year}</span><span class="path-name">${name}</span>${index < rows.length - 1 ? '<div class="path-line"></div>' : ""}`).join("");
-
-const renderList = (items) => `<ul class="overlay-list">${items.map((item) => `<li><span>${item}</span></li>`).join("")}</ul>`;
-const renderRows = (rows) => `<dl class="overlay-rows">${rows.map(([label, value]) => {
-const v = Array.isArray(value) ? value.map((s) => `<span>${s}</span>`).join('<span class="sep">·</span>') : value;
-return `<div class="overlay-row"><dt>${label}</dt><dd>${v}</dd></div>`;
-}).join("")}</dl>`;
-const renderCompanySections = (sections) => `<section class="company-sections" aria-label="Company technology services">${sections.map((section) => `<article class="company-section"><p class="company-section-label">${section.label}</p><h3>${section.title}</h3><ul>${section.items.map((item) => `<li>${item}</li>`).join("")}</ul></article>`).join("")}</section>`;
-const renderLeadership = (leaders) => `<section class="leadership" aria-label="PADIEM leadership"><div class="leadership-grid">${leaders.map((leader) => `<article class="leader-card"><div class="leader-photo-wrap"><img class="leader-photo" src="${leader.image}" alt="${leader.alt}" loading="eager" /></div><div class="leader-meta"><p class="leader-role">${leader.role}</p><h3 class="leader-name">${leader.name}</h3>${leader.summary ? `<p class="leader-summary">${leader.summary}</p>` : ""}<ul class="leader-facts">${leader.facts.map((fact) => typeof fact === "string" ? `<li>${fact}</li>` : `<li><strong class="leader-school">${fact.school}</strong><span class="leader-field">${fact.field}</span></li>`).join("")}</ul></div></article>`).join("")}</div></section>`;
-
-const render = (key) => {
-const copy = COPY[currentLanguage];
-const panel = copy.panels[key];
-if (!panel) return;
-currentPanelKey = key;
-overlay.dataset.panel = key;
-overlay.style.setProperty("--overlay-accent-rgb", panel.accent || "143,207,255");
-kicker.textContent = panel.kicker;
-if (panel.titleLines) title.innerHTML = panel.titleLines.map((line) => `<span class="title-line">${line}</span>`).join("");
-else title.textContent = panel.title;
-lead.textContent = panel.lead;
-let html = "";
-if (panel.paragraphs) html += `<div class="overlay-narrative">${panel.paragraphs.map((paragraph) => `<p>${paragraph}</p>`).join("")}</div>`;
-if (panel.items) html += renderList(panel.items);
-if (panel.rows) html += renderRows(panel.rows);
-if (panel.sections) html += renderCompanySections(panel.sections);
-if (panel.leadership) html += renderLeadership(panel.leadership);
-if (panel.inquiry) html += `<div class="overlay-extra"><div class="contact-email" aria-label="${copy.emailLabel} ceo@padiem.net"><span class="contact-email-label">${copy.emailLabel}</span><span class="contact-email-address">ceo@padiem.net</span></div></div>`;
-body.innerHTML = html;
-};
-
-function applyLanguage(language, persist = false) {
-if (!COPY[language]) return;
-currentLanguage = language;
-const copy = COPY[language];
-if (persist) localStorage.setItem("padiem-language", language);
-document.documentElement.lang = language;
-document.body.dataset.lang = language;
-document.title = copy.metaTitle;
-const description = document.querySelector('meta[name="description"]');
-if (description) description.setAttribute("content", copy.metaDescription);
-document.querySelectorAll("[data-lang-choice]").forEach((button) => {
-const active = button.dataset.langChoice === language;
-button.classList.toggle("active", active);
-button.setAttribute("aria-pressed", String(active));
-});
-setText(".nav-cta", copy.navCta);
-setText("#top .intro", copy.topIntro);
-setHTML("#top .headline", copy.headline);
-setHTML("#top .path", renderPath(copy.path));
-setText("#top .signal-foot span", copy.signalFoot[0]);
-setText("#top .signal-foot b", copy.signalFoot[1]);
-setText("#solutions .intro", copy.solutionsIntro);
-setHTML("#solutions .section-title", copy.solutionsTitle);
-setText("#solutions .body-copy", copy.solutionsBody);
-setLinkLabel("#solutions .pill", copy.solutionsPrimary);
-setText("#solutions .secondary", copy.solutionsSecondary);
-document.querySelectorAll("#solutions .cap-body").forEach((element, index) => {
-if (copy.capabilityBodies[index]) element.textContent = copy.capabilityBodies[index];
-});
-setText("#evolution .intro", copy.evolutionIntro);
-setHTML("#evolution .section-title", copy.evolutionTitle);
-document.querySelectorAll("#evolution .focus-list span").forEach((element, index) => {
-if (copy.focusLabels[index]) element.textContent = copy.focusLabels[index];
-});
-setText("#evolution .focus-copy", copy.focusCopy);
-setHTML("#contact .contact-title", copy.contactTitle);
-setLinkLabel("#contact .pill", copy.contactPrimary);
-setText("#contact .secondary", copy.contactSecondary);
-closeBtn.setAttribute("aria-label", copy.closeLabel);
-if (!overlay.hidden && currentPanelKey) render(currentPanelKey);
-}
-
-const openOverlay = (key, trigger) => {
-render(key);
-lastTrigger = trigger || null;
-overlay.hidden = false;
-overlay.setAttribute("aria-hidden", "false");
-document.body.classList.add("overlay-open");
-closeBtn.focus();
-};
-const closeOverlay = () => {
-overlay.hidden = true;
-overlay.setAttribute("aria-hidden", "true");
-document.body.classList.remove("overlay-open");
-if (lastTrigger) lastTrigger.focus();
-};
-document.querySelectorAll("[data-overlay]").forEach((element) => {
-element.addEventListener("click", (event) => {
-event.preventDefault();
-openOverlay(element.dataset.overlay, element);
-});
-if (element.tagName === "DIV") {
-element.addEventListener("keydown", (event) => {
-if (event.key === "Enter" || event.key === " ") {
-event.preventDefault();
-openOverlay(element.dataset.overlay, element);
-}
-});
-}
-});
-overlay.querySelectorAll("[data-overlay-close]").forEach((element) => element.addEventListener("click", closeOverlay));
-addEventListener("keydown", (event) => {
-if (event.key === "Escape" && !overlay.hidden) closeOverlay();
-});
-applyLanguage(currentLanguage, false);
+inquiry: { accent:"143,207,255", kicker:"CONTACT", title:"Project Inquiry", lead:"Tell us about the workflow or problem you are trying to solve, and we will review the most practical AI approach with you.", items:["Enterprise AI Adoption","Public AI Services","Custom Technology Development","AI Training and Consulting","Business Partnerships","Other Projects"], inquiry:true }
+}}};
+const overlay=document.getElementById("overlay"),kicker=document.getElementById("overlayKicker"),title=document.getElementById("overlayTitle"),lead=document.getElementById("overlayLead"),body=document.getElementById("overlayBody"),closeBtn=overlay.querySelector(".overlay-close");
+let lastTrigger=null,currentPanelKey=null;
+const browserLanguage=(()=>{const values=Array.isArray(navigator.languages)&&navigator.languages.length?navigator.languages:[navigator.language];if(!values||!values[0])return"ko";return values.some(value=>/^ko(?:-|$)/i.test(value||""))?"ko":"en";})();
+let currentLanguage=localStorage.getItem("padiem-language")||browserLanguage;if(!COPY[currentLanguage])currentLanguage="ko";
+const style=document.createElement("style");style.textContent=`.nav-links{gap:clamp(18px,2.2vw,36px)}.lang-switch{display:inline-flex;align-items:center;gap:5px;font-family:var(--font-label);font-size:10px;letter-spacing:.08em;white-space:nowrap}.lang-button{appearance:none;border:0;background:transparent;padding:5px 2px;cursor:pointer;color:rgba(255,255,255,.42);font-family:inherit;font-size:inherit;letter-spacing:inherit;transition:color .2s ease,opacity .2s ease}.lang-button:hover,.lang-button.active{color:#fff}.lang-separator{color:rgba(255,255,255,.22);font-size:9px}body[data-lang="en"]{letter-spacing:-.006em}body[data-lang="en"] .headline,body[data-lang="en"] .section-title,body[data-lang="en"] .contact-title{letter-spacing:-.045em}@media(max-width:1080px){.nav-links{gap:16px}.nav-link{font-size:11px}.lang-switch{font-size:9px}.nav-cta{padding-left:13px;padding-right:13px}}@media(max-width:760px){.lang-switch-mobile{display:inline-flex;position:fixed;right:18px;top:82px;z-index:52;padding:7px 10px;border:1px solid rgba(255,255,255,.16);border-radius:999px;background:rgba(5,12,21,.38);backdrop-filter:blur(14px)}}@media(min-width:761px){.lang-switch-mobile{display:none!important}}`;document.head.appendChild(style);
+const createLanguageSwitch=(mobile=false)=>{const wrapper=document.createElement("div");wrapper.className=mobile?"lang-switch lang-switch-mobile":"lang-switch";wrapper.setAttribute("aria-label","Language");wrapper.innerHTML=`<button class="lang-button" type="button" data-lang-choice="ko" aria-label="한국어">KO</button><span class="lang-separator">/</span><button class="lang-button" type="button" data-lang-choice="en" aria-label="English">EN</button>`;wrapper.querySelectorAll("[data-lang-choice]").forEach(button=>button.addEventListener("click",()=>applyLanguage(button.dataset.langChoice,true)));return wrapper;};
+const navLinks=document.querySelector(".nav-links");if(navLinks)navLinks.appendChild(createLanguageSwitch(false));document.body.appendChild(createLanguageSwitch(true));
+const setText=(selector,value)=>{const element=document.querySelector(selector);if(element)element.textContent=value;},setHTML=(selector,value)=>{const element=document.querySelector(selector);if(element)element.innerHTML=value;},setLinkLabel=(selector,value)=>{const element=document.querySelector(selector);if(!element)return;const svg=element.querySelector("svg");element.innerHTML=`${value}${svg?svg.outerHTML:""}`;},renderPath=rows=>rows.map(([year,name],index)=>`<span class="path-year mono">${year}</span><span class="path-name">${name}</span>${index<rows.length-1?'<div class="path-line"></div>':""}`).join("");
+const renderList=items=>`<ul class="overlay-list">${items.map(item=>`<li><span>${item}</span></li>`).join("")}</ul>`,renderCompanySections=sections=>`<section class="company-sections" aria-label="Company technology services">${sections.map(section=>`<article class="company-section"><p class="company-section-label">${section.label}</p><h3>${section.title}</h3><ul>${section.items.map(item=>`<li>${item}</li>`).join("")}</ul></article>`).join("")}</section>`,renderLeadership=leaders=>`<section class="leadership" aria-label="PADIEM leadership"><div class="leadership-grid">${leaders.map(leader=>`<article class="leader-card"><div class="leader-photo-wrap"><img class="leader-photo" src="${leader.image}" alt="${leader.alt}" loading="eager" /></div><div class="leader-meta"><p class="leader-role">${leader.role}</p><h3 class="leader-name">${leader.name}</h3>${leader.summary?`<p class="leader-summary">${leader.summary}</p>`:""}<ul class="leader-facts">${leader.facts.map(fact=>typeof fact==="string"?`<li>${fact}</li>`:`<li><strong class="leader-school">${fact.school}</strong><span class="leader-field">${fact.field}</span></li>`).join("")}</ul></div></article>`).join("")}</div></section>`;
+const render=key=>{const copy=COPY[currentLanguage],panel=copy.panels[key];if(!panel)return;currentPanelKey=key;overlay.dataset.panel=key;overlay.style.setProperty("--overlay-accent-rgb",panel.accent||"143,207,255");kicker.textContent=panel.kicker;if(panel.titleLines)title.innerHTML=panel.titleLines.map(line=>`<span class="title-line">${line}</span>`).join("");else title.textContent=panel.title;lead.textContent=panel.lead;let html="";if(panel.paragraphs)html+=`<div class="overlay-narrative">${panel.paragraphs.map(paragraph=>`<p>${paragraph}</p>`).join("")}</div>`;if(panel.items)html+=renderList(panel.items);if(panel.sections)html+=renderCompanySections(panel.sections);if(panel.leadership)html+=renderLeadership(panel.leadership);if(panel.inquiry)html+=`<div class="overlay-extra"><div class="contact-email" aria-label="${copy.emailLabel} ceo@padiem.net"><span class="contact-email-label">${copy.emailLabel}</span><span class="contact-email-address">ceo@padiem.net</span></div></div>`;body.innerHTML=html;};
+function applyLanguage(language,persist=false){if(!COPY[language])return;currentLanguage=language;const copy=COPY[language];if(persist)localStorage.setItem("padiem-language",language);document.documentElement.lang=language;document.body.dataset.lang=language;document.title=copy.metaTitle;const description=document.querySelector('meta[name="description"]');if(description)description.setAttribute("content",copy.metaDescription);document.querySelectorAll("[data-lang-choice]").forEach(button=>{const active=button.dataset.langChoice===language;button.classList.toggle("active",active);button.setAttribute("aria-pressed",String(active));});setText(".nav-cta",copy.navCta);setText("#top .intro",copy.topIntro);setHTML("#top .headline",copy.headline);setHTML("#top .path",renderPath(copy.path));setText("#top .signal-foot span",copy.signalFoot[0]);setText("#top .signal-foot b",copy.signalFoot[1]);setText("#solutions .intro",copy.solutionsIntro);setHTML("#solutions .section-title",copy.solutionsTitle);setText("#solutions .body-copy",copy.solutionsBody);setLinkLabel("#solutions .pill",copy.solutionsPrimary);setText("#solutions .secondary",copy.solutionsSecondary);document.querySelectorAll("#solutions .cap-body").forEach((element,index)=>{if(copy.capabilityBodies[index])element.textContent=copy.capabilityBodies[index];});setText("#evolution .intro",copy.evolutionIntro);setHTML("#evolution .section-title",copy.evolutionTitle);document.querySelectorAll("#evolution .focus-list span").forEach((element,index)=>{if(copy.focusLabels[index])element.textContent=copy.focusLabels[index];});setText("#evolution .focus-copy",copy.focusCopy);setHTML("#contact .contact-title",copy.contactTitle);setLinkLabel("#contact .pill",copy.contactPrimary);setText("#contact .secondary",copy.contactSecondary);closeBtn.setAttribute("aria-label",copy.closeLabel);if(!overlay.hidden&&currentPanelKey)render(currentPanelKey);}
+const openOverlay=(key,trigger)=>{render(key);lastTrigger=trigger||null;overlay.hidden=false;overlay.setAttribute("aria-hidden","false");document.body.classList.add("overlay-open");closeBtn.focus();},closeOverlay=()=>{overlay.hidden=true;overlay.setAttribute("aria-hidden","true");document.body.classList.remove("overlay-open");if(lastTrigger)lastTrigger.focus();};
+document.querySelectorAll("[data-overlay]").forEach(element=>{element.addEventListener("click",event=>{event.preventDefault();openOverlay(element.dataset.overlay,element);});if(element.tagName==="DIV")element.addEventListener("keydown",event=>{if(event.key==="Enter"||event.key===" "){event.preventDefault();openOverlay(element.dataset.overlay,element);}});});overlay.querySelectorAll("[data-overlay-close]").forEach(element=>element.addEventListener("click",closeOverlay));addEventListener("keydown",event=>{if(event.key==="Escape"&&!overlay.hidden)closeOverlay();});applyLanguage(currentLanguage,false);
 })();
