@@ -1,0 +1,85 @@
+name: Responsive visual review
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  capture:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install browser tooling
+        run: |
+          npm init -y
+          npm install playwright@1.54.2
+          npx playwright install chromium
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 --directory static > /tmp/padiem-http.log 2>&1 &
+          echo $! > /tmp/padiem-http.pid
+          sleep 2
+      - name: Capture responsive states
+        run: |
+          cat > /tmp/capture.mjs <<'EOF'
+          import { chromium } from 'playwright';
+          import fs from 'node:fs';
+
+          fs.mkdirSync('responsive-review', { recursive: true });
+          const browser = await chromium.launch({ headless: true });
+          const sizes = [
+            ['1440x900', 1440, 900],
+            ['1366x768', 1366, 768],
+            ['390x844', 390, 844],
+          ];
+          const states = [
+            ['home', null],
+            ['company', 'about'],
+            ['team', 'team'],
+            ['contact', 'inquiry'],
+          ];
+
+          for (const [label, width, height] of sizes) {
+            const context = await browser.newContext({
+              viewport: { width, height },
+              locale: 'ko-KR',
+              deviceScaleFactor: 1,
+            });
+            await context.addInitScript(() => {
+              localStorage.setItem('padiem-language', 'ko');
+            });
+            const page = await context.newPage();
+            await page.route('**/*', async route => {
+              const url = route.request().url();
+              if (url.startsWith('http://127.0.0.1:4173')) await route.continue();
+              else await route.abort();
+            });
+
+            for (const [state, panel] of states) {
+              await page.goto('http://127.0.0.1:4173/html/index1.html', { waitUntil: 'domcontentloaded' });
+              await page.waitForTimeout(700);
+              if (panel) {
+                await page.locator(`[data-overlay="${panel}"]`).first().click({ force: true });
+                await page.waitForTimeout(500);
+              }
+              await page.screenshot({ path: `responsive-review/${label}_${state}.png`, fullPage: false });
+            }
+            await context.close();
+          }
+          await browser.close();
+          EOF
+          node /tmp/capture.mjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: responsive-review-${{ github.event.pull_request.head.sha || github.sha }}
+          path: responsive-review/*.png
+          if-no-files-found: error
+          retention-days: 7
