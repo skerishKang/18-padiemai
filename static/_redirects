@@ -1,2 +1,23 @@
-/    /html/index1.html   200
-/index.html    /html/index1.html   200 
+# Canonicalize legacy homepage URLs to the current PADIEM homepage.
+/index.html                      /            301!
+/index1                          /            301!
+/index1.html                     /            301!
+/html/index1                     /            301!
+/html/index1.html                /            301!
+/html/index.html                 /            301!
+
+# Legacy company/team/contact content is consolidated into the current homepage overlays.
+/html/pages/about/company        /            301!
+/html/pages/about/company.html   /            301!
+/html/pages/about/team           /            301!
+/html/pages/about/team.html      /            301!
+/html/pages/about/contact        /            301!
+/html/pages/about/contact.html   /            301!
+
+# Legacy technology/service content is consolidated into the current Solutions section.
+/html/pages/ai-tech/*            /            301!
+/html/pages/services/*           /            301!
+
+# Removed legacy pages have no current equivalent; return a real 404 rather than a soft-404 redirect.
+/html/pages/*                    /404.html    404!
+/pages/*                         /404.html    404!

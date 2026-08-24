@@ -4,4 +4,4 @@ Allow: /
 User-agent: Yeti
 Allow: /
 
-Sitemap: https://padiemai.netlify.app/sitemap.xml 
+Sitemap: https://padiem.net/sitemap.xml
