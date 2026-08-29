@@ -3,10 +3,6 @@
   command = "node scripts/build-cinematic-site.mjs"
   environment = { NODE_VERSION = "22" }
 
-[[edge_functions]]
-  function = "padiem-geo-language"
-  path = "/"
-
 [[ignore_files]]
   files = [
     "hugo.zip",
