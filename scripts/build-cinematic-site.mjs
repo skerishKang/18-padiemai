@@ -46,9 +46,10 @@ const seoHead = [
 ].join("");
 
 // The Netlify Edge Function writes the visitor country into a first-party cookie.
-// Seed the existing language runtime only when the visitor has not already made
-// an explicit KO/EN choice. Existing manual choices therefore always win.
-const geoLanguageBootstrap = `<script>(()=>{try{if(localStorage.getItem("padiem-language"))return;const match=document.cookie.match(/(?:^|;\\s*)padiem-geo-country=([^;]+)/);if(!match)return;const country=decodeURIComponent(match[1]).toUpperCase();localStorage.setItem("padiem-language",country==="KR"?"ko":"en");}catch{}})();</script>`;
+// Existing padiem-language values only come from an explicit KO/EN click, so they
+// always win. GeoIP is injected just long enough for the existing language runtime
+// to read it, then removed so a later visit can follow the visitor's current country.
+const geoLanguageBootstrap = `<script>(()=>{try{if(localStorage.getItem("padiem-language"))return;const match=document.cookie.match(/(?:^|;\\s*)padiem-geo-country=([^;]+)/);if(!match)return;const country=decodeURIComponent(match[1]).toUpperCase();localStorage.setItem("padiem-language",country==="KR"?"ko":"en");addEventListener("DOMContentLoaded",()=>localStorage.removeItem("padiem-language"),{once:true});}catch{}})();</script>`;
 
 html = html.replace(oldTitle, seoHead);
 html = html.replace(languageScript, `${geoLanguageBootstrap}${languageScript}`);
