@@ -22,12 +22,16 @@ let html = readFileSync(sourceHtml, "utf8");
 
 const oldTitle = "<title>PADIEM Cinematic Pearl Glass Demo V2</title>";
 const newTitle = "<title>PADIEM | AI로 일을 다시 설계합니다</title>";
+const languageScript = '<script src="/js/padiem-cinematic-v2-2.js"></script>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
 }
 if (html.includes('rel="canonical"')) {
   throw new Error("Canonical already exists in the cinematic source; update this build script before publishing.");
+}
+if (!html.includes(languageScript)) {
+  throw new Error("Expected language runtime script was not found; refusing to publish without geo-language bootstrap.");
 }
 
 const seoHead = [
@@ -41,7 +45,14 @@ const seoHead = [
   '<meta property="og:url" content="https://padiem.net/"/>',
 ].join("");
 
+// The Netlify Edge Function writes the visitor country into a first-party cookie.
+// Existing padiem-language values only come from an explicit KO/EN click, so they
+// always win. GeoIP is injected just long enough for the existing language runtime
+// to read it, then removed so a later visit can follow the visitor's current country.
+const geoLanguageBootstrap = `<script>(()=>{try{if(localStorage.getItem("padiem-language"))return;const match=document.cookie.match(/(?:^|;\\s*)padiem-geo-country=([^;]+)/);if(!match)return;const country=decodeURIComponent(match[1]).toUpperCase();localStorage.setItem("padiem-language",country==="KR"?"ko":"en");addEventListener("DOMContentLoaded",()=>localStorage.removeItem("padiem-language"),{once:true});}catch{}})();</script>`;
+
 html = html.replace(oldTitle, seoHead);
+html = html.replace(languageScript, `${geoLanguageBootstrap}${languageScript}`);
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
 for (const dir of ["css", "js", "images"]) {
