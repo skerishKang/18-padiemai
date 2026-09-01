@@ -1,0 +1,73 @@
+{
+  "schema": "sm090-neon-main-result-1.0",
+  "status": "PASS",
+  "projectId": "broad-breeze-39165056",
+  "branchId": "br-lingering-hall-avsosmlv",
+  "database": "neondb",
+  "postgresVersion": 18,
+  "migration": "DB_MIGRATIONS/STORYMEMORY_PACK_LIFECYCLE_M5_v1.sql",
+  "migrationSha256": "4df7e63aedabd27ef2c65893d59310374c1749000fd33ea766ecf1e9c0c4f29a",
+  "migrationStatementsApplied": 26,
+  "lifecycleTables": [
+    "pack_feedback",
+    "pack_ratings",
+    "pack_version_proposals"
+  ],
+  "lifecycleViews": [
+    "pack_rating_summary"
+  ],
+  "policies": [
+    "pack_feedback_own",
+    "pack_ratings_own",
+    "pack_version_proposals_creator_delete",
+    "pack_version_proposals_creator_insert",
+    "pack_version_proposals_creator_update",
+    "pack_version_proposals_own_read"
+  ],
+  "preMigrationRollback": {
+    "branchId": "br-long-wave-avz3ah77",
+    "name": "pre-sm090-pack-lifecycle-20260827",
+    "lifecycleTables": 0
+  },
+  "mainPostApply": {
+    "knowledge": {
+      "entities": 98,
+      "aliases": 108,
+      "mentions": 641,
+      "relationships": 147,
+      "answerCards": 98,
+      "citations": 145,
+      "sourcePassages": 0
+    },
+    "marketplace": {
+      "registryRows": 1,
+      "versionRows": 1,
+      "attestations": 0,
+      "installs": 0
+    },
+    "lifecycleRowsAfterCleanup": {
+      "versionProposals": 0,
+      "ratings": 0,
+      "feedback": 0
+    }
+  },
+  "positiveFixture": {
+    "rating": true,
+    "feedbackWithLocator": true,
+    "versionProposal": true,
+    "ratingSummary": true,
+    "cleanupResidual": 0
+  },
+  "negativeValidation": {
+    "ratingOutOfRangeBlocked": true,
+    "correctionWithoutLocatorBlocked": true,
+    "sourceBodyCorrectionBlocked": true,
+    "sourceTextInVersionProposalBlocked": true
+  },
+  "mutationBoundary": {
+    "neon": "PACK_LIFECYCLE_METADATA_SCHEMA_ONLY",
+    "knowledgeDb": "NONE",
+    "sourceBodyDb": "NONE",
+    "book21PlusManualKnowledge": "NONE"
+  }
+}

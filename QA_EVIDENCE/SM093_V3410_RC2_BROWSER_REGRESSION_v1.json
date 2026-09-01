@@ -1,0 +1,709 @@
+{
+  "schema": "storymemory-v3410-rc2-browser-regression-1.0",
+  "url": "http://127.0.0.1:8892/dist/index.html",
+  "root": "/mnt/c/AI-DEV/.sm093-v3410-ui-exposure-v1",
+  "status": "PASS",
+  "direct_ui": {
+    "iliad": {
+      "DIRECT_UI_ACTION": "PASS",
+      "ACTIVE_SCREEN": "reader",
+      "CORRECT_WORK_IDENTITY": "PASS",
+      "MODE": "static",
+      "UNIT_1_LOAD": "PASS",
+      "KOREAN_TEXT_PRESENT": "PASS",
+      "CANONICAL_LOCATOR_PRESENT": "PASS",
+      "NEXT_UNIT_NAVIGATION": "PASS",
+      "binding_unit_1": {
+        "generation": 2,
+        "mode": "static",
+        "contentId": "book:iliad",
+        "workKey": "iliad",
+        "unitOrdinal": 1,
+        "passages": 146,
+        "pages": 19,
+        "remoteError": null
+      },
+      "locator_unit_1": "iliad:book:01:s1:row:001",
+      "binding_unit_2": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:iliad",
+        "workKey": "iliad",
+        "unitOrdinal": 2,
+        "passages": 290,
+        "pages": 37,
+        "remoteError": null
+      },
+      "library_card": {
+        "aria": "일리아드 선택",
+        "selected": "true",
+        "visible": true,
+        "libraryActive": "library"
+      }
+    },
+    "odyssey": {
+      "DIRECT_UI_ACTION": "PASS",
+      "ACTIVE_SCREEN": "reader",
+      "CORRECT_WORK_IDENTITY": "PASS",
+      "MODE": "static",
+      "UNIT_1_LOAD": "PASS",
+      "KOREAN_TEXT_PRESENT": "PASS",
+      "CANONICAL_LOCATOR_PRESENT": "PASS",
+      "NEXT_UNIT_NAVIGATION": "PASS",
+      "binding_unit_1": {
+        "generation": 2,
+        "mode": "static",
+        "contentId": "book:odyssey",
+        "workKey": "odyssey",
+        "unitOrdinal": 1,
+        "passages": 64,
+        "pages": 8,
+        "remoteError": null
+      },
+      "locator_unit_1": "odyssey:book:01:s1:row:001",
+      "binding_unit_2": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:odyssey",
+        "workKey": "odyssey",
+        "unitOrdinal": 2,
+        "passages": 69,
+        "pages": 9,
+        "remoteError": null
+      },
+      "library_card": {
+        "aria": "오디세이 선택",
+        "selected": "true",
+        "visible": true,
+        "libraryActive": "library"
+      }
+    },
+    "aeneid": {
+      "DIRECT_UI_ACTION": "PASS",
+      "ACTIVE_SCREEN": "reader",
+      "CORRECT_WORK_IDENTITY": "PASS",
+      "MODE": "static",
+      "UNIT_1_LOAD": "PASS",
+      "KOREAN_TEXT_PRESENT": "PASS",
+      "CANONICAL_LOCATOR_PRESENT": "PASS",
+      "NEXT_UNIT_NAVIGATION": "PASS",
+      "binding_unit_1": {
+        "generation": 2,
+        "mode": "static",
+        "contentId": "book:aeneid",
+        "workKey": "aeneid",
+        "unitOrdinal": 1,
+        "passages": 37,
+        "pages": 16,
+        "remoteError": null
+      },
+      "locator_unit_1": "aeneid:book:01:s1:row:001",
+      "binding_unit_2": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:aeneid",
+        "workKey": "aeneid",
+        "unitOrdinal": 2,
+        "passages": 27,
+        "pages": 20,
+        "remoteError": null
+      },
+      "library_card": {
+        "aria": "아이네이스 선택",
+        "selected": "true",
+        "visible": true,
+        "libraryActive": "library"
+      }
+    },
+    "metamorphoses": {
+      "DIRECT_UI_ACTION": "PASS",
+      "ACTIVE_SCREEN": "reader",
+      "CORRECT_WORK_IDENTITY": "PASS",
+      "MODE": "static",
+      "UNIT_1_LOAD": "PASS",
+      "KOREAN_TEXT_PRESENT": "PASS",
+      "CANONICAL_LOCATOR_PRESENT": "PASS",
+      "NEXT_UNIT_NAVIGATION": "PASS",
+      "binding_unit_1": {
+        "generation": 2,
+        "mode": "static",
+        "contentId": "book:metamorphoses",
+        "workKey": "metamorphoses",
+        "unitOrdinal": 1,
+        "passages": 60,
+        "pages": 15,
+        "remoteError": null
+      },
+      "locator_unit_1": "metamorphoses:book:01:s1:row:001",
+      "binding_unit_2": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:metamorphoses",
+        "workKey": "metamorphoses",
+        "unitOrdinal": 2,
+        "passages": 50,
+        "pages": 18,
+        "remoteError": null
+      },
+      "library_card": {
+        "aria": "변신 이야기 선택",
+        "selected": "true",
+        "visible": true,
+        "libraryActive": "library"
+      }
+    },
+    "paradise-lost": {
+      "DIRECT_UI_ACTION": "PASS",
+      "ACTIVE_SCREEN": "reader",
+      "CORRECT_WORK_IDENTITY": "PASS",
+      "MODE": "static",
+      "UNIT_1_LOAD": "PASS",
+      "KOREAN_TEXT_PRESENT": "PASS",
+      "CANONICAL_LOCATOR_PRESENT": "PASS",
+      "NEXT_UNIT_NAVIGATION": "PASS",
+      "binding_unit_1": {
+        "generation": 2,
+        "mode": "static",
+        "contentId": "book:paradise-lost",
+        "workKey": "paradise-lost",
+        "unitOrdinal": 1,
+        "passages": 14,
+        "pages": 10,
+        "remoteError": null
+      },
+      "locator_unit_1": "paradise-lost:book:01:s1:row:001",
+      "binding_unit_2": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:paradise-lost",
+        "workKey": "paradise-lost",
+        "unitOrdinal": 2,
+        "passages": 28,
+        "pages": 16,
+        "remoteError": null
+      },
+      "library_card": {
+        "aria": "실낙원 선택",
+        "selected": "true",
+        "visible": true,
+        "libraryActive": "library"
+      }
+    },
+    "divine-comedy": {
+      "DIRECT_UI_ACTION": "PASS",
+      "ACTIVE_SCREEN": "reader",
+      "CORRECT_WORK_IDENTITY": "PASS",
+      "MODE": "static",
+      "UNIT_1_LOAD": "PASS",
+      "KOREAN_TEXT_PRESENT": "PASS",
+      "CANONICAL_LOCATOR_PRESENT": "PASS",
+      "NEXT_UNIT_NAVIGATION": "PASS",
+      "binding_unit_1": {
+        "generation": 2,
+        "mode": "static",
+        "contentId": "book:divine-comedy",
+        "workKey": "divine-comedy",
+        "unitOrdinal": 1,
+        "passages": 46,
+        "pages": 6,
+        "remoteError": null
+      },
+      "locator_unit_1": "divine-comedy:canto:inferno-01:s1:row:001",
+      "binding_unit_2": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:divine-comedy",
+        "workKey": "divine-comedy",
+        "unitOrdinal": 2,
+        "passages": 48,
+        "pages": 6,
+        "remoteError": null
+      },
+      "library_card": {
+        "aria": "신곡 선택",
+        "selected": "true",
+        "visible": true,
+        "libraryActive": "library"
+      }
+    }
+  },
+  "reload": {
+    "before": {
+      "active": "reader",
+      "binding": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:iliad",
+        "workKey": "iliad",
+        "unitOrdinal": 2,
+        "passages": 290,
+        "pages": 37,
+        "remoteError": null
+      },
+      "locator": "iliad:book:02:s1:row:001",
+      "page": "01",
+      "store": {
+        "schemaVersion": 1,
+        "updatedAt": 1787909662598,
+        "activeSession": {
+          "screen": "reader",
+          "context": "일리아드",
+          "readerKind": "book",
+          "readerViewMode": "page",
+          "page": 0,
+          "scrollRatio": 0,
+          "selectedBook": 0,
+          "memoryScope": "current",
+          "globalView": "readings",
+          "updatedAt": 1787909662598,
+          "exactResume": {
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "updatedAt": 1787909662599
+          }
+        },
+        "sources": {
+          "bible-demo": {
+            "id": "bible-demo",
+            "type": "scripture",
+            "title": "Bible Demo Source",
+            "language": "ko",
+            "rights": "prototype-only",
+            "transport": "embedded",
+            "status": "demo"
+          },
+          "book-demo": {
+            "id": "book-demo",
+            "type": "book",
+            "title": "Reading Copy",
+            "language": "ko",
+            "rights": "no-fulltext",
+            "transport": "metadata-only",
+            "status": "prototype"
+          }
+        },
+        "progress": {
+          "일리아드::BOOK:1": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787909661735,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 1,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:01:s1:row:001",
+            "canonicalLocator": "iliad:book:01:s1:row:001",
+            "sourceSequence": 1,
+            "sourceHash": "1174bab22e8286e12eccf4dc3fde36d4d1ceca064d8651659c2c15c372640891",
+            "translationHash": "3fee04c3322549291ff31cceca88c2e1837f72d14d26824d994a3c94434511f4",
+            "authoritative": true,
+            "unitPageCount": 19,
+            "sourcePreview": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서. 그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고, 묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+          },
+          "고린도전서 3장": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "고린도전서 3장",
+            "updatedAt": 1787909654255,
+            "exactResumeSchema": 1,
+            "contentId": "bible:1cor",
+            "contentTitle": "고린도전서",
+            "readerKind": "bible",
+            "unitOrdinal": 1,
+            "unitKind": null,
+            "sourcePassageId": null,
+            "canonicalLocator": null,
+            "sourceSequence": null,
+            "sourceHash": null,
+            "translationHash": null,
+            "authoritative": false
+          },
+          "일리아드::BOOK:2": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787909662518,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "crossUnitLanding": "resume",
+            "unitPageCount": 37,
+            "sourcePreview": "이제 달콤한 잠이 모든 필멸자의 눈을 감겼고, 그리스 장수들은 막사 안에 누워 있었다. 불멸의 신들도 높은 왕좌에서 잠들었지만 제우스의 언제나 깨어 있는 눈만은 감기지 않았다."
+          }
+        },
+        "annotations": [],
+        "memories": [],
+        "recall": {},
+        "entityLedger": {
+          "고린도전서 3장": {
+            "context": "고린도전서 3장",
+            "entities": {
+              "바울": 3,
+              "아볼로": 4,
+              "하나님의 밭": 1
+            },
+            "pages": [
+              {
+                "page": 0,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 1,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 2,
+                "entities": [
+                  "하나님의 밭"
+                ]
+              }
+            ],
+            "updatedAt": 1787909654256
+          },
+          "일리아드": {
+            "context": "일리아드",
+            "entities": {},
+            "pages": [
+              {
+                "page": 0,
+                "entities": []
+              },
+              {
+                "page": 1,
+                "entities": []
+              },
+              {
+                "page": 2,
+                "entities": []
+              }
+            ],
+            "updatedAt": 1787909661537
+          }
+        }
+      }
+    },
+    "after": {
+      "active": "reader",
+      "binding": {
+        "generation": 1,
+        "mode": "static",
+        "contentId": "book:iliad",
+        "workKey": "iliad",
+        "unitOrdinal": 2,
+        "passages": 290,
+        "pages": 37,
+        "remoteError": null
+      },
+      "locator": "iliad:book:02:s1:row:001",
+      "page": "01",
+      "store": {
+        "schemaVersion": 1,
+        "updatedAt": 1787909665274,
+        "activeSession": {
+          "screen": "reader",
+          "context": "일리아드",
+          "readerKind": "book",
+          "readerViewMode": "page",
+          "page": 0,
+          "scrollRatio": 0,
+          "selectedBook": 0,
+          "memoryScope": "current",
+          "globalView": "readings",
+          "updatedAt": 1787909665274,
+          "exactResume": {
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "updatedAt": 1787909665274
+          }
+        },
+        "sources": {
+          "bible-demo": {
+            "id": "bible-demo",
+            "type": "scripture",
+            "title": "Bible Demo Source",
+            "language": "ko",
+            "rights": "prototype-only",
+            "transport": "embedded",
+            "status": "demo"
+          },
+          "book-demo": {
+            "id": "book-demo",
+            "type": "book",
+            "title": "Reading Copy",
+            "language": "ko",
+            "rights": "no-fulltext",
+            "transport": "metadata-only",
+            "status": "prototype"
+          }
+        },
+        "progress": {
+          "일리아드::BOOK:1": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787909661735,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 1,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:01:s1:row:001",
+            "canonicalLocator": "iliad:book:01:s1:row:001",
+            "sourceSequence": 1,
+            "sourceHash": "1174bab22e8286e12eccf4dc3fde36d4d1ceca064d8651659c2c15c372640891",
+            "translationHash": "3fee04c3322549291ff31cceca88c2e1837f72d14d26824d994a3c94434511f4",
+            "authoritative": true,
+            "unitPageCount": 19,
+            "sourcePreview": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서. 그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고, 묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+          },
+          "고린도전서 3장": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "고린도전서 3장",
+            "updatedAt": 1787909654255,
+            "exactResumeSchema": 1,
+            "contentId": "bible:1cor",
+            "contentTitle": "고린도전서",
+            "readerKind": "bible",
+            "unitOrdinal": 1,
+            "unitKind": null,
+            "sourcePassageId": null,
+            "canonicalLocator": null,
+            "sourceSequence": null,
+            "sourceHash": null,
+            "translationHash": null,
+            "authoritative": false
+          },
+          "일리아드::BOOK:2": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787909665137,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "unitPageCount": 37,
+            "sourcePreview": "이제 달콤한 잠이 모든 필멸자의 눈을 감겼고, 그리스 장수들은 막사 안에 누워 있었다. 불멸의 신들도 높은 왕좌에서 잠들었지만 제우스의 언제나 깨어 있는 눈만은 감기지 않았다."
+          }
+        },
+        "annotations": [],
+        "memories": [],
+        "recall": {},
+        "entityLedger": {
+          "고린도전서 3장": {
+            "context": "고린도전서 3장",
+            "entities": {
+              "바울": 3,
+              "아볼로": 4,
+              "하나님의 밭": 1
+            },
+            "pages": [
+              {
+                "page": 0,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 1,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 2,
+                "entities": [
+                  "하나님의 밭"
+                ]
+              }
+            ],
+            "updatedAt": 1787909654256
+          },
+          "일리아드": {
+            "context": "일리아드",
+            "entities": {},
+            "pages": [
+              {
+                "page": 0,
+                "entities": []
+              },
+              {
+                "page": 1,
+                "entities": []
+              },
+              {
+                "page": 2,
+                "entities": []
+              }
+            ],
+            "updatedAt": 1787909664994
+          }
+        }
+      }
+    },
+    "active_screen_same": true,
+    "same_work": true,
+    "same_unit": true,
+    "same_locator": true,
+    "same_semantic_page": true,
+    "hydration_progress_preserved": true,
+    "RELOAD_EXACT_RESUME": true
+  },
+  "routes": {
+    "library": {
+      "before": "library",
+      "after": "library",
+      "preserved": true
+    },
+    "today": {
+      "before": "today",
+      "after": "today",
+      "preserved": true
+    },
+    "index": {
+      "before": "index",
+      "after": "index",
+      "preserved": true
+    },
+    "reader": {
+      "before": "reader",
+      "after": "reader",
+      "preserved": true
+    }
+  },
+  "viewports": {
+    "desktop": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "metrics": {
+        "active": "reader",
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "readerVisible": true,
+        "libraryPresent": true
+      },
+      "catastrophic_overflow": false
+    },
+    "tablet": {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "metrics": {
+        "active": "reader",
+        "scrollWidth": 1024,
+        "clientWidth": 1024,
+        "readerVisible": true,
+        "libraryPresent": true
+      },
+      "catastrophic_overflow": false
+    },
+    "mobile": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "metrics": {
+        "active": "reader",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "readerVisible": true,
+        "libraryPresent": true
+      },
+      "catastrophic_overflow": false
+    }
+  },
+  "audit": {
+    "page_errors": [],
+    "console_errors": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "url": "http://127.0.0.1:8892/favicon.ico"
+      }
+    ],
+    "blocking_console_errors": [],
+    "non_blocking_console_errors": [
+      {
+        "type": "error",
+        "text": "Failed to load resource: the server responded with a status of 404 (File not found)",
+        "url": "http://127.0.0.1:8892/favicon.ico"
+      }
+    ],
+    "failed_requests": [],
+    "http_error_responses": [],
+    "JS_EXCEPTIONS": 0,
+    "CONSOLE_BLOCKING_ERRORS": 0,
+    "FAILED_CRITICAL_REQUESTS": 0
+  },
+  "auth": {
+    "AUTHENTICATED_BROWSER_GATE": "ENVIRONMENT_BLOCKED"
+  },
+  "blockers": [],
+  "DIRECT_UI_READER_COVERAGE": "6/6",
+  "STATIC_RUNTIME_COVERAGE": "6/6"
+}

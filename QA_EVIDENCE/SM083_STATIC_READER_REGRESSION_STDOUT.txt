@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "catalogWorks": 6,
+  "totalPassages": 12628,
+  "odyssey17": 63,
+  "resumeLocator": "odyssey:book:17:s1:row:004",
+  "resumeSequence": 1600004,
+  "mode": "static"
+}

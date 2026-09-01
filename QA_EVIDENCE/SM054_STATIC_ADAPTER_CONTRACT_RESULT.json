@@ -1,0 +1,16 @@
+{
+  "status": "PASS",
+  "catalog": {"works": 6, "units": 185, "bilingual_passages": 12628},
+  "reader_fixture": {
+    "work_key": "odyssey",
+    "unit_ordinal": 17,
+    "passages": 63,
+    "canonical_locator": "odyssey:book:17:s1:row:004",
+    "sequence": 1600004,
+    "resolved_mode": "static"
+  },
+  "authoritative_modes": {"static": true, "remote": true, "fallback": false},
+  "neon_main_mutation": false,
+  "cloudflare_deploy": false,
+  "browser_acceptance": "PENDING"
+}

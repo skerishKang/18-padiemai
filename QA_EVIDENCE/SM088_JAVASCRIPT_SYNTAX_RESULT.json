@@ -1,0 +1,50 @@
+{
+  "schema": "storymemory-sm088-javascript-syntax-1.0",
+  "status": "PASS",
+  "checks": [
+    {
+      "path": "dist/storymemory-universal-source-runtime.js",
+      "kind": "js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "path": "dist/index.html#inline-script-1",
+      "kind": "inline-js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "path": "dist/index.html#inline-script-2",
+      "kind": "inline-js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "path": "dist/index.html#inline-script-3",
+      "kind": "inline-js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "path": "dist/index.html#inline-script-4",
+      "kind": "inline-js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "path": "dist/index.html#inline-script-5",
+      "kind": "inline-js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "path": "dist/index.html#inline-script-6",
+      "kind": "inline-js",
+      "pass": true,
+      "stderr": ""
+    }
+  ],
+  "count": 7,
+  "failed": 0
+}

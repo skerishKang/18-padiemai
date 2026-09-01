@@ -1,0 +1,64 @@
+{
+  "schema": "storymemory-sm082-package-summary-1.0",
+  "version": "3.4.0",
+  "build": "SM-082-universal-source-ingest-reading-harness-v1",
+  "status": "PASS",
+  "runtimeSchema": "storymemory-universal-source-runtime-1.0",
+  "sourceFixtureTypes": [
+    "book",
+    "pdf-document",
+    "url-transcript"
+  ],
+  "sourceCount": 3,
+  "currentReaderBridge": {
+    "status": "PASS",
+    "sourceId": "book:odyssey",
+    "unitOrdinal": 17,
+    "locator": "odyssey:book:17:s1:row:004",
+    "memoryBridge": 1,
+    "fullSourceSent": false,
+    "uiRebinding": false
+  },
+  "existingRegressions": "PASS_5_OF_5",
+  "contentRegression": {
+    "baseFiles": 192,
+    "newFiles": 192,
+    "changed": [],
+    "missing": [],
+    "extra": [],
+    "status": "PASS"
+  },
+  "javascriptSyntax": {
+    "status": "PASS",
+    "inlineScriptsChecked": 6,
+    "externalUniversalScriptSyntax": "PASS"
+  },
+  "keyFileSha256": {
+    "dist/index.html": "df89ca0b4e4595661b77ad7ce5cf7183460c25b32dfe5c370ce94e85dccfd430",
+    "dist/storymemory-universal-source-runtime.js": "975fe6dfa8cbb611a395af7adde50992c8acbdae61c09f7c397144f603bdad89",
+    "dist/version.json": "05b0aaf14a10c1dd0399a84af70fe768de1c5d4a4d396266bea0dc7aa5a44270",
+    "QA_EVIDENCE/SM082_UNIVERSAL_SOURCE_HARNESS_RESULT.json": "519dad7ce28307ddb3955dce5180e46c10a54cc28c729a7bb0a2284ac855bc70",
+    "QA_EVIDENCE/SM082_CURRENT_READER_BRIDGE_RESULT.json": "3d1e51c32c6df8bce1204b59190f3d9111e4f74278462e41744504d403b8929f"
+  },
+  "mutations": {
+    "neon": "NONE",
+    "cloudflare": "NONE",
+    "biPortal": "NONE",
+    "dns": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/",
+  "deferred": {
+    "trustModes": "SM-083",
+    "packRuntime": "SM-084",
+    "marketplace": "SM-085",
+    "mixedSourceUi": "SM-087",
+    "goldBlindEvaluation": "SM-088"
+  },
+  "nonClaims": [
+    "raw-binary-pdf-ocr-or-parser",
+    "live-url-or-youtube-fetch",
+    "media-stt-or-transcript-acquisition",
+    "browser-live-deployment-acceptance"
+  ]
+}

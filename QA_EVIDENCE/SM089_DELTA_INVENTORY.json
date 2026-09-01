@@ -1,0 +1,35 @@
+{
+  "schema": "storymemory-sm089-delta-inventory-1.0",
+  "base": "v3.4.5",
+  "candidate": "v3.4.6",
+  "added": [
+    "PATCH_NOTES_v3.4.6.md",
+    "QA_EVIDENCE/SM089_AUTO_PACK_GENERATION_RESULT.json",
+    "QA_EVIDENCE/SM089_AUTO_PACK_GENERATION_STDOUT.txt",
+    "QA_EVIDENCE/SM089_AUTO_PACK_GENERATION_TEST.mjs",
+    "QA_EVIDENCE/SM089_AUTO_PACK_UI_CONTRACT_RESULT.json",
+    "QA_EVIDENCE/SM089_AUTO_PACK_UI_CONTRACT_STDOUT.txt",
+    "QA_EVIDENCE/SM089_AUTO_PACK_UI_CONTRACT_TEST.cjs",
+    "QA_EVIDENCE/SM089_CORE_RUNTIME_BYTE_REGRESSION.json",
+    "QA_EVIDENCE/SM089_DELTA_INVENTORY.json",
+    "QA_EVIDENCE/SM089_FULL_REGRESSION_RESULT.json",
+    "QA_EVIDENCE/SM089_FULL_REGRESSION_STDOUT.txt",
+    "QA_EVIDENCE/SM089_JAVASCRIPT_SYNTAX_RESULT.json",
+    "QA_EVIDENCE/SM089_LOCAL_ASSET_RESULT.json",
+    "QA_EVIDENCE/SM089_NEON_MAIN_READ_ONLY_RESULT.json",
+    "QA_EVIDENCE/SM089_PACKAGE_SUMMARY.json",
+    "QA_EVIDENCE/SM089_V345_CONTENT_BYTE_REGRESSION.json",
+    "SM089_ON_DEMAND_AUTO_PACK_GENERATION_REPORT_v1.md",
+    "dist/storymemory-auto-pack-runtime.js",
+    "dist/storymemory-auto-pack-ui.css",
+    "dist/storymemory-auto-pack-ui.js"
+  ],
+  "changed": [
+    "dist/index.html",
+    "dist/version.json"
+  ],
+  "removed": [],
+  "addedCount": 20,
+  "changedCount": 2,
+  "removedCount": 0
+}

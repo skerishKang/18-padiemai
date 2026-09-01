@@ -1,0 +1,50 @@
+{
+  "schema": "sm092-core-runtime-byte-regression-1.0",
+  "pass": true,
+  "unchanged_core": [
+    {
+      "file": "storymemory-pack-marketplace-runtime.js",
+      "byte_identical": true,
+      "old_sha256": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+      "new_sha256": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7"
+    },
+    {
+      "file": "storymemory-auto-pack-runtime.js",
+      "byte_identical": true,
+      "old_sha256": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221",
+      "new_sha256": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221"
+    },
+    {
+      "file": "storymemory-pack-lifecycle-runtime.js",
+      "byte_identical": true,
+      "old_sha256": "a4f5ecbcbe00a9691c278a040befb5d1055300f71e153caf63303a44e5646d98",
+      "new_sha256": "a4f5ecbcbe00a9691c278a040befb5d1055300f71e153caf63303a44e5646d98"
+    },
+    {
+      "file": "storymemory-pack-entitlement-runtime.js",
+      "byte_identical": true,
+      "old_sha256": "96746f59d8372bc107ce5bc76b7b2d04694537490aed142d2cfbf208e5d8e59a",
+      "new_sha256": "96746f59d8372bc107ce5bc76b7b2d04694537490aed142d2cfbf208e5d8e59a"
+    },
+    {
+      "file": "storymemory-source-ui.js",
+      "byte_identical": true,
+      "old_sha256": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+      "new_sha256": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008"
+    }
+  ],
+  "universal_diff": [
+    "--- v3.4.8",
+    "+++ v3.4.9",
+    "@@ -325,7 +325,7 @@",
+    "       GROUNDED:Object.freeze({mode:'GROUNDED',modelPriorAllowed:true,citationRequired:true,strictUnknown:false,exactVerification:true,allowAiNative:false,retrievalDepth:'grounded'}),",
+    "       STRICT:Object.freeze({mode:'STRICT',modelPriorAllowed:true,citationRequired:true,strictUnknown:true,exactVerification:true,allowAiNative:false,retrievalDepth:'strict'})",
+    "     });",
+    "-    const VERIFIED_TIERS=new Set(['gold','verified','curated','expert-verified','expert_verified','official','publisher','official/publisher','official-publisher']);",
+    "+    const VERIFIED_TIERS=new Set(['gold','verified','curated','expert','expert-verified','expert_verified','official','publisher','official/publisher','official-publisher']);",
+    " ",
+    "     const normalizeTrustMode=value=>{",
+    "       const mode=String(value||'').trim().toUpperCase();"
+  ],
+  "universal_only_expected_expert_tier_delta": true
+}

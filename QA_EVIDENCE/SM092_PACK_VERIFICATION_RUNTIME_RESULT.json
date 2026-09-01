@@ -1,0 +1,546 @@
+{
+  "schema": "sm092-verification-runtime-test-1.0",
+  "pass": true,
+  "checks": [
+    {
+      "name": "expert exact version/fingerprint trusted",
+      "pass": true,
+      "detail": {
+        "trusted": true,
+        "effectiveTrustTier": "expert",
+        "trustTier": "expert",
+        "attestationId": "att-1",
+        "verifiedBy": "expert: Expert One",
+        "verificationScope": "{\"claims\":[\"duration\"]}",
+        "credentialId": "cred-1",
+        "requestId": "req-1",
+        "expiresAt": "2027-08-01T00:00:00Z",
+        "program": "expert-official",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": true,
+            "issues": [],
+            "row": {
+              "attestationId": "att-1",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "expert",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2027-08-01T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "expert-1",
+              "verifierDisplayName": "Expert One",
+              "verifierKind": "expert",
+              "verifierStatus": "active",
+              "verifierOrganization": "",
+              "credentialId": "cred-1",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "active",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "expert"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-1",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "new version does not inherit",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:test:knowledge",
+        "version": "1.1.0",
+        "programRows": []
+      }
+    },
+    {
+      "name": "fork does not inherit",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:forked",
+        "version": "0.1.0",
+        "programRows": []
+      }
+    },
+    {
+      "name": "fingerprint mismatch fails",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": false,
+            "issues": [
+              "ATTESTATION_SOURCE_FINGERPRINT_MISMATCH"
+            ],
+            "row": {
+              "attestationId": "att-1",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "expert",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2027-08-01T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "expert-1",
+              "verifierDisplayName": "Expert One",
+              "verifierKind": "expert",
+              "verifierStatus": "active",
+              "verifierOrganization": "",
+              "credentialId": "cred-1",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "active",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "expert"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-1",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "expired attestation fails",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": false,
+            "issues": [
+              "ATTESTATION_EXPIRED"
+            ],
+            "row": {
+              "attestationId": "att-1",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "expert",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2026-08-20T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "expert-1",
+              "verifierDisplayName": "Expert One",
+              "verifierKind": "expert",
+              "verifierStatus": "active",
+              "verifierOrganization": "",
+              "credentialId": "cred-1",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "active",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "expert"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-1",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "revoked credential fails",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": false,
+            "issues": [
+              "CREDENTIAL_NOT_ACTIVE"
+            ],
+            "row": {
+              "attestationId": "att-1",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "expert",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2027-08-01T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "expert-1",
+              "verifierDisplayName": "Expert One",
+              "verifierKind": "expert",
+              "verifierStatus": "active",
+              "verifierOrganization": "",
+              "credentialId": "cred-1",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "revoked",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "expert"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-1",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "suspended verifier fails",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": false,
+            "issues": [
+              "VERIFIER_NOT_ACTIVE"
+            ],
+            "row": {
+              "attestationId": "att-1",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "expert",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2027-08-01T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "expert-1",
+              "verifierDisplayName": "Expert One",
+              "verifierKind": "expert",
+              "verifierStatus": "suspended",
+              "verifierOrganization": "",
+              "credentialId": "cred-1",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "active",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "expert"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-1",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "official publisher exact version/fingerprint trusted",
+      "pass": true,
+      "detail": {
+        "trusted": true,
+        "effectiveTrustTier": "official",
+        "trustTier": "official",
+        "attestationId": "att-official",
+        "verifiedBy": "publisher: Publisher One",
+        "verificationScope": "{\"claims\":[\"duration\"]}",
+        "credentialId": "cred-official",
+        "requestId": "req-official",
+        "expiresAt": "2027-08-01T00:00:00Z",
+        "program": "expert-official",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": true,
+            "issues": [],
+            "row": {
+              "attestationId": "att-official",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "official",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2027-08-01T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "publisher-1",
+              "verifierDisplayName": "Publisher One",
+              "verifierKind": "publisher",
+              "verifierStatus": "active",
+              "verifierOrganization": "",
+              "credentialId": "cred-official",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "active",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "official"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-official",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "official cannot be self-issued by expert kind",
+      "pass": true,
+      "detail": {
+        "trusted": false,
+        "effectiveTrustTier": "unverified",
+        "trustTier": "unverified",
+        "reason": "NO_VALID_EXPERT_OFFICIAL_ATTESTATION",
+        "packId": "pack:test:knowledge",
+        "version": "1.0.0",
+        "programRows": [
+          {
+            "trusted": false,
+            "issues": [
+              "OFFICIAL_VERIFIER_KIND_INVALID"
+            ],
+            "row": {
+              "attestationId": "att-official",
+              "packId": "pack:test:knowledge",
+              "version": "1.0.0",
+              "tier": "official",
+              "sourceFingerprint": "fp-1",
+              "verificationScope": {
+                "claims": [
+                  "duration"
+                ]
+              },
+              "attestationStatus": "valid",
+              "issuedAt": "2026-08-01T00:00:00Z",
+              "expiresAt": "2027-08-01T00:00:00Z",
+              "revokedAt": null,
+              "verifierId": "publisher-1",
+              "verifierDisplayName": "Publisher One",
+              "verifierKind": "expert",
+              "verifierStatus": "active",
+              "verifierOrganization": "",
+              "credentialId": "cred-official",
+              "credentialType": "professional",
+              "credentialIssuer": "Issuer",
+              "credentialStatus": "active",
+              "credentialValidFrom": "2026-01-01T00:00:00Z",
+              "credentialValidUntil": "2027-12-31T00:00:00Z",
+              "credentialAuthorityScope": {
+                "tiers": [
+                  "official"
+                ],
+                "packTypes": [
+                  "knowledge"
+                ]
+              },
+              "requestId": "req-official",
+              "requestStatus": "approved",
+              "artifactFingerprint": "",
+              "metadata": {}
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "attach receives expert attestation",
+      "pass": true,
+      "detail": {
+        "id": "pack:test:knowledge",
+        "name": "Test Knowledge",
+        "kind": "knowledge",
+        "version": "1.0.0",
+        "priority": 0,
+        "declaredTrustTier": "expert",
+        "trustTier": "expert",
+        "trustAttested": true,
+        "attestation": {
+          "trusted": true,
+          "attestationId": "att-1",
+          "verifiedBy": "expert: Expert One",
+          "effectiveTrustTier": "expert"
+        },
+        "verificationScope": "{\"claims\":[\"duration\"]}",
+        "verifiedTier": true,
+        "sourceFingerprint": "fp-1",
+        "artifactFingerprint": "fnv1a:e53c7350",
+        "compatibility": {
+          "mode": "exact-fingerprint",
+          "sourceFingerprint": "fp-1"
+        },
+        "rights": {
+          "sourceTextIncluded": false,
+          "declaration": null
+        },
+        "metadata": {},
+        "compatibilityReport": {
+          "compatible": true,
+          "reason": "COMPATIBLE",
+          "mode": "exact-fingerprint",
+          "sourceFingerprint": "fp-1",
+          "expectedFingerprint": "fp-1",
+          "sourceId": "doc:test",
+          "sourceRevision": "1",
+          "language": "ko",
+          "locatorScheme": "document",
+          "artifactFingerprint": "fnv1a:e53c7350"
+        }
+      }
+    },
+    {
+      "name": "verified provenance requires source evidence",
+      "pass": true,
+      "detail": {
+        "label": "VERIFIED",
+        "reason": "verified-pack-evidence-used",
+        "trustMode": "STRICT",
+        "sourceRefs": [
+          "doc:doc:test:page:1:block:1"
+        ],
+        "packRefs": [
+          {
+            "id": "pack:test:knowledge",
+            "name": "Test Knowledge",
+            "version": "1.0.0",
+            "trustTier": "expert",
+            "verificationScope": "{\"claims\":[\"duration\"]}",
+            "artifactFingerprint": "fnv1a:e53c7350",
+            "sourceValidated": true,
+            "verified": true
+          }
+        ],
+        "verificationTier": "expert",
+        "sourceFingerprint": "fp-1",
+        "questionType": "TEXTUAL_FACT"
+      }
+    },
+    {
+      "name": "popularity cannot create trust",
+      "pass": true,
+      "detail": {
+        "rating": 5,
+        "installs": 999999,
+        "sales": 999999
+      }
+    }
+  ],
+  "status": {
+    "schema": "storymemory-pack-verification-1.0",
+    "version": "1.0.0",
+    "programRows": 1,
+    "providerInstalled": false,
+    "universalRuntimeInstalled": true,
+    "marketplaceRuntimeInstalled": true,
+    "trustNotInheritedAcrossVersion": true,
+    "trustNotInheritedAcrossFork": true,
+    "popularityCreatesTrust": false,
+    "ratingCreatesTrust": false
+  }
+}

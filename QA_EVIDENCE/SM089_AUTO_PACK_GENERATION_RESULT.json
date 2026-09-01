@@ -1,0 +1,268 @@
+{
+  "schema": "storymemory-sm089-auto-pack-generation-result-1.0",
+  "runtimeContract": {
+    "schema": "storymemory-auto-pack-generation-1.0",
+    "version": "1.0.0",
+    "packSchema": "storymemory-precision-pack-1.0",
+    "generationModes": [
+      "quick",
+      "deep"
+    ],
+    "defaultVisibility": "private",
+    "defaultTrustTier": "auto-generated",
+    "maxEvidenceBlocks": 8,
+    "maxEvidenceChars": 7000,
+    "maxAliasRows": 16,
+    "maxHintsPerRow": 8,
+    "maxKnowledgeRows": 24,
+    "hardPolicyKeys": [
+      "trustMode",
+      "revealAnswers",
+      "allowFuture",
+      "citationRequired",
+      "strictUnknown",
+      "spoilerBoundary",
+      "workbookReveal"
+    ],
+    "publicAutoPublish": false,
+    "sourceBodyInGeneratedPack": false,
+    "paidProcessingImplemented": false
+  },
+  "source": {
+    "sourceId": "book:odyssey-sm089",
+    "fingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+    "revision": "storymemory-static-content-1.0"
+  },
+  "triggerChecks": {
+    "explicit": {
+      "needed": true,
+      "reasons": [
+        "EXPLICIT_USER_REQUEST",
+        "LOW_RETRIEVAL_CONFIDENCE"
+      ],
+      "recentSignals": 0,
+      "correctionCount": 0
+    },
+    "repeated": {
+      "needed": true,
+      "reasons": [
+        "REPEATED_CORRECTION",
+        "LOW_RETRIEVAL_CONFIDENCE"
+      ],
+      "recentSignals": 2,
+      "correctionCount": 2
+    },
+    "low": {
+      "needed": true,
+      "reasons": [
+        "LOW_RETRIEVAL_CONFIDENCE"
+      ],
+      "recentSignals": 0,
+      "correctionCount": 0
+    },
+    "strict": {
+      "needed": true,
+      "reasons": [
+        "LOW_RETRIEVAL_CONFIDENCE",
+        "STRICT_HIGH_ACCURACY_NEED"
+      ],
+      "recentSignals": 0,
+      "correctionCount": 0
+    },
+    "notNeeded": {
+      "needed": false,
+      "reasons": [],
+      "recentSignals": 0,
+      "correctionCount": 0
+    }
+  },
+  "providerRequest": {
+    "evidenceBlocks": 8,
+    "evidenceChars": 1507,
+    "fullSourceSent": false,
+    "evidenceLocators": [
+      "odyssey:book:01:s1:row:001",
+      "odyssey:book:01:s1:row:002",
+      "odyssey:book:01:s1:row:003",
+      "odyssey:book:01:s1:row:004",
+      "odyssey:book:01:s2:row:001",
+      "odyssey:book:01:s2:row:002",
+      "odyssey:book:01:s2:row:003",
+      "odyssey:book:01:s2:row:004"
+    ]
+  },
+  "generation": {
+    "packId": "pack:auto:book:odyssey-sm089:1164d89c",
+    "artifactFingerprint": "fnv1a:f6a67180",
+    "before": {
+      "relevantCount": 0,
+      "topScore": 0,
+      "expectedLocator": "odyssey:book:04:s1:row:002",
+      "expectedLocatorHit": false,
+      "locators": [],
+      "packQueryHintsUsed": false
+    },
+    "after": {
+      "relevantCount": 8,
+      "topScore": 20,
+      "expectedLocator": "odyssey:book:04:s1:row:002",
+      "expectedLocatorHit": true,
+      "locators": [
+        "odyssey:book:04:s1:row:002",
+        "odyssey:book:04:s2:row:001",
+        "odyssey:book:04:s2:row:002",
+        "odyssey:book:04:s2:row:003",
+        "odyssey:book:04:s2:row:010",
+        "odyssey:book:04:s2:row:017",
+        "odyssey:book:04:s2:row:018",
+        "odyssey:book:04:s2:row:027"
+      ],
+      "packQueryHintsUsed": true
+    },
+    "delta": {
+      "improved": true,
+      "exactGain": true,
+      "relevanceGain": true,
+      "scoreGain": true,
+      "deltaRelevant": 8,
+      "deltaTopScore": 20
+    },
+    "publication": {
+      "visibility": "private",
+      "status": "draft",
+      "autoPublished": false
+    },
+    "compatibility": {
+      "compatible": true,
+      "reason": "COMPATIBLE",
+      "mode": "exact-fingerprint",
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "expectedFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "sourceId": "book:odyssey-sm089",
+      "sourceRevision": "storymemory-static-content-1.0",
+      "language": "ko",
+      "locatorScheme": "book",
+      "artifactFingerprint": "fnv1a:f6a67180"
+    }
+  },
+  "rollback": {
+    "detached": true,
+    "detachedExact": false,
+    "noImproveStatus": "REJECTED_NO_IMPROVEMENT",
+    "noImproveAttached": false,
+    "noImproveStored": false
+  },
+  "guards": {
+    "sourceBodyError": "AUTO_PACK_SOURCE_BODY_FORBIDDEN:root.sourceText",
+    "deepConfirmError": "AUTO_PACK_DEEP_EXPLICIT_CONFIRMATION_REQUIRED",
+    "ungroundedKnowledgeError": "AUTO_PACK_EMPTY_SAFE_PROPOSAL",
+    "hardPolicyBlocked": [
+      "trustMode",
+      "allowFuture",
+      "revealAnswers"
+    ]
+  },
+  "fallback": {
+    "packId": "pack:auto:book:odyssey-sm089:03139d5d",
+    "after": {
+      "relevantCount": 8,
+      "topScore": 20,
+      "expectedLocator": "odyssey:book:04:s1:row:002",
+      "expectedLocatorHit": true,
+      "locators": [
+        "odyssey:book:04:s1:row:002",
+        "odyssey:book:04:s2:row:001",
+        "odyssey:book:04:s2:row:002",
+        "odyssey:book:04:s2:row:003",
+        "odyssey:book:04:s2:row:010",
+        "odyssey:book:04:s2:row:017",
+        "odyssey:book:04:s2:row:018",
+        "odyssey:book:04:s2:row:027"
+      ],
+      "packQueryHintsUsed": true
+    }
+  },
+  "registry": {
+    "persisted": {
+      "packId": "pack:auto:book:odyssey-sm089:1164d89c",
+      "version": "0.1.0",
+      "visibility": "private",
+      "publicationStatus": "draft",
+      "payloadStoredInDb": false
+    },
+    "calls": [
+      {
+        "table": "pack_registry",
+        "method": "POST",
+        "bodyKeys": [
+          "compatibility_summary",
+          "creator_id",
+          "latest_version",
+          "listing_metadata",
+          "name",
+          "pack_id",
+          "pack_type",
+          "permissions",
+          "pricing_mode",
+          "processing_disclosure",
+          "publication_status",
+          "publisher_name",
+          "rights_declaration",
+          "source_text_included",
+          "summary",
+          "visibility"
+        ]
+      },
+      {
+        "table": "pack_versions",
+        "method": "POST",
+        "bodyKeys": [
+          "artifact_fingerprint",
+          "artifact_uri",
+          "changelog",
+          "compatibility",
+          "declared_trust_tier",
+          "pack_id",
+          "parent_version",
+          "rights",
+          "schema_version",
+          "source_match_mode",
+          "version"
+        ]
+      }
+    ],
+    "missingUriError": "AUTO_PACK_DURABLE_ARTIFACT_URI_REQUIRED",
+    "payloadStoredInDb": false
+  },
+  "checks": {
+    "contract": true,
+    "explicit_trigger": true,
+    "repeated_correction_trigger": true,
+    "low_retrieval_trigger": true,
+    "strict_trigger": true,
+    "base_miss": true,
+    "bounded_provider_request": true,
+    "generated_private_auto": true,
+    "compatibility_identity": true,
+    "artifact_fingerprint_accepts": true,
+    "measured_improvement": true,
+    "attached_after_improvement": true,
+    "source_memory_unchanged": true,
+    "private_catalog_not_public": true,
+    "public_review_pending_only": true,
+    "detach_restores_baseline": true,
+    "no_improvement_rejected": true,
+    "source_body_proposal_blocked": true,
+    "deep_explicit_gate": true,
+    "hard_policy_blocked": true,
+    "ungrounded_deep_knowledge_blocked": true,
+    "grounded_deep_knowledge_allowed": true,
+    "confirmed_correction_fallback": true,
+    "no_unnecessary_pack": true,
+    "registry_metadata_only": true,
+    "registry_requires_artifact_uri": true,
+    "final_memory_preserved": true,
+    "final_source_fingerprint_preserved": true
+  },
+  "pass": true
+}

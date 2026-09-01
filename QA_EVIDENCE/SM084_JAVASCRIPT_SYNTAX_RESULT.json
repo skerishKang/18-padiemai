@@ -1,0 +1,6 @@
+{
+  "schema": "storymemory-sm084-javascript-syntax-1.0",
+  "runtime": "dist/storymemory-universal-source-runtime.js",
+  "nodeCheck": "PASS",
+  "pass": true
+}

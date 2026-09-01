@@ -1,0 +1,215 @@
+{
+  "schema": "storymemory-sm088-evaluation-summary-1.0",
+  "status": "PASS",
+  "packageVersion": "3.4.2",
+  "runtimeVersion": "1.3.0",
+  "evaluationBoundary": {
+    "goldOracle": "Odyssey Books 1-20 frozen curated Neon knowledge used for scoring only",
+    "goldInjectedIntoHarness": false,
+    "packAttached": false,
+    "blindBooks": [
+      21,
+      22,
+      23,
+      24
+    ],
+    "blindManualKnowledgeRows": 0,
+    "blindOracle": "STATIC_SOURCE_DERIVED_ONLY",
+    "endToEndExternalLlmSemanticAnswerQualityClaimed": false
+  },
+  "baselineV341": {
+    "entityLocatorHitAt8": 0.8462,
+    "relationshipLocatorHitAt8": 0.6,
+    "crossUnitRecallOriginHitAt8": 0,
+    "spoilerLeakRate": 0,
+    "sameNameArgosDogPass": true,
+    "memoryContinuityPass": true
+  },
+  "postRepairLexicalLazyLookback": {
+    "entityLocatorHitAt8": 0.9231,
+    "relationshipLocatorHitAt8": 0.95,
+    "crossUnitRecallOriginHitAt8": 0.9,
+    "spoilerLeakRate": 0,
+    "sameNameArgosDogPass": true,
+    "memoryContinuityPass": true,
+    "entitySameSectionHitAt8": 1.0,
+    "relationshipSameSectionHitAt8": 1.0
+  },
+  "postRepairCounts": {
+    "entityCases": 39,
+    "relationshipCases": 20,
+    "recallCases": 10,
+    "spoilerCases": 8
+  },
+  "retrievalPlannerVariant": {
+    "status": "PASS",
+    "query": "헬렌 처음 어디서 나왔지",
+    "queryHints": [
+      "헬레네",
+      "Helen"
+    ],
+    "gold": "odyssey:book:04:s1:row:002",
+    "top1": "odyssey:book:04:s1:row:002",
+    "hit": true,
+    "fullSourceSent": false
+  },
+  "blindBooks21_24": {
+    "metrics": {
+      "rareExactLocatorHitAt8": 1,
+      "sectionHitAt8": 1,
+      "crossUnitRecallHitAt8": 1,
+      "spoilerLeakRate": 0,
+      "groundedRoutePassRate": 1
+    },
+    "counts": {
+      "rareCases": 24,
+      "sectionCases": 16,
+      "crossUnitRecallCases": 9,
+      "spoilerCases": 5,
+      "groundedCases": 4
+    },
+    "knowledgeRows": {
+      "mentions": 0,
+      "relationships": 0,
+      "answerCards": 0,
+      "citations": 0
+    },
+    "runtimeVersion": "1.3.0"
+  },
+  "exactMissAnalysis": {
+    "entity": [
+      {
+        "query": "에우리메두사",
+        "gold": "odyssey:book:07:s1:row:002",
+        "top": [
+          "odyssey:book:07:s1:row:001"
+        ],
+        "sameSection": true
+      },
+      {
+        "query": "에우리알로스",
+        "gold": "odyssey:book:08:s5:row:005",
+        "top": [
+          "odyssey:book:08:s5:row:004",
+          "odyssey:book:08:s5:row:003",
+          "odyssey:book:08:s2:row:006",
+          "odyssey:book:08:s2:row:003"
+        ],
+        "sameSection": true
+      },
+      {
+        "query": "필로이티오스",
+        "gold": "odyssey:book:20:s3:row:008",
+        "top": [
+          "odyssey:book:20:s3:row:007"
+        ],
+        "sameSection": true
+      }
+    ],
+    "relationship": [
+      {
+        "query": "테오클리메노스 텔레마코스 관계",
+        "gold": "odyssey:book:15:s4:row:004",
+        "top": [
+          "odyssey:book:15:s4:row:003",
+          "odyssey:book:15:s4:row:002",
+          "odyssey:book:15:s4:row:001",
+          "odyssey:book:15:s3:row:004"
+        ],
+        "sameSection": true
+      }
+    ],
+    "recall": [
+      {
+        "query": "헬렌 처음 어디서 나왔지",
+        "gold": "odyssey:book:04:s1:row:002",
+        "top": [
+          "odyssey:book:01:s1:row:001",
+          "odyssey:book:01:s1:row:002",
+          "odyssey:book:01:s1:row:003",
+          "odyssey:book:01:s1:row:004"
+        ]
+      }
+    ]
+  },
+  "architectureDecision": {
+    "defaultRetrieval": "LEXICAL_FIRST + LAZY_PRIOR_UNIT_LOOKBACK + AI_RETRIEVAL_PLANNER_QUERY_EXPANSION",
+    "massEmbedding": "NOT_JUSTIFIED_BY_SM088",
+    "semanticIndex": "LAZY_ESCALATION_ONLY_AFTER_RETRIEVAL_FAILURE_OR_HIGH_VALUE_NEED",
+    "precisionPack": "OPTIONAL_ESCALATION_FOR_REPEAT_ACCURACY_OR_DOMAIN_VERIFICATION",
+    "book21PlusManualDb": "PROHIBITED_DURING_BLIND_EVAL"
+  },
+  "contentRegression": {
+    "schema": "storymemory-sm088-v341-content-byte-regression-1.0",
+    "status": "PASS",
+    "baseline": "StoryMemory_CloudflarePreview_v3.4.1",
+    "candidate": "StoryMemory_CloudflarePreview_v3.4.2",
+    "baselineFiles": 192,
+    "candidateFiles": 192,
+    "changed": 0,
+    "missing": 0,
+    "extra": 0,
+    "changedFiles": [],
+    "missingFiles": [],
+    "extraFiles": []
+  },
+  "mutations": {
+    "neon": "NONE_READ_ONLY",
+    "cloudflare": "NONE",
+    "portal": "NONE",
+    "dns": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/",
+  "neonBlindGuard": {
+    "schema": "storymemory-sm088-neon-blind-guard-1.0",
+    "status": "PASS",
+    "projectId": "broad-breeze-39165056",
+    "branchId": "br-lingering-hall-avsosmlv",
+    "databaseName": "neondb",
+    "workKey": "odyssey",
+    "readOnly": true,
+    "books": [
+      21,
+      22,
+      23,
+      24
+    ],
+    "knowledgeRows": {
+      "mentions": 0,
+      "relationships": 0,
+      "answerCards": 0,
+      "citations": 0
+    },
+    "sourcePassages": 0,
+    "assertion": "Books 21-24 remained zero-precompute during blind evaluation; no Neon write was performed."
+  },
+  "existingRegression": {
+    "schema": "storymemory-sm088-existing-regression-1.0",
+    "status": "PASS",
+    "runtimeVersion": "1.3.0",
+    "tests": {
+      "SM082_UNIVERSAL_SOURCE_HARNESS": "PASS",
+      "SM082_CURRENT_READER_BRIDGE": "PASS",
+      "SM083_TRUST_PROVENANCE": "PASS",
+      "SM057_HYBRID_AI_CONTEXT": "PASS",
+      "SM058_PRODUCTION_RUNTIME": "PASS",
+      "SM058_STATIC_READER": "PASS",
+      "SM058_HYBRID_AI": "PASS",
+      "SM054_STATIC_ADAPTER": "PASS"
+    },
+    "staticCorpus": {
+      "works": 6,
+      "units": 185,
+      "passages": 12628
+    },
+    "neonMutation": "NONE",
+    "deployment": "DEFERRED_TO_BI_PORTAL"
+  },
+  "javascriptSyntax": {
+    "schema": "storymemory-sm088-javascript-syntax-1.0",
+    "status": "PASS",
+    "count": 7,
+    "failed": 0
+  }
+}

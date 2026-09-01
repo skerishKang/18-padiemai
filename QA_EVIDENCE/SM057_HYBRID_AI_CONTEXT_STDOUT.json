@@ -1,0 +1,29 @@
+{
+  "status": "PASS",
+  "schema": "storymemory-hybrid-ai-context-1.0",
+  "version": "1.0.0",
+  "current_locator": "iliad:book:01:s1:row:001",
+  "current_sequence": 1,
+  "remote_mode": "remote",
+  "static_mode": "static",
+  "loaded_units": [
+    1
+  ],
+  "evidence_count": 1,
+  "evidence_chars": 581,
+  "max_evidence_passages": 6,
+  "max_evidence_chars": 6000,
+  "safe_answer_card": true,
+  "future_answer_card_excluded": true,
+  "safe_relationship": true,
+  "future_relationship_excluded": true,
+  "safe_memory": true,
+  "future_memory_excluded": true,
+  "no_future_static_evidence": true,
+  "full_book_body_sent": false,
+  "provider_packet_bounded": true,
+  "deterministic_route": "KNOWN_FACT",
+  "offline_static_fallback_route": "SUPPORTED_TEXT",
+  "source_passage_first_en": "Achilles’ wrath, to Greece the direful spring\nOf woes unnumber’d, heavenly goddess, sing!\nThat wrath which hurl’d to Plu",
+  "source_passage_first_ko": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서.\n그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고,\n묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+}

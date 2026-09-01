@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "packageVersion": "3.4.4",
+  "uiSchema": "storymemory-source-ui-1.0",
+  "inlineScriptCountChecked": 6,
+  "externalSyntax": [
+    "storymemory-source-ui.js",
+    "storymemory-universal-source-runtime.js"
+  ],
+  "localAssetRefs": 3,
+  "missingAssetRefs": [],
+  "staticContent": {
+    "baseFiles": 192,
+    "newFiles": 192,
+    "changed": 0,
+    "missing": 0,
+    "extra": 0
+  },
+  "universalRuntimeByteIdentical": true,
+  "universalRuntimeSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+  "browserAcceptance": "PENDING_ENVIRONMENT_BLOCKER",
+  "historicalSm038039Counted": false
+}

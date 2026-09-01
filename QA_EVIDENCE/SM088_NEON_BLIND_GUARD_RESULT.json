@@ -1,0 +1,23 @@
+{
+  "schema": "storymemory-sm088-neon-blind-guard-1.0",
+  "status": "PASS",
+  "projectId": "broad-breeze-39165056",
+  "branchId": "br-lingering-hall-avsosmlv",
+  "databaseName": "neondb",
+  "workKey": "odyssey",
+  "readOnly": true,
+  "books": [
+    21,
+    22,
+    23,
+    24
+  ],
+  "knowledgeRows": {
+    "mentions": 0,
+    "relationships": 0,
+    "answerCards": 0,
+    "citations": 0
+  },
+  "sourcePassages": 0,
+  "assertion": "Books 21-24 remained zero-precompute during blind evaluation; no Neon write was performed."
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "storymemory-sm088-v341-content-byte-regression-1.0",
+  "status": "PASS",
+  "baseline": "StoryMemory_CloudflarePreview_v3.4.1",
+  "candidate": "StoryMemory_CloudflarePreview_v3.4.2",
+  "baselineFiles": 192,
+  "candidateFiles": 192,
+  "changed": 0,
+  "missing": 0,
+  "extra": 0,
+  "changedFiles": [],
+  "missingFiles": [],
+  "extraFiles": []
+}

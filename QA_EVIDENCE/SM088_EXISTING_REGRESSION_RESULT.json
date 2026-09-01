@@ -1,0 +1,22 @@
+{
+  "schema": "storymemory-sm088-existing-regression-1.0",
+  "status": "PASS",
+  "runtimeVersion": "1.3.0",
+  "tests": {
+    "SM082_UNIVERSAL_SOURCE_HARNESS": "PASS",
+    "SM082_CURRENT_READER_BRIDGE": "PASS",
+    "SM083_TRUST_PROVENANCE": "PASS",
+    "SM057_HYBRID_AI_CONTEXT": "PASS",
+    "SM058_PRODUCTION_RUNTIME": "PASS",
+    "SM058_STATIC_READER": "PASS",
+    "SM058_HYBRID_AI": "PASS",
+    "SM054_STATIC_ADAPTER": "PASS"
+  },
+  "staticCorpus": {
+    "works": 6,
+    "units": 185,
+    "passages": 12628
+  },
+  "neonMutation": "NONE",
+  "deployment": "DEFERRED_TO_BI_PORTAL"
+}

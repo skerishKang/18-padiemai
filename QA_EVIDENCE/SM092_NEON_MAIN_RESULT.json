@@ -1,0 +1,146 @@
+{
+  "schema": "sm092-neon-main-result-1.0",
+  "status": "PASS",
+  "projectId": "broad-breeze-39165056",
+  "branchId": "br-lingering-hall-avsosmlv",
+  "database": "neondb",
+  "postgresVersion": 18,
+  "migration": "DB_MIGRATIONS/STORYMEMORY_PACK_VERIFICATION_M7_v1.sql",
+  "migrationSha256": "37dca9baf8826367bceb3f7ba78a739b5e0a5a80fc72c179aaa9d20770aa5fe8",
+  "migrationStatementsApplied": 39,
+  "verificationTables": [
+    "pack_verifiers",
+    "pack_verifier_credentials",
+    "pack_verification_requests",
+    "pack_attestation_events"
+  ],
+  "verificationViews": [
+    "pack_verification_public_state"
+  ],
+  "attestationColumnsAdded": [
+    "credential_id",
+    "request_id"
+  ],
+  "authenticatedPrivileges": {
+    "pack_verification_requests": [
+      "SELECT",
+      "INSERT_SUBMITTED_ONLY_RLS"
+    ],
+    "pack_attestation_events": [
+      "SELECT_VISIBLE_ONLY"
+    ],
+    "pack_verifiers": [],
+    "pack_verifier_credentials": [],
+    "pack_attestations": [
+      "SELECT_ONLY"
+    ]
+  },
+  "preMigrationRollback": {
+    "branchId": "br-ancient-tooth-avkt81i6",
+    "name": "pre-sm092-pack-verification-20260827",
+    "m7Tables": 0
+  },
+  "mainPostApply": {
+    "rows": {
+      "verifiers": 0,
+      "credentials": 0,
+      "requests": 0,
+      "attestationEvents": 0,
+      "attestations": 0
+    },
+    "knowledge": {
+      "entities": 98,
+      "aliases": 108,
+      "mentions": 641,
+      "relationships": 147,
+      "answerCards": 98,
+      "citations": 145,
+      "sourcePassages": 0
+    },
+    "marketplace": {
+      "registryRows": 1,
+      "versionRows": 1
+    }
+  },
+  "validation": {
+    "schema": "sm092-neon-validation-1.0",
+    "pass": true,
+    "branch_id": "br-orange-bar-avhzdnog",
+    "branch_name": "sm092-expert-official-verification-validation-20260827",
+    "schema_checks": {
+      "new_tables": [
+        "pack_verifiers",
+        "pack_verifier_credentials",
+        "pack_verification_requests",
+        "pack_attestation_events"
+      ],
+      "public_view": "pack_verification_public_state",
+      "attestation_columns": [
+        "credential_id",
+        "request_id"
+      ],
+      "guard_trigger": true,
+      "audit_trigger": true
+    },
+    "positive_fixtures": {
+      "expert_exact_version_fingerprint": "PASS",
+      "official_publisher_exact_version_fingerprint": "PASS",
+      "expert_audit": [
+        "issued",
+        "revoked"
+      ],
+      "official_audit": [
+        "issued",
+        "expired"
+      ]
+    },
+    "negative_gates": {
+      "unapproved_request": "PACK_VERIFICATION_REQUEST_NOT_APPROVED_OR_SCOPE_MISMATCH",
+      "source_fingerprint_mismatch": "PACK_VERIFICATION_REQUEST_NOT_APPROVED_OR_SCOPE_MISMATCH",
+      "expert_claiming_official": "PACK_OFFICIAL_VERIFIER_KIND_INVALID",
+      "expired_credential": "PACK_VERIFIER_CREDENTIAL_INVALID",
+      "raw_id_metadata": "CHECK_REJECTED",
+      "empty_scope": "CHECK_REJECTED",
+      "source_text_scope": "CHECK_REJECTED"
+    },
+    "authenticated_privileges": {
+      "pack_verification_requests": [
+        "SELECT",
+        "INSERT"
+      ],
+      "pack_attestation_events": [
+        "SELECT"
+      ],
+      "pack_verifiers": [],
+      "pack_verifier_credentials": [],
+      "direct_attestation_write": false
+    },
+    "cleanup": {
+      "verifiers": 0,
+      "credentials": 0,
+      "requests": 0,
+      "events": 0,
+      "attestations": 0
+    },
+    "gold_unchanged": {
+      "entities": 98,
+      "aliases": 108,
+      "mentions": 641,
+      "relationships": 147,
+      "cards": 98,
+      "citations": 145,
+      "source_passages": 0,
+      "registry_rows": 1,
+      "version_rows": 1
+    },
+    "production_seed_claim": "NONE"
+  },
+  "mutationBoundary": {
+    "neon": "PACK_VERIFICATION_DURABLE_METADATA_SCHEMA_ONLY",
+    "knowledgeDb": "NONE",
+    "sourceBodyDb": "NONE",
+    "productionVerifierSeed": "NONE",
+    "productionAttestationSeed": "NONE",
+    "liveIdentityVerificationProvider": "NOT_CONNECTED"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schema": "sm090-v346-content-byte-regression-1.0",
+  "baseline": "StoryMemory v3.4.6",
+  "current": "StoryMemory v3.4.7",
+  "files": 192,
+  "changed": [],
+  "missing": [],
+  "extra": [],
+  "pass": true
+}

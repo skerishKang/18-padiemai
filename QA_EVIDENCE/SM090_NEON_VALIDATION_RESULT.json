@@ -1,0 +1,46 @@
+{
+  "schema": "storymemory-sm090-neon-validation-result-1.0",
+  "projectId": "broad-breeze-39165056",
+  "validationBranchId": "br-wandering-unit-av3juozg",
+  "validationBranchName": "sm090-pack-lifecycle-validation-20260827",
+  "migrationStatements": 26,
+  "migrationReplayPass": true,
+  "objects": {
+    "tables": [
+      "pack_version_proposals",
+      "pack_ratings",
+      "pack_feedback"
+    ],
+    "views": [
+      "pack_rating_summary"
+    ],
+    "policies": 6
+  },
+  "positiveFixture": {
+    "ratings": 1,
+    "feedback": 1,
+    "proposals": 1,
+    "ratingSummaryRows": 1,
+    "cleanupResidual": 0
+  },
+  "negativeGates": {
+    "ratingOutOfRange": "BLOCKED_CHECK",
+    "feedbackLocatorRequired": "BLOCKED_CHECK",
+    "feedbackSourceBodyKey": "BLOCKED_CHECK",
+    "versionProposalSourceBody": "BLOCKED_CHECK"
+  },
+  "knowledgeGuard": {
+    "entities": 98,
+    "aliases": 108,
+    "mentions": 641,
+    "relationships": 147,
+    "answerCards": 98,
+    "citations": 145,
+    "sourcePassages": 0,
+    "packRegistryRows": 1,
+    "packVersionRows": 1
+  },
+  "sourceBodyDbMutation": "NONE",
+  "knowledgeDbMutation": "NONE",
+  "pass": true
+}

@@ -1,0 +1,74 @@
+{
+  "schema": "storymemory-sm083-package-summary-1.0",
+  "version": "3.4.1",
+  "build": "SM-083-trust-modes-answer-provenance",
+  "status": "PASS",
+  "runtimeSchema": "storymemory-universal-source-runtime-1.0",
+  "runtimeVersion": "1.1.0",
+  "trustSchema": "storymemory-trust-answer-provenance-1.0",
+  "trustModes": [
+    "EXPLORE",
+    "GROUNDED",
+    "STRICT"
+  ],
+  "provenanceLabels": [
+    "AI_NATIVE",
+    "SOURCE_GROUNDED",
+    "PACK_ASSISTED",
+    "VERIFIED",
+    "INTERPRETATION",
+    "UNCERTAIN"
+  ],
+  "checks": {
+    "trustProvenance": "PASS",
+    "strictExactClaimValidation": "PASS",
+    "bibleFactInterpretationSeparation": "PASS",
+    "workbookAnswerRevealGate": "PASS",
+    "strictExtractionQualityGate": "PASS",
+    "sm082UniversalRegression": "PASS",
+    "currentReaderBridgeRegression": "PASS",
+    "sm057HybridAiContextRegression": "PASS",
+    "sm058ProductionRuntimeRegression": "PASS",
+    "sm058StaticReaderRegression": "PASS",
+    "sm058HybridAiRegression": "PASS",
+    "javascriptSyntax": "PASS"
+  },
+  "contentRegression": {
+    "baseFiles": 192,
+    "newFiles": 192,
+    "changed": [],
+    "missing": [],
+    "extra": [],
+    "status": "PASS"
+  },
+  "keyFileSha256": {
+    "dist/index.html": "df89ca0b4e4595661b77ad7ce5cf7183460c25b32dfe5c370ce94e85dccfd430",
+    "dist/storymemory-universal-source-runtime.js": "2fc13ff19f79f9d2ec6fc6b8e9c1a21dda0af4eaa5479ac652f09cea5c61f3a8",
+    "dist/version.json": "4095c58323dcd76d741f502aecc6bca0f8759b42b6f45f38d521162b3709cec1",
+    "QA_EVIDENCE/SM083_TRUST_PROVENANCE_RESULT.json": "fcf8fef650ed6037cdde19917c1dba460576d11f0e56b689294e063f4dc84767",
+    "QA_EVIDENCE/SM083_JAVASCRIPT_SYNTAX_RESULT.json": "6618ffb6d07612dd11d759ce54cf94b2b5bdedb52a46ce276e8835ab30dbdde7",
+    "QA_EVIDENCE/SM083_V340_CONTENT_BYTE_REGRESSION.json": "7abea76bcf91a81c939caa62932e711d568bb8f7e6f03b13b035f3dfe3be901a"
+  },
+  "mutations": {
+    "neon": "NONE",
+    "cloudflare": "NONE",
+    "biPortal": "NONE",
+    "dns": "NONE",
+    "book21PlusManualKnowledge": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/",
+  "deferred": {
+    "packRuntime": "SM-084",
+    "goldBlindEvaluation": "SM-088",
+    "mixedSourceUi": "SM-087",
+    "marketplace": "SM-085"
+  },
+  "nonClaims": [
+    "semantic-verification-of-unstructured-provider-prose-without-source-refs-or-claims",
+    "raw-binary-pdf-ocr-or-parser",
+    "live-url-or-youtube-fetch",
+    "media-stt-or-transcript-acquisition",
+    "browser-live-deployment-acceptance"
+  ]
+}

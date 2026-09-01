@@ -1,0 +1,80 @@
+{
+  "schema": "sm090-javascript-syntax-result-1.0",
+  "externalCount": 8,
+  "inlineCount": 6,
+  "external": [
+    {
+      "file": "storymemory-auto-pack-runtime.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-auto-pack-ui.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-pack-lifecycle-runtime.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-pack-lifecycle-ui.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-pack-marketplace-runtime.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-pack-marketplace-ui.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-source-ui.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "storymemory-universal-source-runtime.js",
+      "pass": true,
+      "stderr": ""
+    }
+  ],
+  "inline": [
+    {
+      "index": 1,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "index": 2,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "index": 3,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "index": 4,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "index": 5,
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "index": 6,
+      "pass": true,
+      "stderr": ""
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "storymemory-sm089-core-runtime-byte-regression-1.0",
+  "files": {
+    "dist/storymemory-universal-source-runtime.js": {
+      "baseline": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+      "candidate": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+      "identical": true
+    },
+    "dist/storymemory-pack-marketplace-runtime.js": {
+      "baseline": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+      "candidate": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+      "identical": true
+    },
+    "dist/storymemory-source-ui.js": {
+      "baseline": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+      "candidate": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+      "identical": true
+    },
+    "dist/storymemory-pack-marketplace-ui.js": {
+      "baseline": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+      "candidate": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+      "identical": true
+    },
+    "dist/storymemory-pack-marketplace-ui.css": {
+      "baseline": "412d12b62d70bc1d65d1eea45197fbfe55f6de5eb004228e1046ada7e89c9558",
+      "candidate": "412d12b62d70bc1d65d1eea45197fbfe55f6de5eb004228e1046ada7e89c9558",
+      "identical": true
+    }
+  },
+  "pass": true
+}

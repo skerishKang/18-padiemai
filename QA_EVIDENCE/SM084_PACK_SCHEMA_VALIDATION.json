@@ -1,0 +1,9 @@
+{
+  "schema": "storymemory-sm084-pack-schema-validation-1.0",
+  "packSchema": "storymemory-precision-pack-1.0",
+  "schemaFile": "dist/packs/storymemory-precision-pack-1.0.schema.json",
+  "fixture": "dist/packs/odyssey-precision-demo-v1.json",
+  "draft": "2020-12",
+  "result": "PASS",
+  "pass": true
+}

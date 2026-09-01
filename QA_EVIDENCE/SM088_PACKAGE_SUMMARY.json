@@ -1,0 +1,50 @@
+{
+  "schema": "storymemory-sm088-package-summary-1.0",
+  "status": "PASS",
+  "version": "3.4.2",
+  "build": "SM-088-odyssey-gold-blind-evaluation",
+  "runtimeVersion": "1.3.0",
+  "keyEvidence": {
+    "evaluationSummary": "QA_EVIDENCE/SM088_EVALUATION_SUMMARY.json",
+    "goldBaseline": "QA_EVIDENCE/SM088_GOLD_BASELINE_RESULT.json",
+    "goldFinal": "QA_EVIDENCE/SM088_GOLD_RECALL_RESULT_v3.json",
+    "blindFinal": "QA_EVIDENCE/SM088_BOOK21_24_BLIND_RESULT_v2.json",
+    "plannerVariant": "QA_EVIDENCE/SM088_RETRIEVAL_PLANNER_VARIANT_RESULT.json",
+    "neonBlindGuard": "QA_EVIDENCE/SM088_NEON_BLIND_GUARD_RESULT.json",
+    "contentByteRegression": "QA_EVIDENCE/SM088_V341_CONTENT_BYTE_REGRESSION.json",
+    "existingRegression": "QA_EVIDENCE/SM088_EXISTING_REGRESSION_RESULT.json",
+    "javascriptSyntax": "QA_EVIDENCE/SM088_JAVASCRIPT_SYNTAX_RESULT.json"
+  },
+  "metrics": {
+    "entityLocatorHitAt8": 0.9231,
+    "relationshipLocatorHitAt8": 0.95,
+    "crossUnitRecallOriginHitAt8": 0.9,
+    "spoilerLeakRate": 0,
+    "sameNameArgosDogPass": true,
+    "memoryContinuityPass": true,
+    "entitySameSectionHitAt8": 1.0,
+    "relationshipSameSectionHitAt8": 1.0
+  },
+  "blindMetrics": {
+    "rareExactLocatorHitAt8": 1,
+    "sectionHitAt8": 1,
+    "crossUnitRecallHitAt8": 1,
+    "spoilerLeakRate": 0,
+    "groundedRoutePassRate": 1
+  },
+  "architectureDecision": {
+    "defaultRetrieval": "LEXICAL_FIRST + LAZY_PRIOR_UNIT_LOOKBACK + AI_RETRIEVAL_PLANNER_QUERY_EXPANSION",
+    "massEmbedding": "NOT_JUSTIFIED_BY_SM088",
+    "semanticIndex": "LAZY_ESCALATION_ONLY_AFTER_RETRIEVAL_FAILURE_OR_HIGH_VALUE_NEED",
+    "precisionPack": "OPTIONAL_ESCALATION_FOR_REPEAT_ACCURACY_OR_DOMAIN_VERIFICATION",
+    "book21PlusManualDb": "PROHIBITED_DURING_BLIND_EVAL"
+  },
+  "mutations": {
+    "neon": "NONE_READ_ONLY",
+    "cloudflare": "NONE",
+    "portal": "NONE",
+    "dns": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/"
+}

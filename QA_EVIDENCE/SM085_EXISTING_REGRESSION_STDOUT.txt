@@ -1,0 +1,2846 @@
+===== SM054_STATIC_ADAPTER_CONTRACT_TEST.mjs =====
+{
+  "status": "PASS",
+  "catalogWorks": 6,
+  "totalPassages": 12628,
+  "odyssey17": 63,
+  "resumeLocator": "odyssey:book:17:s1:row:004",
+  "resumeSequence": 1600004,
+  "mode": "static"
+}
+PASS SM054_STATIC_ADAPTER_CONTRACT_TEST.mjs
+===== SM057_HYBRID_AI_CONTEXT_TEST.mjs =====
+{
+  "status": "PASS",
+  "schema": "storymemory-hybrid-ai-context-1.0",
+  "version": "1.0.0",
+  "current_locator": "iliad:book:01:s1:row:001",
+  "current_sequence": 1,
+  "remote_mode": "remote",
+  "static_mode": "static",
+  "loaded_units": [
+    1
+  ],
+  "evidence_count": 1,
+  "evidence_chars": 581,
+  "max_evidence_passages": 6,
+  "max_evidence_chars": 6000,
+  "safe_answer_card": true,
+  "future_answer_card_excluded": true,
+  "safe_relationship": true,
+  "future_relationship_excluded": true,
+  "safe_memory": true,
+  "future_memory_excluded": true,
+  "no_future_static_evidence": true,
+  "full_book_body_sent": false,
+  "provider_packet_bounded": true,
+  "deterministic_route": "KNOWN_FACT",
+  "offline_static_fallback_route": "SUPPORTED_TEXT",
+  "source_passage_first_en": "Achilles’ wrath, to Greece the direful spring\nOf woes unnumber’d, heavenly goddess, sing!\nThat wrath which hurl’d to Plu",
+  "source_passage_first_ko": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서.\n그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고,\n묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+}
+PASS SM057_HYBRID_AI_CONTEXT_TEST.mjs
+===== SM058_PRODUCTION_RUNTIME_CONTRACT_TEST.cjs =====
+{
+  "pass": true,
+  "runtimeContract": {
+    "version": "1.0.0",
+    "staticBodyMode": "authoritative",
+    "remoteMetadataMode": "authenticated",
+    "remoteUserStateMode": "authenticated",
+    "legacyDbBodyRemote": false,
+    "canonicalIdentity": "canonical_locator",
+    "expectedMainRegistry": {
+      "activeContentVersions": 6,
+      "contentUnitIndex": 185
+    },
+    "deployment": "DEFERRED_TO_BI_PORTAL",
+    "businessId": "B61",
+    "portalTargetRoute": "/b61/"
+  },
+  "registry": {
+    "activeContentVersions": 6,
+    "contentUnitIndex": 185
+  },
+  "registryMatchesExpected": true,
+  "legacyBodyRequests": 0,
+  "canonicalKnowledgeFields": true,
+  "annotationCanonicalPayload": true,
+  "progressCanonicalOnly": true,
+  "legacyAnnotationRejected": true,
+  "bibleLegacyBodyFallbackDisabled": true,
+  "authSessionAutoActivatesRemote": true,
+  "totalMockApiCalls": 6
+}
+PASS SM058_PRODUCTION_RUNTIME_CONTRACT_TEST.cjs
+===== SM058_STATIC_READER_REGRESSION_TEST.mjs =====
+{
+  "status": "PASS",
+  "catalogWorks": 6,
+  "totalPassages": 12628,
+  "odyssey17": 63,
+  "resumeLocator": "odyssey:book:17:s1:row:004",
+  "resumeSequence": 1600004,
+  "mode": "static"
+}
+PASS SM058_STATIC_READER_REGRESSION_TEST.mjs
+===== SM058_HYBRID_AI_REGRESSION_TEST.mjs =====
+{
+  "status": "PASS",
+  "schema": "storymemory-hybrid-ai-context-1.0",
+  "version": "1.0.0",
+  "current_locator": "iliad:book:01:s1:row:001",
+  "current_sequence": 1,
+  "remote_mode": "remote",
+  "static_mode": "static",
+  "loaded_units": [
+    1
+  ],
+  "evidence_count": 1,
+  "evidence_chars": 581,
+  "max_evidence_passages": 6,
+  "max_evidence_chars": 6000,
+  "safe_answer_card": true,
+  "future_answer_card_excluded": true,
+  "safe_relationship": true,
+  "future_relationship_excluded": true,
+  "safe_memory": true,
+  "future_memory_excluded": true,
+  "no_future_static_evidence": true,
+  "full_book_body_sent": false,
+  "provider_packet_bounded": true,
+  "deterministic_route": "KNOWN_FACT",
+  "offline_static_fallback_route": "SUPPORTED_TEXT",
+  "source_passage_first_en": "Achilles’ wrath, to Greece the direful spring\nOf woes unnumber’d, heavenly goddess, sing!\nThat wrath which hurl’d to Plu",
+  "source_passage_first_ko": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서.\n그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고,\n묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+}
+PASS SM058_HYBRID_AI_REGRESSION_TEST.mjs
+===== SM082_CURRENT_READER_BRIDGE_TEST.cjs =====
+{
+  "status": "PASS",
+  "sourceId": "book:odyssey",
+  "unitOrdinal": 17,
+  "locator": "odyssey:book:17:s1:row:004",
+  "memoryBridge": 1,
+  "fullSourceSent": false,
+  "uiRebinding": false
+}
+PASS SM082_CURRENT_READER_BRIDGE_TEST.cjs
+===== SM082_UNIVERSAL_SOURCE_HARNESS_TEST.mjs =====
+{
+  "schema": "storymemory-universal-source-runtime-1.0",
+  "version": "1.4.0",
+  "status": "PASS",
+  "sourceTypes": [
+    "book",
+    "pdf-document",
+    "url-transcript"
+  ],
+  "sourceCount": 3,
+  "checks": {
+    "book_static_adapter": "PASS",
+    "book_canonical_locator": "PASS",
+    "book_progress_boundary": "PASS",
+    "document_ingest": "PASS",
+    "document_stable_locator": "PASS",
+    "document_lexical_retrieval": "PASS",
+    "transcript_ingest": "PASS",
+    "transcript_timestamp_locator": "PASS",
+    "transcript_lexical_retrieval": "PASS",
+    "visible_ingest_states": "PASS",
+    "user_memory_continuity": "PASS",
+    "model_prior_policy": "PASS",
+    "source_grounding": "PASS",
+    "bounded_provider_context": "PASS",
+    "optional_pack_hook": "PASS",
+    "pack_fingerprint_guard": "PASS",
+    "mandatory_entity_graph_precompute": "NOT_REQUIRED"
+  },
+  "counts": {
+    "bookBlocks": 64,
+    "documentBlocks": 4,
+    "transcriptBlocks": 3,
+    "providerEvidence": 3,
+    "providerMemories": 0,
+    "attachedPacks": 1
+  },
+  "exampleLocators": {
+    "book": "odyssey:book:01:s1:row:001",
+    "document": "doc:policy-pdf-v1:page:1:block:1",
+    "transcript": "url:retrieval-talk:t:0-20000"
+  }
+}
+PASS SM082_UNIVERSAL_SOURCE_HARNESS_TEST.mjs
+===== SM083_TRUST_PROVENANCE_TEST.mjs =====
+{
+  "schema": "storymemory-trust-answer-provenance-1.0",
+  "runtimeSchema": "storymemory-universal-source-runtime-1.0",
+  "runtimeVersion": "1.4.0",
+  "status": "PASS",
+  "trustModes": [
+    "EXPLORE",
+    "GROUNDED",
+    "STRICT"
+  ],
+  "provenanceLabels": [
+    "AI_NATIVE",
+    "SOURCE_GROUNDED",
+    "PACK_ASSISTED",
+    "VERIFIED",
+    "INTERPRETATION",
+    "UNCERTAIN"
+  ],
+  "checks": {
+    "fiction_default_explore": "PASS",
+    "fiction_spoiler_boundary": "PASS",
+    "explore_ai_native": "PASS",
+    "grounded_citation_required": "PASS",
+    "grounded_source_grounded": "PASS",
+    "strict_document_default": "PASS",
+    "strict_exact_claim_pass": "PASS",
+    "strict_wrong_exact_claim_block": "PASS",
+    "strict_unknown_allowed": "PASS",
+    "pack_assisted_label": "PASS",
+    "verified_pack_label": "PASS",
+    "pack_name_version_tier_tracking": "PASS",
+    "bible_textual_fact_vs_interpretation": "PASS",
+    "workbook_answer_reveal_gate": "PASS",
+    "strict_extraction_quality_gate": "PASS",
+    "all_six_provenance_labels": "PASS"
+  },
+  "examples": {
+    "aiNative": {
+      "label": "AI_NATIVE",
+      "providerMode": "external"
+    },
+    "grounded": {
+      "label": "SOURCE_GROUNDED",
+      "sourceRefs": [
+        "doc:research-policy:page:2:block:1"
+      ]
+    },
+    "strictBlocked": {
+      "label": "UNCERTAIN",
+      "issues": [
+        "UNSUPPORTED_NUMBER"
+      ]
+    },
+    "verified": {
+      "label": "VERIFIED",
+      "packRefs": [
+        {
+          "id": "curated-pack",
+          "name": "Curated Manual Pack",
+          "version": "2.0.0",
+          "trustTier": "CURATED",
+          "verificationScope": "safe-mode facts",
+          "artifactFingerprint": "fnv1a:9ab7400f",
+          "sourceValidated": true,
+          "verified": true
+        }
+      ]
+    },
+    "interpretation": {
+      "label": "INTERPRETATION",
+      "questionType": "INTERPRETATION"
+    },
+    "workbook": {
+      "hidden": true,
+      "blockedIssues": [
+        "WORKBOOK_ANSWER_REVEAL_BLOCKED"
+      ]
+    }
+  }
+}
+PASS SM083_TRUST_PROVENANCE_TEST.mjs
+===== SM084_PRECISION_PACK_RUNTIME_TEST.mjs =====
+{
+  "schema": "storymemory-sm084-precision-pack-runtime-result-1.0",
+  "runtimeVersion": "1.4.0",
+  "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+  "packId": "pack:odyssey:precision-demo:v1",
+  "baseline": {
+    "exactHelenFirstMention": false,
+    "queryHints": [],
+    "relevantLocators": []
+  },
+  "attached": {
+    "compatibility": {
+      "compatible": true,
+      "reason": "COMPATIBLE",
+      "mode": "exact-fingerprint",
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "expectedFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "sourceId": "book:odyssey-sm084",
+      "sourceRevision": "storymemory-static-content-1.0",
+      "language": "ko",
+      "locatorScheme": "book",
+      "artifactFingerprint": "fnv1a:5161d69f"
+    },
+    "pack": {
+      "id": "pack:odyssey:precision-demo:v1",
+      "name": "Odyssey Korean Alias + Gold Demo Pack",
+      "kind": "companion",
+      "version": "1.0.0",
+      "priority": 20,
+      "declaredTrustTier": "curated",
+      "trustTier": "curated",
+      "trustAttested": true,
+      "attestation": {
+        "trusted": true,
+        "attestationId": "qa:sm084:odyssey-demo",
+        "verifiedBy": "sm084-qa",
+        "effectiveTrustTier": "curated"
+      },
+      "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+      "verifiedTier": true,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "artifactFingerprint": "fnv1a:5161d69f",
+      "compatibility": {
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book"
+      },
+      "rights": {
+        "declaration": "QA demo metadata/derived annotations only; no full Source text included",
+        "sourceTextIncluded": false,
+        "visibility": "private-qa"
+      },
+      "metadata": {
+        "purpose": "SM-084 attach/detach and provenance QA fixture",
+        "marketplaceEligible": false
+      },
+      "compatibilityReport": {
+        "compatible": true,
+        "reason": "COMPATIBLE",
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "expectedFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceId": "book:odyssey-sm084",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book",
+        "artifactFingerprint": "fnv1a:5161d69f"
+      }
+    },
+    "list": [
+      {
+        "id": "pack:odyssey:precision-demo:v1",
+        "name": "Odyssey Korean Alias + Gold Demo Pack",
+        "kind": "companion",
+        "version": "1.0.0",
+        "priority": 20,
+        "declaredTrustTier": "curated",
+        "trustTier": "curated",
+        "trustAttested": true,
+        "attestation": {
+          "trusted": true,
+          "attestationId": "qa:sm084:odyssey-demo",
+          "verifiedBy": "sm084-qa",
+          "effectiveTrustTier": "curated"
+        },
+        "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+        "verifiedTier": true,
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "artifactFingerprint": "fnv1a:5161d69f",
+        "compatibility": {
+          "mode": "exact-fingerprint",
+          "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+          "sourceRevision": "storymemory-static-content-1.0",
+          "language": "ko",
+          "locatorScheme": "book"
+        },
+        "rights": {
+          "declaration": "QA demo metadata/derived annotations only; no full Source text included",
+          "sourceTextIncluded": false,
+          "visibility": "private-qa"
+        },
+        "metadata": {
+          "purpose": "SM-084 attach/detach and provenance QA fixture",
+          "marketplaceEligible": false
+        }
+      }
+    ]
+  },
+  "improved": {
+    "exactHelenFirstMention": true,
+    "queryHints": [
+      "헬레네",
+      "Helen"
+    ],
+    "relevantLocators": [
+      "odyssey:book:04:s1:row:002",
+      "odyssey:book:04:s2:row:001",
+      "odyssey:book:04:s2:row:002",
+      "odyssey:book:04:s2:row:003",
+      "odyssey:book:04:s2:row:010",
+      "odyssey:book:04:s2:row:017",
+      "odyssey:book:04:s2:row:018",
+      "odyssey:book:04:s2:row:027"
+    ]
+  },
+  "verified": {
+    "evidence": [
+      {
+        "packId": "pack:odyssey:precision-demo:v1",
+        "packName": "Odyssey Korean Alias + Gold Demo Pack",
+        "packVersion": "1.0.0",
+        "kind": "companion",
+        "trustTier": "curated",
+        "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+        "artifactFingerprint": "fnv1a:5161d69f",
+        "sourceValidated": true,
+        "verified": true,
+        "id": "philoetius",
+        "type": "entity",
+        "text": "필로이티오스는 오디세우스에게 충성하는 소몰이꾼으로 소개된다.",
+        "sourceText": "",
+        "locator": "odyssey:book:20:s3:row:008",
+        "sourceRefs": [
+          "odyssey:book:20:s3:row:008"
+        ],
+        "score": 5,
+        "metadata": {
+          "packKnowledge": true
+        }
+      }
+    ],
+    "provenance": {
+      "label": "VERIFIED",
+      "reason": "verified-pack-evidence-used",
+      "trustMode": "GROUNDED",
+      "sourceRefs": [
+        "odyssey:book:20:s4:row:002",
+        "odyssey:book:20:s3:row:007"
+      ],
+      "packRefs": [
+        {
+          "id": "pack:odyssey:precision-demo:v1",
+          "name": "Odyssey Korean Alias + Gold Demo Pack",
+          "version": "1.0.0",
+          "trustTier": "curated",
+          "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+          "artifactFingerprint": "fnv1a:5161d69f",
+          "sourceValidated": true,
+          "verified": true
+        }
+      ],
+      "verificationTier": "curated",
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "questionType": "TEXTUAL_FACT"
+    }
+  },
+  "guards": {
+    "mismatchError": "PACK_SOURCE_FINGERPRINT_MISMATCH",
+    "revisionError": "PACK_SOURCE_REVISION_MISMATCH",
+    "artifactError": "PACK_ARTIFACT_FINGERPRINT_MISMATCH",
+    "missingIdentityError": "PACK_COMPATIBILITY_IDENTITY_REQUIRED"
+  },
+  "detached": {
+    "detached": true,
+    "list": [],
+    "exactHelenFirstMention": false
+  },
+  "checks": {
+    "schema": true,
+    "compatibility": true,
+    "attached": true,
+    "baseline_miss": true,
+    "pack_improves_exact_locator": true,
+    "pack_query_hint_used": true,
+    "verified_requires_source_locator": true,
+    "verified_provenance": true,
+    "verified_requires_attestation": true,
+    "self_declared_curated_not_verified": true,
+    "harness_soft_policy_applied": true,
+    "harness_hard_rules_blocked": true,
+    "harness_cannot_lower_grounded": true,
+    "fingerprint_mismatch_blocked": true,
+    "revision_mismatch_blocked": true,
+    "artifact_mismatch_blocked": true,
+    "missing_identity_blocked": true,
+    "detach_success": true,
+    "detach_restores_baseline": true,
+    "memory_preserved": true,
+    "precision_state_restored": true,
+    "no_provider_required": true
+  },
+  "pass": true
+}
+PASS SM084_PRECISION_PACK_RUNTIME_TEST.mjs
+===== SM087_SOURCE_UI_CONTRACT_TEST.cjs =====
+{
+  "status": "PASS",
+  "schema": "storymemory-source-ui-1.0",
+  "fixtures": [
+    {
+      "id": "source-contract-demo",
+      "kind": "contract",
+      "blocks": 3,
+      "trust": "STRICT",
+      "firstLocator": "doc:source-contract-demo:page:1:block:1"
+    },
+    {
+      "id": "source-workbook-demo",
+      "kind": "workbook",
+      "blocks": 4,
+      "trust": "GROUNDED",
+      "firstLocator": "workbook:source-workbook-demo:problem:1"
+    },
+    {
+      "id": "source-transcript-demo",
+      "kind": "transcript",
+      "blocks": 3,
+      "trust": "EXPLORE",
+      "firstLocator": "url:source-transcript-demo:t:0-30000"
+    }
+  ],
+  "contractStrictEvidence": true,
+  "workbookTutorAnswerHidden": true,
+  "userPrivateImport": true,
+  "bookSkinPreserved": true,
+  "universalRuntimePreserved": true,
+  "fullSourceSent": false,
+  "explicitNonClaims": [
+    "raw PDF OCR/acquisition",
+    "live URL/YouTube fetch",
+    "STT/transcript acquisition"
+  ]
+}
+PASS SM087_SOURCE_UI_CONTRACT_TEST.cjs
+===== SM088_GOLD_RECALL_TEST.mjs =====
+{
+  "schema": "storymemory-sm088-gold-recall-1.0",
+  "runtimeVersion": "1.4.0",
+  "status": "POST_REPAIR",
+  "goldOracleUsedForScoringOnly": true,
+  "knowledgePackAttached": false,
+  "precomputedKnowledgeInjected": false,
+  "metrics": {
+    "entityLocatorHitAt8": 0.9231,
+    "relationshipLocatorHitAt8": 0.95,
+    "crossUnitRecallOriginHitAt8": 0.9,
+    "spoilerLeakRate": 0,
+    "sameNameArgosDogPass": true,
+    "memoryContinuityPass": true
+  },
+  "counts": {
+    "entityCases": 39,
+    "relationshipCases": 20,
+    "recallCases": 10,
+    "spoilerCases": 8
+  },
+  "details": {
+    "entity": [
+      {
+        "book": 1,
+        "q": "태양신 히페리온",
+        "gold": "odyssey:book:01:s1:row:001",
+        "top": [
+          "odyssey:book:01:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 1,
+        "q": "에우리클레이아",
+        "gold": "odyssey:book:01:s8:row:002",
+        "top": [
+          "odyssey:book:01:s8:row:002",
+          "odyssey:book:01:s8:row:001",
+          "odyssey:book:01:s7:row:006",
+          "odyssey:book:01:s5:row:004",
+          "odyssey:book:01:s5:row:003",
+          "odyssey:book:01:s4:row:008",
+          "odyssey:book:01:s4:row:005",
+          "odyssey:book:01:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 2,
+        "q": "안티노오스",
+        "gold": "odyssey:book:02:s2:row:002",
+        "top": [
+          "odyssey:book:02:s2:row:001",
+          "odyssey:book:02:s2:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 2,
+        "q": "멘토르",
+        "gold": "odyssey:book:02:s4:row:001",
+        "top": [
+          "odyssey:book:02:s4:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 3,
+        "q": "필로스",
+        "gold": "odyssey:book:03:s1:row:001",
+        "top": [
+          "odyssey:book:03:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 3,
+        "q": "피시스트라토스",
+        "gold": "odyssey:book:03:s8:row:012",
+        "top": [
+          "odyssey:book:03:s8:row:012",
+          "odyssey:book:03:s8:row:008",
+          "odyssey:book:03:s8:row:002",
+          "odyssey:book:03:s7:row:010",
+          "odyssey:book:03:s2:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 4,
+        "q": "스파르타 라케다이몬",
+        "gold": "odyssey:book:04:s1:row:001",
+        "top": [
+          "odyssey:book:04:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 4,
+        "q": "메돈",
+        "gold": "odyssey:book:04:s7:row:001",
+        "top": [
+          "odyssey:book:04:s7:row:001",
+          "odyssey:book:04:s6:row:011"
+        ],
+        "hit": true
+      },
+      {
+        "book": 5,
+        "q": "제우스",
+        "gold": "odyssey:book:05:s1:row:005",
+        "top": [
+          "odyssey:book:05:s1:row:005",
+          "odyssey:book:05:s1:row:004",
+          "odyssey:book:05:s1:row:002",
+          "odyssey:book:05:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 5,
+        "q": "이노 레우코테아",
+        "gold": "odyssey:book:05:s6:row:002",
+        "top": [
+          "odyssey:book:05:s6:row:001",
+          "odyssey:book:05:s6:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 6,
+        "q": "나우시토오스",
+        "gold": "odyssey:book:06:s1:row:001",
+        "top": [
+          "odyssey:book:06:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 6,
+        "q": "나우시카",
+        "gold": "odyssey:book:06:s1:row:003",
+        "top": [
+          "odyssey:book:06:s1:row:003",
+          "odyssey:book:06:s1:row:002",
+          "odyssey:book:06:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 7,
+        "q": "에우리메두사",
+        "gold": "odyssey:book:07:s1:row:002",
+        "top": [
+          "odyssey:book:07:s1:row:001"
+        ],
+        "hit": false
+      },
+      {
+        "book": 7,
+        "q": "폰토노오스",
+        "gold": "odyssey:book:07:s4:row:007",
+        "top": [
+          "odyssey:book:07:s4:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "book": 8,
+        "q": "데모도코스",
+        "gold": "odyssey:book:08:s1:row:005",
+        "top": [
+          "odyssey:book:08:s1:row:005",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:08:s1:row:003",
+          "odyssey:book:08:s1:row:002",
+          "odyssey:book:08:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 8,
+        "q": "에우리알로스",
+        "gold": "odyssey:book:08:s5:row:005",
+        "top": [
+          "odyssey:book:08:s5:row:004",
+          "odyssey:book:08:s5:row:003",
+          "odyssey:book:08:s2:row:006",
+          "odyssey:book:08:s2:row:003",
+          "odyssey:book:08:s2:row:002",
+          "odyssey:book:08:s2:row:001",
+          "odyssey:book:08:s3:row:002",
+          "odyssey:book:08:s2:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "book": 9,
+        "q": "키코네스족",
+        "gold": "odyssey:book:09:s2:row:001",
+        "top": [
+          "odyssey:book:09:s2:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 9,
+        "q": "마론",
+        "gold": "odyssey:book:09:s4:row:001",
+        "top": [
+          "odyssey:book:09:s4:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 10,
+        "q": "아이올로스",
+        "gold": "odyssey:book:10:s1:row:002",
+        "top": [
+          "odyssey:book:10:s1:row:002",
+          "odyssey:book:10:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 10,
+        "q": "엘페노르",
+        "gold": "odyssey:book:10:s8:row:002",
+        "top": [
+          "odyssey:book:10:s8:row:002",
+          "odyssey:book:10:s8:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 11,
+        "q": "안티클레이아",
+        "gold": "odyssey:book:11:s1:row:005",
+        "top": [
+          "odyssey:book:11:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 11,
+        "q": "헤라클레스",
+        "gold": "odyssey:book:11:s9:row:006",
+        "top": [
+          "odyssey:book:11:s9:row:006",
+          "odyssey:book:11:s4:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 12,
+        "q": "세이렌",
+        "gold": "odyssey:book:12:s2:row:001",
+        "top": [
+          "odyssey:book:12:s2:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 12,
+        "q": "람페티에",
+        "gold": "odyssey:book:12:s3:row:005",
+        "top": [
+          "odyssey:book:12:s3:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 13,
+        "q": "네리툼",
+        "gold": "odyssey:book:13:s5:row:003",
+        "top": [
+          "odyssey:book:13:s5:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 13,
+        "q": "나이아스",
+        "gold": "odyssey:book:13:s5:row:004",
+        "top": [
+          "odyssey:book:13:s5:row:004",
+          "odyssey:book:13:s5:row:003",
+          "odyssey:book:13:s2:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 14,
+        "q": "에우마이오스",
+        "gold": "odyssey:book:14:s2:row:004",
+        "top": [
+          "odyssey:book:14:s2:row:004",
+          "odyssey:book:14:s2:row:003",
+          "odyssey:book:14:s1:row:004",
+          "odyssey:book:14:s1:row:003",
+          "odyssey:book:14:s1:row:002",
+          "odyssey:book:14:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 15,
+        "q": "메가펜테스",
+        "gold": "odyssey:book:15:s2:row:001",
+        "top": [
+          "odyssey:book:15:s2:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 15,
+        "q": "피라이오스",
+        "gold": "odyssey:book:15:s7:row:006",
+        "top": [
+          "odyssey:book:15:s7:row:006"
+        ],
+        "hit": true
+      },
+      {
+        "book": 16,
+        "q": "암피노모스",
+        "gold": "odyssey:book:16:s5:row:007",
+        "top": [
+          "odyssey:book:16:s5:row:007",
+          "odyssey:book:16:s5:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "돌리오스",
+        "gold": "odyssey:book:17:s2:row:004",
+        "top": [
+          "odyssey:book:17:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "아르고스 개",
+        "gold": "odyssey:book:17:s3:row:004",
+        "top": [
+          "odyssey:book:17:s3:row:001",
+          "odyssey:book:17:s3:row:004",
+          "odyssey:book:17:s3:row:003",
+          "odyssey:book:17:s3:row:002",
+          "odyssey:book:17:s2:row:008",
+          "odyssey:book:17:s2:row:004",
+          "odyssey:book:17:s2:row:002",
+          "odyssey:book:17:s1:row:011"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "에우리노메",
+        "gold": "odyssey:book:17:s6:row:001",
+        "top": [
+          "odyssey:book:17:s6:row:001",
+          "odyssey:book:17:s5:row:003",
+          "odyssey:book:17:s5:row:002",
+          "odyssey:book:17:s1:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "book": 18,
+        "q": "이로스 아르나이오스",
+        "gold": "odyssey:book:18:s1:row:011",
+        "top": [
+          "odyssey:book:18:s1:row:001",
+          "odyssey:book:18:s1:row:011",
+          "odyssey:book:18:s1:row:010",
+          "odyssey:book:18:s1:row:009",
+          "odyssey:book:18:s1:row:007",
+          "odyssey:book:18:s1:row:005",
+          "odyssey:book:18:s1:row:004",
+          "odyssey:book:18:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 18,
+        "q": "멜란토",
+        "gold": "odyssey:book:18:s4:row:003",
+        "top": [
+          "odyssey:book:18:s4:row:003",
+          "odyssey:book:18:s4:row:002",
+          "odyssey:book:18:s4:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 19,
+        "q": "에우리바테스",
+        "gold": "odyssey:book:19:s3:row:003",
+        "top": [
+          "odyssey:book:19:s3:row:003",
+          "odyssey:book:19:s3:row:002",
+          "odyssey:book:19:s3:row:001",
+          "odyssey:book:19:s2:row:006",
+          "odyssey:book:19:s2:row:005",
+          "odyssey:book:19:s2:row:004",
+          "odyssey:book:19:s2:row:003",
+          "odyssey:book:19:s2:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 19,
+        "q": "파르나소스 산",
+        "gold": "odyssey:book:19:s4:row:004",
+        "top": [
+          "odyssey:book:19:s4:row:004",
+          "odyssey:book:19:s4:row:002",
+          "odyssey:book:19:s4:row:001",
+          "odyssey:book:19:s4:row:003",
+          "odyssey:book:19:s3:row:007",
+          "odyssey:book:19:s3:row:002",
+          "odyssey:book:19:s2:row:006",
+          "odyssey:book:19:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 20,
+        "q": "필로이티오스",
+        "gold": "odyssey:book:20:s3:row:008",
+        "top": [
+          "odyssey:book:20:s3:row:007"
+        ],
+        "hit": false
+      },
+      {
+        "book": 20,
+        "q": "아겔라오스",
+        "gold": "odyssey:book:20:s5:row:003",
+        "top": [
+          "odyssey:book:20:s5:row:003"
+        ],
+        "hit": true
+      }
+    ],
+    "relationship": [
+      {
+        "book": 1,
+        "q": "칼립소 오디세우스 관계",
+        "gold": "odyssey:book:01:s1:row:003",
+        "top": [
+          "odyssey:book:01:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 2,
+        "q": "할리테르세스 오디세우스 관계",
+        "gold": "odyssey:book:02:s3:row:003",
+        "top": [
+          "odyssey:book:02:s3:row:003",
+          "odyssey:book:02:s3:row:002",
+          "odyssey:book:02:s2:row:003",
+          "odyssey:book:02:s1:row:011",
+          "odyssey:book:02:s1:row:010",
+          "odyssey:book:02:s1:row:005",
+          "odyssey:book:02:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 3,
+        "q": "피시스트라토스 네스토르 관계",
+        "gold": "odyssey:book:03:s2:row:002",
+        "top": [
+          "odyssey:book:03:s2:row:002",
+          "odyssey:book:03:s2:row:001",
+          "odyssey:book:03:s1:row:004",
+          "odyssey:book:03:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 4,
+        "q": "에테오네우스 메넬라오스 관계",
+        "gold": "odyssey:book:04:s1:row:004",
+        "top": [
+          "odyssey:book:04:s1:row:004",
+          "odyssey:book:04:s1:row:003",
+          "odyssey:book:04:s1:row:002",
+          "odyssey:book:04:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 5,
+        "q": "제우스 오디세우스 관계",
+        "gold": "odyssey:book:05:s1:row:005",
+        "top": [
+          "odyssey:book:05:s1:row:005",
+          "odyssey:book:05:s1:row:004",
+          "odyssey:book:05:s1:row:002",
+          "odyssey:book:05:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 6,
+        "q": "나우시토오스 파이아케스인 관계",
+        "gold": "odyssey:book:06:s1:row:001",
+        "top": [
+          "odyssey:book:06:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 7,
+        "q": "에우리메두사 나우시카 관계",
+        "gold": "odyssey:book:07:s1:row:002",
+        "top": [
+          "odyssey:book:07:s1:row:001",
+          "odyssey:book:07:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 8,
+        "q": "데모도코스 오디세우스 관계",
+        "gold": "odyssey:book:08:s1:row:006",
+        "top": [
+          "odyssey:book:08:s1:row:006",
+          "odyssey:book:08:s1:row:002",
+          "odyssey:book:08:s1:row:001",
+          "odyssey:book:08:s1:row:005",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:08:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 9,
+        "q": "오디세우스 이스마로스 관계",
+        "gold": "odyssey:book:09:s2:row:001",
+        "top": [
+          "odyssey:book:09:s2:row:001",
+          "odyssey:book:09:s1:row:002",
+          "odyssey:book:09:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 10,
+        "q": "아이올로스 오디세우스 관계",
+        "gold": "odyssey:book:10:s1:row:002",
+        "top": [
+          "odyssey:book:10:s1:row:002",
+          "odyssey:book:10:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 11,
+        "q": "안티클레이아 오디세우스 관계",
+        "gold": "odyssey:book:11:s1:row:005",
+        "top": [
+          "odyssey:book:11:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 12,
+        "q": "키르케 스킬라 관계",
+        "gold": "odyssey:book:12:s3:row:001",
+        "top": [
+          "odyssey:book:12:s3:row:001",
+          "odyssey:book:12:s2:row:001",
+          "odyssey:book:12:s1:row:004",
+          "odyssey:book:12:s1:row:003",
+          "odyssey:book:12:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 13,
+        "q": "포세이돈 파이아케스인 관계",
+        "gold": "odyssey:book:13:s3:row:005",
+        "top": [
+          "odyssey:book:13:s3:row:005",
+          "odyssey:book:13:s3:row:003",
+          "odyssey:book:13:s3:row:001",
+          "odyssey:book:13:s3:row:004",
+          "odyssey:book:13:s3:row:002",
+          "odyssey:book:13:s2:row:004",
+          "odyssey:book:13:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 14,
+        "q": "에우마이오스 오디세우스 관계",
+        "gold": "odyssey:book:14:s2:row:004",
+        "top": [
+          "odyssey:book:14:s2:row:004",
+          "odyssey:book:14:s2:row:003",
+          "odyssey:book:14:s1:row:003",
+          "odyssey:book:14:s1:row:002",
+          "odyssey:book:14:s1:row:001",
+          "odyssey:book:14:s2:row:002",
+          "odyssey:book:14:s2:row:001",
+          "odyssey:book:14:s1:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 15,
+        "q": "테오클리메노스 텔레마코스 관계",
+        "gold": "odyssey:book:15:s4:row:004",
+        "top": [
+          "odyssey:book:15:s4:row:003",
+          "odyssey:book:15:s4:row:002",
+          "odyssey:book:15:s4:row:001",
+          "odyssey:book:15:s3:row:004",
+          "odyssey:book:15:s3:row:001",
+          "odyssey:book:15:s2:row:008",
+          "odyssey:book:15:s2:row:005",
+          "odyssey:book:15:s2:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "book": 16,
+        "q": "오디세우스 텔레마코스 정체 관계",
+        "gold": "odyssey:book:16:s3:row:005",
+        "top": [
+          "odyssey:book:16:s3:row:003",
+          "odyssey:book:16:s3:row:001",
+          "odyssey:book:16:s2:row:002",
+          "odyssey:book:16:s1:row:008",
+          "odyssey:book:16:s1:row:007",
+          "odyssey:book:16:s3:row:005",
+          "odyssey:book:16:s1:row:005",
+          "odyssey:book:16:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "멜란티오스 돌리오스 관계",
+        "gold": "odyssey:book:17:s2:row:004",
+        "top": [
+          "odyssey:book:17:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 18,
+        "q": "오디세우스 이로스 관계",
+        "gold": "odyssey:book:18:s1:row:011",
+        "top": [
+          "odyssey:book:18:s1:row:011",
+          "odyssey:book:18:s1:row:009",
+          "odyssey:book:18:s1:row:007",
+          "odyssey:book:18:s1:row:001",
+          "odyssey:book:18:s1:row:008",
+          "odyssey:book:18:s1:row:003",
+          "odyssey:book:18:s1:row:010",
+          "odyssey:book:18:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 19,
+        "q": "에우리바테스 오디세우스 관계",
+        "gold": "odyssey:book:19:s3:row:003",
+        "top": [
+          "odyssey:book:19:s3:row:003",
+          "odyssey:book:19:s3:row:002",
+          "odyssey:book:19:s3:row:001",
+          "odyssey:book:19:s2:row:006",
+          "odyssey:book:19:s2:row:005",
+          "odyssey:book:19:s2:row:004",
+          "odyssey:book:19:s2:row:001",
+          "odyssey:book:19:s1:row:008"
+        ],
+        "hit": true
+      },
+      {
+        "book": 20,
+        "q": "필로이티오스 오디세우스 관계",
+        "gold": "odyssey:book:20:s3:row:008",
+        "top": [
+          "odyssey:book:20:s3:row:007",
+          "odyssey:book:20:s3:row:008",
+          "odyssey:book:20:s1:row:001",
+          "odyssey:book:20:s3:row:006",
+          "odyssey:book:20:s3:row:005",
+          "odyssey:book:20:s3:row:004",
+          "odyssey:book:20:s2:row:004",
+          "odyssey:book:20:s2:row:003"
+        ],
+        "hit": true
+      }
+    ],
+    "recall": [
+      {
+        "originBook": 1,
+        "q": "칼립소 처음 어디서 나왔지",
+        "gold": "odyssey:book:01:s1:row:003",
+        "top": [
+          "odyssey:book:01:s1:row:003",
+          "odyssey:book:01:s2:row:008",
+          "odyssey:book:04:s5:row:012",
+          "odyssey:book:05:s1:row:001",
+          "odyssey:book:05:s1:row:003",
+          "odyssey:book:05:s1:row:005",
+          "odyssey:book:05:s2:row:003",
+          "odyssey:book:05:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 1,
+        "q": "안티노오스 처음 어디서 나왔지",
+        "gold": "odyssey:book:01:s7:row:003",
+        "top": [
+          "odyssey:book:01:s7:row:003",
+          "odyssey:book:01:s7:row:004",
+          "odyssey:book:02:s2:row:001",
+          "odyssey:book:02:s2:row:009",
+          "odyssey:book:02:s5:row:007",
+          "odyssey:book:02:s5:row:009",
+          "odyssey:book:02:s6:row:001",
+          "odyssey:book:04:s6:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 1,
+        "q": "네스토르 처음 어디서 나왔지",
+        "gold": "odyssey:book:01:s5:row:008",
+        "top": [
+          "odyssey:book:01:s5:row:008",
+          "odyssey:book:03:s1:row:003",
+          "odyssey:book:03:s1:row:004",
+          "odyssey:book:03:s2:row:001",
+          "odyssey:book:03:s2:row:002",
+          "odyssey:book:03:s2:row:005",
+          "odyssey:book:03:s2:row:006",
+          "odyssey:book:03:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 4,
+        "q": "헬렌 처음 어디서 나왔지",
+        "gold": "odyssey:book:04:s1:row:002",
+        "top": [
+          "odyssey:book:01:s1:row:001",
+          "odyssey:book:01:s1:row:002",
+          "odyssey:book:01:s1:row:003",
+          "odyssey:book:01:s1:row:004",
+          "odyssey:book:01:s2:row:001",
+          "odyssey:book:01:s2:row:002",
+          "odyssey:book:01:s2:row:003",
+          "odyssey:book:01:s2:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 6,
+        "q": "나우시카 처음 어디서 나왔지",
+        "gold": "odyssey:book:06:s1:row:003",
+        "top": [
+          "odyssey:book:06:s1:row:003",
+          "odyssey:book:06:s1:row:004",
+          "odyssey:book:06:s2:row:001",
+          "odyssey:book:06:s2:row:004",
+          "odyssey:book:06:s2:row:005",
+          "odyssey:book:06:s2:row:006",
+          "odyssey:book:06:s2:row:008",
+          "odyssey:book:06:s2:row:009"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 8,
+        "q": "데모도코스 처음 어디서 나왔지",
+        "gold": "odyssey:book:08:s1:row:003",
+        "top": [
+          "odyssey:book:08:s1:row:003",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:08:s1:row:005",
+          "odyssey:book:08:s1:row:006",
+          "odyssey:book:08:s1:row:007",
+          "odyssey:book:08:s2:row:001",
+          "odyssey:book:08:s3:row:002",
+          "odyssey:book:08:s3:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 8,
+        "q": "키르케 처음 어디서 나왔지",
+        "gold": "odyssey:book:08:s6:row:004",
+        "top": [
+          "odyssey:book:08:s6:row:004",
+          "odyssey:book:09:s1:row:002",
+          "odyssey:book:10:s3:row:001",
+          "odyssey:book:10:s3:row:005",
+          "odyssey:book:10:s3:row:006",
+          "odyssey:book:10:s4:row:001",
+          "odyssey:book:10:s4:row:005",
+          "odyssey:book:10:s4:row:006"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 11,
+        "q": "안티클레이아 처음 어디서 나왔지",
+        "gold": "odyssey:book:11:s1:row:005",
+        "top": [
+          "odyssey:book:11:s1:row:005",
+          "odyssey:book:11:s3:row:001",
+          "odyssey:book:11:s3:row:002",
+          "odyssey:book:11:s3:row:003",
+          "odyssey:book:11:s3:row:004",
+          "odyssey:book:11:s3:row:005",
+          "odyssey:book:11:s3:row:006"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 14,
+        "q": "에우마이오스 처음 어디서 나왔지",
+        "gold": "odyssey:book:14:s1:row:004",
+        "top": [
+          "odyssey:book:14:s1:row:004",
+          "odyssey:book:14:s2:row:003",
+          "odyssey:book:14:s2:row:004",
+          "odyssey:book:14:s2:row:006",
+          "odyssey:book:14:s4:row:001",
+          "odyssey:book:14:s4:row:004",
+          "odyssey:book:14:s5:row:001",
+          "odyssey:book:14:s5:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "originBook": 17,
+        "q": "아르고스 개 처음 어디서 나왔지",
+        "gold": "odyssey:book:17:s3:row:001",
+        "top": [
+          "odyssey:book:03:s6:row:002",
+          "odyssey:book:17:s3:row:001",
+          "odyssey:book:19:s2:row:006",
+          "odyssey:book:17:s3:row:002",
+          "odyssey:book:17:s3:row:003",
+          "odyssey:book:01:s2:row:009",
+          "odyssey:book:01:s4:row:008",
+          "odyssey:book:01:s5:row:010"
+        ],
+        "hit": true
+      }
+    ],
+    "spoiler": [
+      {
+        "book": 5,
+        "q": "제우스",
+        "before": "odyssey:book:05:s1:row:004",
+        "forbidden": "odyssey:book:05:s1:row:005",
+        "leaked": false,
+        "maxOrdinal": 400004,
+        "boundary": 400004
+      },
+      {
+        "book": 7,
+        "q": "에우리메두사",
+        "before": "odyssey:book:07:s1:row:001",
+        "forbidden": "odyssey:book:07:s1:row:002",
+        "leaked": false,
+        "maxOrdinal": 600001,
+        "boundary": 600001
+      },
+      {
+        "book": 9,
+        "q": "키코네스족",
+        "before": "odyssey:book:09:s1:row:002",
+        "forbidden": "odyssey:book:09:s2:row:001",
+        "leaked": false,
+        "maxOrdinal": 800002,
+        "boundary": 800002
+      },
+      {
+        "book": 11,
+        "q": "안티클레이아",
+        "before": "odyssey:book:11:s1:row:004",
+        "forbidden": "odyssey:book:11:s1:row:005",
+        "leaked": false,
+        "maxOrdinal": 1000004,
+        "boundary": 1000004
+      },
+      {
+        "book": 13,
+        "q": "네리툼",
+        "before": "odyssey:book:13:s5:row:002",
+        "forbidden": "odyssey:book:13:s5:row:003",
+        "leaked": false,
+        "maxOrdinal": 1200027,
+        "boundary": 1200027
+      },
+      {
+        "book": 15,
+        "q": "피라이오스",
+        "before": "odyssey:book:15:s7:row:005",
+        "forbidden": "odyssey:book:15:s7:row:006",
+        "leaked": false,
+        "maxOrdinal": 1400045,
+        "boundary": 1400045
+      },
+      {
+        "book": 17,
+        "q": "에우리노메",
+        "before": "odyssey:book:17:s5:row:009",
+        "forbidden": "odyssey:book:17:s6:row:001",
+        "leaked": false,
+        "maxOrdinal": 1600044,
+        "boundary": 1600050
+      },
+      {
+        "book": 19,
+        "q": "파르나소스 산",
+        "before": "odyssey:book:19:s4:row:003",
+        "forbidden": "odyssey:book:19:s4:row:004",
+        "leaked": false,
+        "maxOrdinal": 1800027,
+        "boundary": 1800027
+      }
+    ],
+    "sameName": {
+      "top": [
+        "odyssey:book:17:s3:row:001",
+        "odyssey:book:17:s3:row:004",
+        "odyssey:book:17:s3:row:003",
+        "odyssey:book:17:s3:row:002",
+        "odyssey:book:17:s2:row:008",
+        "odyssey:book:17:s2:row:004",
+        "odyssey:book:17:s2:row:002",
+        "odyssey:book:17:s1:row:011"
+      ],
+      "dogHit": true,
+      "allBook17": true
+    },
+    "memory": {
+      "count": 1,
+      "found": true
+    }
+  }
+}
+PASS SM088_GOLD_RECALL_TEST.mjs
+===== SM088_BOOK21_24_BLIND_TEST.mjs =====
+{
+  "schema": "storymemory-sm088-book21-24-blind-1.0",
+  "runtimeVersion": "1.4.0",
+  "status": "PASS",
+  "oracle": "STATIC_SOURCE_DERIVED_ONLY",
+  "manualKnowledgeDbRows": 0,
+  "packAttached": false,
+  "metrics": {
+    "rareExactLocatorHitAt8": 1,
+    "sectionHitAt8": 1,
+    "crossUnitRecallHitAt8": 1,
+    "spoilerLeakRate": 0,
+    "groundedRoutePassRate": 1
+  },
+  "counts": {
+    "rareCases": 24,
+    "sectionCases": 16,
+    "crossUnitRecallCases": 9,
+    "spoilerCases": 5,
+    "groundedCases": 4
+  },
+  "rareTerms": {
+    "21": [
+      {
+        "term": "구혼자들끼리",
+        "locator": "odyssey:book:21:s1:row:001",
+        "sequence": 2000001,
+        "book": 21
+      },
+      {
+        "term": "약하고",
+        "locator": "odyssey:book:21:s2:row:003",
+        "sequence": 2000008,
+        "book": 21
+      },
+      {
+        "term": "돼지기름",
+        "locator": "odyssey:book:21:s2:row:010",
+        "sequence": 2000015,
+        "book": 21
+      },
+      {
+        "term": "떠났던",
+        "locator": "odyssey:book:21:s3:row:007",
+        "sequence": 2000022,
+        "book": 21
+      },
+      {
+        "term": "페넬로페여",
+        "locator": "odyssey:book:21:s4:row:005",
+        "sequence": 2000029,
+        "book": 21
+      },
+      {
+        "term": "닫았습니다",
+        "locator": "odyssey:book:21:s5:row:004",
+        "sequence": 2000036,
+        "book": 21
+      }
+    ],
+    "22": [
+      {
+        "term": "뛰어올랐습니다",
+        "locator": "odyssey:book:22:s1:row:001",
+        "sequence": 2100001,
+        "book": 22
+      },
+      {
+        "term": "살려주지",
+        "locator": "odyssey:book:22:s1:row:009",
+        "sequence": 2100009,
+        "book": 22
+      },
+      {
+        "term": "뒷길을",
+        "locator": "odyssey:book:22:s2:row:007",
+        "sequence": 2100017,
+        "book": 22
+      },
+      {
+        "term": "시험하고",
+        "locator": "odyssey:book:22:s3:row:004",
+        "sequence": 2100025,
+        "book": 22
+      },
+      {
+        "term": "떨어뜨린",
+        "locator": "odyssey:book:22:s4:row:003",
+        "sequence": 2100033,
+        "book": 22
+      },
+      {
+        "term": "두드렸습니다",
+        "locator": "odyssey:book:22:s5:row:002",
+        "sequence": 2100041,
+        "book": 22
+      }
+    ],
+    "23": [
+      {
+        "term": "돌아왔다는",
+        "locator": "odyssey:book:23:s1:row:001",
+        "sequence": 2200001,
+        "book": 23
+      },
+      {
+        "term": "현장에",
+        "locator": "odyssey:book:23:s1:row:005",
+        "sequence": 2200005,
+        "book": 23
+      },
+      {
+        "term": "내려오며",
+        "locator": "odyssey:book:23:s2:row:001",
+        "sequence": 2200009,
+        "book": 23
+      },
+      {
+        "term": "아버지께서",
+        "locator": "odyssey:book:23:s2:row:005",
+        "sequence": 2200013,
+        "book": 23
+      },
+      {
+        "term": "스스로를",
+        "locator": "odyssey:book:23:s3:row:002",
+        "sequence": 2200017,
+        "book": 23
+      },
+      {
+        "term": "고난은",
+        "locator": "odyssey:book:23:s4:row:001",
+        "sequence": 2200021,
+        "book": 23
+      }
+    ],
+    "24": [
+      {
+        "term": "킬레네의",
+        "locator": "odyssey:book:24:s1:row:001",
+        "sequence": 2300001,
+        "book": 24
+      },
+      {
+        "term": "살았고",
+        "locator": "odyssey:book:24:s1:row:008",
+        "sequence": 2300008,
+        "book": 24
+      },
+      {
+        "term": "필로이티오스에게",
+        "locator": "odyssey:book:24:s2:row:003",
+        "sequence": 2300015,
+        "book": 24
+      },
+      {
+        "term": "풀렸습니다",
+        "locator": "odyssey:book:24:s2:row:010",
+        "sequence": 2300022,
+        "book": 24
+      },
+      {
+        "term": "준비하는",
+        "locator": "odyssey:book:24:s4:row:001",
+        "sequence": 2300029,
+        "book": 24
+      },
+      {
+        "term": "하기를",
+        "locator": "odyssey:book:24:s4:row:008",
+        "sequence": 2300036,
+        "book": 24
+      }
+    ]
+  },
+  "details": {
+    "rareRetrieval": [
+      {
+        "term": "구혼자들끼리",
+        "locator": "odyssey:book:21:s1:row:001",
+        "sequence": 2000001,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s1:row:001",
+          "odyssey:book:21:s5:row:002",
+          "odyssey:book:21:s3:row:002",
+          "odyssey:book:21:s1:row:004",
+          "odyssey:book:21:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "약하고",
+        "locator": "odyssey:book:21:s2:row:003",
+        "sequence": 2000008,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:006",
+          "odyssey:book:21:s2:row:003",
+          "odyssey:book:21:s4:row:007",
+          "odyssey:book:21:s3:row:009",
+          "odyssey:book:21:s2:row:007",
+          "odyssey:book:21:s2:row:004",
+          "odyssey:book:21:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "돼지기름",
+        "locator": "odyssey:book:21:s2:row:010",
+        "sequence": 2000015,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:010",
+          "odyssey:book:21:s2:row:009",
+          "odyssey:book:21:s5:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "떠났던",
+        "locator": "odyssey:book:21:s3:row:007",
+        "sequence": 2000022,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s3:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "term": "페넬로페여",
+        "locator": "odyssey:book:21:s4:row:005",
+        "sequence": 2000029,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s4:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "닫았습니다",
+        "locator": "odyssey:book:21:s5:row:004",
+        "sequence": 2000036,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s5:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "term": "뛰어올랐습니다",
+        "locator": "odyssey:book:22:s1:row:001",
+        "sequence": 2100001,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "살려주지",
+        "locator": "odyssey:book:22:s1:row:009",
+        "sequence": 2100009,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:009",
+          "odyssey:book:22:s4:row:009",
+          "odyssey:book:22:s4:row:008",
+          "odyssey:book:22:s4:row:007",
+          "odyssey:book:22:s4:row:006",
+          "odyssey:book:22:s4:row:005",
+          "odyssey:book:22:s4:row:004",
+          "odyssey:book:22:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "term": "뒷길을",
+        "locator": "odyssey:book:22:s2:row:007",
+        "sequence": 2100017,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s2:row:007",
+          "odyssey:book:22:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "시험하고",
+        "locator": "odyssey:book:22:s3:row:004",
+        "sequence": 2100025,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s3:row:004",
+          "odyssey:book:22:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "떨어뜨린",
+        "locator": "odyssey:book:22:s4:row:003",
+        "sequence": 2100033,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "term": "두드렸습니다",
+        "locator": "odyssey:book:22:s5:row:002",
+        "sequence": 2100041,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s5:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "돌아왔다는",
+        "locator": "odyssey:book:23:s1:row:001",
+        "sequence": 2200001,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "현장에",
+        "locator": "odyssey:book:23:s1:row:005",
+        "sequence": 2200005,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "내려오며",
+        "locator": "odyssey:book:23:s2:row:001",
+        "sequence": 2200009,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s2:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "아버지께서",
+        "locator": "odyssey:book:23:s2:row:005",
+        "sequence": 2200013,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s2:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "스스로를",
+        "locator": "odyssey:book:23:s3:row:002",
+        "sequence": 2200017,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "고난은",
+        "locator": "odyssey:book:23:s4:row:001",
+        "sequence": 2200021,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s4:row:001",
+          "odyssey:book:23:s5:row:002",
+          "odyssey:book:23:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "킬레네의",
+        "locator": "odyssey:book:24:s1:row:001",
+        "sequence": 2300001,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "살았고",
+        "locator": "odyssey:book:24:s1:row:008",
+        "sequence": 2300008,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s1:row:008"
+        ],
+        "hit": true
+      },
+      {
+        "term": "필로이티오스에게",
+        "locator": "odyssey:book:24:s2:row:003",
+        "sequence": 2300015,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s2:row:003",
+          "odyssey:book:24:s2:row:011"
+        ],
+        "hit": true
+      },
+      {
+        "term": "풀렸습니다",
+        "locator": "odyssey:book:24:s2:row:010",
+        "sequence": 2300022,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s2:row:010"
+        ],
+        "hit": true
+      },
+      {
+        "term": "준비하는",
+        "locator": "odyssey:book:24:s4:row:001",
+        "sequence": 2300029,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s4:row:001",
+          "odyssey:book:24:s2:row:005",
+          "odyssey:book:24:s2:row:001",
+          "odyssey:book:24:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "하기를",
+        "locator": "odyssey:book:24:s4:row:008",
+        "sequence": 2300036,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s4:row:008"
+        ],
+        "hit": true
+      }
+    ],
+    "sectionRetrieval": [
+      {
+        "book": 21,
+        "title": "페넬로페가 활을 꺼내다",
+        "expected": "odyssey:book:21:s1:row:001",
+        "top": [
+          "odyssey:book:21:s4:row:006",
+          "odyssey:book:21:s4:row:004",
+          "odyssey:book:21:s1:row:004",
+          "odyssey:book:21:s1:row:003",
+          "odyssey:book:21:s1:row:002",
+          "odyssey:book:21:s1:row:001",
+          "odyssey:book:21:s6:row:003",
+          "odyssey:book:21:s6:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 21,
+        "title": "텔레마코스와 구혼자들의 실패",
+        "expected": "odyssey:book:21:s2:row:001",
+        "top": [
+          "odyssey:book:21:s2:row:010",
+          "odyssey:book:21:s2:row:006",
+          "odyssey:book:21:s2:row:002",
+          "odyssey:book:21:s2:row:009",
+          "odyssey:book:21:s2:row:008",
+          "odyssey:book:21:s2:row:007",
+          "odyssey:book:21:s2:row:005",
+          "odyssey:book:21:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 21,
+        "title": "오디세우스가 충신들에게 정체를 밝히다",
+        "expected": "odyssey:book:21:s3:row:001",
+        "top": [
+          "odyssey:book:21:s3:row:005",
+          "odyssey:book:21:s3:row:004",
+          "odyssey:book:21:s3:row:001",
+          "odyssey:book:21:s3:row:009",
+          "odyssey:book:21:s3:row:008",
+          "odyssey:book:21:s3:row:007",
+          "odyssey:book:21:s3:row:006",
+          "odyssey:book:21:s3:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 21,
+        "title": "거지가 활을 요구하다",
+        "expected": "odyssey:book:21:s4:row:001",
+        "top": [
+          "odyssey:book:21:s4:row:007",
+          "odyssey:book:21:s4:row:006",
+          "odyssey:book:21:s4:row:005",
+          "odyssey:book:21:s4:row:004",
+          "odyssey:book:21:s4:row:003",
+          "odyssey:book:21:s4:row:002",
+          "odyssey:book:21:s4:row:008",
+          "odyssey:book:21:s4:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "안티노오스와 에우리마코스가 쓰러지다",
+        "expected": "odyssey:book:22:s1:row:001",
+        "top": [
+          "odyssey:book:22:s1:row:008",
+          "odyssey:book:22:s1:row:010",
+          "odyssey:book:22:s1:row:009",
+          "odyssey:book:22:s1:row:007",
+          "odyssey:book:22:s1:row:006",
+          "odyssey:book:22:s1:row:005",
+          "odyssey:book:22:s1:row:004",
+          "odyssey:book:22:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "무장을 갖추고 멜란티오스를 제압하다",
+        "expected": "odyssey:book:22:s2:row:001",
+        "top": [
+          "odyssey:book:22:s2:row:011",
+          "odyssey:book:22:s2:row:010",
+          "odyssey:book:22:s2:row:009",
+          "odyssey:book:22:s2:row:008",
+          "odyssey:book:22:s2:row:007",
+          "odyssey:book:22:s2:row:006",
+          "odyssey:book:22:s2:row:005",
+          "odyssey:book:22:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "아테나와 최후의 전투",
+        "expected": "odyssey:book:22:s3:row:001",
+        "top": [
+          "odyssey:book:22:s3:row:009",
+          "odyssey:book:22:s3:row:008",
+          "odyssey:book:22:s3:row:007",
+          "odyssey:book:22:s3:row:006",
+          "odyssey:book:22:s3:row:005",
+          "odyssey:book:22:s3:row:004",
+          "odyssey:book:22:s3:row:003",
+          "odyssey:book:22:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "살려 달라는 탄원과 생존자들",
+        "expected": "odyssey:book:22:s4:row:001",
+        "top": [
+          "odyssey:book:22:s4:row:005",
+          "odyssey:book:22:s4:row:004",
+          "odyssey:book:22:s4:row:001",
+          "odyssey:book:22:s4:row:009",
+          "odyssey:book:22:s4:row:008",
+          "odyssey:book:22:s4:row:007",
+          "odyssey:book:22:s4:row:006",
+          "odyssey:book:22:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "페넬로페가 소식을 믿지 못하다",
+        "expected": "odyssey:book:23:s1:row:001",
+        "top": [
+          "odyssey:book:23:s1:row:008",
+          "odyssey:book:23:s1:row:006",
+          "odyssey:book:23:s1:row:002",
+          "odyssey:book:23:s1:row:001",
+          "odyssey:book:23:s1:row:007",
+          "odyssey:book:23:s1:row:005",
+          "odyssey:book:23:s1:row:004",
+          "odyssey:book:23:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "부부가 마주 앉고 텔레마코스가 재촉하다",
+        "expected": "odyssey:book:23:s2:row:001",
+        "top": [
+          "odyssey:book:23:s2:row:001",
+          "odyssey:book:23:s2:row:005",
+          "odyssey:book:23:s2:row:007",
+          "odyssey:book:23:s2:row:006",
+          "odyssey:book:23:s2:row:004",
+          "odyssey:book:23:s2:row:003",
+          "odyssey:book:23:s2:row:002",
+          "odyssey:book:23:s4:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "침대의 비밀로 서로를 확인하다",
+        "expected": "odyssey:book:23:s3:row:001",
+        "top": [
+          "odyssey:book:23:s3:row:004",
+          "odyssey:book:23:s3:row:003",
+          "odyssey:book:23:s3:row:005",
+          "odyssey:book:23:s3:row:002",
+          "odyssey:book:23:s3:row:001",
+          "odyssey:book:23:s4:row:005",
+          "odyssey:book:23:s2:row:003",
+          "odyssey:book:23:s5:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "테이레시아스의 마지막 과업과 옛 침상",
+        "expected": "odyssey:book:23:s4:row:001",
+        "top": [
+          "odyssey:book:23:s4:row:005",
+          "odyssey:book:23:s4:row:001",
+          "odyssey:book:23:s5:row:002",
+          "odyssey:book:23:s4:row:004",
+          "odyssey:book:23:s4:row:003",
+          "odyssey:book:23:s4:row:002",
+          "odyssey:book:23:s5:row:003",
+          "odyssey:book:23:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "하데스의 구혼자들과 페넬로페의 명성",
+        "expected": "odyssey:book:24:s1:row:001",
+        "top": [
+          "odyssey:book:24:s1:row:012",
+          "odyssey:book:24:s1:row:007",
+          "odyssey:book:24:s1:row:004",
+          "odyssey:book:24:s1:row:011",
+          "odyssey:book:24:s1:row:010",
+          "odyssey:book:24:s1:row:009",
+          "odyssey:book:24:s1:row:008",
+          "odyssey:book:24:s1:row:006"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "오디세우스와 라에르테스의 재회",
+        "expected": "odyssey:book:24:s2:row:001",
+        "top": [
+          "odyssey:book:24:s2:row:001",
+          "odyssey:book:24:s2:row:011",
+          "odyssey:book:24:s2:row:010",
+          "odyssey:book:24:s2:row:009",
+          "odyssey:book:24:s2:row:008",
+          "odyssey:book:24:s2:row:007",
+          "odyssey:book:24:s2:row:006",
+          "odyssey:book:24:s5:row:008"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "세 세대의 가족과 돌리오스",
+        "expected": "odyssey:book:24:s3:row:001",
+        "top": [
+          "odyssey:book:24:s3:row:005",
+          "odyssey:book:24:s3:row:004",
+          "odyssey:book:24:s3:row:003",
+          "odyssey:book:24:s3:row:002",
+          "odyssey:book:24:s3:row:001",
+          "odyssey:book:24:s5:row:002",
+          "odyssey:book:24:s5:row:001",
+          "odyssey:book:24:s2:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "이타카의 보복 여론과 신들의 평화 결정",
+        "expected": "odyssey:book:24:s4:row:001",
+        "top": [
+          "odyssey:book:24:s4:row:007",
+          "odyssey:book:24:s4:row:008",
+          "odyssey:book:24:s4:row:006",
+          "odyssey:book:24:s4:row:005",
+          "odyssey:book:24:s4:row:004",
+          "odyssey:book:24:s4:row:003",
+          "odyssey:book:24:s4:row:002",
+          "odyssey:book:24:s4:row:001"
+        ],
+        "hit": true
+      }
+    ],
+    "crossUnitRecall": [
+      {
+        "term": "구혼자들끼리",
+        "locator": "odyssey:book:21:s1:row:001",
+        "sequence": 2000001,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s1:row:001",
+          "odyssey:book:01:s3:row:003",
+          "odyssey:book:02:s1:row:004",
+          "odyssey:book:02:s1:row:011",
+          "odyssey:book:02:s5:row:001",
+          "odyssey:book:02:s5:row:005",
+          "odyssey:book:02:s5:row:010",
+          "odyssey:book:03:s5:row:002"
+        ],
+        "hit": true,
+        "lookback": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      {
+        "term": "약하고",
+        "locator": "odyssey:book:21:s2:row:003",
+        "sequence": 2000008,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:003",
+          "odyssey:book:21:s2:row:006",
+          "odyssey:book:24:s2:row:003",
+          "odyssey:book:01:s3:row:003",
+          "odyssey:book:01:s3:row:007",
+          "odyssey:book:02:s1:row:007",
+          "odyssey:book:02:s1:row:009",
+          "odyssey:book:02:s2:row:002"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "돼지기름",
+        "locator": "odyssey:book:21:s2:row:010",
+        "sequence": 2000015,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:009",
+          "odyssey:book:21:s2:row:010",
+          "odyssey:book:06:s5:row:002",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:14:s2:row:002",
+          "odyssey:book:14:s5:row:001",
+          "odyssey:book:14:s5:row:002",
+          "odyssey:book:15:s7:row:008"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "뛰어올랐습니다",
+        "locator": "odyssey:book:22:s1:row:001",
+        "sequence": 2100001,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:001",
+          "odyssey:book:02:s8:row:006",
+          "odyssey:book:11:s7:row:004"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "살려주지",
+        "locator": "odyssey:book:22:s1:row:009",
+        "sequence": 2100009,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:009",
+          "odyssey:book:01:s5:row:005",
+          "odyssey:book:04:s3:row:008",
+          "odyssey:book:04:s7:row:009",
+          "odyssey:book:05:s1:row:003",
+          "odyssey:book:05:s7:row:006",
+          "odyssey:book:06:s7:row:003",
+          "odyssey:book:08:s1:row:003"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "뒷길을",
+        "locator": "odyssey:book:22:s2:row:007",
+        "sequence": 2100017,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s2:row:007",
+          "odyssey:book:01:s5:row:008",
+          "odyssey:book:01:s5:row:011",
+          "odyssey:book:01:s5:row:012",
+          "odyssey:book:02:s3:row:009",
+          "odyssey:book:02:s8:row:009",
+          "odyssey:book:03:s4:row:006",
+          "odyssey:book:03:s8:row:014"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "돌아왔다는",
+        "locator": "odyssey:book:23:s1:row:001",
+        "sequence": 2200001,
+        "book": 23,
+        "top": [
+          "odyssey:book:01:s4:row:006",
+          "odyssey:book:23:s1:row:001",
+          "odyssey:book:01:s5:row:008",
+          "odyssey:book:03:s4:row:007",
+          "odyssey:book:03:s6:row:009",
+          "odyssey:book:03:s6:row:011",
+          "odyssey:book:03:s8:row:006",
+          "odyssey:book:03:s8:row:007"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "현장에",
+        "locator": "odyssey:book:23:s1:row:005",
+        "sequence": 2200005,
+        "book": 23,
+        "top": [
+          "odyssey:book:08:s7:row:002",
+          "odyssey:book:23:s1:row:005"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "내려오며",
+        "locator": "odyssey:book:23:s2:row:001",
+        "sequence": 2200009,
+        "book": 23,
+        "top": [
+          "odyssey:book:22:s6:row:001",
+          "odyssey:book:23:s2:row:001",
+          "odyssey:book:01:s6:row:007",
+          "odyssey:book:03:s2:row:005",
+          "odyssey:book:03:s7:row:007",
+          "odyssey:book:03:s8:row:010",
+          "odyssey:book:04:s2:row:014",
+          "odyssey:book:05:s8:row:005"
+        ],
+        "hit": true,
+        "lookback": []
+      }
+    ],
+    "spoiler": [
+      {
+        "term": "살았고",
+        "before": "odyssey:book:24:s1:row:007",
+        "future": "odyssey:book:24:s1:row:008",
+        "leaked": false,
+        "maxOrdinal": 2300007,
+        "boundary": 2300007
+      },
+      {
+        "term": "필로이티오스에게",
+        "before": "odyssey:book:24:s2:row:002",
+        "future": "odyssey:book:24:s2:row:003",
+        "leaked": false,
+        "maxOrdinal": 2300014,
+        "boundary": 2300014
+      },
+      {
+        "term": "풀렸습니다",
+        "before": "odyssey:book:24:s2:row:009",
+        "future": "odyssey:book:24:s2:row:010",
+        "leaked": false,
+        "maxOrdinal": 2300021,
+        "boundary": 2300021
+      },
+      {
+        "term": "준비하는",
+        "before": "odyssey:book:24:s3:row:005",
+        "future": "odyssey:book:24:s4:row:001",
+        "leaked": false,
+        "maxOrdinal": 2300017,
+        "boundary": 2300028
+      },
+      {
+        "term": "하기를",
+        "before": "odyssey:book:24:s4:row:007",
+        "future": "odyssey:book:24:s4:row:008",
+        "leaked": false,
+        "maxOrdinal": 2300035,
+        "boundary": 2300035
+      }
+    ],
+    "grounded": [
+      {
+        "book": 21,
+        "term": "구혼자들끼리",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:21:s1:row:001"
+        ],
+        "pass": true
+      },
+      {
+        "book": 22,
+        "term": "뛰어올랐습니다",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:22:s1:row:001"
+        ],
+        "pass": true
+      },
+      {
+        "book": 23,
+        "term": "돌아왔다는",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:23:s1:row:001"
+        ],
+        "pass": true
+      },
+      {
+        "book": 24,
+        "term": "킬레네의",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:24:s1:row:001"
+        ],
+        "pass": true
+      }
+    ]
+  }
+}
+PASS SM088_BOOK21_24_BLIND_TEST.mjs
+===== SM088_RETRIEVAL_PLANNER_VARIANT_TEST.mjs =====
+{
+  "schema": "storymemory-sm088-retrieval-planner-variant-1.0",
+  "status": "PASS",
+  "runtimeVersion": "1.4.0",
+  "query": "헬렌 처음 어디서 나왔지",
+  "queryHints": [
+    "헬레네",
+    "Helen"
+  ],
+  "plannerUsed": true,
+  "gold": "odyssey:book:04:s1:row:002",
+  "top": [
+    "odyssey:book:04:s1:row:002",
+    "odyssey:book:04:s2:row:001",
+    "odyssey:book:04:s2:row:002",
+    "odyssey:book:04:s2:row:003",
+    "odyssey:book:04:s2:row:010",
+    "odyssey:book:04:s2:row:017",
+    "odyssey:book:04:s2:row:018",
+    "odyssey:book:04:s2:row:027"
+  ],
+  "hit": true,
+  "fullSourceSent": false
+}
+PASS SM088_RETRIEVAL_PLANNER_VARIANT_TEST.mjs
+===== SM085_PACK_MARKETPLACE_RUNTIME_TEST.mjs =====
+{
+  "schema": "storymemory-sm085-pack-marketplace-runtime-result-1.0",
+  "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+  "catalog": {
+    "count": 5,
+    "publicSearch": [
+      {
+        "packId": "pack:odyssey:korean-alias-attested-qa",
+        "name": "Attested QA Alias Pack",
+        "pricingMode": "free",
+        "effectiveTrustTier": "curated",
+        "verified": true,
+        "compatible": true
+      },
+      {
+        "packId": "pack:odyssey:korean-alias-public:v1",
+        "name": "Odyssey Korean Alias Helper",
+        "pricingMode": "free",
+        "effectiveTrustTier": "unverified",
+        "verified": false,
+        "compatible": true
+      },
+      {
+        "packId": "pack:paid:future",
+        "name": "Paid Future Pack",
+        "pricingMode": "paid",
+        "effectiveTrustTier": "unverified",
+        "verified": false,
+        "compatible": true
+      }
+    ]
+  },
+  "baseline": {
+    "exactHelen": false
+  },
+  "installed": {
+    "packId": "pack:odyssey:korean-alias-public:v1",
+    "exactHelen": true,
+    "attached": {
+      "id": "pack:odyssey:korean-alias-public:v1",
+      "name": "Odyssey Korean Alias Helper",
+      "kind": "search",
+      "version": "1.0.0",
+      "priority": 10,
+      "declaredTrustTier": "auto-generated",
+      "trustTier": "unverified",
+      "trustAttested": false,
+      "attestation": {
+        "trusted": false,
+        "attestationId": null,
+        "verifiedBy": null,
+        "effectiveTrustTier": "unverified"
+      },
+      "verificationScope": "",
+      "verifiedTier": false,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "artifactFingerprint": "fnv1a:46e27cfa",
+      "compatibility": {
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book"
+      },
+      "rights": {
+        "declaration": "Derived alias/query hints only; no Source body included",
+        "sourceTextIncluded": false,
+        "visibility": "public"
+      },
+      "metadata": {
+        "purpose": "Public free retrieval helper demonstrating Pack discovery/install without Source-body redistribution",
+        "marketplaceEligible": true,
+        "sourceBodyIncluded": false
+      }
+    },
+    "installs": [
+      {
+        "packId": "pack:odyssey:korean-alias-public:v1",
+        "version": "1.0.0",
+        "sourceIdentity": "book:odyssey-sm085",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "workspaceKey": null,
+        "installStatus": "installed",
+        "autoUpdate": false,
+        "settings": {},
+        "attachedAt": "2026-08-27T05:05:28.489Z"
+      }
+    ]
+  },
+  "attested": {
+    "attached": {
+      "id": "pack:odyssey:korean-alias-attested-qa",
+      "name": "Attested QA Alias Pack",
+      "kind": "search",
+      "version": "1.0.0",
+      "priority": 10,
+      "declaredTrustTier": "auto-generated",
+      "trustTier": "curated",
+      "trustAttested": true,
+      "attestation": {
+        "trusted": true,
+        "attestationId": "att:sm085:qa",
+        "verifiedBy": "registry:storymemory-registry-qa",
+        "effectiveTrustTier": "curated"
+      },
+      "verificationScope": "{\"qaOnly\":true,\"claims\":[\"artifact-compatibility\"]}",
+      "verifiedTier": true,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "artifactFingerprint": "fnv1a:4f9debf1",
+      "compatibility": {
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book"
+      },
+      "rights": {
+        "declaration": "Derived alias/query hints only; no Source body included",
+        "sourceTextIncluded": false,
+        "visibility": "public"
+      },
+      "metadata": {
+        "purpose": "Public free retrieval helper demonstrating Pack discovery/install without Source-body redistribution",
+        "marketplaceEligible": true,
+        "sourceBodyIncluded": false
+      }
+    },
+    "answerProvenance": {
+      "label": "PACK_ASSISTED",
+      "reason": "attached-pack-evidence-used",
+      "trustMode": "GROUNDED",
+      "sourceRefs": [
+        "odyssey:book:04:s1:row:002",
+        "odyssey:book:04:s2:row:001",
+        "odyssey:book:04:s2:row:002",
+        "odyssey:book:04:s2:row:003",
+        "odyssey:book:04:s2:row:010",
+        "odyssey:book:04:s2:row:017",
+        "odyssey:book:04:s2:row:018",
+        "odyssey:book:04:s2:row:027"
+      ],
+      "packRefs": [
+        {
+          "id": "pack:odyssey:korean-alias-attested-qa",
+          "name": "Attested QA Alias Pack",
+          "version": "1.0.0",
+          "trustTier": "curated",
+          "verificationScope": "{\"qaOnly\":true,\"claims\":[\"artifact-compatibility\"]}",
+          "artifactFingerprint": "fnv1a:4f9debf1",
+          "sourceValidated": false,
+          "verified": false
+        }
+      ],
+      "verificationTier": null,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "questionType": "TEXTUAL_FACT"
+    }
+  },
+  "guards": {
+    "paidError": "PAID_ENTITLEMENT_REQUIRED_NOT_IMPLEMENTED",
+    "sourceLeakError": "PACK_PUBLICATION_SOURCE_BODY_FORBIDDEN",
+    "privatePublication": {
+      "pass": false,
+      "issues": [
+        "PRIVATE_SOURCE_PUBLICATION_FORBIDDEN"
+      ],
+      "listing": {
+        "schema": "storymemory-pack-registry-1.0",
+        "packId": "pack:private-data",
+        "name": "Private Hidden Pack",
+        "packType": "search",
+        "creatorId": "padiem/storymemory",
+        "publisherName": "StoryMemory",
+        "summary": "Korean/English name aliases for Odyssey retrieval. No Source body.",
+        "visibility": "public",
+        "pricingMode": "free",
+        "publicationStatus": "published",
+        "latestVersion": "1.0.0",
+        "sourceTextIncluded": false,
+        "rightsDeclaration": {
+          "containsPrivateData": true
+        },
+        "compatibilitySummary": {
+          "workKey": "odyssey",
+          "language": "ko"
+        },
+        "permissions": {},
+        "processingDisclosure": {
+          "aiGenerated": true,
+          "humanVerified": false
+        },
+        "listingMetadata": {
+          "tags": [
+            "odyssey",
+            "alias",
+            "korean"
+          ],
+          "marketplaceStage": "SM-085-MVP"
+        },
+        "versions": [
+          {
+            "packId": "pack:private:hidden",
+            "version": "1.0.0",
+            "schemaVersion": "storymemory-precision-pack-1.0",
+            "artifactUri": "packs/odyssey-korean-alias-public-v1.json",
+            "artifactFingerprint": "fnv1a:46e27cfa",
+            "declaredTrustTier": "auto-generated",
+            "sourceMatchMode": "exact-fingerprint",
+            "compatibility": {
+              "mode": "exact-fingerprint",
+              "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+              "sourceRevision": "storymemory-static-content-1.0",
+              "language": "ko",
+              "locatorScheme": "book"
+            },
+            "rights": {
+              "declaration": "Derived alias/query hints only; no Source body included",
+              "sourceTextIncluded": false,
+              "visibility": "public"
+            },
+            "changelog": "Initial free public alias helper",
+            "parentVersion": null,
+            "createdAt": null
+          }
+        ],
+        "attestations": [],
+        "createdAt": null,
+        "updatedAt": null
+      }
+    },
+    "incompatibleResult": {
+      "compatible": false,
+      "reason": "PACK_SOURCE_FINGERPRINT_MISMATCH"
+    }
+  },
+  "checks": {
+    "contract": true,
+    "public_discovery": true,
+    "private_not_leaked": true,
+    "compatible_filter": true,
+    "baseline_miss": true,
+    "install_attaches": true,
+    "install_persisted": true,
+    "public_self_declared_not_verified": true,
+    "pack_improves_retrieval": true,
+    "detach_restores_baseline": true,
+    "paid_processing_deferred": true,
+    "registry_attestation_effective": true,
+    "verified_answer_not_faked_by_attestation_only": true,
+    "source_body_listing_blocked": true,
+    "private_data_publication_blocked": true,
+    "wrong_fingerprint_blocked": true,
+    "uninstall_clears_install": true,
+    "source_unchanged": true
+  },
+  "pass": true
+}
+PASS SM085_PACK_MARKETPLACE_RUNTIME_TEST.mjs
+===== SM085_NEON_PACK_PROVIDER_CONTRACT_TEST.mjs =====
+{
+  "schema": "storymemory-sm085-neon-pack-provider-contract-1.0",
+  "calls": [
+    {
+      "table": "pack_registry",
+      "method": "GET",
+      "query": {
+        "select": "pack_id,name,pack_type,creator_id,publisher_name,summary,visibility,pricing_mode,publication_status,latest_version,source_text_included,rights_declaration,compatibility_summary,permissions,processing_disclosure,listing_metadata,created_at,updated_at",
+        "publication_status": "eq.published",
+        "visibility": "eq.public",
+        "order": "updated_at.desc",
+        "limit": 200
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_versions",
+      "method": "GET",
+      "query": {
+        "select": "pack_id,version,schema_version,artifact_uri,artifact_fingerprint,declared_trust_tier,source_match_mode,compatibility,rights,changelog,parent_version,created_at",
+        "limit": 500
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_attestations",
+      "method": "GET",
+      "query": {
+        "select": "id,pack_id,version,verifier_id,verifier_kind,tier,verification_scope,source_fingerprint,status,issued_at,expires_at,revoked_at,metadata",
+        "status": "eq.valid",
+        "limit": 500
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_installs",
+      "method": "GET",
+      "query": {
+        "select": "pack_id,version,source_identity,source_fingerprint,workspace_key,install_status,auto_update,settings,attached_at,detached_at,updated_at",
+        "order": "updated_at.desc",
+        "limit": 200
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_installs",
+      "method": "POST",
+      "query": {
+        "on_conflict": "user_id,pack_id,source_identity"
+      },
+      "body": {
+        "user_id": "user-1",
+        "pack_id": "pack:test",
+        "version": "1.0.0",
+        "source_identity": "book:test",
+        "source_fingerprint": "fp",
+        "workspace_key": null,
+        "install_status": "installed",
+        "auto_update": false,
+        "settings": {},
+        "detached_at": null,
+        "updated_at": "2026-08-27T05:05:28.568Z"
+      },
+      "prefer": "resolution=merge-duplicates,return=representation"
+    },
+    {
+      "table": "pack_installs",
+      "method": "DELETE",
+      "query": {
+        "pack_id": "eq.pack:test",
+        "source_identity": "eq.book:test"
+      },
+      "body": null,
+      "prefer": "return=minimal"
+    }
+  ],
+  "checks": {
+    "joins_metadata": true,
+    "public_filter": true,
+    "no_pack_payload_table": true,
+    "install_user_bound": true,
+    "upsert_conflict_key": true,
+    "delete_is_scoped": true
+  },
+  "pass": true
+}
+PASS SM085_NEON_PACK_PROVIDER_CONTRACT_TEST.mjs
+===== SM085_MARKETPLACE_UI_CONTRACT_TEST.cjs =====
+{
+  "schema": "storymemory-sm085-marketplace-ui-contract-1.0",
+  "checks": {
+    "scripts_loaded": true,
+    "css_loaded": true,
+    "universal_before_marketplace": true,
+    "source_ui_before_marketplace_ui": true,
+    "right_panel_mount": true,
+    "static_fallback_catalog": true,
+    "neon_bridge": true,
+    "free_public_listing": true,
+    "no_source_body": true,
+    "unverified_default": true,
+    "paid_not_implemented": true,
+    "book_ui_not_replaced": true,
+    "marketplace_css": true
+  },
+  "pass": true
+}
+PASS SM085_MARKETPLACE_UI_CONTRACT_TEST.cjs

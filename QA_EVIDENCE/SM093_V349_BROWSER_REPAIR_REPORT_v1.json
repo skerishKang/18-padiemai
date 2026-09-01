@@ -1,0 +1,670 @@
+{
+  "schema": "storymemory-v349-browser-repair-report-v1",
+  "status": "PARTIAL",
+  "repair_root": "/mnt/c/AI-DEV/.sm093-browser-repair-v1",
+  "baseline": {
+    "version": "3.4.9",
+    "original_zip": "/mnt/c/AI-DEV/.sm093-rehearsal-v1/bundle/StoryMemory_CloudflarePreview_v3.4.9.zip",
+    "original_zip_sha256": "d7709086aff0a1a9045d80ad3fb241404397fea3c40aad26126d4984d7dd44ca",
+    "original_index_sha256": "7264b2d79f4610a466a1fd0bcf61ae3cdaf6c20a6b425c6831bb1f8685eddf66",
+    "original_v349_mutated": "NO"
+  },
+  "RELOAD_DEFECT_ROOT_CAUSE": "Boot hydration called restoreSessionFromUnifiedStore({navigate:false}); it restored context/progress but intentionally did not show the persisted activeSession.screen, leaving the initial Library screen visible after reload.",
+  "RELOAD_PATCH_SCOPE": "One-line boot call change only: restoreSessionFromUnifiedStore({navigate:false}) -> restoreSessionFromUnifiedStore({navigate:true}). Restore API default, hydration progress guard, and persistence behavior were not changed.",
+  "patch": {
+    "scope": "boot hydration call only",
+    "diff_lines": 1,
+    "original_sha256": "7264b2d79f4610a466a1fd0bcf61ae3cdaf6c20a6b425c6831bb1f8685eddf66",
+    "patched_sha256": "d626453cabc80d50bb3ae19bb62707a71c7bc2c75492b370c7b80d63c2bc647f",
+    "diff_sha256": "27f89631c2ce801a297c527039ccff93e718ad2cff9d91c7c6560d033e4a5eba",
+    "hydration_progress_guard_unchanged": true,
+    "restore_api_default_unchanged": true
+  },
+  "reload": {
+    "before": {
+      "active": "reader",
+      "binding": {
+        "generation": 3,
+        "mode": "static",
+        "contentId": "book:iliad",
+        "workKey": "iliad",
+        "unitOrdinal": 2,
+        "passages": 290,
+        "pages": 37,
+        "remoteError": null
+      },
+      "locator": "iliad:book:02:s1:row:001",
+      "page": "01",
+      "store": {
+        "schemaVersion": 1,
+        "updatedAt": 1787906785327,
+        "activeSession": {
+          "screen": "reader",
+          "context": "일리아드",
+          "readerKind": "book",
+          "readerViewMode": "page",
+          "page": 0,
+          "scrollRatio": 0,
+          "selectedBook": 0,
+          "memoryScope": "current",
+          "globalView": "readings",
+          "updatedAt": 1787906785327,
+          "exactResume": {
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "updatedAt": 1787906785328
+          }
+        },
+        "sources": {
+          "bible-demo": {
+            "id": "bible-demo",
+            "type": "scripture",
+            "title": "Bible Demo Source",
+            "language": "ko",
+            "rights": "prototype-only",
+            "transport": "embedded",
+            "status": "demo"
+          },
+          "book-demo": {
+            "id": "book-demo",
+            "type": "book",
+            "title": "Reading Copy",
+            "language": "ko",
+            "rights": "no-fulltext",
+            "transport": "metadata-only",
+            "status": "prototype"
+          }
+        },
+        "progress": {
+          "일리아드::BOOK:1": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787906784554,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 1,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:01:s1:row:001",
+            "canonicalLocator": "iliad:book:01:s1:row:001",
+            "sourceSequence": 1,
+            "sourceHash": "1174bab22e8286e12eccf4dc3fde36d4d1ceca064d8651659c2c15c372640891",
+            "translationHash": "3fee04c3322549291ff31cceca88c2e1837f72d14d26824d994a3c94434511f4",
+            "authoritative": true,
+            "unitPageCount": 19,
+            "sourcePreview": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서. 그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고, 묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+          },
+          "고린도전서 3장": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "고린도전서 3장",
+            "updatedAt": 1787906774172,
+            "exactResumeSchema": 1,
+            "contentId": "bible:1cor",
+            "contentTitle": "고린도전서",
+            "readerKind": "bible",
+            "unitOrdinal": 1,
+            "unitKind": null,
+            "sourcePassageId": null,
+            "canonicalLocator": null,
+            "sourceSequence": null,
+            "sourceHash": null,
+            "translationHash": null,
+            "authoritative": false,
+            "unitPageCount": 3,
+            "bibleVolume": "고린도전서",
+            "bibleChapter": 3
+          },
+          "일리아드::BOOK:2": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787906785244,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "crossUnitLanding": "resume",
+            "unitPageCount": 37,
+            "sourcePreview": "이제 달콤한 잠이 모든 필멸자의 눈을 감겼고, 그리스 장수들은 막사 안에 누워 있었다. 불멸의 신들도 높은 왕좌에서 잠들었지만 제우스의 언제나 깨어 있는 눈만은 감기지 않았다."
+          }
+        },
+        "annotations": [],
+        "memories": [],
+        "recall": {},
+        "entityLedger": {
+          "고린도전서 3장": {
+            "context": "고린도전서 3장",
+            "entities": {
+              "바울": 3,
+              "아볼로": 4,
+              "하나님의 밭": 1
+            },
+            "pages": [
+              {
+                "page": 0,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 1,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 2,
+                "entities": [
+                  "하나님의 밭"
+                ]
+              }
+            ],
+            "updatedAt": 1787906774180
+          },
+          "일리아드": {
+            "context": "일리아드",
+            "entities": {},
+            "pages": [
+              {
+                "page": 0,
+                "entities": []
+              },
+              {
+                "page": 1,
+                "entities": []
+              },
+              {
+                "page": 2,
+                "entities": []
+              }
+            ],
+            "updatedAt": 1787906784323
+          }
+        }
+      }
+    },
+    "after": {
+      "active": "reader",
+      "binding": {
+        "generation": 1,
+        "mode": "static",
+        "contentId": "book:iliad",
+        "workKey": "iliad",
+        "unitOrdinal": 2,
+        "passages": 290,
+        "pages": 37,
+        "remoteError": null
+      },
+      "locator": "iliad:book:02:s1:row:001",
+      "page": "01",
+      "store": {
+        "schemaVersion": 1,
+        "updatedAt": 1787906787924,
+        "activeSession": {
+          "screen": "reader",
+          "context": "일리아드",
+          "readerKind": "book",
+          "readerViewMode": "page",
+          "page": 0,
+          "scrollRatio": 0,
+          "selectedBook": 0,
+          "memoryScope": "current",
+          "globalView": "readings",
+          "updatedAt": 1787906787924,
+          "exactResume": {
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "updatedAt": 1787906787924
+          }
+        },
+        "sources": {
+          "bible-demo": {
+            "id": "bible-demo",
+            "type": "scripture",
+            "title": "Bible Demo Source",
+            "language": "ko",
+            "rights": "prototype-only",
+            "transport": "embedded",
+            "status": "demo"
+          },
+          "book-demo": {
+            "id": "book-demo",
+            "type": "book",
+            "title": "Reading Copy",
+            "language": "ko",
+            "rights": "no-fulltext",
+            "transport": "metadata-only",
+            "status": "prototype"
+          }
+        },
+        "progress": {
+          "일리아드::BOOK:1": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787906784554,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 1,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:01:s1:row:001",
+            "canonicalLocator": "iliad:book:01:s1:row:001",
+            "sourceSequence": 1,
+            "sourceHash": "1174bab22e8286e12eccf4dc3fde36d4d1ceca064d8651659c2c15c372640891",
+            "translationHash": "3fee04c3322549291ff31cceca88c2e1837f72d14d26824d994a3c94434511f4",
+            "authoritative": true,
+            "unitPageCount": 19,
+            "sourcePreview": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서. 그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고, 묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+          },
+          "고린도전서 3장": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "고린도전서 3장",
+            "updatedAt": 1787906774172,
+            "exactResumeSchema": 1,
+            "contentId": "bible:1cor",
+            "contentTitle": "고린도전서",
+            "readerKind": "bible",
+            "unitOrdinal": 1,
+            "unitKind": null,
+            "sourcePassageId": null,
+            "canonicalLocator": null,
+            "sourceSequence": null,
+            "sourceHash": null,
+            "translationHash": null,
+            "authoritative": false,
+            "unitPageCount": 3,
+            "bibleVolume": "고린도전서",
+            "bibleChapter": 3
+          },
+          "일리아드::BOOK:2": {
+            "mode": "page",
+            "page": 0,
+            "scrollRatio": 0,
+            "context": "일리아드",
+            "updatedAt": 1787906787715,
+            "exactResumeSchema": 1,
+            "contentId": "book:iliad",
+            "contentTitle": "일리아드",
+            "readerKind": "book",
+            "unitOrdinal": 2,
+            "unitKind": "BOOK",
+            "sourcePassageId": "iliad:book:02:s1:row:001",
+            "canonicalLocator": "iliad:book:02:s1:row:001",
+            "sourceSequence": 100001,
+            "sourceHash": "f372ce470df5b9a348a9305a73a26c779420ec70c853b3ca81c9fa528de52948",
+            "translationHash": "c74530e5b46f8a743406533569565398171c094175260eecc3a1f04dedac44a7",
+            "authoritative": true,
+            "unitPageCount": 37,
+            "sourcePreview": "이제 달콤한 잠이 모든 필멸자의 눈을 감겼고, 그리스 장수들은 막사 안에 누워 있었다. 불멸의 신들도 높은 왕좌에서 잠들었지만 제우스의 언제나 깨어 있는 눈만은 감기지 않았다."
+          }
+        },
+        "annotations": [],
+        "memories": [],
+        "recall": {},
+        "entityLedger": {
+          "고린도전서 3장": {
+            "context": "고린도전서 3장",
+            "entities": {
+              "바울": 3,
+              "아볼로": 4,
+              "하나님의 밭": 1
+            },
+            "pages": [
+              {
+                "page": 0,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 1,
+                "entities": [
+                  "바울",
+                  "아볼로"
+                ]
+              },
+              {
+                "page": 2,
+                "entities": [
+                  "하나님의 밭"
+                ]
+              }
+            ],
+            "updatedAt": 1787906774180
+          },
+          "일리아드": {
+            "context": "일리아드",
+            "entities": {},
+            "pages": [
+              {
+                "page": 0,
+                "entities": []
+              },
+              {
+                "page": 1,
+                "entities": []
+              },
+              {
+                "page": 2,
+                "entities": []
+              }
+            ],
+            "updatedAt": 1787906787566
+          }
+        }
+      }
+    },
+    "active_screen_same": true,
+    "same_work": true,
+    "same_unit": true,
+    "same_locator": true,
+    "same_semantic_page": true,
+    "hydration_progress_preserved": true,
+    "RELOAD_EXACT_RESUME": true
+  },
+  "RELOAD_EXACT_RESUME": "PASS",
+  "hydration_routes": {
+    "library": {
+      "before": "library",
+      "after": "library",
+      "preserved": true
+    },
+    "today": {
+      "before": "today",
+      "after": "today",
+      "preserved": true
+    },
+    "index": {
+      "before": "index",
+      "after": "index",
+      "preserved": true,
+      "evidence": "route_probe.js isolated Chromium probe"
+    }
+  },
+  "six_work_browser_coverage": {
+    "static_browser_runtime": "6/6 PASS",
+    "direct_authoritative_UI_reader": "2/6 PASS",
+    "Iliad": {
+      "workKey": "iliad",
+      "unitCount": 24,
+      "firstUnit": "book:01",
+      "firstPassages": 146,
+      "koreanCount": 146,
+      "locatorCount": 146,
+      "mode": "static",
+      "nextUnitAvailable": true,
+      "nextUnit": "book:02",
+      "ui_runtime_path_exposed": true,
+      "ui_runtime_path": "EXPOSED",
+      "ui_probe": {
+        "active": "reader",
+        "binding": {
+          "generation": 2,
+          "mode": "static",
+          "contentId": "book:iliad",
+          "workKey": "iliad",
+          "unitOrdinal": 1,
+          "passages": 146,
+          "pages": 19,
+          "remoteError": null
+        },
+        "korean_present": true
+      }
+    },
+    "Odyssey": {
+      "workKey": "odyssey",
+      "unitCount": 24,
+      "firstUnit": "book:01",
+      "firstPassages": 64,
+      "koreanCount": 64,
+      "locatorCount": 64,
+      "mode": "static",
+      "nextUnitAvailable": true,
+      "nextUnit": "book:02",
+      "ui_runtime_path_exposed": true,
+      "ui_runtime_path": "EXPOSED",
+      "ui_probe": {
+        "active": "reader",
+        "binding": {
+          "generation": 2,
+          "mode": "static",
+          "contentId": "book:odyssey",
+          "workKey": "odyssey",
+          "unitOrdinal": 1,
+          "passages": 64,
+          "pages": 8,
+          "remoteError": null
+        },
+        "korean_present": true
+      }
+    },
+    "Aeneid": {
+      "workKey": "aeneid",
+      "unitCount": 12,
+      "firstUnit": "book:01",
+      "firstPassages": 37,
+      "koreanCount": 37,
+      "locatorCount": 37,
+      "mode": "static",
+      "nextUnitAvailable": true,
+      "nextUnit": "book:02",
+      "ui_runtime_path_exposed": false,
+      "ui_runtime_path": "UI_RUNTIME_PATH_NOT_EXPOSED"
+    },
+    "Metamorphoses": {
+      "workKey": "metamorphoses",
+      "unitCount": 15,
+      "firstUnit": "book:01",
+      "firstPassages": 60,
+      "koreanCount": 60,
+      "locatorCount": 60,
+      "mode": "static",
+      "nextUnitAvailable": true,
+      "nextUnit": "book:02",
+      "ui_runtime_path_exposed": false,
+      "ui_runtime_path": "UI_RUNTIME_PATH_NOT_EXPOSED"
+    },
+    "Paradise_Lost": {
+      "workKey": "paradise-lost",
+      "unitCount": 10,
+      "firstUnit": "book:01",
+      "firstPassages": 14,
+      "koreanCount": 14,
+      "locatorCount": 14,
+      "mode": "static",
+      "nextUnitAvailable": true,
+      "nextUnit": "book:02",
+      "ui_runtime_path_exposed": false,
+      "ui_runtime_path": "UI_RUNTIME_PATH_NOT_EXPOSED"
+    },
+    "Divine_Comedy": {
+      "workKey": "divine-comedy",
+      "unitCount": 100,
+      "firstUnit": "inferno:canto:01",
+      "firstPassages": 46,
+      "koreanCount": 46,
+      "locatorCount": 46,
+      "mode": "static",
+      "nextUnitAvailable": true,
+      "nextUnit": "inferno:canto:02",
+      "ui_runtime_path_exposed": false,
+      "ui_runtime_path": "UI_RUNTIME_PATH_NOT_EXPOSED"
+    }
+  },
+  "CURRENT_SIX_WORK_BROWSER_COVERAGE": "6/6 static browser runtime probes; 2/6 direct UI Reader paths exposed",
+  "BIBLE_FALLBACK": "EXPECTED_PRE_SM093",
+  "CRIME_FALLBACK": "EXPECTED_PRE_SM093",
+  "PRIDE_FALLBACK": "EXPECTED_PRE_SM093",
+  "ALICE_FALLBACK": "EXPECTED_PRE_SM093",
+  "viewports": {
+    "desktop": {
+      "viewport": {
+        "width": 1440,
+        "height": 900
+      },
+      "metrics": {
+        "active": "reader",
+        "scrollWidth": 1440,
+        "clientWidth": 1440,
+        "readerVisible": true,
+        "bodyLength": 1719
+      },
+      "catastrophic_overflow": false
+    },
+    "tablet": {
+      "viewport": {
+        "width": 1024,
+        "height": 768
+      },
+      "metrics": {
+        "active": "reader",
+        "scrollWidth": 1024,
+        "clientWidth": 1024,
+        "readerVisible": true,
+        "bodyLength": 1719
+      },
+      "catastrophic_overflow": false
+    },
+    "mobile": {
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "metrics": {
+        "active": "reader",
+        "scrollWidth": 390,
+        "clientWidth": 390,
+        "readerVisible": true,
+        "bodyLength": 1719
+      },
+      "catastrophic_overflow": false
+    }
+  },
+  "DESKTOP": "PASS",
+  "TABLET": "PASS",
+  "MOBILE": "PASS",
+  "audit": {
+    "page_errors": [],
+    "console_errors": [],
+    "blocking_console_errors": [],
+    "non_blocking_console_errors": [],
+    "failed_requests": [],
+    "http_error_responses": [],
+    "uncaught_js_exception_count": 0,
+    "blocking_console_error_count": 0,
+    "non_blocking_console_error_count": 0,
+    "failed_critical_request_count": 0
+  },
+  "JS_EXCEPTIONS": 0,
+  "CONSOLE_BLOCKING_ERRORS": 0,
+  "FAILED_CRITICAL_REQUESTS": 0,
+  "AUTHENTICATED_BROWSER_GATE": "ENVIRONMENT_BLOCKED",
+  "UNAUTHENTICATED_BROWSER_GATE": "PASS_WITH_EXPECTED_COVERAGE_BOUNDARY",
+  "BROWSER_ACCEPTANCE_VERDICT": "PARTIAL",
+  "EXACT_REMAINING_BLOCKERS": [
+    "Aeneid current UI Reader route is not exposed: UI_RUNTIME_PATH_NOT_EXPOSED.",
+    "Metamorphoses current UI Reader route is not exposed: UI_RUNTIME_PATH_NOT_EXPOSED.",
+    "Paradise Lost current UI Reader route is not exposed: UI_RUNTIME_PATH_NOT_EXPOSED.",
+    "Divine Comedy current UI Reader route is not exposed: UI_RUNTIME_PATH_NOT_EXPOSED.",
+    "Authenticated browser gate remains environment-blocked because no authorized session/fixture was supplied."
+  ],
+  "scope_guard": {
+    "no_fake_translations": "YES",
+    "no_catalog_registration": "YES",
+    "no_static_readiness_flip": "YES",
+    "no_bible_crime_pride_alice_mapping": "YES"
+  },
+  "mutation_boundary": {
+    "ORIGINAL_V349_MUTATED": "NO",
+    "REPOSITORY_MUTATION": "NONE",
+    "PRODUCTION_CORPUS_MUTATED": "NO",
+    "NEON_MUTATION": "NONE",
+    "CLOUDFLARE_PORTAL_DNS_MUTATION": "NONE",
+    "DEPLOYMENT": "NONE",
+    "GIT_MUTATION": "NONE"
+  },
+  "EXACT_NEXT_STEP": "Keep the one-line hydration repair. Defer Aeneid, Metamorphoses, Paradise Lost, and Divine Comedy UI route mapping to the SM-093 expansion scope; do not alter v3.4.9 readiness or create fallback content.",
+  "evidence_files": {
+    "SM093_V349_BROWSER_ACCEPTANCE_RERUN_v2.json": {
+      "size": 20990,
+      "sha256": "649365b758590562d27827827143badf9858671476b0ae5330347701b9877960"
+    },
+    "SM093_V349_RELOAD_HYDRATION_PATCH_v1.diff": {
+      "size": 568,
+      "sha256": "27f89631c2ce801a297c527039ccff93e718ad2cff9d91c7c6560d033e4a5eba"
+    },
+    "final_verify.js": {
+      "size": 12685,
+      "sha256": "baf58e08b06d456d2107315cd61e03be7f55db4f66220185c10ad9ed87e5b82d"
+    },
+    "screenshots/01_home_desktop.png": {
+      "size": 734842,
+      "sha256": "cb6f4e9e97897efcdd5b46a3f8e9aac0289cc2d1f2c3243b71b7ff767e4c9c74"
+    },
+    "screenshots/02_library_desktop.png": {
+      "size": 753234,
+      "sha256": "bb9e128628c7567a570a9736dff3761d1789f5021792bad11bdab12d847742b3"
+    },
+    "screenshots/03_reader_desktop.png": {
+      "size": 650344,
+      "sha256": "4a83dc14ee203d51a5c4201f0088ab8e4792924c9f29c84730cea2d9ab4da5e9"
+    },
+    "screenshots/04_reader_tablet.png": {
+      "size": 348260,
+      "sha256": "6a2ed41a0ca53e437344e3f74542843020eba67c564c3aa79534775ab96922c0"
+    },
+    "screenshots/05_reader_mobile.png": {
+      "size": 146450,
+      "sha256": "3ac4272a055f012d8079e739dfd847bc7a517ec1e4a4c18ad38ca80d19d79473"
+    }
+  },
+  "hydration_routes_note": "The final isolated route probe confirmed library→library, today→today, and index→index. The combined runner later entered the Bible Reader during its index setup, so that non-authoritative setup record is not used for the Index verdict."
+}

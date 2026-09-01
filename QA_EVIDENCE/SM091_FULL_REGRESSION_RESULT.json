@@ -1,0 +1,105 @@
+{
+  "schema": "storymemory-sm091-regression-result-1.0",
+  "pass": true,
+  "total": 24,
+  "passed": 24,
+  "failed": 0,
+  "tests": [
+    {
+      "test": "SM054_STATIC_ADAPTER_CONTRACT_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM057_HYBRID_AI_CONTEXT_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM058_PRODUCTION_RUNTIME_CONTRACT_TEST.cjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM058_STATIC_READER_REGRESSION_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM058_HYBRID_AI_REGRESSION_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM082_CURRENT_READER_BRIDGE_TEST.cjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM082_UNIVERSAL_SOURCE_HARNESS_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM083_TRUST_PROVENANCE_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM084_PRECISION_PACK_RUNTIME_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM087_SOURCE_UI_CONTRACT_TEST.cjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM088_GOLD_RECALL_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM088_BOOK21_24_BLIND_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM088_RETRIEVAL_PLANNER_VARIANT_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM085_PACK_MARKETPLACE_RUNTIME_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM085_NEON_PACK_PROVIDER_CONTRACT_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM085_MARKETPLACE_UI_CONTRACT_TEST.cjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM089_AUTO_PACK_GENERATION_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM089_AUTO_PACK_UI_CONTRACT_TEST.cjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM090_PACK_LIFECYCLE_RUNTIME_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM090_NEON_LIFECYCLE_PROVIDER_CONTRACT_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM090_PACK_LIFECYCLE_UI_CONTRACT_TEST.cjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM091_PACK_ENTITLEMENT_RUNTIME_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM091_NEON_ENTITLEMENT_PROVIDER_CONTRACT_TEST.mjs",
+      "status": "PASS"
+    },
+    {
+      "test": "SM091_PACK_ENTITLEMENT_UI_CONTRACT_TEST.cjs",
+      "status": "PASS"
+    }
+  ]
+}

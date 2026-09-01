@@ -1,0 +1,22 @@
+{
+  "schema": "sm090-neon-lifecycle-provider-contract-1.0",
+  "pass": true,
+  "checks": {
+    "ratingUpsert": true,
+    "aggregateView": true,
+    "feedbackInsert": true,
+    "versionProposalInsert": true,
+    "versionSubmitPatch": true,
+    "forkTwoPhase": true,
+    "noSourceBodyFields": true
+  },
+  "callCount": 8,
+  "tables": [
+    "pack_ratings",
+    "pack_rating_summary",
+    "pack_feedback",
+    "pack_version_proposals",
+    "pack_registry",
+    "pack_versions"
+  ]
+}

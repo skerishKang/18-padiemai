@@ -1,0 +1,42 @@
+{
+  "schema": "storymemory-sm089-neon-main-read-only-result-1.0",
+  "projectId": "broad-breeze-39165056",
+  "branchId": "br-lingering-hall-avsosmlv",
+  "mode": "READ_ONLY",
+  "gold": {
+    "entities": 98,
+    "aliases": 108,
+    "mentions": 641,
+    "relationships": 147,
+    "answerCards": 98,
+    "citations": 145,
+    "sourcePassages": 0
+  },
+  "contentRegistry": {
+    "activeVersions": 6,
+    "activeUnits": 185
+  },
+  "packRegistry": {
+    "registryRows": 1,
+    "versionRows": 1,
+    "attestationRows": 0,
+    "installRows": 0,
+    "publicListing": {
+      "packId": "pack:odyssey:korean-alias-public:v1",
+      "name": "Odyssey Korean Alias Helper",
+      "visibility": "public",
+      "pricingMode": "free",
+      "publicationStatus": "published",
+      "latestVersion": "1.0.0",
+      "sourceTextIncluded": false
+    }
+  },
+  "book21PlusKnowledge": {
+    "mentions": 0,
+    "relationships": 0,
+    "answerCards": 0,
+    "citations": 0
+  },
+  "sm089Mutation": "NONE",
+  "pass": true
+}

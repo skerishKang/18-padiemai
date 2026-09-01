@@ -1,0 +1,1018 @@
+{
+  "schema": "storymemory-sm088-gold-baseline-1.0",
+  "runtimeVersion": "1.1.0",
+  "status": "BASELINE",
+  "goldOracleUsedForScoringOnly": true,
+  "knowledgePackAttached": false,
+  "precomputedKnowledgeInjected": false,
+  "metrics": {
+    "entityLocatorHitAt8": 0.8462,
+    "relationshipLocatorHitAt8": 0.6,
+    "crossUnitRecallOriginHitAt8": 0,
+    "spoilerLeakRate": 0,
+    "sameNameArgosDogPass": true,
+    "memoryContinuityPass": true
+  },
+  "counts": {
+    "entityCases": 39,
+    "relationshipCases": 20,
+    "recallCases": 10,
+    "spoilerCases": 8
+  },
+  "details": {
+    "entity": [
+      {
+        "book": 1,
+        "q": "태양신 히페리온",
+        "gold": "odyssey:book:01:s1:row:001",
+        "top": [
+          "odyssey:book:01:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 1,
+        "q": "에우리클레이아",
+        "gold": "odyssey:book:01:s8:row:002",
+        "top": [
+          "odyssey:book:01:s8:row:002",
+          "odyssey:book:01:s8:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 2,
+        "q": "안티노오스",
+        "gold": "odyssey:book:02:s2:row:002",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 2,
+        "q": "멘토르",
+        "gold": "odyssey:book:02:s4:row:001",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 3,
+        "q": "필로스",
+        "gold": "odyssey:book:03:s1:row:001",
+        "top": [
+          "odyssey:book:03:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 3,
+        "q": "피시스트라토스",
+        "gold": "odyssey:book:03:s8:row:012",
+        "top": [
+          "odyssey:book:03:s8:row:012",
+          "odyssey:book:03:s8:row:008",
+          "odyssey:book:03:s8:row:002",
+          "odyssey:book:03:s7:row:010",
+          "odyssey:book:03:s2:row:002",
+          "odyssey:book:03:s8:row:011",
+          "odyssey:book:03:s8:row:010",
+          "odyssey:book:03:s8:row:009"
+        ],
+        "hit": true
+      },
+      {
+        "book": 4,
+        "q": "스파르타 라케다이몬",
+        "gold": "odyssey:book:04:s1:row:001",
+        "top": [
+          "odyssey:book:04:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 4,
+        "q": "메돈",
+        "gold": "odyssey:book:04:s7:row:001",
+        "top": [
+          "odyssey:book:04:s7:row:001",
+          "odyssey:book:04:s6:row:011",
+          "odyssey:book:04:s6:row:013",
+          "odyssey:book:04:s6:row:012",
+          "odyssey:book:04:s6:row:010",
+          "odyssey:book:04:s6:row:009",
+          "odyssey:book:04:s6:row:008",
+          "odyssey:book:04:s6:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "book": 5,
+        "q": "제우스",
+        "gold": "odyssey:book:05:s1:row:005",
+        "top": [
+          "odyssey:book:05:s1:row:005",
+          "odyssey:book:05:s1:row:004",
+          "odyssey:book:05:s1:row:002",
+          "odyssey:book:05:s1:row:001",
+          "odyssey:book:05:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 5,
+        "q": "이노 레우코테아",
+        "gold": "odyssey:book:05:s6:row:002",
+        "top": [
+          "odyssey:book:05:s6:row:001"
+        ],
+        "hit": false
+      },
+      {
+        "book": 6,
+        "q": "나우시토오스",
+        "gold": "odyssey:book:06:s1:row:001",
+        "top": [
+          "odyssey:book:06:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 6,
+        "q": "나우시카",
+        "gold": "odyssey:book:06:s1:row:003",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 7,
+        "q": "에우리메두사",
+        "gold": "odyssey:book:07:s1:row:002",
+        "top": [
+          "odyssey:book:07:s1:row:001",
+          "odyssey:book:07:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 7,
+        "q": "폰토노오스",
+        "gold": "odyssey:book:07:s4:row:007",
+        "top": [
+          "odyssey:book:07:s4:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "book": 8,
+        "q": "데모도코스",
+        "gold": "odyssey:book:08:s1:row:005",
+        "top": [
+          "odyssey:book:08:s1:row:005",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:08:s1:row:003",
+          "odyssey:book:08:s1:row:002",
+          "odyssey:book:08:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 8,
+        "q": "에우리알로스",
+        "gold": "odyssey:book:08:s5:row:005",
+        "top": [
+          "odyssey:book:08:s5:row:004",
+          "odyssey:book:08:s5:row:003",
+          "odyssey:book:08:s2:row:006",
+          "odyssey:book:08:s2:row:003",
+          "odyssey:book:08:s2:row:002",
+          "odyssey:book:08:s2:row:001",
+          "odyssey:book:08:s5:row:005",
+          "odyssey:book:08:s5:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 9,
+        "q": "키코네스족",
+        "gold": "odyssey:book:09:s2:row:001",
+        "top": [
+          "odyssey:book:09:s2:row:001",
+          "odyssey:book:09:s1:row:002",
+          "odyssey:book:09:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 9,
+        "q": "마론",
+        "gold": "odyssey:book:09:s4:row:001",
+        "top": [
+          "odyssey:book:09:s4:row:001",
+          "odyssey:book:09:s3:row:006",
+          "odyssey:book:09:s3:row:005",
+          "odyssey:book:09:s3:row:004",
+          "odyssey:book:09:s3:row:003",
+          "odyssey:book:09:s3:row:002",
+          "odyssey:book:09:s3:row:001",
+          "odyssey:book:09:s2:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 10,
+        "q": "아이올로스",
+        "gold": "odyssey:book:10:s1:row:002",
+        "top": [
+          "odyssey:book:10:s1:row:002",
+          "odyssey:book:10:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 10,
+        "q": "엘페노르",
+        "gold": "odyssey:book:10:s8:row:002",
+        "top": [
+          "odyssey:book:10:s8:row:002",
+          "odyssey:book:10:s8:row:001",
+          "odyssey:book:10:s7:row:006",
+          "odyssey:book:10:s7:row:005",
+          "odyssey:book:10:s7:row:004",
+          "odyssey:book:10:s7:row:003",
+          "odyssey:book:10:s7:row:002",
+          "odyssey:book:10:s7:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 11,
+        "q": "안티클레이아",
+        "gold": "odyssey:book:11:s1:row:005",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 11,
+        "q": "헤라클레스",
+        "gold": "odyssey:book:11:s9:row:006",
+        "top": [
+          "odyssey:book:11:s9:row:006",
+          "odyssey:book:11:s4:row:004",
+          "odyssey:book:11:s9:row:005",
+          "odyssey:book:11:s9:row:004",
+          "odyssey:book:11:s9:row:003",
+          "odyssey:book:11:s9:row:002",
+          "odyssey:book:11:s9:row:001",
+          "odyssey:book:11:s8:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 12,
+        "q": "세이렌",
+        "gold": "odyssey:book:12:s2:row:001",
+        "top": [
+          "odyssey:book:12:s2:row:001",
+          "odyssey:book:12:s1:row:004",
+          "odyssey:book:12:s1:row:003",
+          "odyssey:book:12:s1:row:002",
+          "odyssey:book:12:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 12,
+        "q": "람페티에",
+        "gold": "odyssey:book:12:s3:row:005",
+        "top": [
+          "odyssey:book:12:s3:row:005",
+          "odyssey:book:12:s3:row:004",
+          "odyssey:book:12:s3:row:003",
+          "odyssey:book:12:s3:row:002",
+          "odyssey:book:12:s3:row:001",
+          "odyssey:book:12:s2:row:002",
+          "odyssey:book:12:s2:row:001",
+          "odyssey:book:12:s1:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 13,
+        "q": "네리툼",
+        "gold": "odyssey:book:13:s5:row:003",
+        "top": [
+          "odyssey:book:13:s5:row:003",
+          "odyssey:book:13:s5:row:002",
+          "odyssey:book:13:s5:row:001",
+          "odyssey:book:13:s4:row:007",
+          "odyssey:book:13:s4:row:006",
+          "odyssey:book:13:s4:row:005",
+          "odyssey:book:13:s4:row:004",
+          "odyssey:book:13:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 13,
+        "q": "나이아스",
+        "gold": "odyssey:book:13:s5:row:004",
+        "top": [
+          "odyssey:book:13:s5:row:004",
+          "odyssey:book:13:s5:row:003",
+          "odyssey:book:13:s2:row:003",
+          "odyssey:book:13:s5:row:002",
+          "odyssey:book:13:s5:row:001",
+          "odyssey:book:13:s4:row:007",
+          "odyssey:book:13:s4:row:006",
+          "odyssey:book:13:s4:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 14,
+        "q": "에우마이오스",
+        "gold": "odyssey:book:14:s2:row:004",
+        "top": [
+          "odyssey:book:14:s1:row:004",
+          "odyssey:book:14:s1:row:003",
+          "odyssey:book:14:s1:row:002",
+          "odyssey:book:14:s1:row:001"
+        ],
+        "hit": false
+      },
+      {
+        "book": 15,
+        "q": "메가펜테스",
+        "gold": "odyssey:book:15:s2:row:001",
+        "top": [
+          "odyssey:book:15:s2:row:001",
+          "odyssey:book:15:s1:row:007",
+          "odyssey:book:15:s1:row:006",
+          "odyssey:book:15:s1:row:005",
+          "odyssey:book:15:s1:row:004",
+          "odyssey:book:15:s1:row:003",
+          "odyssey:book:15:s1:row:002",
+          "odyssey:book:15:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 15,
+        "q": "피라이오스",
+        "gold": "odyssey:book:15:s7:row:006",
+        "top": [
+          "odyssey:book:15:s7:row:006",
+          "odyssey:book:15:s7:row:005",
+          "odyssey:book:15:s7:row:004",
+          "odyssey:book:15:s7:row:003",
+          "odyssey:book:15:s7:row:002",
+          "odyssey:book:15:s7:row:001",
+          "odyssey:book:15:s6:row:009",
+          "odyssey:book:15:s6:row:008"
+        ],
+        "hit": true
+      },
+      {
+        "book": 16,
+        "q": "암피노모스",
+        "gold": "odyssey:book:16:s5:row:007",
+        "top": [
+          "odyssey:book:16:s5:row:007",
+          "odyssey:book:16:s5:row:004",
+          "odyssey:book:16:s5:row:006",
+          "odyssey:book:16:s5:row:005",
+          "odyssey:book:16:s5:row:003",
+          "odyssey:book:16:s5:row:002",
+          "odyssey:book:16:s5:row:001",
+          "odyssey:book:16:s4:row:006"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "돌리오스",
+        "gold": "odyssey:book:17:s2:row:004",
+        "top": [
+          "odyssey:book:17:s2:row:004",
+          "odyssey:book:17:s2:row:003",
+          "odyssey:book:17:s2:row:002",
+          "odyssey:book:17:s2:row:001",
+          "odyssey:book:17:s1:row:014",
+          "odyssey:book:17:s1:row:013",
+          "odyssey:book:17:s1:row:012",
+          "odyssey:book:17:s1:row:011"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "아르고스 개",
+        "gold": "odyssey:book:17:s3:row:004",
+        "top": [
+          "odyssey:book:17:s3:row:004",
+          "odyssey:book:17:s3:row:003",
+          "odyssey:book:17:s3:row:002",
+          "odyssey:book:17:s3:row:001",
+          "odyssey:book:17:s1:row:011",
+          "odyssey:book:17:s2:row:012",
+          "odyssey:book:17:s2:row:011",
+          "odyssey:book:17:s2:row:010"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "에우리노메",
+        "gold": "odyssey:book:17:s6:row:001",
+        "top": [
+          "odyssey:book:17:s6:row:001",
+          "odyssey:book:17:s5:row:009",
+          "odyssey:book:17:s5:row:008",
+          "odyssey:book:17:s5:row:007",
+          "odyssey:book:17:s5:row:006",
+          "odyssey:book:17:s5:row:005",
+          "odyssey:book:17:s5:row:004",
+          "odyssey:book:17:s5:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 18,
+        "q": "이로스 아르나이오스",
+        "gold": "odyssey:book:18:s1:row:011",
+        "top": [
+          "odyssey:book:18:s1:row:001",
+          "odyssey:book:18:s1:row:011",
+          "odyssey:book:18:s1:row:010",
+          "odyssey:book:18:s1:row:009",
+          "odyssey:book:18:s1:row:008",
+          "odyssey:book:18:s1:row:007",
+          "odyssey:book:18:s1:row:006",
+          "odyssey:book:18:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 18,
+        "q": "멜란토",
+        "gold": "odyssey:book:18:s4:row:003",
+        "top": [
+          "odyssey:book:18:s4:row:003",
+          "odyssey:book:18:s4:row:002",
+          "odyssey:book:18:s4:row:001",
+          "odyssey:book:18:s3:row:013",
+          "odyssey:book:18:s3:row:012",
+          "odyssey:book:18:s3:row:011",
+          "odyssey:book:18:s3:row:010",
+          "odyssey:book:18:s3:row:009"
+        ],
+        "hit": true
+      },
+      {
+        "book": 19,
+        "q": "에우리바테스",
+        "gold": "odyssey:book:19:s3:row:003",
+        "top": [
+          "odyssey:book:19:s3:row:003",
+          "odyssey:book:19:s3:row:002",
+          "odyssey:book:19:s3:row:001",
+          "odyssey:book:19:s2:row:006",
+          "odyssey:book:19:s2:row:005",
+          "odyssey:book:19:s2:row:004",
+          "odyssey:book:19:s2:row:003",
+          "odyssey:book:19:s2:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 19,
+        "q": "파르나소스 산",
+        "gold": "odyssey:book:19:s4:row:004",
+        "top": [
+          "odyssey:book:19:s4:row:004",
+          "odyssey:book:19:s4:row:002",
+          "odyssey:book:19:s4:row:001",
+          "odyssey:book:19:s4:row:003",
+          "odyssey:book:19:s3:row:010",
+          "odyssey:book:19:s3:row:009",
+          "odyssey:book:19:s3:row:008",
+          "odyssey:book:19:s3:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "book": 20,
+        "q": "필로이티오스",
+        "gold": "odyssey:book:20:s3:row:008",
+        "top": [
+          "odyssey:book:20:s3:row:007",
+          "odyssey:book:20:s3:row:008",
+          "odyssey:book:20:s3:row:006",
+          "odyssey:book:20:s3:row:005",
+          "odyssey:book:20:s3:row:004",
+          "odyssey:book:20:s3:row:003",
+          "odyssey:book:20:s3:row:002",
+          "odyssey:book:20:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 20,
+        "q": "아겔라오스",
+        "gold": "odyssey:book:20:s5:row:003",
+        "top": [
+          "odyssey:book:20:s5:row:003",
+          "odyssey:book:20:s5:row:002",
+          "odyssey:book:20:s5:row:001",
+          "odyssey:book:20:s4:row:006",
+          "odyssey:book:20:s4:row:005",
+          "odyssey:book:20:s4:row:004",
+          "odyssey:book:20:s4:row:003",
+          "odyssey:book:20:s4:row:002"
+        ],
+        "hit": true
+      }
+    ],
+    "relationship": [
+      {
+        "book": 1,
+        "q": "칼립소 오디세우스 관계",
+        "gold": "odyssey:book:01:s1:row:003",
+        "top": [
+          "odyssey:book:01:s1:row:003",
+          "odyssey:book:01:s1:row:002",
+          "odyssey:book:01:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 2,
+        "q": "할리테르세스 오디세우스 관계",
+        "gold": "odyssey:book:02:s3:row:003",
+        "top": [
+          "odyssey:book:02:s3:row:003",
+          "odyssey:book:02:s3:row:002",
+          "odyssey:book:02:s2:row:003",
+          "odyssey:book:02:s1:row:011",
+          "odyssey:book:02:s1:row:010",
+          "odyssey:book:02:s1:row:005",
+          "odyssey:book:02:s1:row:003",
+          "odyssey:book:02:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 3,
+        "q": "피시스트라토스 네스토르 관계",
+        "gold": "odyssey:book:03:s2:row:002",
+        "top": [
+          "odyssey:book:03:s2:row:002",
+          "odyssey:book:03:s2:row:001",
+          "odyssey:book:03:s1:row:004",
+          "odyssey:book:03:s1:row:003",
+          "odyssey:book:03:s1:row:005",
+          "odyssey:book:03:s1:row:002",
+          "odyssey:book:03:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 4,
+        "q": "에테오네우스 메넬라오스 관계",
+        "gold": "odyssey:book:04:s1:row:004",
+        "top": [
+          "odyssey:book:04:s1:row:004",
+          "odyssey:book:04:s1:row:003",
+          "odyssey:book:04:s1:row:002",
+          "odyssey:book:04:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 5,
+        "q": "제우스 오디세우스 관계",
+        "gold": "odyssey:book:05:s1:row:005",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 6,
+        "q": "나우시토오스 파이아케스인 관계",
+        "gold": "odyssey:book:06:s1:row:001",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 7,
+        "q": "에우리메두사 나우시카 관계",
+        "gold": "odyssey:book:07:s1:row:002",
+        "top": [
+          "odyssey:book:07:s1:row:001",
+          "odyssey:book:07:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 8,
+        "q": "데모도코스 오디세우스 관계",
+        "gold": "odyssey:book:08:s1:row:006",
+        "top": [
+          "odyssey:book:08:s1:row:006",
+          "odyssey:book:08:s1:row:002",
+          "odyssey:book:08:s1:row:001",
+          "odyssey:book:08:s1:row:005",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:08:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 9,
+        "q": "오디세우스 이스마로스 관계",
+        "gold": "odyssey:book:09:s2:row:001",
+        "top": [
+          "odyssey:book:09:s2:row:001",
+          "odyssey:book:09:s1:row:002",
+          "odyssey:book:09:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 10,
+        "q": "아이올로스 오디세우스 관계",
+        "gold": "odyssey:book:10:s1:row:002",
+        "top": [
+          "odyssey:book:10:s1:row:002",
+          "odyssey:book:10:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 11,
+        "q": "안티클레이아 오디세우스 관계",
+        "gold": "odyssey:book:11:s1:row:005",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 12,
+        "q": "키르케 스킬라 관계",
+        "gold": "odyssey:book:12:s3:row:001",
+        "top": [
+          "odyssey:book:12:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 13,
+        "q": "포세이돈 파이아케스인 관계",
+        "gold": "odyssey:book:13:s3:row:005",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 14,
+        "q": "에우마이오스 오디세우스 관계",
+        "gold": "odyssey:book:14:s2:row:004",
+        "top": [
+          "odyssey:book:14:s1:row:003",
+          "odyssey:book:14:s1:row:002",
+          "odyssey:book:14:s1:row:001",
+          "odyssey:book:14:s1:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "book": 15,
+        "q": "테오클리메노스 텔레마코스 관계",
+        "gold": "odyssey:book:15:s4:row:004",
+        "top": [
+          "odyssey:book:15:s4:row:003",
+          "odyssey:book:15:s4:row:002",
+          "odyssey:book:15:s4:row:001",
+          "odyssey:book:15:s3:row:004",
+          "odyssey:book:15:s3:row:001",
+          "odyssey:book:15:s2:row:008",
+          "odyssey:book:15:s2:row:005",
+          "odyssey:book:15:s2:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "book": 16,
+        "q": "오디세우스 텔레마코스 정체 관계",
+        "gold": "odyssey:book:16:s3:row:005",
+        "top": [
+          "odyssey:book:16:s3:row:003",
+          "odyssey:book:16:s3:row:001",
+          "odyssey:book:16:s2:row:002",
+          "odyssey:book:16:s1:row:008",
+          "odyssey:book:16:s1:row:007",
+          "odyssey:book:16:s3:row:005",
+          "odyssey:book:16:s1:row:005",
+          "odyssey:book:16:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 17,
+        "q": "멜란티오스 돌리오스 관계",
+        "gold": "odyssey:book:17:s2:row:004",
+        "top": [
+          "odyssey:book:17:s2:row:004",
+          "odyssey:book:17:s2:row:003",
+          "odyssey:book:17:s2:row:002",
+          "odyssey:book:17:s2:row:001",
+          "odyssey:book:17:s1:row:014",
+          "odyssey:book:17:s1:row:013",
+          "odyssey:book:17:s1:row:012",
+          "odyssey:book:17:s1:row:011"
+        ],
+        "hit": true
+      },
+      {
+        "book": 18,
+        "q": "오디세우스 이로스 관계",
+        "gold": "odyssey:book:18:s1:row:011",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 19,
+        "q": "에우리바테스 오디세우스 관계",
+        "gold": "odyssey:book:19:s3:row:003",
+        "top": [],
+        "hit": false
+      },
+      {
+        "book": 20,
+        "q": "필로이티오스 오디세우스 관계",
+        "gold": "odyssey:book:20:s3:row:008",
+        "top": [
+          "odyssey:book:20:s3:row:007",
+          "odyssey:book:20:s3:row:008",
+          "odyssey:book:20:s1:row:001",
+          "odyssey:book:20:s3:row:006",
+          "odyssey:book:20:s3:row:005",
+          "odyssey:book:20:s3:row:004",
+          "odyssey:book:20:s2:row:004",
+          "odyssey:book:20:s2:row:003"
+        ],
+        "hit": true
+      }
+    ],
+    "recall": [
+      {
+        "originBook": 1,
+        "q": "칼립소 처음 어디서 나왔지",
+        "gold": "odyssey:book:01:s1:row:003",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 2,
+        "q": "안티노오스 처음 어디서 나왔지",
+        "gold": "odyssey:book:02:s2:row:002",
+        "top": [
+          "odyssey:book:20:s4:row:005",
+          "odyssey:book:20:s4:row:004",
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 3,
+        "q": "네스토르 처음 어디서 나왔지",
+        "gold": "odyssey:book:03:s7:row:003",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 4,
+        "q": "헬렌 처음 어디서 나왔지",
+        "gold": "odyssey:book:04:s2:row:023",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 6,
+        "q": "나우시카 처음 어디서 나왔지",
+        "gold": "odyssey:book:06:s1:row:003",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 8,
+        "q": "데모도코스 처음 어디서 나왔지",
+        "gold": "odyssey:book:08:s1:row:005",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 10,
+        "q": "키르케 처음 어디서 나왔지",
+        "gold": "odyssey:book:10:s3:row:001",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 11,
+        "q": "안티클레이아 처음 어디서 나왔지",
+        "gold": "odyssey:book:11:s1:row:005",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 14,
+        "q": "에우마이오스 처음 어디서 나왔지",
+        "gold": "odyssey:book:14:s2:row:004",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s4:row:002",
+          "odyssey:book:20:s3:row:011",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002"
+        ],
+        "hit": false
+      },
+      {
+        "originBook": 17,
+        "q": "아르고스 개 처음 어디서 나왔지",
+        "gold": "odyssey:book:17:s3:row:004",
+        "top": [
+          "odyssey:book:20:s6:row:006",
+          "odyssey:book:20:s1:row:004",
+          "odyssey:book:20:s6:row:005",
+          "odyssey:book:20:s6:row:004",
+          "odyssey:book:20:s6:row:003",
+          "odyssey:book:20:s6:row:002",
+          "odyssey:book:20:s6:row:001",
+          "odyssey:book:20:s5:row:004"
+        ],
+        "hit": false
+      }
+    ],
+    "spoiler": [
+      {
+        "book": 5,
+        "q": "제우스",
+        "before": "odyssey:book:05:s1:row:004",
+        "forbidden": "odyssey:book:05:s1:row:005",
+        "leaked": false,
+        "maxOrdinal": 400004,
+        "boundary": 400004
+      },
+      {
+        "book": 7,
+        "q": "에우리메두사",
+        "before": "odyssey:book:07:s1:row:001",
+        "forbidden": "odyssey:book:07:s1:row:002",
+        "leaked": false,
+        "maxOrdinal": 600001,
+        "boundary": 600001
+      },
+      {
+        "book": 9,
+        "q": "키코네스족",
+        "before": "odyssey:book:09:s1:row:002",
+        "forbidden": "odyssey:book:09:s2:row:001",
+        "leaked": false,
+        "maxOrdinal": 800002,
+        "boundary": 800002
+      },
+      {
+        "book": 11,
+        "q": "안티클레이아",
+        "before": "odyssey:book:11:s1:row:004",
+        "forbidden": "odyssey:book:11:s1:row:005",
+        "leaked": false,
+        "maxOrdinal": 0,
+        "boundary": 1000004
+      },
+      {
+        "book": 13,
+        "q": "네리툼",
+        "before": "odyssey:book:13:s5:row:002",
+        "forbidden": "odyssey:book:13:s5:row:003",
+        "leaked": false,
+        "maxOrdinal": 1200027,
+        "boundary": 1200027
+      },
+      {
+        "book": 15,
+        "q": "피라이오스",
+        "before": "odyssey:book:15:s7:row:005",
+        "forbidden": "odyssey:book:15:s7:row:006",
+        "leaked": false,
+        "maxOrdinal": 1400045,
+        "boundary": 1400045
+      },
+      {
+        "book": 17,
+        "q": "에우리노메",
+        "before": "odyssey:book:17:s5:row:009",
+        "forbidden": "odyssey:book:17:s6:row:001",
+        "leaked": false,
+        "maxOrdinal": 1600050,
+        "boundary": 1600050
+      },
+      {
+        "book": 19,
+        "q": "파르나소스 산",
+        "before": "odyssey:book:19:s4:row:003",
+        "forbidden": "odyssey:book:19:s4:row:004",
+        "leaked": false,
+        "maxOrdinal": 1800027,
+        "boundary": 1800027
+      }
+    ],
+    "sameName": {
+      "top": [
+        "odyssey:book:17:s3:row:004",
+        "odyssey:book:17:s3:row:003",
+        "odyssey:book:17:s3:row:002",
+        "odyssey:book:17:s3:row:001",
+        "odyssey:book:17:s1:row:011",
+        "odyssey:book:17:s2:row:012",
+        "odyssey:book:17:s2:row:011",
+        "odyssey:book:17:s2:row:010"
+      ],
+      "dogHit": true,
+      "allBook17": true
+    },
+    "memory": {
+      "count": 1,
+      "found": true
+    }
+  }
+}

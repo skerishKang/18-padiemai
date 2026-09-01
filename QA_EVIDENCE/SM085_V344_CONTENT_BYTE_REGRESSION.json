@@ -1,0 +1,9 @@
+{
+  "schema": "storymemory-sm085-v344-content-byte-regression-1.0",
+  "baseFiles": 192,
+  "newFiles": 192,
+  "changed": [],
+  "missing": [],
+  "extra": [],
+  "pass": true
+}

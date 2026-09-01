@@ -1,0 +1,73 @@
+{
+  "schema": "sm092-neon-validation-1.0",
+  "pass": true,
+  "branch_id": "br-orange-bar-avhzdnog",
+  "branch_name": "sm092-expert-official-verification-validation-20260827",
+  "schema_checks": {
+    "new_tables": [
+      "pack_verifiers",
+      "pack_verifier_credentials",
+      "pack_verification_requests",
+      "pack_attestation_events"
+    ],
+    "public_view": "pack_verification_public_state",
+    "attestation_columns": [
+      "credential_id",
+      "request_id"
+    ],
+    "guard_trigger": true,
+    "audit_trigger": true
+  },
+  "positive_fixtures": {
+    "expert_exact_version_fingerprint": "PASS",
+    "official_publisher_exact_version_fingerprint": "PASS",
+    "expert_audit": [
+      "issued",
+      "revoked"
+    ],
+    "official_audit": [
+      "issued",
+      "expired"
+    ]
+  },
+  "negative_gates": {
+    "unapproved_request": "PACK_VERIFICATION_REQUEST_NOT_APPROVED_OR_SCOPE_MISMATCH",
+    "source_fingerprint_mismatch": "PACK_VERIFICATION_REQUEST_NOT_APPROVED_OR_SCOPE_MISMATCH",
+    "expert_claiming_official": "PACK_OFFICIAL_VERIFIER_KIND_INVALID",
+    "expired_credential": "PACK_VERIFIER_CREDENTIAL_INVALID",
+    "raw_id_metadata": "CHECK_REJECTED",
+    "empty_scope": "CHECK_REJECTED",
+    "source_text_scope": "CHECK_REJECTED"
+  },
+  "authenticated_privileges": {
+    "pack_verification_requests": [
+      "SELECT",
+      "INSERT"
+    ],
+    "pack_attestation_events": [
+      "SELECT"
+    ],
+    "pack_verifiers": [],
+    "pack_verifier_credentials": [],
+    "direct_attestation_write": false
+  },
+  "cleanup": {
+    "verifiers": 0,
+    "credentials": 0,
+    "requests": 0,
+    "events": 0,
+    "attestations": 0
+  },
+  "gold_unchanged": {
+    "entities": 98,
+    "aliases": 108,
+    "mentions": 641,
+    "relationships": 147,
+    "cards": 98,
+    "citations": 145,
+    "source_passages": 0,
+    "registry_rows": 1,
+    "version_rows": 1
+  },
+  "production_seed_claim": "NONE"
+}

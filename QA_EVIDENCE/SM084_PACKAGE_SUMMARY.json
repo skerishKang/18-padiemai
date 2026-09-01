@@ -1,0 +1,43 @@
+{
+  "schema": "storymemory-sm084-package-summary-1.0",
+  "packageVersion": "3.4.3",
+  "runtimeVersion": "1.4.0",
+  "packSchema": "storymemory-precision-pack-1.0",
+  "status": "PASS",
+  "measuredImprovement": {
+    "query": "헬렌 처음 어디서 나왔지?",
+    "baselineExact": false,
+    "packExact": true,
+    "exactLocator": "odyssey:book:04:s1:row:002",
+    "detachReturnsBaseline": true
+  },
+  "trustBoundary": {
+    "jsonSelfDeclaredVerifiedAllowed": false,
+    "hostRegistryAttestationRequired": true,
+    "sourceLocatorValidationRequiredForVerified": true,
+    "arbitraryExecutableJsonPackCodeAllowed": false
+  },
+  "regression": {
+    "schema": "storymemory-sm084-existing-regression-1.0",
+    "passCount": 11,
+    "failCount": 0,
+    "total": 11,
+    "pass": true
+  },
+  "staticContentRegression": {
+    "schema": "storymemory-sm084-v342-content-byte-regression-1.0",
+    "baseFiles": 192,
+    "newFiles": 192,
+    "changed": [],
+    "missing": [],
+    "extra": [],
+    "pass": true
+  },
+  "mutations": {
+    "neon": "NONE",
+    "cloudflarePortalDns": "NONE",
+    "book21PlusManualKnowledge": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/"
+}

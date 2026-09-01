@@ -1,0 +1,259 @@
+{
+  "schema": "sm091-entitlement-runtime-result-1.0",
+  "checks": [
+    {
+      "name": "CONTRACT_NO_LIVE_PAYMENT",
+      "pass": true,
+      "details": {
+        "schema": "storymemory-pack-entitlement-1.0",
+        "version": "1.0.0",
+        "marketplaceInstalled": true,
+        "providerInstalled": false,
+        "offers": 0,
+        "entitlements": 0,
+        "purchases": 0,
+        "settlements": 0,
+        "livePaymentCollectionImplemented": false,
+        "directClientGrantAllowed": false,
+        "sourceKnowledgeMutationRequired": false
+      }
+    },
+    {
+      "name": "FREE_ACCESS",
+      "pass": true,
+      "details": {
+        "allowed": true,
+        "reason": "FREE_PUBLIC",
+        "packId": "free-pack",
+        "pricingMode": "free",
+        "entitlementRequired": false
+      }
+    },
+    {
+      "name": "PAID_DENIED_WITHOUT_ENTITLEMENT",
+      "pass": true,
+      "details": {
+        "allowed": false,
+        "reason": "PAID_ENTITLEMENT_REQUIRED",
+        "packId": "paid-pack",
+        "pricingMode": "paid",
+        "entitlementRequired": true
+      }
+    },
+    {
+      "name": "INTENT_NO_ACCESS",
+      "pass": true,
+      "details": {
+        "intentId": "purchase-intent:1787815058575:230b59e7dc486",
+        "packId": "paid-pack",
+        "offerId": "paid-krw-1000",
+        "version": "1.0.0",
+        "currency": "KRW",
+        "amountMinor": 1000,
+        "status": "intent",
+        "requiresExternalProvider": true,
+        "accessGranted": false,
+        "metadata": {
+          "clientCannotGrantEntitlement": true
+        },
+        "createdAt": "2026-08-27T07:17:38.575Z",
+        "providerConnected": false,
+        "action": "CONNECT_PAYMENT_PROVIDER"
+      }
+    },
+    {
+      "name": "MALICIOUS_INTENT_BLOCKED",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "UNVERIFIED_PAYMENT_BLOCKED",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "VERIFIED_PAYMENT_GRANTS",
+      "pass": true,
+      "details": {
+        "purchase": {
+          "purchaseId": "p1",
+          "userId": "u1",
+          "packId": "paid-pack",
+          "offerId": null,
+          "version": "1.0.0",
+          "provider": "fixture",
+          "providerTransactionId": "tx1",
+          "currency": "KRW",
+          "amountMinor": 1000,
+          "purchaseStatus": "paid",
+          "receiptReference": null,
+          "verified": true,
+          "verifiedAt": "2026-08-27T07:17:38.575Z",
+          "metadata": {
+            "rawPaymentCredentialsStored": false
+          }
+        },
+        "entitlement": {
+          "entitlementId": "entitlement:1787815058575:cfe295a01932b",
+          "userId": "u1",
+          "packId": "paid-pack",
+          "version": "1.0.0",
+          "accessScope": "pack",
+          "status": "active",
+          "startsAt": "2026-08-27T07:17:38.575Z",
+          "expiresAt": null,
+          "revokedAt": null,
+          "sourcePurchaseId": "p1",
+          "reason": "provider-verified-purchase",
+          "verified": true,
+          "metadata": {
+            "provider": "fixture"
+          }
+        },
+        "access": {
+          "allowed": true,
+          "reason": "PAID_ENTITLEMENT_ACTIVE",
+          "packId": "paid-pack",
+          "pricingMode": "paid",
+          "entitlementRequired": true,
+          "entitlement": {
+            "entitlementId": "entitlement:1787815058575:cfe295a01932b",
+            "userId": "u1",
+            "packId": "paid-pack",
+            "version": "1.0.0",
+            "accessScope": "pack",
+            "status": "active",
+            "startsAt": "2026-08-27T07:17:38.575Z",
+            "expiresAt": null,
+            "revokedAt": null,
+            "sourcePurchaseId": "p1",
+            "reason": "provider-verified-purchase",
+            "verified": true,
+            "metadata": {
+              "provider": "fixture"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "REFUND_REVOKES",
+      "pass": true,
+      "details": {
+        "purchase": {
+          "purchaseId": "p1",
+          "userId": "u1",
+          "packId": "paid-pack",
+          "offerId": null,
+          "version": "1.0.0",
+          "provider": "fixture",
+          "providerTransactionId": "tx1",
+          "currency": "KRW",
+          "amountMinor": 1000,
+          "purchaseStatus": "refunded",
+          "receiptReference": null,
+          "verified": true,
+          "verifiedAt": "2026-08-27T07:17:38.576Z",
+          "metadata": {
+            "rawPaymentCredentialsStored": false
+          }
+        },
+        "entitlement": {
+          "entitlementId": "entitlement:1787815058575:cfe295a01932b",
+          "userId": "u1",
+          "packId": "paid-pack",
+          "version": "1.0.0",
+          "accessScope": "pack",
+          "status": "refunded",
+          "startsAt": "2026-08-27T07:17:38.575Z",
+          "expiresAt": null,
+          "revokedAt": "2026-08-27T07:17:38.576Z",
+          "sourcePurchaseId": "p1",
+          "reason": "provider-refunded",
+          "verified": true,
+          "metadata": {
+            "provider": "fixture"
+          }
+        },
+        "access": {
+          "allowed": false,
+          "reason": "PAID_ENTITLEMENT_REQUIRED",
+          "packId": "paid-pack",
+          "pricingMode": "paid",
+          "entitlementRequired": true
+        }
+      }
+    },
+    {
+      "name": "RESTORE_ONLY_VERIFIED",
+      "pass": true,
+      "details": {
+        "imported": 1,
+        "entitlements": [
+          {
+            "entitlementId": "e-good",
+            "userId": "u1",
+            "packId": "paid-pack",
+            "version": null,
+            "accessScope": "pack",
+            "status": "active",
+            "startsAt": "2026-08-27T07:17:38.576Z",
+            "expiresAt": null,
+            "revokedAt": null,
+            "sourcePurchaseId": null,
+            "reason": "",
+            "verified": true,
+            "metadata": {}
+          }
+        ]
+      }
+    },
+    {
+      "name": "SETTLEMENT_PREVIEW_PENDING",
+      "pass": true,
+      "details": {
+        "settlementId": "settlement-preview:1787815058576:9d44e8dc86bc5",
+        "packId": "paid-pack",
+        "purchaseId": "p1",
+        "creatorId": "c1",
+        "currency": "KRW",
+        "grossMinor": 1000,
+        "platformFeeMinor": 100,
+        "creatorNetMinor": 900,
+        "settlementStatus": "pending",
+        "payoutReference": null,
+        "providerVerified": false,
+        "previewOnly": true
+      }
+    },
+    {
+      "name": "PAID_SETTLEMENT_REFERENCE_REQUIRED",
+      "pass": true,
+      "details": {}
+    },
+    {
+      "name": "VERIFIED_SETTLEMENT_ACCEPTED",
+      "pass": true,
+      "details": {
+        "settlementId": "s1",
+        "packId": "paid-pack",
+        "purchaseId": "p1",
+        "creatorId": "c1",
+        "currency": "KRW",
+        "grossMinor": 1000,
+        "platformFeeMinor": 100,
+        "creatorNetMinor": 900,
+        "settlementStatus": "paid",
+        "payoutReference": "payout-fixture-1",
+        "providerVerified": true,
+        "updatedAt": "2026-08-27T07:17:38.576Z"
+      }
+    }
+  ],
+  "pass": true,
+  "summary": {
+    "total": 12,
+    "passed": 12,
+    "failed": 0
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "status": "PENDING_ENVIRONMENT_BLOCKER",
+  "browser": "/usr/bin/chromium",
+  "observation": "Headless Chromium did not complete even a minimal data:text/html page invocation in the current execution environment.",
+  "browserPassClaimed": false,
+  "screenshotPassClaimed": false,
+  "requiredLater": [
+    "desktop source-library interaction",
+    "native document/workbook/transcript viewer interaction",
+    "mobile Memory/AI drawer behavior",
+    "Book shelf/page-curl regression",
+    "console/asset/overflow accessibility checks"
+  ]
+}

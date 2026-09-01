@@ -1,0 +1,30 @@
+{
+  "schema": "storymemory-v336-package-summary-1.0",
+  "version": "3.3.6",
+  "build": "SM-058-production-authenticated-runtime-activation",
+  "business_id": "B61",
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portal_target_route": "/b61/",
+  "runtime": {
+    "static_body": "authoritative",
+    "remote_metadata": "authenticated",
+    "remote_user_state": "authenticated",
+    "legacy_db_body_remote": false,
+    "canonical_identity": "canonical_locator"
+  },
+  "main_registry": {
+    "active_content_versions": 6,
+    "content_unit_index": 185,
+    "source_passages": 0,
+    "unit_registry_sha256": "e9add28511350238b5bc2b4e7ad26e94f2dfe8f4f9933da1b2ee4d3149d9f991"
+  },
+  "qa": {
+    "inline_js": "PASS",
+    "runtime_mock": "PASS",
+    "static_reader": "PASS",
+    "hybrid_ai": "PASS",
+    "content_byte_regression": "PASS",
+    "live_auth_browser_e2e": "PENDING_AUTHENTICATED_BROWSER_SESSION",
+    "browser_acceptance": "BLOCKED_BY_EXECUTION_ENVIRONMENT"
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "schema": "storymemory-sm087-package-summary-1.0",
+  "packageVersion": "3.4.4",
+  "baseVersion": "3.4.3",
+  "status": "PASS_WITH_BROWSER_ACCEPTANCE_PENDING",
+  "uiContract": {
+    "schema": "storymemory-source-ui-1.0",
+    "version": "1.0.0"
+  },
+  "sourceFixtures": [
+    {
+      "id": "source-contract-demo",
+      "kind": "contract",
+      "blocks": 3,
+      "trust": "STRICT",
+      "firstLocator": "doc:source-contract-demo:page:1:block:1"
+    },
+    {
+      "id": "source-workbook-demo",
+      "kind": "workbook",
+      "blocks": 4,
+      "trust": "GROUNDED",
+      "firstLocator": "workbook:source-workbook-demo:problem:1"
+    },
+    {
+      "id": "source-transcript-demo",
+      "kind": "transcript",
+      "blocks": 3,
+      "trust": "EXPLORE",
+      "firstLocator": "url:source-transcript-demo:t:0-30000"
+    }
+  ],
+  "contractStrictEvidence": true,
+  "workbookTutorAnswerHidden": true,
+  "userPrivateImport": true,
+  "bookSkinPreserved": true,
+  "fullSourceSent": false,
+  "regression": {
+    "status": "PASS",
+    "packageVersion": "3.4.4",
+    "uiSchema": "storymemory-source-ui-1.0",
+    "inlineScriptCountChecked": 6,
+    "externalSyntax": [
+      "storymemory-source-ui.js",
+      "storymemory-universal-source-runtime.js"
+    ],
+    "localAssetRefs": 3,
+    "missingAssetRefs": [],
+    "staticContent": {
+      "baseFiles": 192,
+      "newFiles": 192,
+      "changed": 0,
+      "missing": 0,
+      "extra": 0
+    },
+    "universalRuntimeByteIdentical": true,
+    "universalRuntimeSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+    "browserAcceptance": "PENDING_ENVIRONMENT_BLOCKER",
+    "historicalSm038039Counted": false
+  },
+  "browserAcceptance": "PENDING_ENVIRONMENT_BLOCKER",
+  "explicitNonClaims": [
+    "raw PDF OCR/acquisition",
+    "live URL/YouTube fetch",
+    "STT/transcript acquisition",
+    "durable cloud upload/persistence for Source-add UI"
+  ],
+  "mutations": {
+    "neon": "NONE",
+    "cloudflarePortalDns": "NONE",
+    "book21PlusManualKnowledge": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/"
+}

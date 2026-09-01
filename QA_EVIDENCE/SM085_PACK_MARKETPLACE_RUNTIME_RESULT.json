@@ -1,0 +1,257 @@
+{
+  "schema": "storymemory-sm085-pack-marketplace-runtime-result-1.0",
+  "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+  "catalog": {
+    "count": 5,
+    "publicSearch": [
+      {
+        "packId": "pack:odyssey:korean-alias-attested-qa",
+        "name": "Attested QA Alias Pack",
+        "pricingMode": "free",
+        "effectiveTrustTier": "curated",
+        "verified": true,
+        "compatible": true
+      },
+      {
+        "packId": "pack:odyssey:korean-alias-public:v1",
+        "name": "Odyssey Korean Alias Helper",
+        "pricingMode": "free",
+        "effectiveTrustTier": "unverified",
+        "verified": false,
+        "compatible": true
+      },
+      {
+        "packId": "pack:paid:future",
+        "name": "Paid Future Pack",
+        "pricingMode": "paid",
+        "effectiveTrustTier": "unverified",
+        "verified": false,
+        "compatible": true
+      }
+    ]
+  },
+  "baseline": {
+    "exactHelen": false
+  },
+  "installed": {
+    "packId": "pack:odyssey:korean-alias-public:v1",
+    "exactHelen": true,
+    "attached": {
+      "id": "pack:odyssey:korean-alias-public:v1",
+      "name": "Odyssey Korean Alias Helper",
+      "kind": "search",
+      "version": "1.0.0",
+      "priority": 10,
+      "declaredTrustTier": "auto-generated",
+      "trustTier": "unverified",
+      "trustAttested": false,
+      "attestation": {
+        "trusted": false,
+        "attestationId": null,
+        "verifiedBy": null,
+        "effectiveTrustTier": "unverified"
+      },
+      "verificationScope": "",
+      "verifiedTier": false,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "artifactFingerprint": "fnv1a:46e27cfa",
+      "compatibility": {
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book"
+      },
+      "rights": {
+        "declaration": "Derived alias/query hints only; no Source body included",
+        "sourceTextIncluded": false,
+        "visibility": "public"
+      },
+      "metadata": {
+        "purpose": "Public free retrieval helper demonstrating Pack discovery/install without Source-body redistribution",
+        "marketplaceEligible": true,
+        "sourceBodyIncluded": false
+      }
+    },
+    "installs": [
+      {
+        "packId": "pack:odyssey:korean-alias-public:v1",
+        "version": "1.0.0",
+        "sourceIdentity": "book:odyssey-sm085",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "workspaceKey": null,
+        "installStatus": "installed",
+        "autoUpdate": false,
+        "settings": {},
+        "attachedAt": "2026-08-27T07:17:37.451Z"
+      }
+    ]
+  },
+  "attested": {
+    "attached": {
+      "id": "pack:odyssey:korean-alias-attested-qa",
+      "name": "Attested QA Alias Pack",
+      "kind": "search",
+      "version": "1.0.0",
+      "priority": 10,
+      "declaredTrustTier": "auto-generated",
+      "trustTier": "curated",
+      "trustAttested": true,
+      "attestation": {
+        "trusted": true,
+        "attestationId": "att:sm085:qa",
+        "verifiedBy": "registry:storymemory-registry-qa",
+        "effectiveTrustTier": "curated"
+      },
+      "verificationScope": "{\"qaOnly\":true,\"claims\":[\"artifact-compatibility\"]}",
+      "verifiedTier": true,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "artifactFingerprint": "fnv1a:4f9debf1",
+      "compatibility": {
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book"
+      },
+      "rights": {
+        "declaration": "Derived alias/query hints only; no Source body included",
+        "sourceTextIncluded": false,
+        "visibility": "public"
+      },
+      "metadata": {
+        "purpose": "Public free retrieval helper demonstrating Pack discovery/install without Source-body redistribution",
+        "marketplaceEligible": true,
+        "sourceBodyIncluded": false
+      }
+    },
+    "answerProvenance": {
+      "label": "PACK_ASSISTED",
+      "reason": "attached-pack-evidence-used",
+      "trustMode": "GROUNDED",
+      "sourceRefs": [
+        "odyssey:book:04:s1:row:002",
+        "odyssey:book:04:s2:row:001",
+        "odyssey:book:04:s2:row:002",
+        "odyssey:book:04:s2:row:003",
+        "odyssey:book:04:s2:row:010",
+        "odyssey:book:04:s2:row:017",
+        "odyssey:book:04:s2:row:018",
+        "odyssey:book:04:s2:row:027"
+      ],
+      "packRefs": [
+        {
+          "id": "pack:odyssey:korean-alias-attested-qa",
+          "name": "Attested QA Alias Pack",
+          "version": "1.0.0",
+          "trustTier": "curated",
+          "verificationScope": "{\"qaOnly\":true,\"claims\":[\"artifact-compatibility\"]}",
+          "artifactFingerprint": "fnv1a:4f9debf1",
+          "sourceValidated": false,
+          "verified": false
+        }
+      ],
+      "verificationTier": null,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "questionType": "TEXTUAL_FACT"
+    }
+  },
+  "guards": {
+    "paidError": "PAID_ENTITLEMENT_REQUIRED_NOT_IMPLEMENTED",
+    "sourceLeakError": "PACK_PUBLICATION_SOURCE_BODY_FORBIDDEN",
+    "privatePublication": {
+      "pass": false,
+      "issues": [
+        "PRIVATE_SOURCE_PUBLICATION_FORBIDDEN"
+      ],
+      "listing": {
+        "schema": "storymemory-pack-registry-1.0",
+        "packId": "pack:private-data",
+        "name": "Private Hidden Pack",
+        "packType": "search",
+        "creatorId": "padiem/storymemory",
+        "publisherName": "StoryMemory",
+        "summary": "Korean/English name aliases for Odyssey retrieval. No Source body.",
+        "visibility": "public",
+        "pricingMode": "free",
+        "publicationStatus": "published",
+        "latestVersion": "1.0.0",
+        "sourceTextIncluded": false,
+        "rightsDeclaration": {
+          "containsPrivateData": true
+        },
+        "compatibilitySummary": {
+          "workKey": "odyssey",
+          "language": "ko"
+        },
+        "permissions": {},
+        "processingDisclosure": {
+          "aiGenerated": true,
+          "humanVerified": false
+        },
+        "listingMetadata": {
+          "tags": [
+            "odyssey",
+            "alias",
+            "korean"
+          ],
+          "marketplaceStage": "SM-085-MVP"
+        },
+        "versions": [
+          {
+            "packId": "pack:private:hidden",
+            "version": "1.0.0",
+            "schemaVersion": "storymemory-precision-pack-1.0",
+            "artifactUri": "packs/odyssey-korean-alias-public-v1.json",
+            "artifactFingerprint": "fnv1a:46e27cfa",
+            "declaredTrustTier": "auto-generated",
+            "sourceMatchMode": "exact-fingerprint",
+            "compatibility": {
+              "mode": "exact-fingerprint",
+              "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+              "sourceRevision": "storymemory-static-content-1.0",
+              "language": "ko",
+              "locatorScheme": "book"
+            },
+            "rights": {
+              "declaration": "Derived alias/query hints only; no Source body included",
+              "sourceTextIncluded": false,
+              "visibility": "public"
+            },
+            "changelog": "Initial free public alias helper",
+            "parentVersion": null,
+            "createdAt": null
+          }
+        ],
+        "attestations": [],
+        "createdAt": null,
+        "updatedAt": null
+      }
+    },
+    "incompatibleResult": {
+      "compatible": false,
+      "reason": "PACK_SOURCE_FINGERPRINT_MISMATCH"
+    }
+  },
+  "checks": {
+    "contract": true,
+    "public_discovery": true,
+    "private_not_leaked": true,
+    "compatible_filter": true,
+    "baseline_miss": true,
+    "install_attaches": true,
+    "install_persisted": true,
+    "public_self_declared_not_verified": true,
+    "pack_improves_retrieval": true,
+    "detach_restores_baseline": true,
+    "paid_processing_deferred": true,
+    "registry_attestation_effective": true,
+    "verified_answer_not_faked_by_attestation_only": true,
+    "source_body_listing_blocked": true,
+    "private_data_publication_blocked": true,
+    "wrong_fingerprint_blocked": true,
+    "uninstall_clears_install": true,
+    "source_unchanged": true
+  },
+  "pass": true
+}

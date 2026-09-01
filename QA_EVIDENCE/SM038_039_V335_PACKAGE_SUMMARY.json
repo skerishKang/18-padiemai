@@ -1,0 +1,21 @@
+{
+  "package_version": "3.3.5",
+  "build": "SM-038-039-static-expansion-readiness",
+  "business_id": "B61",
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portal_target_route": "/b61/",
+  "index_sha256": "c547320e0e1481219665be223b3fddd1561bcf2ecd80b167b6f2fae1a9ddc7dd",
+  "version_sha256": "eb392e1d3cda9747386617f629acd6a028af0137a21dc0a1acd46e134f6d37ac",
+  "qa": {
+    "inline_javascript_syntax": "PASS",
+    "static_expansion_contract": "PASS",
+    "v334_content_tree_byte_regression": "PASS",
+    "browser_acceptance": "BLOCKED_BY_EXECUTION_ENVIRONMENT"
+  },
+  "content_claim": {
+    "official_new_bible_or_prose_bytes_included": false,
+    "existing_static_content_files": 192,
+    "existing_static_content_byte_changes_vs_v3_3_4": 0
+  },
+  "manifest_policy": "MANIFEST_SHA256.json indexes every package file except itself; enclosing ZIP SHA is recorded externally to avoid circular self-reference."
+}

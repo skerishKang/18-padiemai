@@ -1,0 +1,78 @@
+{
+  "schema": "storymemory-trust-answer-provenance-1.0",
+  "runtimeSchema": "storymemory-universal-source-runtime-1.0",
+  "runtimeVersion": "1.1.0",
+  "status": "PASS",
+  "trustModes": [
+    "EXPLORE",
+    "GROUNDED",
+    "STRICT"
+  ],
+  "provenanceLabels": [
+    "AI_NATIVE",
+    "SOURCE_GROUNDED",
+    "PACK_ASSISTED",
+    "VERIFIED",
+    "INTERPRETATION",
+    "UNCERTAIN"
+  ],
+  "checks": {
+    "fiction_default_explore": "PASS",
+    "fiction_spoiler_boundary": "PASS",
+    "explore_ai_native": "PASS",
+    "grounded_citation_required": "PASS",
+    "grounded_source_grounded": "PASS",
+    "strict_document_default": "PASS",
+    "strict_exact_claim_pass": "PASS",
+    "strict_wrong_exact_claim_block": "PASS",
+    "strict_unknown_allowed": "PASS",
+    "pack_assisted_label": "PASS",
+    "verified_pack_label": "PASS",
+    "pack_name_version_tier_tracking": "PASS",
+    "bible_textual_fact_vs_interpretation": "PASS",
+    "workbook_answer_reveal_gate": "PASS",
+    "strict_extraction_quality_gate": "PASS",
+    "all_six_provenance_labels": "PASS"
+  },
+  "examples": {
+    "aiNative": {
+      "label": "AI_NATIVE",
+      "providerMode": "external"
+    },
+    "grounded": {
+      "label": "SOURCE_GROUNDED",
+      "sourceRefs": [
+        "doc:research-policy:page:2:block:1"
+      ]
+    },
+    "strictBlocked": {
+      "label": "UNCERTAIN",
+      "issues": [
+        "UNSUPPORTED_NUMBER"
+      ]
+    },
+    "verified": {
+      "label": "VERIFIED",
+      "packRefs": [
+        {
+          "id": "curated-pack",
+          "name": "Curated Manual Pack",
+          "version": "2.0.0",
+          "trustTier": "CURATED",
+          "verificationScope": "safe-mode facts",
+          "verified": true
+        }
+      ]
+    },
+    "interpretation": {
+      "label": "INTERPRETATION",
+      "questionType": "INTERPRETATION"
+    },
+    "workbook": {
+      "hidden": true,
+      "blockedIssues": [
+        "WORKBOOK_ANSWER_REVEAL_BLOCKED"
+      ]
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "schema": "storymemory-sm085-marketplace-ui-contract-1.0",
+  "checks": {
+    "scripts_loaded": true,
+    "css_loaded": true,
+    "universal_before_marketplace": true,
+    "source_ui_before_marketplace_ui": true,
+    "right_panel_mount": true,
+    "static_fallback_catalog": true,
+    "neon_bridge": true,
+    "free_public_listing": true,
+    "no_source_body": true,
+    "unverified_default": true,
+    "paid_not_implemented": true,
+    "book_ui_not_replaced": true,
+    "marketplace_css": true
+  },
+  "pass": true
+}

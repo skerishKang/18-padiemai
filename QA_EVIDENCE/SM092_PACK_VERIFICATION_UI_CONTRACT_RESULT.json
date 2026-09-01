@@ -1,0 +1,13 @@
+{
+  "schema": "sm092-verification-ui-contract-1.0",
+  "pass": true,
+  "checks": {
+    "runtimeWired": true,
+    "uiWired": true,
+    "cssWired": true,
+    "expertOfficial": true,
+    "noInheritance": true,
+    "popularityWarning": true,
+    "panelCss": true
+  }
+}

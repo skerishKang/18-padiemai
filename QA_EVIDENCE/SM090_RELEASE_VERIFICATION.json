@@ -1,0 +1,17 @@
+{
+  "schema": "sm090-release-verification-1.0",
+  "package": "StoryMemory_CloudflarePreview_v3.4.7.zip",
+  "bytes": 6254859,
+  "sha256": "5117d6a02a6779f08cbcd511671ceab0eaff16dbabec2fb9be178c37341b7a09",
+  "zipIntegrity": "PASS",
+  "manifestEntries": 353,
+  "manifestMismatch": 0,
+  "manifestMissing": 0,
+  "manifestExtra": 0,
+  "fullRegression": "21/21 PASS",
+  "neonMain": "PACK_LIFECYCLE_METADATA_SCHEMA_ONLY",
+  "knowledgeDbMutation": "NONE",
+  "sourceBodyDbMutation": "NONE",
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/"
+}

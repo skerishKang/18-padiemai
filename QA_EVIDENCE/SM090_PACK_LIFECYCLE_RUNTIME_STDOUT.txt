@@ -1,0 +1,47 @@
+{
+  "schema": "sm090-pack-lifecycle-runtime-test-1.1",
+  "pass": true,
+  "checks": {
+    "contract": true,
+    "versionHistory": true,
+    "ratingSaved": true,
+    "ratingSummary": true,
+    "ratingRangeGate": true,
+    "feedbackSaved": true,
+    "feedbackLocatorGate": true,
+    "feedbackSourceBodyGate": true,
+    "proposalDraft": true,
+    "noSilentLatestMutation": true,
+    "proposalReviewFlow": true,
+    "versionAdvanceGate": true,
+    "forkPrivate": true,
+    "forkLocalDraft": true,
+    "forkLineage": true,
+    "forkNotVerified": true,
+    "parentImmutable": true,
+    "forkDiscoverable": true,
+    "forkWriterRequired": true,
+    "forkPersistAfterArtifactWrite": true,
+    "forkRegistryAfterWriter": true
+  },
+  "summary": {
+    "publishedPackLatest": "1.0.0",
+    "ratingSummary": {
+      "packId": "pack:odyssey:korean-alias-public:v1",
+      "version": "1.0.0",
+      "ratingCount": 1,
+      "overallAverage": 5,
+      "accuracyAverage": 5,
+      "explanationAverage": null,
+      "citationAverage": 4,
+      "spoilerSafetyAverage": null,
+      "speedCostAverage": null
+    },
+    "feedbackCount": 1,
+    "proposalStatus": "pending_review",
+    "forkId": "pack:user:odyssey-alias-fork:v1",
+    "forkVisibility": "private",
+    "forkPersisted": true,
+    "persistedForkCalls": 1
+  }
+}

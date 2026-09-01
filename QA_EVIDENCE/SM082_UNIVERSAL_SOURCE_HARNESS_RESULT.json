@@ -1,0 +1,43 @@
+{
+  "schema": "storymemory-universal-source-runtime-1.0",
+  "version": "1.0.0",
+  "status": "PASS",
+  "sourceTypes": [
+    "book",
+    "pdf-document",
+    "url-transcript"
+  ],
+  "sourceCount": 3,
+  "checks": {
+    "book_static_adapter": "PASS",
+    "book_canonical_locator": "PASS",
+    "book_progress_boundary": "PASS",
+    "document_ingest": "PASS",
+    "document_stable_locator": "PASS",
+    "document_lexical_retrieval": "PASS",
+    "transcript_ingest": "PASS",
+    "transcript_timestamp_locator": "PASS",
+    "transcript_lexical_retrieval": "PASS",
+    "visible_ingest_states": "PASS",
+    "user_memory_continuity": "PASS",
+    "model_prior_policy": "PASS",
+    "source_grounding": "PASS",
+    "bounded_provider_context": "PASS",
+    "optional_pack_hook": "PASS",
+    "pack_fingerprint_guard": "PASS",
+    "mandatory_entity_graph_precompute": "NOT_REQUIRED"
+  },
+  "counts": {
+    "bookBlocks": 64,
+    "documentBlocks": 4,
+    "transcriptBlocks": 3,
+    "providerEvidence": 3,
+    "providerMemories": 0,
+    "attachedPacks": 1
+  },
+  "exampleLocators": {
+    "book": "odyssey:book:01:s1:row:001",
+    "document": "doc:policy-pdf-v1:page:1:block:1",
+    "transcript": "url:retrieval-talk:t:0-20000"
+  }
+}

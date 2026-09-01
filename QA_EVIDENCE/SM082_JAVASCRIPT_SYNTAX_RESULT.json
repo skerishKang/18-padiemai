@@ -1,0 +1,39 @@
+{
+  "status": "PASS",
+  "inlineScriptsChecked": 6,
+  "inline": [
+    {
+      "script": 1,
+      "status": "PASS",
+      "stderr": ""
+    },
+    {
+      "script": 2,
+      "status": "PASS",
+      "stderr": ""
+    },
+    {
+      "script": 3,
+      "status": "PASS",
+      "stderr": ""
+    },
+    {
+      "script": 4,
+      "status": "PASS",
+      "stderr": ""
+    },
+    {
+      "script": 5,
+      "status": "PASS",
+      "stderr": ""
+    },
+    {
+      "script": 6,
+      "status": "PASS",
+      "stderr": ""
+    }
+  ],
+  "externalUniversalScriptPresent": true,
+  "externalUniversalScriptSyntax": "PASS",
+  "externalStderr": ""
+}

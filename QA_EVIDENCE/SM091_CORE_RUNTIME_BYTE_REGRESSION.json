@@ -1,0 +1,54 @@
+{
+  "schema": "sm091-core-runtime-byte-regression-1.0",
+  "pass": true,
+  "files": [
+    {
+      "file": "storymemory-universal-source-runtime.js",
+      "previous": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+      "current": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+      "same": true
+    },
+    {
+      "file": "storymemory-source-ui.js",
+      "previous": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+      "current": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+      "same": true
+    },
+    {
+      "file": "storymemory-pack-marketplace-runtime.js",
+      "previous": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+      "current": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+      "same": true
+    },
+    {
+      "file": "storymemory-pack-marketplace-ui.js",
+      "previous": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+      "current": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+      "same": true
+    },
+    {
+      "file": "storymemory-auto-pack-runtime.js",
+      "previous": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221",
+      "current": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221",
+      "same": true
+    },
+    {
+      "file": "storymemory-auto-pack-ui.js",
+      "previous": "7fdf297ae55178c51f14ace91e979dd54c837a6320c28295ab9967adf4d5d6bd",
+      "current": "7fdf297ae55178c51f14ace91e979dd54c837a6320c28295ab9967adf4d5d6bd",
+      "same": true
+    },
+    {
+      "file": "storymemory-pack-lifecycle-runtime.js",
+      "previous": "a4f5ecbcbe00a9691c278a040befb5d1055300f71e153caf63303a44e5646d98",
+      "current": "a4f5ecbcbe00a9691c278a040befb5d1055300f71e153caf63303a44e5646d98",
+      "same": true
+    },
+    {
+      "file": "storymemory-pack-lifecycle-ui.js",
+      "previous": "a8135f8e5e55bfc41c5337cd8db0ed2bca77d892ca6e57182dc48d9008b14f16",
+      "current": "a8135f8e5e55bfc41c5337cd8db0ed2bca77d892ca6e57182dc48d9008b14f16",
+      "same": true
+    }
+  ]
+}

@@ -1,0 +1,970 @@
+{
+  "schema": "storymemory-sm088-book21-24-blind-1.0",
+  "runtimeVersion": "1.3.0",
+  "status": "PASS",
+  "oracle": "STATIC_SOURCE_DERIVED_ONLY",
+  "manualKnowledgeDbRows": 0,
+  "packAttached": false,
+  "metrics": {
+    "rareExactLocatorHitAt8": 1,
+    "sectionHitAt8": 1,
+    "crossUnitRecallHitAt8": 1,
+    "spoilerLeakRate": 0,
+    "groundedRoutePassRate": 1
+  },
+  "counts": {
+    "rareCases": 24,
+    "sectionCases": 16,
+    "crossUnitRecallCases": 9,
+    "spoilerCases": 5,
+    "groundedCases": 4
+  },
+  "rareTerms": {
+    "21": [
+      {
+        "term": "구혼자들끼리",
+        "locator": "odyssey:book:21:s1:row:001",
+        "sequence": 2000001,
+        "book": 21
+      },
+      {
+        "term": "약하고",
+        "locator": "odyssey:book:21:s2:row:003",
+        "sequence": 2000008,
+        "book": 21
+      },
+      {
+        "term": "돼지기름",
+        "locator": "odyssey:book:21:s2:row:010",
+        "sequence": 2000015,
+        "book": 21
+      },
+      {
+        "term": "떠났던",
+        "locator": "odyssey:book:21:s3:row:007",
+        "sequence": 2000022,
+        "book": 21
+      },
+      {
+        "term": "페넬로페여",
+        "locator": "odyssey:book:21:s4:row:005",
+        "sequence": 2000029,
+        "book": 21
+      },
+      {
+        "term": "닫았습니다",
+        "locator": "odyssey:book:21:s5:row:004",
+        "sequence": 2000036,
+        "book": 21
+      }
+    ],
+    "22": [
+      {
+        "term": "뛰어올랐습니다",
+        "locator": "odyssey:book:22:s1:row:001",
+        "sequence": 2100001,
+        "book": 22
+      },
+      {
+        "term": "살려주지",
+        "locator": "odyssey:book:22:s1:row:009",
+        "sequence": 2100009,
+        "book": 22
+      },
+      {
+        "term": "뒷길을",
+        "locator": "odyssey:book:22:s2:row:007",
+        "sequence": 2100017,
+        "book": 22
+      },
+      {
+        "term": "시험하고",
+        "locator": "odyssey:book:22:s3:row:004",
+        "sequence": 2100025,
+        "book": 22
+      },
+      {
+        "term": "떨어뜨린",
+        "locator": "odyssey:book:22:s4:row:003",
+        "sequence": 2100033,
+        "book": 22
+      },
+      {
+        "term": "두드렸습니다",
+        "locator": "odyssey:book:22:s5:row:002",
+        "sequence": 2100041,
+        "book": 22
+      }
+    ],
+    "23": [
+      {
+        "term": "돌아왔다는",
+        "locator": "odyssey:book:23:s1:row:001",
+        "sequence": 2200001,
+        "book": 23
+      },
+      {
+        "term": "현장에",
+        "locator": "odyssey:book:23:s1:row:005",
+        "sequence": 2200005,
+        "book": 23
+      },
+      {
+        "term": "내려오며",
+        "locator": "odyssey:book:23:s2:row:001",
+        "sequence": 2200009,
+        "book": 23
+      },
+      {
+        "term": "아버지께서",
+        "locator": "odyssey:book:23:s2:row:005",
+        "sequence": 2200013,
+        "book": 23
+      },
+      {
+        "term": "스스로를",
+        "locator": "odyssey:book:23:s3:row:002",
+        "sequence": 2200017,
+        "book": 23
+      },
+      {
+        "term": "고난은",
+        "locator": "odyssey:book:23:s4:row:001",
+        "sequence": 2200021,
+        "book": 23
+      }
+    ],
+    "24": [
+      {
+        "term": "킬레네의",
+        "locator": "odyssey:book:24:s1:row:001",
+        "sequence": 2300001,
+        "book": 24
+      },
+      {
+        "term": "살았고",
+        "locator": "odyssey:book:24:s1:row:008",
+        "sequence": 2300008,
+        "book": 24
+      },
+      {
+        "term": "필로이티오스에게",
+        "locator": "odyssey:book:24:s2:row:003",
+        "sequence": 2300015,
+        "book": 24
+      },
+      {
+        "term": "풀렸습니다",
+        "locator": "odyssey:book:24:s2:row:010",
+        "sequence": 2300022,
+        "book": 24
+      },
+      {
+        "term": "준비하는",
+        "locator": "odyssey:book:24:s4:row:001",
+        "sequence": 2300029,
+        "book": 24
+      },
+      {
+        "term": "하기를",
+        "locator": "odyssey:book:24:s4:row:008",
+        "sequence": 2300036,
+        "book": 24
+      }
+    ]
+  },
+  "details": {
+    "rareRetrieval": [
+      {
+        "term": "구혼자들끼리",
+        "locator": "odyssey:book:21:s1:row:001",
+        "sequence": 2000001,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s1:row:001",
+          "odyssey:book:21:s5:row:002",
+          "odyssey:book:21:s3:row:002",
+          "odyssey:book:21:s1:row:004",
+          "odyssey:book:21:s1:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "약하고",
+        "locator": "odyssey:book:21:s2:row:003",
+        "sequence": 2000008,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:006",
+          "odyssey:book:21:s2:row:003",
+          "odyssey:book:21:s4:row:007",
+          "odyssey:book:21:s3:row:009",
+          "odyssey:book:21:s2:row:007",
+          "odyssey:book:21:s2:row:004",
+          "odyssey:book:21:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "돼지기름",
+        "locator": "odyssey:book:21:s2:row:010",
+        "sequence": 2000015,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:010",
+          "odyssey:book:21:s2:row:009",
+          "odyssey:book:21:s5:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "떠났던",
+        "locator": "odyssey:book:21:s3:row:007",
+        "sequence": 2000022,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s3:row:007"
+        ],
+        "hit": true
+      },
+      {
+        "term": "페넬로페여",
+        "locator": "odyssey:book:21:s4:row:005",
+        "sequence": 2000029,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s4:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "닫았습니다",
+        "locator": "odyssey:book:21:s5:row:004",
+        "sequence": 2000036,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s5:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "term": "뛰어올랐습니다",
+        "locator": "odyssey:book:22:s1:row:001",
+        "sequence": 2100001,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "살려주지",
+        "locator": "odyssey:book:22:s1:row:009",
+        "sequence": 2100009,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:009",
+          "odyssey:book:22:s4:row:009",
+          "odyssey:book:22:s4:row:008",
+          "odyssey:book:22:s4:row:007",
+          "odyssey:book:22:s4:row:006",
+          "odyssey:book:22:s4:row:005",
+          "odyssey:book:22:s4:row:004",
+          "odyssey:book:22:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "term": "뒷길을",
+        "locator": "odyssey:book:22:s2:row:007",
+        "sequence": 2100017,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s2:row:007",
+          "odyssey:book:22:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "시험하고",
+        "locator": "odyssey:book:22:s3:row:004",
+        "sequence": 2100025,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s3:row:004",
+          "odyssey:book:22:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "떨어뜨린",
+        "locator": "odyssey:book:22:s4:row:003",
+        "sequence": 2100033,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "term": "두드렸습니다",
+        "locator": "odyssey:book:22:s5:row:002",
+        "sequence": 2100041,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s5:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "돌아왔다는",
+        "locator": "odyssey:book:23:s1:row:001",
+        "sequence": 2200001,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "현장에",
+        "locator": "odyssey:book:23:s1:row:005",
+        "sequence": 2200005,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s1:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "내려오며",
+        "locator": "odyssey:book:23:s2:row:001",
+        "sequence": 2200009,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s2:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "아버지께서",
+        "locator": "odyssey:book:23:s2:row:005",
+        "sequence": 2200013,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s2:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "term": "스스로를",
+        "locator": "odyssey:book:23:s3:row:002",
+        "sequence": 2200017,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "term": "고난은",
+        "locator": "odyssey:book:23:s4:row:001",
+        "sequence": 2200021,
+        "book": 23,
+        "top": [
+          "odyssey:book:23:s4:row:001",
+          "odyssey:book:23:s5:row:002",
+          "odyssey:book:23:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "킬레네의",
+        "locator": "odyssey:book:24:s1:row:001",
+        "sequence": 2300001,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "살았고",
+        "locator": "odyssey:book:24:s1:row:008",
+        "sequence": 2300008,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s1:row:008"
+        ],
+        "hit": true
+      },
+      {
+        "term": "필로이티오스에게",
+        "locator": "odyssey:book:24:s2:row:003",
+        "sequence": 2300015,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s2:row:003",
+          "odyssey:book:24:s2:row:011"
+        ],
+        "hit": true
+      },
+      {
+        "term": "풀렸습니다",
+        "locator": "odyssey:book:24:s2:row:010",
+        "sequence": 2300022,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s2:row:010"
+        ],
+        "hit": true
+      },
+      {
+        "term": "준비하는",
+        "locator": "odyssey:book:24:s4:row:001",
+        "sequence": 2300029,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s4:row:001",
+          "odyssey:book:24:s2:row:005",
+          "odyssey:book:24:s2:row:001",
+          "odyssey:book:24:s1:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "term": "하기를",
+        "locator": "odyssey:book:24:s4:row:008",
+        "sequence": 2300036,
+        "book": 24,
+        "top": [
+          "odyssey:book:24:s4:row:008"
+        ],
+        "hit": true
+      }
+    ],
+    "sectionRetrieval": [
+      {
+        "book": 21,
+        "title": "페넬로페가 활을 꺼내다",
+        "expected": "odyssey:book:21:s1:row:001",
+        "top": [
+          "odyssey:book:21:s4:row:006",
+          "odyssey:book:21:s4:row:004",
+          "odyssey:book:21:s1:row:004",
+          "odyssey:book:21:s1:row:003",
+          "odyssey:book:21:s1:row:002",
+          "odyssey:book:21:s1:row:001",
+          "odyssey:book:21:s6:row:003",
+          "odyssey:book:21:s6:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 21,
+        "title": "텔레마코스와 구혼자들의 실패",
+        "expected": "odyssey:book:21:s2:row:001",
+        "top": [
+          "odyssey:book:21:s2:row:010",
+          "odyssey:book:21:s2:row:006",
+          "odyssey:book:21:s2:row:002",
+          "odyssey:book:21:s2:row:009",
+          "odyssey:book:21:s2:row:008",
+          "odyssey:book:21:s2:row:007",
+          "odyssey:book:21:s2:row:005",
+          "odyssey:book:21:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 21,
+        "title": "오디세우스가 충신들에게 정체를 밝히다",
+        "expected": "odyssey:book:21:s3:row:001",
+        "top": [
+          "odyssey:book:21:s3:row:005",
+          "odyssey:book:21:s3:row:004",
+          "odyssey:book:21:s3:row:001",
+          "odyssey:book:21:s3:row:009",
+          "odyssey:book:21:s3:row:008",
+          "odyssey:book:21:s3:row:007",
+          "odyssey:book:21:s3:row:006",
+          "odyssey:book:21:s3:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 21,
+        "title": "거지가 활을 요구하다",
+        "expected": "odyssey:book:21:s4:row:001",
+        "top": [
+          "odyssey:book:21:s4:row:007",
+          "odyssey:book:21:s4:row:006",
+          "odyssey:book:21:s4:row:005",
+          "odyssey:book:21:s4:row:004",
+          "odyssey:book:21:s4:row:003",
+          "odyssey:book:21:s4:row:002",
+          "odyssey:book:21:s4:row:008",
+          "odyssey:book:21:s4:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "안티노오스와 에우리마코스가 쓰러지다",
+        "expected": "odyssey:book:22:s1:row:001",
+        "top": [
+          "odyssey:book:22:s1:row:008",
+          "odyssey:book:22:s1:row:010",
+          "odyssey:book:22:s1:row:009",
+          "odyssey:book:22:s1:row:007",
+          "odyssey:book:22:s1:row:006",
+          "odyssey:book:22:s1:row:005",
+          "odyssey:book:22:s1:row:004",
+          "odyssey:book:22:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "무장을 갖추고 멜란티오스를 제압하다",
+        "expected": "odyssey:book:22:s2:row:001",
+        "top": [
+          "odyssey:book:22:s2:row:011",
+          "odyssey:book:22:s2:row:010",
+          "odyssey:book:22:s2:row:009",
+          "odyssey:book:22:s2:row:008",
+          "odyssey:book:22:s2:row:007",
+          "odyssey:book:22:s2:row:006",
+          "odyssey:book:22:s2:row:005",
+          "odyssey:book:22:s2:row:004"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "아테나와 최후의 전투",
+        "expected": "odyssey:book:22:s3:row:001",
+        "top": [
+          "odyssey:book:22:s3:row:009",
+          "odyssey:book:22:s3:row:008",
+          "odyssey:book:22:s3:row:007",
+          "odyssey:book:22:s3:row:006",
+          "odyssey:book:22:s3:row:005",
+          "odyssey:book:22:s3:row:004",
+          "odyssey:book:22:s3:row:003",
+          "odyssey:book:22:s3:row:002"
+        ],
+        "hit": true
+      },
+      {
+        "book": 22,
+        "title": "살려 달라는 탄원과 생존자들",
+        "expected": "odyssey:book:22:s4:row:001",
+        "top": [
+          "odyssey:book:22:s4:row:005",
+          "odyssey:book:22:s4:row:004",
+          "odyssey:book:22:s4:row:001",
+          "odyssey:book:22:s4:row:009",
+          "odyssey:book:22:s4:row:008",
+          "odyssey:book:22:s4:row:007",
+          "odyssey:book:22:s4:row:006",
+          "odyssey:book:22:s4:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "페넬로페가 소식을 믿지 못하다",
+        "expected": "odyssey:book:23:s1:row:001",
+        "top": [
+          "odyssey:book:23:s1:row:008",
+          "odyssey:book:23:s1:row:006",
+          "odyssey:book:23:s1:row:002",
+          "odyssey:book:23:s1:row:001",
+          "odyssey:book:23:s1:row:007",
+          "odyssey:book:23:s1:row:005",
+          "odyssey:book:23:s1:row:004",
+          "odyssey:book:23:s1:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "부부가 마주 앉고 텔레마코스가 재촉하다",
+        "expected": "odyssey:book:23:s2:row:001",
+        "top": [
+          "odyssey:book:23:s2:row:001",
+          "odyssey:book:23:s2:row:005",
+          "odyssey:book:23:s2:row:007",
+          "odyssey:book:23:s2:row:006",
+          "odyssey:book:23:s2:row:004",
+          "odyssey:book:23:s2:row:003",
+          "odyssey:book:23:s2:row:002",
+          "odyssey:book:23:s4:row:005"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "침대의 비밀로 서로를 확인하다",
+        "expected": "odyssey:book:23:s3:row:001",
+        "top": [
+          "odyssey:book:23:s3:row:004",
+          "odyssey:book:23:s3:row:003",
+          "odyssey:book:23:s3:row:005",
+          "odyssey:book:23:s3:row:002",
+          "odyssey:book:23:s3:row:001",
+          "odyssey:book:23:s4:row:005",
+          "odyssey:book:23:s2:row:003",
+          "odyssey:book:23:s5:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 23,
+        "title": "테이레시아스의 마지막 과업과 옛 침상",
+        "expected": "odyssey:book:23:s4:row:001",
+        "top": [
+          "odyssey:book:23:s4:row:005",
+          "odyssey:book:23:s4:row:001",
+          "odyssey:book:23:s5:row:002",
+          "odyssey:book:23:s4:row:004",
+          "odyssey:book:23:s4:row:003",
+          "odyssey:book:23:s4:row:002",
+          "odyssey:book:23:s5:row:003",
+          "odyssey:book:23:s3:row:001"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "하데스의 구혼자들과 페넬로페의 명성",
+        "expected": "odyssey:book:24:s1:row:001",
+        "top": [
+          "odyssey:book:24:s1:row:012",
+          "odyssey:book:24:s1:row:007",
+          "odyssey:book:24:s1:row:004",
+          "odyssey:book:24:s1:row:011",
+          "odyssey:book:24:s1:row:010",
+          "odyssey:book:24:s1:row:009",
+          "odyssey:book:24:s1:row:008",
+          "odyssey:book:24:s1:row:006"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "오디세우스와 라에르테스의 재회",
+        "expected": "odyssey:book:24:s2:row:001",
+        "top": [
+          "odyssey:book:24:s2:row:001",
+          "odyssey:book:24:s2:row:011",
+          "odyssey:book:24:s2:row:010",
+          "odyssey:book:24:s2:row:009",
+          "odyssey:book:24:s2:row:008",
+          "odyssey:book:24:s2:row:007",
+          "odyssey:book:24:s2:row:006",
+          "odyssey:book:24:s5:row:008"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "세 세대의 가족과 돌리오스",
+        "expected": "odyssey:book:24:s3:row:001",
+        "top": [
+          "odyssey:book:24:s3:row:005",
+          "odyssey:book:24:s3:row:004",
+          "odyssey:book:24:s3:row:003",
+          "odyssey:book:24:s3:row:002",
+          "odyssey:book:24:s3:row:001",
+          "odyssey:book:24:s5:row:002",
+          "odyssey:book:24:s5:row:001",
+          "odyssey:book:24:s2:row:003"
+        ],
+        "hit": true
+      },
+      {
+        "book": 24,
+        "title": "이타카의 보복 여론과 신들의 평화 결정",
+        "expected": "odyssey:book:24:s4:row:001",
+        "top": [
+          "odyssey:book:24:s4:row:007",
+          "odyssey:book:24:s4:row:008",
+          "odyssey:book:24:s4:row:006",
+          "odyssey:book:24:s4:row:005",
+          "odyssey:book:24:s4:row:004",
+          "odyssey:book:24:s4:row:003",
+          "odyssey:book:24:s4:row:002",
+          "odyssey:book:24:s4:row:001"
+        ],
+        "hit": true
+      }
+    ],
+    "crossUnitRecall": [
+      {
+        "term": "구혼자들끼리",
+        "locator": "odyssey:book:21:s1:row:001",
+        "sequence": 2000001,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s1:row:001",
+          "odyssey:book:01:s3:row:003",
+          "odyssey:book:02:s1:row:004",
+          "odyssey:book:02:s1:row:011",
+          "odyssey:book:02:s5:row:001",
+          "odyssey:book:02:s5:row:005",
+          "odyssey:book:02:s5:row:010",
+          "odyssey:book:03:s5:row:002"
+        ],
+        "hit": true,
+        "lookback": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      {
+        "term": "약하고",
+        "locator": "odyssey:book:21:s2:row:003",
+        "sequence": 2000008,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:003",
+          "odyssey:book:21:s2:row:006",
+          "odyssey:book:24:s2:row:003",
+          "odyssey:book:01:s3:row:003",
+          "odyssey:book:01:s3:row:007",
+          "odyssey:book:02:s1:row:007",
+          "odyssey:book:02:s1:row:009",
+          "odyssey:book:02:s2:row:002"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "돼지기름",
+        "locator": "odyssey:book:21:s2:row:010",
+        "sequence": 2000015,
+        "book": 21,
+        "top": [
+          "odyssey:book:21:s2:row:009",
+          "odyssey:book:21:s2:row:010",
+          "odyssey:book:06:s5:row:002",
+          "odyssey:book:08:s1:row:004",
+          "odyssey:book:14:s2:row:002",
+          "odyssey:book:14:s5:row:001",
+          "odyssey:book:14:s5:row:002",
+          "odyssey:book:15:s7:row:008"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "뛰어올랐습니다",
+        "locator": "odyssey:book:22:s1:row:001",
+        "sequence": 2100001,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:001",
+          "odyssey:book:02:s8:row:006",
+          "odyssey:book:11:s7:row:004"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "살려주지",
+        "locator": "odyssey:book:22:s1:row:009",
+        "sequence": 2100009,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s1:row:009",
+          "odyssey:book:01:s5:row:005",
+          "odyssey:book:04:s3:row:008",
+          "odyssey:book:04:s7:row:009",
+          "odyssey:book:05:s1:row:003",
+          "odyssey:book:05:s7:row:006",
+          "odyssey:book:06:s7:row:003",
+          "odyssey:book:08:s1:row:003"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "뒷길을",
+        "locator": "odyssey:book:22:s2:row:007",
+        "sequence": 2100017,
+        "book": 22,
+        "top": [
+          "odyssey:book:22:s2:row:007",
+          "odyssey:book:01:s5:row:008",
+          "odyssey:book:01:s5:row:011",
+          "odyssey:book:01:s5:row:012",
+          "odyssey:book:02:s3:row:009",
+          "odyssey:book:02:s8:row:009",
+          "odyssey:book:03:s4:row:006",
+          "odyssey:book:03:s8:row:014"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "돌아왔다는",
+        "locator": "odyssey:book:23:s1:row:001",
+        "sequence": 2200001,
+        "book": 23,
+        "top": [
+          "odyssey:book:01:s4:row:006",
+          "odyssey:book:23:s1:row:001",
+          "odyssey:book:01:s5:row:008",
+          "odyssey:book:03:s4:row:007",
+          "odyssey:book:03:s6:row:009",
+          "odyssey:book:03:s6:row:011",
+          "odyssey:book:03:s8:row:006",
+          "odyssey:book:03:s8:row:007"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "현장에",
+        "locator": "odyssey:book:23:s1:row:005",
+        "sequence": 2200005,
+        "book": 23,
+        "top": [
+          "odyssey:book:08:s7:row:002",
+          "odyssey:book:23:s1:row:005"
+        ],
+        "hit": true,
+        "lookback": []
+      },
+      {
+        "term": "내려오며",
+        "locator": "odyssey:book:23:s2:row:001",
+        "sequence": 2200009,
+        "book": 23,
+        "top": [
+          "odyssey:book:22:s6:row:001",
+          "odyssey:book:23:s2:row:001",
+          "odyssey:book:01:s6:row:007",
+          "odyssey:book:03:s2:row:005",
+          "odyssey:book:03:s7:row:007",
+          "odyssey:book:03:s8:row:010",
+          "odyssey:book:04:s2:row:014",
+          "odyssey:book:05:s8:row:005"
+        ],
+        "hit": true,
+        "lookback": []
+      }
+    ],
+    "spoiler": [
+      {
+        "term": "살았고",
+        "before": "odyssey:book:24:s1:row:007",
+        "future": "odyssey:book:24:s1:row:008",
+        "leaked": false,
+        "maxOrdinal": 2300007,
+        "boundary": 2300007
+      },
+      {
+        "term": "필로이티오스에게",
+        "before": "odyssey:book:24:s2:row:002",
+        "future": "odyssey:book:24:s2:row:003",
+        "leaked": false,
+        "maxOrdinal": 2300014,
+        "boundary": 2300014
+      },
+      {
+        "term": "풀렸습니다",
+        "before": "odyssey:book:24:s2:row:009",
+        "future": "odyssey:book:24:s2:row:010",
+        "leaked": false,
+        "maxOrdinal": 2300021,
+        "boundary": 2300021
+      },
+      {
+        "term": "준비하는",
+        "before": "odyssey:book:24:s3:row:005",
+        "future": "odyssey:book:24:s4:row:001",
+        "leaked": false,
+        "maxOrdinal": 2300017,
+        "boundary": 2300028
+      },
+      {
+        "term": "하기를",
+        "before": "odyssey:book:24:s4:row:007",
+        "future": "odyssey:book:24:s4:row:008",
+        "leaked": false,
+        "maxOrdinal": 2300035,
+        "boundary": 2300035
+      }
+    ],
+    "grounded": [
+      {
+        "book": 21,
+        "term": "구혼자들끼리",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:21:s1:row:001"
+        ],
+        "pass": true
+      },
+      {
+        "book": 22,
+        "term": "뛰어올랐습니다",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:22:s1:row:001"
+        ],
+        "pass": true
+      },
+      {
+        "book": 23,
+        "term": "돌아왔다는",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:23:s1:row:001"
+        ],
+        "pass": true
+      },
+      {
+        "book": 24,
+        "term": "킬레네의",
+        "route": "SOURCE_GROUNDED",
+        "provenance": "SOURCE_GROUNDED",
+        "validation": "PASS",
+        "sourceRefs": [
+          "odyssey:book:24:s1:row:001"
+        ],
+        "pass": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "schema": "storymemory-v3410-rc2-ui-exposure-root-cause-1.0",
+  "baseline": {
+    "rc1_package_sha256": "27bb8caba09e45d665737b006bbba3d8b90a863d54c37712b0ed3ed601a41e9c",
+    "rc1_index_sha256": "d626453cabc80d50bb3ae19bb62707a71c7bc2c75492b370c7b80d63c2bc647f"
+  },
+  "classification": "WORK_KEY_MAPPING_MISSING",
+  "exact_code_paths": {
+    "library_cards": "dist/index.html:9426-9434 BOOKS",
+    "reader_handoff": "dist/index.html:10242-10248 openBook onclick -> setReaderContext({kind:'book', book:book.title,...}) -> showScreen('reader')",
+    "content_identity": "dist/index.html:15241-15249 STORYMEMORY_CONTENT_REGISTRY and :15259-15262 __SM_V321_BOOK_CONTENT_IDS",
+    "static_selector": "dist/index.html:15400-15410 STORYMEMORY_STATIC_WORK_KEYS -> storyMemoryStaticWorkKey",
+    "reader_binding": "dist/index.html:15652-15708 storyMemoryReaderContentForContext -> storyMemoryLoadReaderContent",
+    "unit_navigation": "dist/index.html:15825-15836 STORYMEMORY_PROSE_UNIT_CATALOG"
+  },
+  "comparison": {
+    "iliad": {"card": true, "content_identity": true, "static_work_key": "iliad", "unit_catalog": true, "reader_handoff": "reader"},
+    "odyssey": {"card": true, "content_identity": true, "static_work_key": "odyssey", "unit_catalog": true, "reader_handoff": "reader"},
+    "aeneid": {"card": false, "content_identity": false, "static_work_key": false, "unit_catalog": false, "reader_handoff": "not_reachable"},
+    "metamorphoses": {"card": false, "content_identity": false, "static_work_key": false, "unit_catalog": false, "reader_handoff": "not_reachable"},
+    "paradise-lost": {"card": false, "content_identity": false, "static_work_key": false, "unit_catalog": false, "reader_handoff": "not_reachable"},
+    "divine-comedy": {"card": false, "content_identity": false, "static_work_key": false, "unit_catalog": false, "reader_handoff": "not_reachable"}
+  },
+  "static_assets_verified_before_repair": {
+    "aeneid": {"manifest": "200", "unit_1": "200", "work_key": "aeneid"},
+    "metamorphoses": {"manifest": "200", "unit_1": "200", "work_key": "metamorphoses"},
+    "paradise-lost": {"manifest": "200", "unit_1": "200", "work_key": "paradise-lost"},
+    "divine-comedy": {"manifest": "200", "unit_1": "200", "work_key": "divine-comedy"}
+  },
+  "repair_boundary": "Add only Library card identities and existing static work-key/unit-navigation mappings for the four existing catalog works. Do not change dist/content, translation data, locators, hashes, or the four pre-SM093 fallback sources."
+}

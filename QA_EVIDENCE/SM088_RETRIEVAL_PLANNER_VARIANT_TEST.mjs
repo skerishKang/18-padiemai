@@ -1,0 +1,8 @@
+import fs from 'node:fs';import path from 'node:path';import {createRequire} from 'node:module';
+const require=createRequire(import.meta.url);const root=path.resolve(path.dirname(new URL(import.meta.url).pathname),'..');const rt=require(path.join(root,'dist','storymemory-universal-source-runtime.js'));const read=p=>JSON.parse(fs.readFileSync(p,'utf8'));const sr=path.join(root,'dist','content');
+const sa={async loadUnit({workKey,unitOrdinal}){const m=read(path.join(sr,workKey,'manifest.json'));const meta=m.units.find(x=>+x.unit_ordinal===+unitOrdinal);const unit=read(path.join(sr,workKey,meta.path));return {manifest:m,unit,unitMeta:meta,entry:{}}}};
+const h=rt.createStoryMemoryUniversalSourceRuntime({staticAdapter:sa,retrievalPlanner:async({query})=>({queryHints:query.includes('헬렌')?['헬레네','Helen']:[]})});
+await h.ingest({sourceId:'book:odyssey',sourceType:'book',workKey:'odyssey',unitOrdinal:20,fingerprint:'odyssey-sm053',metadata:{progressBounded:true}});const b20=read(path.join(sr,'odyssey','book-20.json'));h.setPosition('book:odyssey',b20.passages.at(-1).canonical_locator);
+const r=await h.retrieve({sourceId:'book:odyssey',query:'헬렌 처음 어디서 나왔지',limit:8});
+const gold='odyssey:book:04:s1:row:002';
+const result={schema:'storymemory-sm088-retrieval-planner-variant-1.0',status:r.evidence.some(x=>x.locator===gold)?'PASS':'FAIL',runtimeVersion:h.contract.version,query:'헬렌 처음 어디서 나왔지',queryHints:r.policy.queryHints,plannerUsed:r.policy.retrievalPlannerUsed,gold,top:r.evidence.map(x=>x.locator),hit:r.evidence.some(x=>x.locator===gold),fullSourceSent:r.policy.fullSourceSent};console.log(JSON.stringify(result,null,2));

@@ -1,0 +1,16 @@
+{
+  "schema": "sm092-neon-provider-contract-1.0",
+  "pass": true,
+  "calls": [
+    {
+      "table": "pack_verification_public_state",
+      "method": "GET",
+      "select": "attestation_id,pack_id,version,tier,source_fingerprint,verification_scope,attestation_status,issued_at,expires_at,revoked_at,verifier_id,verifier_display_name,verifier_kind,verifier_status,verifier_organization,credential_id,credential_type,credential_issuer,credential_status,credential_valid_from,credential_valid_until,credential_authority_scope,request_id,request_status,artifact_fingerprint"
+    },
+    {
+      "table": "pack_verification_requests",
+      "method": "POST",
+      "select": null
+    }
+  ]
+}

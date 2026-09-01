@@ -1,0 +1,32 @@
+{
+  "schema": "storymemory-sm089-auto-pack-ui-contract-result-1.0",
+  "positions": {
+    "marketRuntime": 691126,
+    "sourceUi": 691192,
+    "marketUi": 691243,
+    "autoRuntime": 691304,
+    "autoUi": 691363
+  },
+  "localRefs": 9,
+  "missing": [],
+  "checks": {
+    "css_loaded": true,
+    "runtime_loaded": true,
+    "ui_loaded": true,
+    "script_order": true,
+    "right_companion_mount": true,
+    "precision_launcher": true,
+    "quick_default": true,
+    "deep_explicit": true,
+    "private_generation_cta": true,
+    "no_auto_publish_copy": true,
+    "no_improvement_copy": true,
+    "provider_fallback_copy": true,
+    "generated_state_copy": true,
+    "runtime_private_default": true,
+    "runtime_no_source_body": true,
+    "local_assets_exist": true,
+    "css_present": true
+  },
+  "pass": true
+}

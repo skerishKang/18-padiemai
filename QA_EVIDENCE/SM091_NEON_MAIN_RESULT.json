@@ -1,0 +1,65 @@
+{
+  "schema": "sm091-neon-main-result-1.0",
+  "status": "PASS",
+  "projectId": "broad-breeze-39165056",
+  "branchId": "br-lingering-hall-avsosmlv",
+  "database": "neondb",
+  "postgresVersion": 18,
+  "migration": "DB_MIGRATIONS/STORYMEMORY_PACK_ENTITLEMENT_M6_v1.sql",
+  "migrationSha256": "b1f83ff40874058b4bda59e3170189259e8071b5fc5c3a7faf8ff444ec528628",
+  "migrationStatementsApplied": 43,
+  "monetaryTables": [
+    "pack_offers",
+    "pack_purchase_transactions",
+    "pack_payment_events",
+    "pack_entitlements",
+    "pack_settlement_entries"
+  ],
+  "monetaryViews": [
+    "pack_entitlement_access",
+    "pack_settlement_summary"
+  ],
+  "authenticatedPrivileges": "SELECT_ONLY",
+  "preMigrationRollback": {
+    "branchId": "br-dark-butterfly-avlg9b84",
+    "name": "pre-sm091-paid-entitlement-20260827",
+    "monetaryTables": 0
+  },
+  "mainPostApply": {
+    "rows": {
+      "offers": 0,
+      "purchases": 0,
+      "events": 0,
+      "entitlements": 0,
+      "settlements": 0
+    },
+    "knowledge": {
+      "entities": 98,
+      "aliases": 108,
+      "mentions": 641,
+      "relationships": 147,
+      "answerCards": 98,
+      "citations": 145,
+      "sourcePassages": 0
+    },
+    "marketplace": {
+      "registryRows": 1,
+      "versionRows": 1
+    }
+  },
+  "validation": {
+    "freeAccessNoPurchase": true,
+    "paidNeedsEntitlement": true,
+    "zeroAmountOfferBlocked": true,
+    "paymentSensitiveMetadataBlocked": true,
+    "paidSettlementNeedsPayoutReference": true,
+    "verifiedPurchaseEntitlementSettlementChain": true,
+    "validationCleanupResidual": 0
+  },
+  "mutationBoundary": {
+    "neon": "PACK_MONETARY_DURABLE_METADATA_SCHEMA_ONLY",
+    "knowledgeDb": "NONE",
+    "sourceBodyDb": "NONE",
+    "livePaymentProvider": "NOT_CONNECTED"
+  }
+}

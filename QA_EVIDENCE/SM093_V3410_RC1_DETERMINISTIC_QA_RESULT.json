@@ -1,0 +1,13 @@
+{
+  "schema": "storymemory-v3410-rc1-deterministic-qa-1.0",
+  "status": "PARTIAL",
+  "tests": {
+    "SM082_CURRENT_READER_BRIDGE_TEST.cjs": {"status": "PASS", "fullSourceSent": false, "locator": "odyssey:book:17:s1:row:004"},
+    "SM087_SOURCE_UI_CONTRACT_TEST.cjs": {"status": "PASS", "fullSourceSent": false, "source_passages": 0, "contract": "storymemory-source-ui-1.0"},
+    "SM082_UNIVERSAL_SOURCE_HARNESS_TEST.mjs": {"status": "PASS", "fullSourceSent": false, "source_passages": 0},
+    "SM054_STATIC_ADAPTER_CONTRACT_TEST.mjs": {"status": "UNAVAILABLE", "reason": "Test hardcodes /mnt/data/index_v3.3.3.html, which is not present in the candidate package."}
+  },
+  "required_contracts": {"fullSourceSent": false, "source_passages": 0},
+  "fail_closed": true,
+  "scope": "Candidate-only deterministic checks; unavailable historical-path test is not reported as PASS."
+}

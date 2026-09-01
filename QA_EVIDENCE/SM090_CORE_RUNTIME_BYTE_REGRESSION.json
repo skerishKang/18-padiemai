@@ -1,0 +1,37 @@
+{
+  "schema": "sm090-core-runtime-byte-regression-1.1",
+  "baseline": "StoryMemory v3.4.6",
+  "files": {
+    "storymemory-universal-source-runtime.js": {
+      "same": true,
+      "sha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+      "baselineSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc"
+    },
+    "storymemory-source-ui.js": {
+      "same": true,
+      "sha256": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+      "baselineSha256": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008"
+    },
+    "storymemory-pack-marketplace-runtime.js": {
+      "same": true,
+      "sha256": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+      "baselineSha256": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7"
+    },
+    "storymemory-pack-marketplace-ui.js": {
+      "same": true,
+      "sha256": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+      "baselineSha256": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e"
+    },
+    "storymemory-auto-pack-runtime.js": {
+      "same": true,
+      "sha256": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221",
+      "baselineSha256": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221"
+    },
+    "storymemory-auto-pack-ui.js": {
+      "same": true,
+      "sha256": "7fdf297ae55178c51f14ace91e979dd54c837a6320c28295ab9967adf4d5d6bd",
+      "baselineSha256": "7fdf297ae55178c51f14ace91e979dd54c837a6320c28295ab9967adf4d5d6bd"
+    }
+  },
+  "pass": true
+}

@@ -1,0 +1,58 @@
+{
+  "schema": "storymemory-sm085-javascript-syntax-1.0",
+  "externalCount": 4,
+  "inlineNonEmptyCount": 6,
+  "checks": [
+    {
+      "file": "dist/storymemory-universal-source-runtime.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "dist/storymemory-source-ui.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "dist/storymemory-pack-marketplace-runtime.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "dist/storymemory-pack-marketplace-ui.js",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "inline-script-1",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "inline-script-2",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "inline-script-3",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "inline-script-4",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "inline-script-5",
+      "pass": true,
+      "stderr": ""
+    },
+    {
+      "file": "inline-script-6",
+      "pass": true,
+      "stderr": ""
+    }
+  ],
+  "pass": true
+}

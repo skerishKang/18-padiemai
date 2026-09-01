@@ -1,0 +1,26 @@
+{
+  "schema": "storymemory-sm084-delta-inventory-1.0",
+  "baseVersion": "3.4.2",
+  "newVersion": "3.4.3",
+  "changedExisting": [
+    "dist/storymemory-universal-source-runtime.js",
+    "dist/version.json"
+  ],
+  "added": [
+    "PATCH_NOTES_v3.4.3.md",
+    "QA_EVIDENCE/SM084_DELTA_INVENTORY.json",
+    "QA_EVIDENCE/SM084_EXISTING_REGRESSION_RESULT.json",
+    "QA_EVIDENCE/SM084_EXISTING_REGRESSION_STDOUT.txt",
+    "QA_EVIDENCE/SM084_JAVASCRIPT_SYNTAX_RESULT.json",
+    "QA_EVIDENCE/SM084_PACKAGE_SUMMARY.json",
+    "QA_EVIDENCE/SM084_PACK_SCHEMA_VALIDATION.json",
+    "QA_EVIDENCE/SM084_PRECISION_PACK_RUNTIME_RESULT.json",
+    "QA_EVIDENCE/SM084_PRECISION_PACK_RUNTIME_STDOUT.txt",
+    "QA_EVIDENCE/SM084_PRECISION_PACK_RUNTIME_TEST.mjs",
+    "QA_EVIDENCE/SM084_V342_CONTENT_BYTE_REGRESSION.json",
+    "SM084_PRECISION_PACK_RUNTIME_REPORT_v1.md",
+    "dist/packs/odyssey-precision-demo-v1.json",
+    "dist/packs/storymemory-precision-pack-1.0.schema.json"
+  ],
+  "removed": []
+}

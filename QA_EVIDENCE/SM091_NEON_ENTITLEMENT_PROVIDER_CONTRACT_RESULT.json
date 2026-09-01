@@ -1,0 +1,15 @@
+{
+  "schema": "sm091-neon-entitlement-provider-result-1.0",
+  "pass": true,
+  "checks": {
+    "readTables": [
+      "pack_offers",
+      "pack_entitlements",
+      "pack_purchase_transactions"
+    ],
+    "noWrites": true,
+    "intentBlocked": true,
+    "eventBlocked": true,
+    "settlementBlocked": true
+  }
+}

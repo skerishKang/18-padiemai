@@ -1,0 +1,320 @@
+{
+  "schema": "storymemory-sm090-package-summary-1.0",
+  "packageVersion": "3.4.7",
+  "task": "SM-090 Pack Version / Rating / Fork Lifecycle",
+  "status": "PASS",
+  "runtimeContract": "storymemory-pack-lifecycle-1.0",
+  "marketplaceStage": "M5",
+  "fullRegression": {
+    "schema": "storymemory-sm090-regression-result-1.1",
+    "pass": true,
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "tests": [
+      {
+        "test": "SM054_STATIC_ADAPTER_CONTRACT_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM057_HYBRID_AI_CONTEXT_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM058_PRODUCTION_RUNTIME_CONTRACT_TEST.cjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM058_STATIC_READER_REGRESSION_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM058_HYBRID_AI_REGRESSION_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM082_CURRENT_READER_BRIDGE_TEST.cjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM082_UNIVERSAL_SOURCE_HARNESS_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM083_TRUST_PROVENANCE_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM084_PRECISION_PACK_RUNTIME_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM087_SOURCE_UI_CONTRACT_TEST.cjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM088_GOLD_RECALL_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM088_BOOK21_24_BLIND_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM088_RETRIEVAL_PLANNER_VARIANT_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM085_PACK_MARKETPLACE_RUNTIME_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM085_NEON_PACK_PROVIDER_CONTRACT_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM085_MARKETPLACE_UI_CONTRACT_TEST.cjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM089_AUTO_PACK_GENERATION_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM089_AUTO_PACK_UI_CONTRACT_TEST.cjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM090_PACK_LIFECYCLE_RUNTIME_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM090_NEON_LIFECYCLE_PROVIDER_CONTRACT_TEST.mjs",
+        "status": "PASS"
+      },
+      {
+        "test": "SM090_PACK_LIFECYCLE_UI_CONTRACT_TEST.cjs",
+        "status": "PASS"
+      }
+    ]
+  },
+  "staticCorpus": {
+    "works": 6,
+    "units": 185,
+    "passages": 12628,
+    "distContentFiles": 192,
+    "changed": 0,
+    "missing": 0,
+    "extra": 0
+  },
+  "coreRuntimeByteRegression": {
+    "schema": "sm090-core-runtime-byte-regression-1.1",
+    "baseline": "StoryMemory v3.4.6",
+    "files": {
+      "storymemory-universal-source-runtime.js": {
+        "same": true,
+        "sha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+        "baselineSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc"
+      },
+      "storymemory-source-ui.js": {
+        "same": true,
+        "sha256": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008",
+        "baselineSha256": "d67f12072754d912fcf0ba98db5d27057722e46b7d98ce56239bfbd66308f008"
+      },
+      "storymemory-pack-marketplace-runtime.js": {
+        "same": true,
+        "sha256": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+        "baselineSha256": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7"
+      },
+      "storymemory-pack-marketplace-ui.js": {
+        "same": true,
+        "sha256": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+        "baselineSha256": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e"
+      },
+      "storymemory-auto-pack-runtime.js": {
+        "same": true,
+        "sha256": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221",
+        "baselineSha256": "cb464a30977e973f0a48753c58616ea38b799786bee6476837273c2348914221"
+      },
+      "storymemory-auto-pack-ui.js": {
+        "same": true,
+        "sha256": "7fdf297ae55178c51f14ace91e979dd54c837a6320c28295ab9967adf4d5d6bd",
+        "baselineSha256": "7fdf297ae55178c51f14ace91e979dd54c837a6320c28295ab9967adf4d5d6bd"
+      }
+    },
+    "pass": true
+  },
+  "javascriptSyntax": {
+    "schema": "sm090-javascript-syntax-result-1.0",
+    "externalCount": 8,
+    "inlineCount": 6,
+    "external": [
+      {
+        "file": "storymemory-auto-pack-runtime.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-auto-pack-ui.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-pack-lifecycle-runtime.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-pack-lifecycle-ui.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-pack-marketplace-runtime.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-pack-marketplace-ui.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-source-ui.js",
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "file": "storymemory-universal-source-runtime.js",
+        "pass": true,
+        "stderr": ""
+      }
+    ],
+    "inline": [
+      {
+        "index": 1,
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 2,
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 3,
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 4,
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 5,
+        "pass": true,
+        "stderr": ""
+      },
+      {
+        "index": 6,
+        "pass": true,
+        "stderr": ""
+      }
+    ],
+    "pass": true
+  },
+  "localAssets": {
+    "schema": "sm090-local-asset-result-1.0",
+    "localRefs": 12,
+    "missing": [],
+    "pass": true
+  },
+  "neonMain": {
+    "schema": "sm090-neon-main-result-1.0",
+    "status": "PASS",
+    "projectId": "broad-breeze-39165056",
+    "branchId": "br-lingering-hall-avsosmlv",
+    "database": "neondb",
+    "postgresVersion": 18,
+    "migration": "DB_MIGRATIONS/STORYMEMORY_PACK_LIFECYCLE_M5_v1.sql",
+    "migrationSha256": "4df7e63aedabd27ef2c65893d59310374c1749000fd33ea766ecf1e9c0c4f29a",
+    "migrationStatementsApplied": 26,
+    "lifecycleTables": [
+      "pack_feedback",
+      "pack_ratings",
+      "pack_version_proposals"
+    ],
+    "lifecycleViews": [
+      "pack_rating_summary"
+    ],
+    "policies": [
+      "pack_feedback_own",
+      "pack_ratings_own",
+      "pack_version_proposals_creator_delete",
+      "pack_version_proposals_creator_insert",
+      "pack_version_proposals_creator_update",
+      "pack_version_proposals_own_read"
+    ],
+    "preMigrationRollback": {
+      "branchId": "br-long-wave-avz3ah77",
+      "name": "pre-sm090-pack-lifecycle-20260827",
+      "lifecycleTables": 0
+    },
+    "mainPostApply": {
+      "knowledge": {
+        "entities": 98,
+        "aliases": 108,
+        "mentions": 641,
+        "relationships": 147,
+        "answerCards": 98,
+        "citations": 145,
+        "sourcePassages": 0
+      },
+      "marketplace": {
+        "registryRows": 1,
+        "versionRows": 1,
+        "attestations": 0,
+        "installs": 0
+      },
+      "lifecycleRowsAfterCleanup": {
+        "versionProposals": 0,
+        "ratings": 0,
+        "feedback": 0
+      }
+    },
+    "positiveFixture": {
+      "rating": true,
+      "feedbackWithLocator": true,
+      "versionProposal": true,
+      "ratingSummary": true,
+      "cleanupResidual": 0
+    },
+    "negativeValidation": {
+      "ratingOutOfRangeBlocked": true,
+      "correctionWithoutLocatorBlocked": true,
+      "sourceBodyCorrectionBlocked": true,
+      "sourceTextInVersionProposalBlocked": true
+    },
+    "mutationBoundary": {
+      "neon": "PACK_LIFECYCLE_METADATA_SCHEMA_ONLY",
+      "knowledgeDb": "NONE",
+      "sourceBodyDb": "NONE",
+      "book21PlusManualKnowledge": "NONE"
+    }
+  },
+  "newRuntimeFiles": {
+    "dist/storymemory-pack-lifecycle-runtime.js": "a4f5ecbcbe00a9691c278a040befb5d1055300f71e153caf63303a44e5646d98",
+    "dist/storymemory-pack-lifecycle-ui.js": "a8135f8e5e55bfc41c5337cd8db0ed2bca77d892ca6e57182dc48d9008b14f16",
+    "dist/storymemory-pack-lifecycle-ui.css": "9d8d894e307b82252779d604f1662931dfa3129462fa2f90bcc4ba72d8a6d99e"
+  },
+  "migrationSha256": "4df7e63aedabd27ef2c65893d59310374c1749000fd33ea766ecf1e9c0c4f29a",
+  "mutationBoundary": {
+    "neon": "PACK_LIFECYCLE_METADATA_SCHEMA_ONLY",
+    "knowledgeDb": "NONE",
+    "sourceBodyDb": "NONE",
+    "book21PlusManualKnowledge": "NONE"
+  },
+  "deployment": "DEFERRED_TO_BI_PORTAL",
+  "portalTargetRoute": "/b61/"
+}

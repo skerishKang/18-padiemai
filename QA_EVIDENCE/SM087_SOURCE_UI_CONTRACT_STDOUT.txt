@@ -1,0 +1,38 @@
+{
+  "status": "PASS",
+  "schema": "storymemory-source-ui-1.0",
+  "fixtures": [
+    {
+      "id": "source-contract-demo",
+      "kind": "contract",
+      "blocks": 3,
+      "trust": "STRICT",
+      "firstLocator": "doc:source-contract-demo:page:1:block:1"
+    },
+    {
+      "id": "source-workbook-demo",
+      "kind": "workbook",
+      "blocks": 4,
+      "trust": "GROUNDED",
+      "firstLocator": "workbook:source-workbook-demo:problem:1"
+    },
+    {
+      "id": "source-transcript-demo",
+      "kind": "transcript",
+      "blocks": 3,
+      "trust": "EXPLORE",
+      "firstLocator": "url:source-transcript-demo:t:0-30000"
+    }
+  ],
+  "contractStrictEvidence": true,
+  "workbookTutorAnswerHidden": true,
+  "userPrivateImport": true,
+  "bookSkinPreserved": true,
+  "universalRuntimePreserved": true,
+  "fullSourceSent": false,
+  "explicitNonClaims": [
+    "raw PDF OCR/acquisition",
+    "live URL/YouTube fetch",
+    "STT/transcript acquisition"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "storymemory-sm088-retrieval-planner-variant-1.0",
+  "status": "PASS",
+  "runtimeVersion": "1.3.0",
+  "query": "헬렌 처음 어디서 나왔지",
+  "queryHints": [
+    "헬레네",
+    "Helen"
+  ],
+  "plannerUsed": true,
+  "gold": "odyssey:book:04:s1:row:002",
+  "top": [
+    "odyssey:book:04:s1:row:002",
+    "odyssey:book:04:s2:row:001",
+    "odyssey:book:04:s2:row:002",
+    "odyssey:book:04:s2:row:003",
+    "odyssey:book:04:s2:row:010",
+    "odyssey:book:04:s2:row:017",
+    "odyssey:book:04:s2:row:018",
+    "odyssey:book:04:s2:row:027"
+  ],
+  "hit": true,
+  "fullSourceSent": false
+}

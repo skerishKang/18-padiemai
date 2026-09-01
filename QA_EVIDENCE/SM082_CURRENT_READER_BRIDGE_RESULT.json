@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "sourceId": "book:odyssey",
+  "unitOrdinal": 17,
+  "locator": "odyssey:book:17:s1:row:004",
+  "memoryBridge": 1,
+  "fullSourceSent": false,
+  "uiRebinding": false
+}

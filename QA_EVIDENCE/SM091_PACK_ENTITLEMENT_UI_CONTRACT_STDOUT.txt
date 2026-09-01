@@ -1,0 +1,14 @@
+{
+  "schema": "sm091-entitlement-ui-contract-result-1.0",
+  "checks": {
+    "cssLinked": true,
+    "runtimeLinked": true,
+    "uiLinked": true,
+    "freePaidLabel": true,
+    "noFakeSuccess": true,
+    "restore": true,
+    "paymentBoundary": true,
+    "style": true
+  },
+  "pass": true
+}

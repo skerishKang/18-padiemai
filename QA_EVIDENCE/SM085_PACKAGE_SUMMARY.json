@@ -1,0 +1,69 @@
+{
+  "schema": "storymemory-sm085-package-summary-1.0",
+  "version": "3.4.5",
+  "build": "SM-085-pack-registry-marketplace-mvp",
+  "baseVersion": "3.4.4",
+  "runtime": {
+    "universal": "storymemory-universal-source-runtime-1.0 v1.4.0",
+    "packRegistry": "storymemory-pack-registry-1.0 v1.0.0",
+    "precisionPack": "storymemory-precision-pack-1.0"
+  },
+  "neon": {
+    "projectId": "broad-breeze-39165056",
+    "mainBranchId": "br-lingering-hall-avsosmlv",
+    "rollbackBranchId": "br-sweet-bonus-avyx2twz",
+    "tables": [
+      "pack_registry",
+      "pack_versions",
+      "pack_attestations",
+      "pack_installs"
+    ],
+    "registryRows": 1,
+    "versionRows": 1,
+    "attestationRows": 0,
+    "installRows": 0,
+    "knowledgeDbMutation": "NONE",
+    "sourceBodyDbMutation": "NONE"
+  },
+  "qa": {
+    "marketplaceRuntime": true,
+    "neonProviderContract": true,
+    "marketplaceUiContract": true,
+    "existingRegression": "16/16 PASS",
+    "javascriptSyntax": true,
+    "localAssets": true,
+    "contentByteRegression": {
+      "files": 192,
+      "changed": 0,
+      "missing": 0,
+      "extra": 0
+    },
+    "universalRuntimeByteIdentical": true
+  },
+  "seedPack": {
+    "id": "pack:odyssey:korean-alias-public:v1",
+    "version": "1.0.0",
+    "pricing": "free",
+    "trust": "auto-generated/unverified",
+    "sourceBodyIncluded": false,
+    "artifactFingerprint": "fnv1a:46e27cfa"
+  },
+  "deployment": {
+    "cloudflarePortalDnsMutation": "NONE",
+    "state": "DEFERRED_TO_BI_PORTAL",
+    "targetRoute": "/b61/"
+  },
+  "keyFileSha256": {
+    "dist/storymemory-pack-marketplace-runtime.js": "4bba81a8b6af280f3135aea01c68d9385be52edb9b119efc2b89a937296128f7",
+    "dist/storymemory-pack-marketplace-ui.js": "faed8befcc44d0d6d592f23e6c59a89549ddd407fa54a66a36cc2db9440a732e",
+    "dist/storymemory-pack-marketplace-ui.css": "412d12b62d70bc1d65d1eea45197fbfe55f6de5eb004228e1046ada7e89c9558",
+    "dist/packs/marketplace-catalog-v1.json": "b62614274d4cd4f82ca3c2be23b43a524531e51210570defe9dceaab7fedca37",
+    "dist/packs/odyssey-korean-alias-public-v1.json": "30175e60d10f00f88d99b8fee980b35a27f566c99ece92afb7546e3dcaa303b0",
+    "DB_MIGRATIONS/STORYMEMORY_PACK_REGISTRY_MVP_v1.sql": "a55fea4ef95c8ca0812472ac248a3e61583215bb298d14d9045afc7d2deb2f4f",
+    "SM085_PACK_REGISTRY_MARKETPLACE_MVP_REPORT_v1.md": "f185424e4b77be50ea2278ce198b937cd235d01a92821777d05817e8d12fdf79",
+    "QA_EVIDENCE/SM085_PACK_MARKETPLACE_RUNTIME_RESULT.json": "af2d37e46a2358347c250bcd61b7d2dacbe48ea9c7357e21846d43614035fe63",
+    "QA_EVIDENCE/SM085_NEON_PACK_PROVIDER_CONTRACT_RESULT.json": "00f7c54b354276b8dc2d43ac55683b07f5fba6b9df756c608af35c0fc68a6240",
+    "QA_EVIDENCE/SM085_MARKETPLACE_UI_CONTRACT_RESULT.json": "851cee634a284183d46ebad5986b5804de714c79c818f5f36ee7be1a7f844416",
+    "QA_EVIDENCE/SM085_NEON_REGISTRY_MAIN_RESULT.json": "6af5467607377961b0647e506a1685b7e3a00ec87d73789fa3647c783247648e"
+  }
+}

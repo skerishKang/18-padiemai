@@ -1,0 +1,31 @@
+{
+  "pass": true,
+  "runtimeContract": {
+    "version": "1.0.0",
+    "staticBodyMode": "authoritative",
+    "remoteMetadataMode": "authenticated",
+    "remoteUserStateMode": "authenticated",
+    "legacyDbBodyRemote": false,
+    "canonicalIdentity": "canonical_locator",
+    "expectedMainRegistry": {
+      "activeContentVersions": 6,
+      "contentUnitIndex": 185
+    },
+    "deployment": "DEFERRED_TO_BI_PORTAL",
+    "businessId": "B61",
+    "portalTargetRoute": "/b61/"
+  },
+  "registry": {
+    "activeContentVersions": 6,
+    "contentUnitIndex": 185
+  },
+  "registryMatchesExpected": true,
+  "legacyBodyRequests": 0,
+  "canonicalKnowledgeFields": true,
+  "annotationCanonicalPayload": true,
+  "progressCanonicalOnly": true,
+  "legacyAnnotationRejected": true,
+  "bibleLegacyBodyFallbackDisabled": true,
+  "authSessionAutoActivatesRemote": true,
+  "totalMockApiCalls": 6
+}

@@ -1,0 +1,15 @@
+{
+  "schema": "sm090-pack-lifecycle-ui-contract-1.0",
+  "pass": true,
+  "checks": {
+    "cssLinked": true,
+    "runtimeLoaded": true,
+    "uiLoaded": true,
+    "actions": true,
+    "reviewLanguage": true,
+    "forkPrivateLanguage": true,
+    "versionReviewLanguage": true,
+    "ratingVersionScoped": true,
+    "cssPresent": true
+  }
+}

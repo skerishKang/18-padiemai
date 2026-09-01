@@ -1,0 +1,61 @@
+{
+  "schema": "sm092-delta-inventory-1.0",
+  "files": [
+    {
+      "file": "dist/index.html",
+      "new": true,
+      "previous": true,
+      "changed": true,
+      "newSha256": "7264b2d79f4610a466a1fd0bcf61ae3cdaf6c20a6b425c6831bb1f8685eddf66",
+      "previousSha256": "dd907e2ff1214f2e649897d4a5e9f7905e09743e72fe954e4f80ec6b0334b881"
+    },
+    {
+      "file": "dist/version.json",
+      "new": true,
+      "previous": true,
+      "changed": true,
+      "newSha256": "cf1681c9b83049fe12e56330104691e4b0d7bd6173f475cebc5ce86add96e175",
+      "previousSha256": "ce310ca55bc1025efd36914c274410e1d6be8487a708af5dd047f5290a83af13"
+    },
+    {
+      "file": "dist/storymemory-universal-source-runtime.js",
+      "new": true,
+      "previous": true,
+      "changed": true,
+      "newSha256": "9e3b405b4f8fa7c23e77cdc166e7681340bb1003ec3e307f574ddca3fdf7639f",
+      "previousSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc"
+    },
+    {
+      "file": "dist/storymemory-pack-verification-runtime.js",
+      "new": true,
+      "previous": false,
+      "changed": true,
+      "newSha256": "76eedb163ff3a5cf2e4f202cd322c3916fde68382a4ff7c7d1183157ce08ea57",
+      "previousSha256": null
+    },
+    {
+      "file": "dist/storymemory-pack-verification-ui.js",
+      "new": true,
+      "previous": false,
+      "changed": true,
+      "newSha256": "013e99d27759adb2312298d788c76b35ce7017c1f55db12e158b95032a0b9c9c",
+      "previousSha256": null
+    },
+    {
+      "file": "dist/storymemory-pack-verification-ui.css",
+      "new": true,
+      "previous": false,
+      "changed": true,
+      "newSha256": "b791a00bb3872b83df2bb827f4c1f2eebfdc5fc60e01968eef1673e3bc523a76",
+      "previousSha256": null
+    },
+    {
+      "file": "DB_MIGRATIONS/STORYMEMORY_PACK_VERIFICATION_M7_v1.sql",
+      "new": true,
+      "previous": false,
+      "changed": true,
+      "newSha256": "37dca9baf8826367bceb3f7ba78a739b5e0a5a80fc72c179aaa9d20770aa5fe8",
+      "previousSha256": null
+    }
+  ]
+}

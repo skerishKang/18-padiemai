@@ -1,0 +1,215 @@
+{
+  "schema": "storymemory-sm084-precision-pack-runtime-result-1.0",
+  "runtimeVersion": "1.4.0",
+  "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+  "packId": "pack:odyssey:precision-demo:v1",
+  "baseline": {
+    "exactHelenFirstMention": false,
+    "queryHints": [],
+    "relevantLocators": []
+  },
+  "attached": {
+    "compatibility": {
+      "compatible": true,
+      "reason": "COMPATIBLE",
+      "mode": "exact-fingerprint",
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "expectedFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "sourceId": "book:odyssey-sm084",
+      "sourceRevision": "storymemory-static-content-1.0",
+      "language": "ko",
+      "locatorScheme": "book",
+      "artifactFingerprint": "fnv1a:5161d69f"
+    },
+    "pack": {
+      "id": "pack:odyssey:precision-demo:v1",
+      "name": "Odyssey Korean Alias + Gold Demo Pack",
+      "kind": "companion",
+      "version": "1.0.0",
+      "priority": 20,
+      "declaredTrustTier": "curated",
+      "trustTier": "curated",
+      "trustAttested": true,
+      "attestation": {
+        "trusted": true,
+        "attestationId": "qa:sm084:odyssey-demo",
+        "verifiedBy": "sm084-qa",
+        "effectiveTrustTier": "curated"
+      },
+      "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+      "verifiedTier": true,
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "artifactFingerprint": "fnv1a:5161d69f",
+      "compatibility": {
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book"
+      },
+      "rights": {
+        "declaration": "QA demo metadata/derived annotations only; no full Source text included",
+        "sourceTextIncluded": false,
+        "visibility": "private-qa"
+      },
+      "metadata": {
+        "purpose": "SM-084 attach/detach and provenance QA fixture",
+        "marketplaceEligible": false
+      },
+      "compatibilityReport": {
+        "compatible": true,
+        "reason": "COMPATIBLE",
+        "mode": "exact-fingerprint",
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "expectedFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "sourceId": "book:odyssey-sm084",
+        "sourceRevision": "storymemory-static-content-1.0",
+        "language": "ko",
+        "locatorScheme": "book",
+        "artifactFingerprint": "fnv1a:5161d69f"
+      }
+    },
+    "list": [
+      {
+        "id": "pack:odyssey:precision-demo:v1",
+        "name": "Odyssey Korean Alias + Gold Demo Pack",
+        "kind": "companion",
+        "version": "1.0.0",
+        "priority": 20,
+        "declaredTrustTier": "curated",
+        "trustTier": "curated",
+        "trustAttested": true,
+        "attestation": {
+          "trusted": true,
+          "attestationId": "qa:sm084:odyssey-demo",
+          "verifiedBy": "sm084-qa",
+          "effectiveTrustTier": "curated"
+        },
+        "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+        "verifiedTier": true,
+        "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+        "artifactFingerprint": "fnv1a:5161d69f",
+        "compatibility": {
+          "mode": "exact-fingerprint",
+          "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+          "sourceRevision": "storymemory-static-content-1.0",
+          "language": "ko",
+          "locatorScheme": "book"
+        },
+        "rights": {
+          "declaration": "QA demo metadata/derived annotations only; no full Source text included",
+          "sourceTextIncluded": false,
+          "visibility": "private-qa"
+        },
+        "metadata": {
+          "purpose": "SM-084 attach/detach and provenance QA fixture",
+          "marketplaceEligible": false
+        }
+      }
+    ]
+  },
+  "improved": {
+    "exactHelenFirstMention": true,
+    "queryHints": [
+      "헬레네",
+      "Helen"
+    ],
+    "relevantLocators": [
+      "odyssey:book:04:s1:row:002",
+      "odyssey:book:04:s2:row:001",
+      "odyssey:book:04:s2:row:002",
+      "odyssey:book:04:s2:row:003",
+      "odyssey:book:04:s2:row:010",
+      "odyssey:book:04:s2:row:017",
+      "odyssey:book:04:s2:row:018",
+      "odyssey:book:04:s2:row:027"
+    ]
+  },
+  "verified": {
+    "evidence": [
+      {
+        "packId": "pack:odyssey:precision-demo:v1",
+        "packName": "Odyssey Korean Alias + Gold Demo Pack",
+        "packVersion": "1.0.0",
+        "kind": "companion",
+        "trustTier": "curated",
+        "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+        "artifactFingerprint": "fnv1a:5161d69f",
+        "sourceValidated": true,
+        "verified": true,
+        "id": "philoetius",
+        "type": "entity",
+        "text": "필로이티오스는 오디세우스에게 충성하는 소몰이꾼으로 소개된다.",
+        "sourceText": "",
+        "locator": "odyssey:book:20:s3:row:008",
+        "sourceRefs": [
+          "odyssey:book:20:s3:row:008"
+        ],
+        "score": 5,
+        "metadata": {
+          "packKnowledge": true
+        }
+      }
+    ],
+    "provenance": {
+      "label": "VERIFIED",
+      "reason": "verified-pack-evidence-used",
+      "trustMode": "GROUNDED",
+      "sourceRefs": [
+        "odyssey:book:20:s4:row:002",
+        "odyssey:book:20:s3:row:007"
+      ],
+      "packRefs": [
+        {
+          "id": "pack:odyssey:precision-demo:v1",
+          "name": "Odyssey Korean Alias + Gold Demo Pack",
+          "version": "1.0.0",
+          "trustTier": "curated",
+          "verificationScope": "Selected Odyssey alias/disambiguation facts with exact Static Corpus locators; SM-084 QA demo only",
+          "artifactFingerprint": "fnv1a:5161d69f",
+          "sourceValidated": true,
+          "verified": true
+        }
+      ],
+      "verificationTier": "curated",
+      "sourceFingerprint": "268cf938678308dbebbea0aee320567f2d9aac31087e557f43a70708676efc7a",
+      "questionType": "TEXTUAL_FACT"
+    }
+  },
+  "guards": {
+    "mismatchError": "PACK_SOURCE_FINGERPRINT_MISMATCH",
+    "revisionError": "PACK_SOURCE_REVISION_MISMATCH",
+    "artifactError": "PACK_ARTIFACT_FINGERPRINT_MISMATCH",
+    "missingIdentityError": "PACK_COMPATIBILITY_IDENTITY_REQUIRED"
+  },
+  "detached": {
+    "detached": true,
+    "list": [],
+    "exactHelenFirstMention": false
+  },
+  "checks": {
+    "schema": true,
+    "compatibility": true,
+    "attached": true,
+    "baseline_miss": true,
+    "pack_improves_exact_locator": true,
+    "pack_query_hint_used": true,
+    "verified_requires_source_locator": true,
+    "verified_provenance": true,
+    "verified_requires_attestation": true,
+    "self_declared_curated_not_verified": true,
+    "harness_soft_policy_applied": true,
+    "harness_hard_rules_blocked": true,
+    "harness_cannot_lower_grounded": true,
+    "fingerprint_mismatch_blocked": true,
+    "revision_mismatch_blocked": true,
+    "artifact_mismatch_blocked": true,
+    "missing_identity_blocked": true,
+    "detach_success": true,
+    "detach_restores_baseline": true,
+    "memory_preserved": true,
+    "precision_state_restored": true,
+    "no_provider_required": true
+  },
+  "pass": true
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "storymemory-sm085-neon-registry-main-result-1.0",
+  "projectId": "broad-breeze-39165056",
+  "mainBranchId": "br-lingering-hall-avsosmlv",
+  "rollbackBranchId": "br-sweet-bonus-avyx2twz",
+  "rollbackBranchName": "pre-sm085-pack-registry-20260827",
+  "registryTables": ["pack_attestations", "pack_installs", "pack_registry", "pack_versions"],
+  "registryRows": 1,
+  "versionRows": 1,
+  "attestationRows": 0,
+  "installRows": 0,
+  "seedPack": {
+    "packId": "pack:odyssey:korean-alias-public:v1",
+    "name": "Odyssey Korean Alias Helper",
+    "visibility": "public",
+    "pricingMode": "free",
+    "publicationStatus": "published",
+    "latestVersion": "1.0.0",
+    "sourceTextIncluded": false,
+    "declaredTrustTier": "auto-generated",
+    "artifactFingerprint": "fnv1a:46e27cfa"
+  },
+  "goldKnowledgeAfterMigration": {
+    "entities": 98,
+    "aliases": 108,
+    "mentions": 641,
+    "relationships": 147,
+    "answerCards": 98,
+    "citations": 145,
+    "sourcePassages": 0,
+    "activeContentVersions": 6,
+    "activeUnits": 185
+  },
+  "validation": {
+    "tempBranchSchemaDiffAfterMainPromotion": "EMPTY",
+    "sourceBodyTrueRejected": true,
+    "privatePublishedRejected": true,
+    "authenticatedAttestationWriteGranted": false
+  },
+  "knowledgeDbMutation": "NONE",
+  "sourceBodyDbMutation": "NONE",
+  "pass": true
+}

@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "mapping": {
+    "iliad": "iliad",
+    "odyssey": "odyssey",
+    "crime": "crime-and-punishment",
+    "bible": "bible-web",
+    "pride": "pride-and-prejudice",
+    "alice": "alice-in-wonderland"
+  },
+  "bible": {
+    "unitKey": "book:1CO:chapter:001",
+    "locator": "bible:web:1CO:1:1",
+    "book": "1CO",
+    "chapter": 1,
+    "verse": "1",
+    "mode": "static"
+  },
+  "crime": {
+    "locator": "crime-and-punishment:chapter:002:paragraph:0001",
+    "mode": "static"
+  }
+}

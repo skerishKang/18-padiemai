@@ -1,0 +1,255 @@
+=== SM082_UNIVERSAL ===
+{
+  "schema": "storymemory-universal-source-runtime-1.0",
+  "version": "1.3.0",
+  "status": "PASS",
+  "sourceTypes": [
+    "book",
+    "pdf-document",
+    "url-transcript"
+  ],
+  "sourceCount": 3,
+  "checks": {
+    "book_static_adapter": "PASS",
+    "book_canonical_locator": "PASS",
+    "book_progress_boundary": "PASS",
+    "document_ingest": "PASS",
+    "document_stable_locator": "PASS",
+    "document_lexical_retrieval": "PASS",
+    "transcript_ingest": "PASS",
+    "transcript_timestamp_locator": "PASS",
+    "transcript_lexical_retrieval": "PASS",
+    "visible_ingest_states": "PASS",
+    "user_memory_continuity": "PASS",
+    "model_prior_policy": "PASS",
+    "source_grounding": "PASS",
+    "bounded_provider_context": "PASS",
+    "optional_pack_hook": "PASS",
+    "pack_fingerprint_guard": "PASS",
+    "mandatory_entity_graph_precompute": "NOT_REQUIRED"
+  },
+  "counts": {
+    "bookBlocks": 64,
+    "documentBlocks": 4,
+    "transcriptBlocks": 3,
+    "providerEvidence": 3,
+    "providerMemories": 0,
+    "attachedPacks": 1
+  },
+  "exampleLocators": {
+    "book": "odyssey:book:01:s1:row:001",
+    "document": "doc:policy-pdf-v1:page:1:block:1",
+    "transcript": "url:retrieval-talk:t:0-20000"
+  }
+}
+EXIT=0
+=== SM082_READER_BRIDGE ===
+{
+  "status": "PASS",
+  "sourceId": "book:odyssey",
+  "unitOrdinal": 17,
+  "locator": "odyssey:book:17:s1:row:004",
+  "memoryBridge": 1,
+  "fullSourceSent": false,
+  "uiRebinding": false
+}
+EXIT=0
+=== SM083_TRUST ===
+{
+  "schema": "storymemory-trust-answer-provenance-1.0",
+  "runtimeSchema": "storymemory-universal-source-runtime-1.0",
+  "runtimeVersion": "1.3.0",
+  "status": "PASS",
+  "trustModes": [
+    "EXPLORE",
+    "GROUNDED",
+    "STRICT"
+  ],
+  "provenanceLabels": [
+    "AI_NATIVE",
+    "SOURCE_GROUNDED",
+    "PACK_ASSISTED",
+    "VERIFIED",
+    "INTERPRETATION",
+    "UNCERTAIN"
+  ],
+  "checks": {
+    "fiction_default_explore": "PASS",
+    "fiction_spoiler_boundary": "PASS",
+    "explore_ai_native": "PASS",
+    "grounded_citation_required": "PASS",
+    "grounded_source_grounded": "PASS",
+    "strict_document_default": "PASS",
+    "strict_exact_claim_pass": "PASS",
+    "strict_wrong_exact_claim_block": "PASS",
+    "strict_unknown_allowed": "PASS",
+    "pack_assisted_label": "PASS",
+    "verified_pack_label": "PASS",
+    "pack_name_version_tier_tracking": "PASS",
+    "bible_textual_fact_vs_interpretation": "PASS",
+    "workbook_answer_reveal_gate": "PASS",
+    "strict_extraction_quality_gate": "PASS",
+    "all_six_provenance_labels": "PASS"
+  },
+  "examples": {
+    "aiNative": {
+      "label": "AI_NATIVE",
+      "providerMode": "external"
+    },
+    "grounded": {
+      "label": "SOURCE_GROUNDED",
+      "sourceRefs": [
+        "doc:research-policy:page:2:block:1"
+      ]
+    },
+    "strictBlocked": {
+      "label": "UNCERTAIN",
+      "issues": [
+        "UNSUPPORTED_NUMBER"
+      ]
+    },
+    "verified": {
+      "label": "VERIFIED",
+      "packRefs": [
+        {
+          "id": "curated-pack",
+          "name": "Curated Manual Pack",
+          "version": "2.0.0",
+          "trustTier": "CURATED",
+          "verificationScope": "safe-mode facts",
+          "verified": true
+        }
+      ]
+    },
+    "interpretation": {
+      "label": "INTERPRETATION",
+      "questionType": "INTERPRETATION"
+    },
+    "workbook": {
+      "hidden": true,
+      "blockedIssues": [
+        "WORKBOOK_ANSWER_REVEAL_BLOCKED"
+      ]
+    }
+  }
+}
+EXIT=0
+=== SM057_HYBRID ===
+{
+  "status": "PASS",
+  "schema": "storymemory-hybrid-ai-context-1.0",
+  "version": "1.0.0",
+  "current_locator": "iliad:book:01:s1:row:001",
+  "current_sequence": 1,
+  "remote_mode": "remote",
+  "static_mode": "static",
+  "loaded_units": [
+    1
+  ],
+  "evidence_count": 1,
+  "evidence_chars": 581,
+  "max_evidence_passages": 6,
+  "max_evidence_chars": 6000,
+  "safe_answer_card": true,
+  "future_answer_card_excluded": true,
+  "safe_relationship": true,
+  "future_relationship_excluded": true,
+  "safe_memory": true,
+  "future_memory_excluded": true,
+  "no_future_static_evidence": true,
+  "full_book_body_sent": false,
+  "provider_packet_bounded": true,
+  "deterministic_route": "KNOWN_FACT",
+  "offline_static_fallback_route": "SUPPORTED_TEXT",
+  "source_passage_first_en": "Achilles’ wrath, to Greece the direful spring\nOf woes unnumber’d, heavenly goddess, sing!\nThat wrath which hurl’d to Plu",
+  "source_passage_first_ko": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서.\n그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고,\n묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+}
+EXIT=0
+=== SM058_PRODUCTION ===
+{
+  "pass": true,
+  "runtimeContract": {
+    "version": "1.0.0",
+    "staticBodyMode": "authoritative",
+    "remoteMetadataMode": "authenticated",
+    "remoteUserStateMode": "authenticated",
+    "legacyDbBodyRemote": false,
+    "canonicalIdentity": "canonical_locator",
+    "expectedMainRegistry": {
+      "activeContentVersions": 6,
+      "contentUnitIndex": 185
+    },
+    "deployment": "DEFERRED_TO_BI_PORTAL",
+    "businessId": "B61",
+    "portalTargetRoute": "/b61/"
+  },
+  "registry": {
+    "activeContentVersions": 6,
+    "contentUnitIndex": 185
+  },
+  "registryMatchesExpected": true,
+  "legacyBodyRequests": 0,
+  "canonicalKnowledgeFields": true,
+  "annotationCanonicalPayload": true,
+  "progressCanonicalOnly": true,
+  "legacyAnnotationRejected": true,
+  "bibleLegacyBodyFallbackDisabled": true,
+  "authSessionAutoActivatesRemote": true,
+  "totalMockApiCalls": 6
+}
+EXIT=0
+=== SM058_STATIC_READER ===
+{
+  "status": "PASS",
+  "catalogWorks": 6,
+  "totalPassages": 12628,
+  "odyssey17": 63,
+  "resumeLocator": "odyssey:book:17:s1:row:004",
+  "resumeSequence": 1600004,
+  "mode": "static"
+}
+EXIT=0
+=== SM058_HYBRID ===
+{
+  "status": "PASS",
+  "schema": "storymemory-hybrid-ai-context-1.0",
+  "version": "1.0.0",
+  "current_locator": "iliad:book:01:s1:row:001",
+  "current_sequence": 1,
+  "remote_mode": "remote",
+  "static_mode": "static",
+  "loaded_units": [
+    1
+  ],
+  "evidence_count": 1,
+  "evidence_chars": 581,
+  "max_evidence_passages": 6,
+  "max_evidence_chars": 6000,
+  "safe_answer_card": true,
+  "future_answer_card_excluded": true,
+  "safe_relationship": true,
+  "future_relationship_excluded": true,
+  "safe_memory": true,
+  "future_memory_excluded": true,
+  "no_future_static_evidence": true,
+  "full_book_body_sent": false,
+  "provider_packet_bounded": true,
+  "deterministic_route": "KNOWN_FACT",
+  "offline_static_fallback_route": "SUPPORTED_TEXT",
+  "source_passage_first_en": "Achilles’ wrath, to Greece the direful spring\nOf woes unnumber’d, heavenly goddess, sing!\nThat wrath which hurl’d to Plu",
+  "source_passage_first_ko": "하늘의 여신이여, 그리스에 헤아릴 수 없는 재앙을 불러온 아킬레우스의 분노를 노래하소서.\n그 분노는 때 이르게 죽은 수많은 영웅의 혼을 플루토의 어두운 나라로 내던졌고,\n묻히지 못한 그들의 몸은 황량한 해변에서 개와"
+}
+EXIT=0
+=== SM054_STATIC_ADAPTER ===
+{
+  "status": "PASS",
+  "catalogWorks": 6,
+  "totalPassages": 12628,
+  "odyssey17": 63,
+  "resumeLocator": "odyssey:book:17:s1:row:004",
+  "resumeSequence": 1600004,
+  "mode": "static"
+}
+EXIT=0
+
+FINAL_FAIL=0

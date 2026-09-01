@@ -1,0 +1,17 @@
+{
+  "schema": "storymemory-sm089-local-asset-result-1.0",
+  "refs": [
+    "storymemory-auto-pack-runtime.js",
+    "storymemory-auto-pack-ui.css",
+    "storymemory-auto-pack-ui.js",
+    "storymemory-pack-marketplace-runtime.js",
+    "storymemory-pack-marketplace-ui.css",
+    "storymemory-pack-marketplace-ui.js",
+    "storymemory-source-ui.css",
+    "storymemory-source-ui.js",
+    "storymemory-universal-source-runtime.js"
+  ],
+  "count": 9,
+  "missing": [],
+  "pass": true
+}

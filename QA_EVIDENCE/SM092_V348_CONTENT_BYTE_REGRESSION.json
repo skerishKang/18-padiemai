@@ -1,0 +1,9 @@
+{
+  "schema": "sm092-v348-content-byte-regression-1.0",
+  "pass": true,
+  "old_files": 192,
+  "new_files": 192,
+  "changed": [],
+  "missing": [],
+  "extra": []
+}

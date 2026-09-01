@@ -1,0 +1,35 @@
+{
+  "schema": "storymemory-sm085-delta-inventory-1.0",
+  "newFiles": [
+    "DB_MIGRATIONS/STORYMEMORY_PACK_REGISTRY_MVP_v1.sql",
+    "PATCH_NOTES_v3.4.5.md",
+    "QA_EVIDENCE/SM085_EXISTING_REGRESSION_RESULT.json",
+    "QA_EVIDENCE/SM085_EXISTING_REGRESSION_STDOUT.txt",
+    "QA_EVIDENCE/SM085_JAVASCRIPT_SYNTAX_RESULT.json",
+    "QA_EVIDENCE/SM085_LOCAL_ASSET_RESULT.json",
+    "QA_EVIDENCE/SM085_MARKETPLACE_UI_CONTRACT_RESULT.json",
+    "QA_EVIDENCE/SM085_MARKETPLACE_UI_CONTRACT_STDOUT.txt",
+    "QA_EVIDENCE/SM085_MARKETPLACE_UI_CONTRACT_TEST.cjs",
+    "QA_EVIDENCE/SM085_NEON_PACK_PROVIDER_CONTRACT_RESULT.json",
+    "QA_EVIDENCE/SM085_NEON_PACK_PROVIDER_CONTRACT_STDOUT.txt",
+    "QA_EVIDENCE/SM085_NEON_PACK_PROVIDER_CONTRACT_TEST.mjs",
+    "QA_EVIDENCE/SM085_PACK_MARKETPLACE_RUNTIME_RESULT.json",
+    "QA_EVIDENCE/SM085_PACK_MARKETPLACE_RUNTIME_STDOUT.txt",
+    "QA_EVIDENCE/SM085_PACK_MARKETPLACE_RUNTIME_TEST.mjs",
+    "QA_EVIDENCE/SM085_V344_CONTENT_BYTE_REGRESSION.json",
+    "dist/packs/marketplace-catalog-v1.json",
+    "dist/packs/odyssey-korean-alias-public-v1.json",
+    "dist/storymemory-pack-marketplace-runtime.js",
+    "dist/storymemory-pack-marketplace-ui.css",
+    "dist/storymemory-pack-marketplace-ui.js"
+  ],
+  "changedFiles": [
+    "QA_EVIDENCE/SM083_TRUST_PROVENANCE_RESULT.json",
+    "dist/index.html",
+    "dist/version.json"
+  ],
+  "universalRuntimeSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+  "baseUniversalRuntimeSha256": "d889f9b4ecbc2318868a9240b28bb78abcb97a3bca19857036b3069a82b794dc",
+  "universalRuntimeByteIdentical": true,
+  "contentByteRegressionPass": true
+}

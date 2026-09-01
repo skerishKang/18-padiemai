@@ -1,0 +1,90 @@
+{
+  "schema": "storymemory-sm085-neon-pack-provider-contract-1.0",
+  "calls": [
+    {
+      "table": "pack_registry",
+      "method": "GET",
+      "query": {
+        "select": "pack_id,name,pack_type,creator_id,publisher_name,summary,visibility,pricing_mode,publication_status,latest_version,source_text_included,rights_declaration,compatibility_summary,permissions,processing_disclosure,listing_metadata,created_at,updated_at",
+        "publication_status": "eq.published",
+        "visibility": "eq.public",
+        "order": "updated_at.desc",
+        "limit": 200
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_versions",
+      "method": "GET",
+      "query": {
+        "select": "pack_id,version,schema_version,artifact_uri,artifact_fingerprint,declared_trust_tier,source_match_mode,compatibility,rights,changelog,parent_version,created_at",
+        "limit": 500
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_attestations",
+      "method": "GET",
+      "query": {
+        "select": "id,pack_id,version,verifier_id,verifier_kind,tier,verification_scope,source_fingerprint,status,issued_at,expires_at,revoked_at,metadata",
+        "status": "eq.valid",
+        "limit": 500
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_installs",
+      "method": "GET",
+      "query": {
+        "select": "pack_id,version,source_identity,source_fingerprint,workspace_key,install_status,auto_update,settings,attached_at,detached_at,updated_at",
+        "order": "updated_at.desc",
+        "limit": 200
+      },
+      "body": null,
+      "prefer": null
+    },
+    {
+      "table": "pack_installs",
+      "method": "POST",
+      "query": {
+        "on_conflict": "user_id,pack_id,source_identity"
+      },
+      "body": {
+        "user_id": "user-1",
+        "pack_id": "pack:test",
+        "version": "1.0.0",
+        "source_identity": "book:test",
+        "source_fingerprint": "fp",
+        "workspace_key": null,
+        "install_status": "installed",
+        "auto_update": false,
+        "settings": {},
+        "detached_at": null,
+        "updated_at": "2026-08-27T05:00:58.014Z"
+      },
+      "prefer": "resolution=merge-duplicates,return=representation"
+    },
+    {
+      "table": "pack_installs",
+      "method": "DELETE",
+      "query": {
+        "pack_id": "eq.pack:test",
+        "source_identity": "eq.book:test"
+      },
+      "body": null,
+      "prefer": "return=minimal"
+    }
+  ],
+  "checks": {
+    "joins_metadata": true,
+    "public_filter": true,
+    "no_pack_payload_table": true,
+    "install_user_bound": true,
+    "upsert_conflict_key": true,
+    "delete_is_scoped": true
+  },
+  "pass": true
+}
