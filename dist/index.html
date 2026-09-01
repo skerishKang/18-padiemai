@@ -17982,5 +17982,200 @@ document.documentElement.dataset.storymemoryBuild='v3.3.4-hybrid-ai-context';
   window.__smBibleShelfTypographyRebase={version:'rebase-1',labels:labels};
 })();
 </script>
+<style id="sm-reader-settings-v1">
+/* ===== Reader Settings v1 (#1291) — scoped overrides; zero change at defaults ===== */
+.srsg-btn{position:absolute;right:16px;bottom:16px;z-index:60;width:34px;height:34px;border-radius:50%;border:1px solid rgba(45,34,24,.18);background:rgba(255,253,248,.94);color:#4a443c;font:400 15px/1 var(--sans);display:none;place-items:center;box-shadow:0 6px 18px rgba(31,25,18,.14);padding:0}
+#reader.active .srsg-btn{display:grid}
+body.focus-reading #reader.active .srsg-btn{opacity:.25}
+.srsg-panel{position:absolute;right:16px;bottom:58px;z-index:61;width:292px;max-height:calc(100% - 150px);overflow-y:auto;background:#fffdf8;border:1px solid rgba(45,34,24,.18);border-radius:14px;box-shadow:0 18px 44px rgba(31,25,18,.24);padding:13px 14px 12px;display:none;font-family:var(--sans)}
+body.smr-open #reader.active .srsg-panel{display:block}
+.srsg-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.srsg-head b{font:600 12px var(--sans);letter-spacing:.02em;color:#201e1a}
+.srsg-x{border:0;background:none;font:400 15px var(--sans);color:#8a8378;padding:0 4px;line-height:1}
+.srsg-row{margin-bottom:10px}
+.srsg-label{font:600 9px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:#8a8378;margin-bottom:5px}
+.srsg-seg{display:flex;gap:4px;flex-wrap:wrap}
+.srsg-seg button{font:500 11px/1 var(--sans);padding:6px 9px;border-radius:8px;border:1px solid rgba(45,34,24,.16);background:#fff;color:#4a443c}
+.srsg-seg button.on{background:#201e1a;color:#fffdf8;border-color:#201e1a}
+.srsg-sw{display:flex;gap:6px}
+.srsg-sw button{width:38px;height:24px;border-radius:7px;border:1px solid rgba(45,34,24,.24);padding:0}
+.srsg-sw button.on{outline:2px solid var(--accent);outline-offset:1px}
+.srsg-reset{width:100%;font:600 10px var(--sans);letter-spacing:.06em;padding:7px;border-radius:8px;border:1px dashed rgba(45,34,24,.32);background:transparent;color:#6b6459;margin-top:2px}
+@media(max-width:768px){
+  .srsg-panel{left:10px;right:10px;width:auto;bottom:56px;max-height:calc(100% - 130px)}
+  .srsg-btn{right:10px;bottom:10px}
+}
+/* font size (default 'base' renders no rule) */
+body.smr-fs-sm #readerPageBody .verse{font-size:calc(clamp(17px,1.4vw,21px)*.92)}
+body.smr-fs-lg #readerPageBody .verse{font-size:calc(clamp(17px,1.4vw,21px)*1.1)}
+body.smr-fs-xl #readerPageBody .verse{font-size:calc(clamp(17px,1.4vw,21px)*1.22)}
+body.smr-fs-sm #readerPageBody .verse-en{font-size:calc(clamp(13px,1.1vw,15px)*.92)}
+body.smr-fs-lg #readerPageBody .verse-en{font-size:calc(clamp(13px,1.1vw,15px)*1.1)}
+body.smr-fs-xl #readerPageBody .verse-en{font-size:calc(clamp(13px,1.1vw,15px)*1.22)}
+@media(max-width:768px){
+  body.smr-fs-sm #readerPageBody .verse{font-size:14.7px}
+  body.smr-fs-lg #readerPageBody .verse{font-size:17.6px}
+  body.smr-fs-xl #readerPageBody .verse{font-size:19.5px}
+  body.smr-fs-sm #readerPageBody .verse-en{font-size:12px}
+  body.smr-fs-lg #readerPageBody .verse-en{font-size:14.3px}
+  body.smr-fs-xl #readerPageBody .verse-en{font-size:15.9px}
+}
+/* line height (default 'relaxed'=1.9 renders no rule) */
+body.smr-lh-tight #readerPageBody .verse{line-height:1.6}
+body.smr-lh-loose #readerPageBody .verse{line-height:2.2}
+/* english WEB mode */
+body.smr-en-compact #readerPageBody .verse-en{font-size:12px;line-height:1.5;margin:2px 0 8px;opacity:.58}
+body.smr-en-hide #readerPageBody .verse-en{display:none!important}
+/* verse numbers */
+body.smr-vn-hide #readerPageBody .vn{display:none!important}
+/* themes (default = untouched current look) */
+body.smr-theme-light #readerPageBody .verse{color:#26221d}
+body.smr-theme-light #readerPageBody .verse-en{color:#79726a}
+body.smr-theme-light #readerPageBody .vn{color:#a89f93}
+body.smr-theme-light #reader .paper-head h1{color:#26221d}
+body.smr-theme-sepia #readerPageBody .verse{color:#5a4632}
+body.smr-theme-sepia #readerPageBody .verse-en{color:#6e5841}
+body.smr-theme-sepia #readerPageBody .vn{color:#a38c6b}
+body.smr-theme-sepia #readerPageBody .dropcap{color:#7c5f42}
+body.smr-theme-sepia #reader .paper-head h1{color:#5a4632}
+body.smr-theme-dark #readerPageBody .verse{color:#e9e1d2}
+body.smr-theme-dark #readerPageBody .verse-en{color:#a99e8a}
+body.smr-theme-dark #readerPageBody .vn{color:#8a7f6c}
+body.smr-theme-dark #readerPageBody .dropcap{color:#e9e1d2}
+body.smr-theme-dark #readerPageBody .reader-page-note{background:#2e2820;color:#b7ac97;border-color:rgba(233,225,210,.14)}
+body.smr-theme-dark #reader .paper-head h1{color:#e9e1d2}
+body.smr-theme-dark #reader .paper-head small{color:#8a7f6c}
+body.smr-theme-dark #reader .paper-footer{color:#8a7f6c}
+body.smr-theme-dark #reader .folio-hairline{background:rgba(233,225,210,.12)}
+body.smr-theme-dark #reader .paper-grain{opacity:.14}
+body.smr-theme-dark #reader .paper-lamp{opacity:.25}
+body.smr-theme-dark #reader .print-edge-guide{border-color:rgba(233,225,210,.1)}
+body.smr-theme-dark #reader .section-ornament span{background:rgba(233,225,210,.18)}
+</style>
+<script id="sm-reader-settings-v1">
+(function(){
+  var KEY='storymemory.readerSettings.v1';
+  var DEFAULTS={version:1,font:'noto-sans-kr',fontSize:'base',lineHeight:'relaxed',theme:'default',englishMode:'show',verseNumbers:true};
+  var FONTS={
+    'noto-sans-kr':'"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif',
+    'pretendard-system':'"Pretendard","Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif',
+    'serif':'"Noto Serif KR","Source Han Serif KR",Georgia,"Times New Roman",serif'};
+  var ENUM={font:['noto-sans-kr','pretendard-system','serif'],fontSize:['sm','base','lg','xl'],lineHeight:['tight','relaxed','loose'],theme:['default','light','sepia','dark'],englishMode:['show','compact','hide']};
+  var PAPERS={'default':null,light:'#ffffff',sepia:'#f2e8d5',dark:'#262019'};
+  var LABELS={
+    font:[['noto-sans-kr','산세리프'],['pretendard-system','시스템'],['serif','세리프']],
+    fontSize:[['sm','작게'],['base','기본'],['lg','크게'],['xl','매우 크게']],
+    lineHeight:[['tight','좁게'],['relaxed','기본'],['loose','넓게']],
+    englishMode:[['show','표시'],['compact','작게'],['hide','숨김']],
+    verseNumbers:[[true,'표시'],[false,'숨김']]};
+  function sanitize(raw){
+    var s={};
+    if(!raw||typeof raw!=='object'||raw.version!==1)return null;
+    for(var k in DEFAULTS){
+      if(k==='version')continue;
+      if(k==='verseNumbers'){s[k]=(raw[k]===false)?false:true;continue;}
+      s[k]=(ENUM[k]&&ENUM[k].indexOf(raw[k])>=0)?raw[k]:DEFAULTS[k];
+    }
+    s.version=1;return s;
+  }
+  function load(){
+    try{var raw=localStorage.getItem(KEY);if(!raw)return null;return sanitize(JSON.parse(raw));}
+    catch(e){try{localStorage.removeItem(KEY);}catch(e2){}return null;}
+  }
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+  var state=load()||JSON.parse(JSON.stringify(DEFAULTS));
+  function apply(){
+    var root=document.documentElement,body=document.body;
+    root.style.setProperty('--font-bible',FONTS[state.font]);
+    if(state.font==='serif'&&!document.getElementById('sm-serif-font-link')){
+      var l=document.createElement('link');l.id='sm-serif-font-link';l.rel='stylesheet';
+      l.href='https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&display=swap';
+      document.head.appendChild(l);
+    }
+    body.classList.toggle('smr-fs-sm',state.fontSize==='sm');
+    body.classList.toggle('smr-fs-lg',state.fontSize==='lg');
+    body.classList.toggle('smr-fs-xl',state.fontSize==='xl');
+    body.classList.toggle('smr-lh-tight',state.lineHeight==='tight');
+    body.classList.toggle('smr-lh-loose',state.lineHeight==='loose');
+    body.classList.toggle('smr-en-compact',state.englishMode==='compact');
+    body.classList.toggle('smr-en-hide',state.englishMode==='hide');
+    body.classList.toggle('smr-vn-hide',state.verseNumbers===false);
+    body.classList.remove('smr-theme-light','smr-theme-sepia','smr-theme-dark');
+    if(state.theme!=='default')body.classList.add('smr-theme-'+state.theme);
+    var paper=PAPERS[state.theme];
+    if(paper)root.style.setProperty('--reader-paper',paper);
+    else root.style.removeProperty('--reader-paper');
+    syncPanel();
+  }
+  function segRow(label,field){
+    var row=document.createElement('div');row.className='srsg-row';
+    var lb=document.createElement('div');lb.className='srsg-label';lb.textContent=label;row.appendChild(lb);
+    var seg=document.createElement('div');seg.className='srsg-seg';seg.dataset.field=field;
+    LABELS[field].forEach(function(opt){
+      var b=document.createElement('button');b.type='button';b.dataset.value=String(opt[0]);b.textContent=opt[1];
+      b.setAttribute('aria-pressed',String(state[field]===opt[0]));
+      b.onclick=function(){state[field]=opt[0];save();apply();};
+      seg.appendChild(b);
+    });
+    row.appendChild(seg);return row;
+  }
+  function themeRow(){
+    var row=document.createElement('div');row.className='srsg-row';
+    var lb=document.createElement('div');lb.className='srsg-label';lb.textContent='테마 · 배경';row.appendChild(lb);
+    var seg=document.createElement('div');seg.className='srsg-sw';seg.dataset.field='theme';
+    [['default','현재(#fffdf8)','#fffdf8'],['light','밝게','#ffffff'],['sepia','세피아','#f2e8d5'],['dark','어둡게','#262019']].forEach(function(t){
+      var b=document.createElement('button');b.type='button';b.dataset.value=t[0];b.title=t[1];b.setAttribute('aria-label',t[1]);
+      b.style.background=t[2];
+      b.onclick=function(){state.theme=t[0];save();apply();};
+      seg.appendChild(b);
+    });
+    row.appendChild(seg);return row;
+  }
+  var panel=null;
+  function syncPanel(){
+    if(!panel)return;
+    panel.querySelectorAll('.srsg-seg,.srsg-sw').forEach(function(seg){
+      var field=seg.dataset.field;
+      seg.querySelectorAll('button').forEach(function(b){
+        var v=b.dataset.value;
+        if(field==='verseNumbers')v=(v==='true');
+        var on=(state[field]===v);
+        b.classList.toggle('on',on);
+        b.setAttribute('aria-pressed',String(on));
+      });
+    });
+  }
+  function buildUI(){
+    var stage=document.querySelector('#reader .reader-stage')||document.getElementById('reader');
+    if(!stage)return;
+    if(stage.querySelector('.srsg-btn'))return;
+    var gear=document.createElement('button');
+    gear.type='button';gear.className='srsg-btn';gear.title='읽기 설정';gear.setAttribute('aria-label','읽기 설정');
+    gear.textContent='⚙';
+    panel=document.createElement('div');panel.className='srsg-panel';panel.setAttribute('role','dialog');panel.setAttribute('aria-label','읽기 설정');
+    var head=document.createElement('div');head.className='srsg-head';
+    var hb=document.createElement('b');hb.textContent='읽기 설정';
+    var hx=document.createElement('button');hx.type='button';hx.className='srsg-x';hx.setAttribute('aria-label','설정 닫기');hx.textContent='×';
+    hx.onclick=function(){document.body.classList.remove('smr-open');};
+    head.appendChild(hb);head.appendChild(hx);panel.appendChild(head);
+    panel.appendChild(segRow('글꼴','font'));
+    panel.appendChild(segRow('글자 크기','fontSize'));
+    panel.appendChild(segRow('줄 간격','lineHeight'));
+    panel.appendChild(themeRow());
+    panel.appendChild(segRow('영어 WEB','englishMode'));
+    panel.appendChild(segRow('절 번호','verseNumbers'));
+    var reset=document.createElement('button');reset.type='button';reset.className='srsg-reset';reset.textContent='기본값으로 초기화';
+    reset.onclick=function(){state=JSON.parse(JSON.stringify(DEFAULTS));try{localStorage.removeItem(KEY);}catch(e){}apply();};
+    panel.appendChild(reset);
+    gear.onclick=function(e){e.stopPropagation();document.body.classList.toggle('smr-open');};
+    panel.addEventListener('click',function(e){e.stopPropagation();});
+    document.addEventListener('click',function(){document.body.classList.remove('smr-open');});
+    stage.appendChild(gear);stage.appendChild(panel);
+    syncPanel();
+  }
+  function init(){buildUI();apply();window.__smReaderSettingsV1={version:'1',key:KEY,defaults:DEFAULTS,get:function(){return JSON.parse(JSON.stringify(state));},apply:apply};}
+  if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
+})();
+</script>
 </body>
 </html>
