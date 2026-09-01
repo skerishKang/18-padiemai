@@ -18580,9 +18580,11 @@ function currentPageIndex(){ try{ if(typeof readerPageIndex!=='undefined' && typ
 function currentPageCount(){ try{ if(typeof READER_PAGES!=='undefined' && Array.isArray(READER_PAGES)) return READER_PAGES.length; }catch(_){} try{ if(Array.isArray(window.READER_PAGES)) return window.READER_PAGES.length; }catch(_){} var s=safeReaderState(); if(s && Array.isArray(s.pagePassages)) return s.pagePassages.length||1; return 1; }
 function workKeyFromState(){ try{ if(window.storyMemoryReaderBindingStatus){ var bs=window.storyMemoryReaderBindingStatus(); if(bs && bs.workKey) return bs.workKey; } }catch(_){} try{ var s=safeReaderState(); if(s && s.work && s.work.work_key) return s.work.work_key; if(window.storyMemoryStaticWorkKey && s && s.content){ var k=window.storyMemoryStaticWorkKey(s.content); if(k) return k; if(s.content.id){ var k2=window.storyMemoryStaticWorkKey({id:s.content.id}); if(k2) return k2; } } }catch(_){} return null; }
 function workTitle(){ try{ if(typeof __smCurrentReaderLabel==='string' && __smCurrentReaderLabel) return __smCurrentReaderLabel; }catch(_){} try{ var s=safeReaderState(); if(s && s.content && s.content.title) return s.content.title; }catch(_){} try{ if(typeof window.__smCurrentReaderLabel==='string' && window.__smCurrentReaderLabel) return window.__smCurrentReaderLabel; }catch(_){} var dom=document.getElementById('aiReadingContext')?.textContent||document.getElementById('readerVolumeTitle')?.textContent||''; return (dom||'').trim(); }
-function unitKeyGuess(){ try{ var s=safeReaderState(); if(!s) return null; if(s.content && s.content.kind==='bible'){ var vol=document.getElementById('readerVolumeTitle')?.textContent||''; var ch=document.getElementById('readerChapterTitle')?.textContent||''; if(vol) return vol+':'+String(ch).replace(/[^0-9]/g,''); } if(s.unitOrdinal) return 'unit:'+String(s.unitOrdinal); if(s.unit_ordinal) return 'unit:'+String(s.unit_ordinal); }catch(_){} return null; }
+function unitOf(loc){ try{ var p=String(loc).split(':'); return p[0]==='bible'? p.slice(0,4).join(':') : p.slice(0,3).join(':'); }catch(_){ return null; } }
+function canonicalUnitKey(){ try{ var locs=visibleLocators(); if(locs.length && locs[0]) return unitOf(locs[0]); }catch(_){} return null; }
+function bookIdFromLocator(loc){ try{ var p=String(loc).split(':'); if(p[0]==='bible' && p[2]) return p[2]; if(p.length>=1) return p[0]; return null; }catch(_){ return null; } }
 function visibleLocators(){ try{ var els=document.querySelectorAll('#readerPageBody [data-source-locator]'); var out=[]; els.forEach(function(el){ var v=el.getAttribute('data-source-locator'); if(v) out.push(v); }); return out; }catch(_){ return []; } }
-function selectedInfo(){ try{ var sel=window.getSelection(); if(!sel || sel.isCollapsed || !sel.rangeCount) return {locator:null, text:''}; if(!isAuthoritative()) return {locator:null, text:''}; var range=sel.getRangeAt(0); var node=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement; var el=node && node.closest ? node.closest('#readerPageBody [data-source-locator]') : null; if(!el) return {locator:null, text:''}; var locator=el.getAttribute('data-source-locator')||null; var text=String(sel.toString()||'').slice(0, MAX_SELECTED_TEXT_CHARS); return {locator:locator, text:text}; }catch(_){ return {locator:null, text:''}; } }
+function selectedInfo(){ try{ var sel=window.getSelection(); if(!sel || sel.isCollapsed || !sel.rangeCount) return {locator:null, text:'', lang:null}; if(!isAuthoritative()) return {locator:null, text:'', lang:null}; var range=sel.getRangeAt(0); var node=range.commonAncestorContainer.nodeType===1?range.commonAncestorContainer:range.commonAncestorContainer.parentElement; var el=node && node.closest ? node.closest('#readerPageBody [data-source-locator]') : null; if(!el) return {locator:null, text:'', lang:null}; var locator=el.getAttribute('data-source-locator')||null; var text=String(sel.toString()||'').slice(0, MAX_SELECTED_TEXT_CHARS); var hasKo=/[가-힣]/.test(text); var hasEn=/[A-Za-z]/.test(text); var lang=null; if(hasKo && !hasEn) lang='ko'; else if(!hasKo && hasEn) lang='en'; else if(hasKo && hasEn) lang=null; else if(text) lang=null; return {locator:locator, text:text, lang:lang}; }catch(_){ return {locator:null, text:'', lang:null}; } }
 function passageTextsFromDOM(){ try{ var els=document.querySelectorAll('#readerPageBody [data-source-locator]'); var out=[]; els.forEach(function(el){ var loc=el.getAttribute('data-source-locator')||''; var seq=parseInt(el.getAttribute('data-source-sequence')||'0',10)||0;
       var clone=el.cloneNode(true);
       clone.querySelectorAll('.vn, .smal-badge, #smalToolbar, #smalPop, .selection-toolbar').forEach(function(n){ n.remove(); });
@@ -18598,14 +18600,16 @@ function getReaderContextV1(){
   var s=safeReaderState();
   var locs=auth?visibleLocators():[];
   var sel=selectedInfo();
+  var unitKey=auth? canonicalUnitKey() : null;
+  var bookId=null; if(auth && locs.length) bookId=bookIdFromLocator(locs[0]);
   return {
     version:'1',
     authoritative_reader: !!auth,
     mode: s? String(s.mode|| (auth?'authoritative':'fallback')) : (auth?'authoritative':'fallback'),
     current_work_key: auth? workKeyFromState() : null,
     current_work_title: workTitle(),
-    current_book_id: (function(){ try{ var st=safeReaderState(); return st && st.content && st.content.id ? st.content.id : null; }catch(_){return null;}})(),
-    current_unit_key: auth? unitKeyGuess() : null,
+    current_book_id: bookId,
+    current_unit_key: unitKey,
     current_unit_ordinal: (function(){ try{ var st=safeReaderState(); return st && Number.isFinite(Number(st.unitOrdinal))? Number(st.unitOrdinal): null; }catch(_){return null;}})(),
     current_page_index: currentPageIndex(),
     current_page_count: currentPageCount(),
@@ -18614,8 +18618,8 @@ function getReaderContextV1(){
     visible_locators: locs.slice(0, MAX_SOURCE_PASSAGES),
     selected_locator: auth? (sel.locator||null) : null,
     selected_text: sel.text? sel.text.slice(0, MAX_SELECTED_TEXT_CHARS) : '',
-    selected_text_ko: sel.text? sel.text.slice(0, MAX_SELECTED_TEXT_CHARS) : '',
-    selected_text_en: ''
+    selected_text_ko: sel.lang==='ko' ? sel.text : '',
+    selected_text_en: sel.lang==='en' ? sel.text : ''
   };
 }
 function getAnnotationContextV1(){
@@ -18623,19 +18627,23 @@ function getAnnotationContextV1(){
   var wk=auth? workKeyFromState(): null;
   var rc=getReaderContextV1();
   var unitKey=rc.current_unit_key;
-  var raw=[]; try{ if(window.__smAnnotationLayerV1 && typeof window.__smAnnotationLayerV1.list==='function'){ raw=window.__smAnnotationLayerV1.list()||[]; } else { var v=localStorage.getItem('storymemory.annotations.v1'); if(v){ var p=JSON.parse(v); if(p && Array.isArray(p.items)) raw=p.items; } } }catch(_){ raw=[]; }
+  var visSet=null; try{ visSet=new Set(rc.visible_locators||[]); }catch(_){ visSet=new Set(); }
+  var raw=[]; try{ if(window.__smAnnotationLayerV1 && typeof window.__smAnnotationLayerV1.list==='function'){ raw=window.__smAnnotationLayerV1.list()||[]; } else { var v=localStorage.getItem('storymemory.annotations.v1'); if(v){ var p=JSON.parse(v); if(p && p.version===1 && Array.isArray(p.items)) raw=p.items; else raw=[]; } } }catch(_){ raw=[]; }
   var filtered=[];
   if(!auth){ filtered=[]; }
   else {
     filtered=raw.filter(function(it){
       if(!it || typeof it!=='object') return false;
       if(!['highlight','underline','memo','bookmark'].includes(it.kind)) return false;
-      if(unitKey && it.unit && String(it.unit)!==String(unitKey) && String(it.locator||'').indexOf(String(unitKey).split(':')[0])<0){
-        var vis=rc.visible_locators||[];
-        if(vis.length){
-          var prefix=String(vis[0]).split(':').slice(0,3).join(':');
-          if(prefix && String(it.locator||'').indexOf(prefix)!==0 && String(it.unit||'').indexOf(prefix)!==0) return false;
-        } else { return false; }
+      var itUnit=null; try{ if(it.unit) itUnit=String(it.unit); else if(it.locator) itUnit=unitOf(it.locator); }catch(_){ itUnit=null; }
+      if(unitKey){
+        if(itUnit!==unitKey) return false;
+      } else {
+        if(it.locator && !visSet.has(String(it.locator))){
+          var u2=null; try{ u2=unitOf(it.locator); }catch(_){}
+          var curU=null; try{ if(rc.visible_locator_start) curU=unitOf(rc.visible_locator_start); }catch(_){}
+          if(u2!==curU) return false;
+        }
       }
       return true;
     }).slice(0, MAX_ANNOTATIONS).map(function(it){
