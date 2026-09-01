@@ -18714,15 +18714,15 @@ function isDivineUnit(code){ return DIVINE_ORDER_MAP.hasOwnProperty(String(code)
 function locatorWorkFamily(locator){
   if(!locator) return null;
   var s=String(locator).toLowerCase();
-  var p=s.split(/[:\-]/);
+  // Canonical StoryMemory locators use ':' as the structural delimiter.
+  // Preserve '-' inside the work slug (e.g. paradise-lost, crime-and-punishment).
+  var p=s.split(':');
   var first=p[0]||'';
   if(first==='bible') return 'bible-web';
   if(isBibleBook(first.toUpperCase())) return 'bible-web';
   if(first==='inferno'||first==='purgatorio'||first==='paradiso') return 'divine-comedy';
-  if(first==='divine' && p[1]==='comedy') return 'divine-comedy';
   var known={'iliad':'iliad','odyssey':'odyssey','aeneid':'aeneid','metamorphoses':'metamorphoses','paradise-lost':'paradise-lost','divine-comedy':'divine-comedy','crime-and-punishment':'crime-and-punishment','pride-and-prejudice':'pride-and-prejudice','alice-in-wonderland':'alice-in-wonderland'};
   if(known[first]) return known[first];
-  // hyphenated work keys like divine-comedy handled above, else return first token
   return first;
 }
 function isLocatorCompatibleWithWork(locator, workKey){
@@ -18766,7 +18766,7 @@ function loadStore(){
     var p=JSON.parse(raw);
     if(!p || typeof p!=='object' || p.version!==VERSION || typeof p.works!=='object' || Array.isArray(p.works)) return {version:VERSION, works:{}};
     var out={version:VERSION, works:{}};
-    for(var k in p.works){ if(!Object.prototype.hasOwnProperty.call(p.works,k)) continue; var v=p.works[k]; if(!v || typeof v!=='object') continue; if(typeof v.furthest_read_locator!=='string' || !v.furthest_read_locator) continue; if(typeof v.knowledge_ceiling_locator!=='string' || !v.knowledge_ceiling_locator) continue; var fr=String(v.furthest_read_locator), kc=String(v.knowledge_ceiling_locator); if(!isLocatorCompatibleWithWork(fr,k) || !isLocatorCompatibleWithWork(kc,k)) continue; if(locatorWorkFamily(fr)!==locatorWorkFamily(kc)) continue; out.works[k]={furthest_read_locator:fr, knowledge_ceiling_locator:kc, updatedAt: Number(v.updatedAt)||Date.now()}; }
+    for(var k in p.works){ if(!Object.prototype.hasOwnProperty.call(p.works,k)) continue; var v=p.works[k]; if(!v || typeof v!=='object') continue; if(typeof v.furthest_read_locator!=='string' || !v.furthest_read_locator) continue; if(typeof v.knowledge_ceiling_locator!=='string' || !v.knowledge_ceiling_locator) continue; var fr=String(v.furthest_read_locator), kc=String(v.knowledge_ceiling_locator); if(!isLocatorCompatibleWithWork(fr,k) || !isLocatorCompatibleWithWork(kc,k)) continue; if(locatorWorkFamily(fr)!==locatorWorkFamily(kc)) continue; if(fr!==kc) continue; out.works[k]={furthest_read_locator:fr, knowledge_ceiling_locator:kc, updatedAt: Number(v.updatedAt)||Date.now()}; }
     return out;
   }catch(_){ return {version:VERSION, works:{}}; }
 }
