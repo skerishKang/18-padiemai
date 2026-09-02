@@ -50,11 +50,11 @@
     if (storyCompanion) storyCompanion.textContent = item.dataset.storyNote || '';
   }));
 
-  // LoveTree product donor = current LoveTree Limone MVP001 entry portal, SRC064.
-  // Preserve the real Memory Orbit grammar (central welcome copy + orbital moments)
+  // Current LoveTree Limone MVP001 entry donor is the accepted Memory Orbit surface.
+  // Preserve the real product grammar (central welcome copy + orbital moments)
   // without copying the original heavy runtime or personal/source media.
   const love = mount(frames[2], 'love', `
-    <span class="px-meta">MVP01 / SRC064 STUDY · LOVETREE</span>
+    <span class="px-meta">MVP01 / ENTRY ORBIT · LOVETREE</span>
     <div class="love-orbit" aria-label="LoveTree MVP01 Memory Orbit entry study">
       <div class="orbit-brand">LOVETREE · MEMORY ORBIT</div>
       <div class="orbit-world" aria-hidden="false">
@@ -80,7 +80,7 @@
       <div class="orbit-status">WELCOME_IDLE · 40 MOMENTS</div>
       <div class="orbit-hint">MOVE · TAP TO FOCUS</div>
     </div>
-    <div class="px-foot"><span>REAL MVP01 ENTRY GRAMMAR</span><span>SRC064 · MEMORY ORBIT</span></div>
+    <div class="px-foot"><span>CURRENT MVP ENTRY GRAMMAR</span><span>MEMORY ORBIT · 40 MOMENTS</span></div>
   `);
 
   love.querySelectorAll('.orbit-card').forEach(card => card.addEventListener('click', () => {
