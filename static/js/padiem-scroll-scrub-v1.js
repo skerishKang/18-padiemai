@@ -1,4 +1,21 @@
 (() => {
+  const exhibitConfig = window.PADIEM_EXHIBIT_CONFIG;
+  if (exhibitConfig) {
+    const pageKey = location.pathname.startsWith('/design')
+      ? 'design'
+      : location.pathname.startsWith('/products')
+        ? 'products'
+        : '';
+    if (pageKey) {
+      const params = new URLSearchParams(location.search);
+      const requested = params.get(exhibitConfig.queryParam);
+      const exhibitMode = exhibitConfig.allowedModes.includes(requested)
+        ? requested
+        : exhibitConfig.modes[pageKey];
+      if (exhibitMode === 'album') return;
+    }
+  }
+
   const DEFAULT_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260729_102822_0e6c87e8-c141-4744-bf32-ad30db296371.mp4';
   const videoUrl = document.body.dataset.worldScrollVideo || DEFAULT_VIDEO;
   if (!videoUrl) return;
