@@ -26,4 +26,18 @@
     '<button type="button" id="padiemDrawerContactTrigger" data-overlay="inquiry"></button>'
   ].join('');
   document.body.appendChild(hiddenHost);
+
+  const requestedPanel = new URLSearchParams(location.search).get('panel');
+  const panelTrigger = {
+    company: 'padiemDrawerCompanyTrigger',
+    team: 'padiemDrawerTeamTrigger',
+    contact: 'padiemDrawerContactTrigger'
+  }[requestedPanel];
+
+  // This script executes immediately before the existing overlay runtime.
+  // Defer the synthetic click until the current script stack has completed so
+  // the original runtime has bound its data-overlay listeners first.
+  if (panelTrigger) {
+    setTimeout(() => document.getElementById(panelTrigger)?.click(), 0);
+  }
 })();
