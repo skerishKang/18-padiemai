@@ -21,15 +21,23 @@
   if (!hero || !items.length) return;
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const esc = value => String(value ?? '').replace(/[&<>'"]/g, char => ({
-    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;'
+  const hasIntersectionObserver = 'IntersectionObserver' in window;
+  const esc = value => String(value ?? '').replace(/[&<>'\"]/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '\"': '&quot;'
   })[char]);
+  const currentLanguage = () => document.body.dataset.lang === 'en' ? 'en' : 'ko';
+  const localizedTitle = item => currentLanguage() === 'en' ? item.title : (item.titleKo || item.title);
 
   document.body.classList.add('px-exhibit-album', `px-exhibit-${pageKey}`);
 
   const ledger = hero.querySelector('.world-hero-ledger dl');
   if (ledger) {
-    ledger.innerHTML = items.map(item => `<div><dt>${esc(item.no)}</dt><dd>${esc(item.titleKo || item.title)} · ${esc(item.kicker.split(' / ')[0])}</dd></div>`).join('');
+    ledger.innerHTML = items.map(item => {
+      const ko = `${item.titleKo || item.title} · ${item.kicker.split(' / ')[0]}`;
+      const en = `${item.title} · ${item.kicker.split(' / ')[0]}`;
+      const initial = currentLanguage() === 'en' ? en : ko;
+      return `<div><dt>${esc(item.no)}</dt><dd data-copy-ko="${esc(ko)}" data-copy-en="${esc(en)}">${esc(initial)}</dd></div>`;
+    }).join('');
   }
 
   const section = document.createElement('section');
@@ -94,17 +102,19 @@
   hero.insertAdjacentElement('afterend', section);
 
   const shelf = section.querySelector('.px-album-shelf');
-  shelf.innerHTML = items.map((item, index) => `
+  shelf.innerHTML = items.map((item, index) => {
+    const initialTitle = localizedTitle(item);
+    return `
     <button class="px-album-sleeve" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
       <span class="px-sleeve-edge"></span>
       <span class="px-sleeve-face">
         <span class="px-sleeve-meta"><b>${esc(item.no)}</b><em>${esc(item.status || 'DESIGN STUDY')}</em></span>
         <span class="px-sleeve-glyph">${esc(item.glyph)}</span>
-        <span class="px-sleeve-title">${esc(item.titleKo || item.title)}</span>
+        <span class="px-sleeve-title" data-copy-ko="${esc(item.titleKo || item.title)}" data-copy-en="${esc(item.title)}">${esc(initialTitle)}</span>
         <span class="px-sleeve-line"></span>
       </span>
-    </button>
-  `).join('');
+    </button>`;
+  }).join('');
 
   const video = section.querySelector('.px-album-video');
   const media = section.querySelector('.px-album-media');
@@ -131,8 +141,7 @@
   let inView = false;
   let loadedSrc = '';
   let pointerStart = null;
-
-  const currentLanguage = () => document.body.dataset.lang === 'en' ? 'en' : 'ko';
+  const failedMedia = new Set();
 
   const wrappedDelta = (index, active) => {
     let delta = index - active;
@@ -153,22 +162,28 @@
     });
   };
 
-  const detachVideo = () => {
+  const detachVideo = (state = 'fallback', message = 'STATIC FALLBACK') => {
     video.pause();
     video.removeAttribute('src');
     video.load();
     loadedSrc = '';
-    media.dataset.state = 'fallback';
-    mediaState.textContent = 'STATIC FALLBACK';
+    media.dataset.state = state;
+    mediaState.textContent = message;
     progress.style.transform = 'scaleX(0)';
   };
 
   const ensureVideo = () => {
     const item = items[selected];
-    if (!item.media || !inView || reduced) {
-      if (!item.media || reduced) detachVideo();
+    if (!item.media || reduced || !hasIntersectionObserver) {
+      detachVideo();
       return;
     }
+    if (failedMedia.has(item.media)) {
+      detachVideo('error', 'MEDIA OFFLINE · FALLBACK');
+      play.hidden = true;
+      return;
+    }
+    if (!inView) return;
     if (loadedSrc !== item.media) {
       video.pause();
       media.dataset.state = 'loading';
@@ -200,6 +215,7 @@
     status.textContent = item.status || 'PADIEM DESIGN ORIGINAL';
     section.style.setProperty('--album-accent-rgb', item.accent);
     disc.style.setProperty('--album-accent-rgb', item.accent);
+    play.hidden = !item.media || reduced || !hasIntersectionObserver || failedMedia.has(item.media);
 
     if (item.href) {
       openLink.hidden = false;
@@ -227,7 +243,6 @@
 
   shelf.addEventListener('pointerdown', event => {
     pointerStart = { x: event.clientX, y: event.clientY };
-    shelf.setPointerCapture?.(event.pointerId);
   });
   shelf.addEventListener('pointerup', event => {
     if (!pointerStart) return;
@@ -251,7 +266,8 @@
   });
 
   play.addEventListener('click', () => {
-    if (!items[selected].media) return;
+    const item = items[selected];
+    if (!item.media || failedMedia.has(item.media)) return;
     if (!loadedSrc) ensureVideo();
     if (video.paused) video.play().catch(() => {});
     else video.pause();
@@ -276,12 +292,19 @@
     progress.style.transform = `scaleX(${ratio})`;
   });
   video.addEventListener('error', () => {
+    const failedSrc = loadedSrc || items[selected].media;
+    if (failedSrc) failedMedia.add(failedSrc);
+    video.pause();
+    video.removeAttribute('src');
+    video.load();
+    loadedSrc = '';
     media.dataset.state = 'error';
     mediaState.textContent = 'MEDIA OFFLINE · FALLBACK';
-    loadedSrc = '';
+    progress.style.transform = 'scaleX(0)';
+    play.hidden = true;
   });
 
-  if ('IntersectionObserver' in window) {
+  if (hasIntersectionObserver) {
     new IntersectionObserver(entries => {
       entries.forEach(entry => {
         inView = entry.isIntersecting;
@@ -290,8 +313,7 @@
       });
     }, { threshold: .22, rootMargin: '120px 0px 120px' }).observe(section);
   } else {
-    inView = true;
-    ensureVideo();
+    detachVideo('fallback', 'STATIC FALLBACK');
   }
 
   document.addEventListener('visibilitychange', () => {
