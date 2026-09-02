@@ -2,18 +2,38 @@
   const mounts = [...document.querySelectorAll('[data-padiem-design-video]')];
   if (!mounts.length || !document.title.includes('PADIEM Design')) return;
 
-  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
+  const supportsIntersectionObserver = 'IntersectionObserver' in window;
   const records = new Map();
 
   const setState = (mount, state) => {
     mount.dataset.videoState = state;
   };
 
+  // Reduced-motion and legacy browsers fail open to the first-party static
+  // fallback without creating or requesting a video element.
+  if (reducedMotion || !supportsIntersectionObserver) {
+    mounts.forEach(mount => setState(mount, 'fallback'));
+    return;
+  }
+
   const ensureVideo = mount => {
     if (records.has(mount)) return records.get(mount);
 
     const src = mount.dataset.videoSrc?.trim();
     if (!src) {
+      setState(mount, 'fallback');
+      return null;
+    }
+
+    let parsed;
+    try {
+      parsed = new URL(src, location.href);
+    } catch {
+      setState(mount, 'fallback');
+      return null;
+    }
+    if (parsed.protocol !== 'https:') {
       setState(mount, 'fallback');
       return null;
     }
@@ -26,14 +46,17 @@
     video.playsInline = true;
     video.preload = 'none';
     video.controls = false;
-    video.disablePictureInPicture = true;
+    if ('disablePictureInPicture' in video) video.disablePictureInPicture = true;
+    video.setAttribute('muted', '');
+    video.setAttribute('loop', '');
+    video.setAttribute('playsinline', '');
     video.setAttribute('aria-hidden', 'true');
     video.setAttribute('tabindex', '-1');
 
     const record = {
       mount,
       video,
-      src,
+      src: parsed.href,
       sourceAttached: false,
       failed: false,
       inView: false,
@@ -42,7 +65,7 @@
     video.addEventListener('loadeddata', () => {
       if (record.failed) return;
       setState(mount, 'ready');
-      if (record.inView && !document.hidden && !reducedMotion) {
+      if (record.inView && !document.hidden) {
         video.play().catch(() => setState(mount, 'paused'));
       }
     });
@@ -58,27 +81,24 @@
     });
 
     const failOpen = () => {
+      if (record.failed) return;
       record.failed = true;
       video.pause();
       video.removeAttribute('src');
-      video.load();
       video.remove();
       setState(mount, 'fallback');
     };
 
     video.addEventListener('error', failOpen, { once: true });
-    video.addEventListener('abort', () => {
-      if (!record.failed && !record.inView) setState(mount, 'paused');
-    });
 
     mount.append(video);
-    setState(mount, reducedMotion ? 'fallback' : 'idle');
+    setState(mount, 'idle');
     records.set(mount, record);
     return record;
   };
 
   const attachSource = record => {
-    if (!record || record.sourceAttached || record.failed || reducedMotion) return;
+    if (!record || record.sourceAttached || record.failed) return;
     record.video.src = record.src;
     record.video.preload = 'metadata';
     record.sourceAttached = true;
@@ -87,7 +107,7 @@
   };
 
   const play = record => {
-    if (!record || record.failed || reducedMotion || document.hidden) return;
+    if (!record || record.failed || document.hidden) return;
     attachSource(record);
     if (record.video.readyState >= 2) {
       record.video.play().catch(() => setState(record.mount, 'paused'));
@@ -100,8 +120,6 @@
   };
 
   mounts.forEach(ensureVideo);
-
-  if (reducedMotion) return;
 
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
