@@ -26,6 +26,7 @@ const languageScript = '<script src="/js/padiem-cinematic-v2-2.js"></script>';
 const homeNavScript = '<script src="/js/padiem-home-nav-v1.js"></script>';
 const drawerTabsScript = '<script src="/js/padiem-home-drawer-tabs-v1.js"></script>';
 const worldScrubScript = '<script src="/js/padiem-scroll-scrub-v1.js"></script>';
+const homeMobileNavStyle = '<link rel="stylesheet" href="/css/padiem-home-mobile-nav-v1.css"/>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -35,6 +36,9 @@ if (html.includes('rel="canonical"')) {
 }
 if (!html.includes(languageScript)) {
   throw new Error("Expected language runtime script was not found; refusing to publish without the KO/EN language runtime.");
+}
+if (!html.includes('</head>')) {
+  throw new Error("Expected </head> was not found in cinematic source.");
 }
 
 const seoHead = [
@@ -49,6 +53,10 @@ const seoHead = [
 ].join("");
 
 html = html.replace(oldTitle, seoHead);
+
+if (!html.includes('padiem-home-mobile-nav-v1.css')) {
+  html = html.replace('</head>', `${homeMobileNavStyle}</head>`);
+}
 
 // The legacy source markup still contains the previous navigation labels. Inject
 // the IA adapter before the existing language/overlay runtime so that the latter
