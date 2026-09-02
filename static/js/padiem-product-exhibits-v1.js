@@ -1,4 +1,12 @@
 (() => {
+  const config = window.PADIEM_EXHIBIT_CONFIG;
+  if (config) {
+    const params = new URLSearchParams(location.search);
+    const requested = params.get(config.queryParam);
+    const mode = config.allowedModes.includes(requested) ? requested : config.modes.products;
+    if (mode === 'album') return;
+  }
+
   if (!document.title.includes('PADIEM Products')) return;
 
   const frames = [...document.querySelectorAll('.world-media-frame')];
