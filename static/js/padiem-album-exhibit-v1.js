@@ -242,7 +242,6 @@
 
   shelf.addEventListener('pointerdown', event => {
     pointerStart = { x: event.clientX, y: event.clientY };
-    shelf.setPointerCapture?.(event.pointerId);
   });
   shelf.addEventListener('pointerup', event => {
     if (!pointerStart) return;
