@@ -4,6 +4,8 @@
   const frames = [...document.querySelectorAll('.world-media-frame')];
   if (frames.length < 5) return;
 
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   const mount = (frame, kind, html) => {
     frame.innerHTML = `<div class="product-exhibit product-${kind}" data-product-exhibit="${kind}">${html}</div>`;
     frame.classList.add('has-live-exhibit');
@@ -48,22 +50,62 @@
     if (storyCompanion) storyCompanion.textContent = item.dataset.storyNote || '';
   }));
 
+  // LoveTree product donor = current LoveTree Limone MVP001 entry portal, SRC064.
+  // Preserve the real Memory Orbit grammar (central welcome copy + orbital moments)
+  // without copying the original heavy runtime or personal/source media.
   const love = mount(frames[2], 'love', `
-    <span class="px-meta">PRODUCT STUDY / LOVETREE</span>
-    <div class="love-field" aria-label="Connected memory tree study">
-      <svg class="love-svg" viewBox="0 0 800 480" preserveAspectRatio="none" aria-hidden="true"><path class="love-link" d="M120 150 C260 110 300 180 385 225 M365 100 C390 145 392 175 385 225 M650 180 C540 175 475 205 385 225 M265 395 C305 325 340 270 385 225 M560 405 C520 320 465 270 385 225"/></svg>
-      <button class="memory-node node-a" type="button"><strong>첫 무대</strong><span>좋아했던 순간을 기억으로 남깁니다.</span></button>
-      <button class="memory-node node-b" type="button"><strong>다시 본 영상</strong><span>미디어와 감정의 맥락을 이어갑니다.</span></button>
-      <button class="memory-node node-c" type="button"><strong>함께 남긴 말</strong><span>공개 기억과 커뮤니티를 연결합니다.</span></button>
-      <button class="memory-node node-d" type="button"><strong>이어진 기억</strong><span>새 순간을 기존 흐름에 붙입니다.</span></button>
-      <button class="memory-node node-e" type="button"><strong>오늘의 순간</strong><span>시간이 지나도 다시 탐색할 수 있습니다.</span></button>
-      <div class="tree-core">MEMORY<br>TREE</div>
+    <span class="px-meta">MVP01 / SRC064 STUDY · LOVETREE</span>
+    <div class="love-orbit" aria-label="LoveTree MVP01 Memory Orbit entry study">
+      <div class="orbit-brand">LOVETREE · MEMORY ORBIT</div>
+      <div class="orbit-world" aria-hidden="false">
+        <button class="orbit-card orbit-a visual" type="button" aria-label="Moment 01"><span class="orbit-type">PHOTO</span><span class="orbit-no">01</span></button>
+        <button class="orbit-card orbit-b memo" type="button" aria-label="Moment 02"><span class="orbit-type">MEMORY NOTE</span><strong>다시 듣고 싶은<br>그날의 한마디</strong><span class="orbit-no">02</span></button>
+        <button class="orbit-card orbit-c visual video" type="button" aria-label="Moment 03"><span class="orbit-play">▶</span><span class="orbit-type">VIDEO</span><span class="orbit-no">03</span></button>
+        <button class="orbit-card orbit-d visual" type="button" aria-label="Moment 04"><span class="orbit-type">PHOTO</span><span class="orbit-no">04</span></button>
+        <button class="orbit-card orbit-e memo" type="button" aria-label="Moment 05"><span class="orbit-type">MEMO</span><strong>처음 만난 계절을<br>기억해요.</strong><span class="orbit-no">05</span></button>
+        <button class="orbit-card orbit-f visual" type="button" aria-label="Moment 06"><span class="orbit-type">PHOTO</span><span class="orbit-no">06</span></button>
+        <button class="orbit-card orbit-g visual video" type="button" aria-label="Moment 07"><span class="orbit-play">▶</span><span class="orbit-type">VIDEO</span><span class="orbit-no">07</span></button>
+        <button class="orbit-card orbit-h visual" type="button" aria-label="Moment 08"><span class="orbit-type">PHOTO</span><span class="orbit-no">08</span></button>
+      </div>
+      <div class="orbit-center">
+        <span class="orbit-eyebrow">WELCOME BACK</span>
+        <strong>다시, 그 순간으로.</strong>
+        <p>기억은 아직 여기에서 이어지고 있어요.</p>
+        <div class="orbit-actions" aria-label="MVP01 entry actions">
+          <button type="button">이어 보던 순간</button>
+          <button type="button">첫 순간으로</button>
+          <button type="button">내 트리 보기</button>
+        </div>
+      </div>
+      <div class="orbit-status">WELCOME_IDLE · 40 MOMENTS</div>
+      <div class="orbit-hint">MOVE · TAP TO FOCUS</div>
     </div>
-    <div class="px-foot"><span>MOMENT → MEMORY → CONNECTION</span><span>EXTERNAL SUCCESSOR</span></div>
+    <div class="px-foot"><span>REAL MVP01 ENTRY GRAMMAR</span><span>SRC064 · MEMORY ORBIT</span></div>
   `);
-  love.querySelectorAll('.memory-node').forEach(node => node.addEventListener('click', () => {
-    love.querySelectorAll('.memory-node').forEach(card => card.classList.toggle('active', card === node));
+
+  love.querySelectorAll('.orbit-card').forEach(card => card.addEventListener('click', () => {
+    love.querySelectorAll('.orbit-card').forEach(node => node.classList.toggle('active', node === card));
   }));
+  love.querySelectorAll('.orbit-actions button').forEach(action => action.addEventListener('click', () => {
+    love.querySelectorAll('.orbit-actions button').forEach(node => node.classList.toggle('active', node === action));
+  }));
+
+  if (!reduced) {
+    let orbitX = 0;
+    let orbitY = 0;
+    const orbitWorld = love.querySelector('.orbit-world');
+    love.addEventListener('pointermove', event => {
+      const rect = love.getBoundingClientRect();
+      orbitX = ((event.clientX - rect.left) / rect.width - .5) * 2;
+      orbitY = ((event.clientY - rect.top) / rect.height - .5) * 2;
+      if (orbitWorld) orbitWorld.style.transform = `rotateX(${orbitY * -2.5}deg) rotateY(${orbitX * 4}deg) translate3d(${orbitX * 5}px,${orbitY * 3}px,0)`;
+    });
+    love.addEventListener('pointerleave', () => {
+      orbitX = 0;
+      orbitY = 0;
+      if (orbitWorld) orbitWorld.style.transform = '';
+    });
+  }
 
   const danji = mount(frames[3], 'danji', `
     <span class="px-meta">PRODUCT STUDY / DANJION</span>
