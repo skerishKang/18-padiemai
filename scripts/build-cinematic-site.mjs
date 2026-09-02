@@ -29,6 +29,8 @@ const worldScrubScript = '<script src="/js/padiem-scroll-scrub-v1.js"></script>'
 const homeMobileNavStyle = '<link rel="stylesheet" href="/css/padiem-home-mobile-nav-v1.css"/>';
 const liveExhibitStyle = '<link rel="stylesheet" href="/css/padiem-live-exhibits-v1.css"/>';
 const liveExhibitScript = '<script src="/js/padiem-live-exhibits-v1.js"></script>';
+const productExhibitStyle = '<link rel="stylesheet" href="/css/padiem-product-exhibits-v1.css"/>';
+const productExhibitScript = '<script src="/js/padiem-product-exhibits-v1.js"></script>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -119,9 +121,17 @@ for (const { source, dest } of showcasePages) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
   }
 
-  // Design is a live exhibition surface. Mount lightweight, public-safe studies
-  // of the canonical interaction structures without exposing source media,
-  // private Drive locators, or internal project assets.
+  // Products and Design are separate exhibition worlds. Each receives only its
+  // own public-safe study runtime while sharing the same cinematic scroll-scrub.
+  if (source === 'pages/products.html') {
+    if (!pageHtml.includes('padiem-product-exhibits-v1.css')) {
+      pageHtml = pageHtml.replace('</head>', `  ${productExhibitStyle}\n</head>`);
+    }
+    if (!pageHtml.includes('padiem-product-exhibits-v1.js')) {
+      pageHtml = pageHtml.replace('</body>', `  ${productExhibitScript}\n</body>`);
+    }
+  }
+
   if (source === 'pages/design.html') {
     if (!pageHtml.includes('padiem-live-exhibits-v1.css')) {
       pageHtml = pageHtml.replace('</head>', `  ${liveExhibitStyle}\n</head>`);
