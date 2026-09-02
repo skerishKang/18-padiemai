@@ -1,19 +1,19 @@
 const AI_PATH = "/api/storymemory-ai";
 const AI_HEALTH_PATH = "/api/storymemory-ai/health";
-const ENGINE_EXECUTE_URL = "https://padiem-ai-engine.internal/internal/v1/execute";
+// V2: fixed ingress URL. Caller/body must never choose the target URL.
+const INGRESS_EXECUTE_URL = "https://padiem-ai-engine-ingress.charliekant.workers.dev/internal/v1/execute";
 const MAX_BODY_BYTES = 32 * 1024;
 const MAX_QUESTION_CHARS = 2000;
 const MAX_REFERENCE_CHARS = 12000;
 const MAX_ENGINE_CONTEXT = 8;
-const ENGINE_CALLER_ID_HEADER = "X-Padiem-Engine-Caller";
-const ENGINE_CREDENTIAL_HEADER = "X-Padiem-Engine-Credential";
 
-function engineIdentity(env) {
-  const callerId = clip(env?.PADIEM_ENGINE_CALLER_ID, 128);
-  const credential = String(env?.PADIEM_ENGINE_CALLER_SECRET ?? "");
-  if (!/^[A-Za-z0-9][A-Za-z0-9._:-]{0,127}$/.test(callerId)) return null;
+// V2: B61 holds only the ingress client credential. The canonical Engine
+// caller id/secret are minted by the ingress from its own env and B61 never
+// sees or forwards them.
+function ingressCredential(env) {
+  const credential = String(env?.PADIEM_INGRESS_CLIENT_SECRET ?? "");
   if (credential.length < 32 || credential.length > 512) return null;
-  return { callerId, credential };
+  return credential;
 }
 
 function json(body, status = 200) {
@@ -190,8 +190,9 @@ export default {
       return json({
         ok: true,
         service: "storymemory-ai-adapter",
-        engine_binding: Boolean(env?.PADIEM_AI_ENGINE),
-        engine_identity_configured: Boolean(engineIdentity(env)),
+        transport: "authenticated_ingress",
+        ingress_url: INGRESS_EXECUTE_URL,
+        ingress_credential_configured: Boolean(ingressCredential(env)),
         context_permission: "required",
         auth: "deferred",
         direct_provider: false
@@ -200,9 +201,8 @@ export default {
     if (url.pathname === AI_PATH) {
       if (request.method !== "POST") return json({ ok: false, error: "method_not_allowed" }, 405);
       if (!sameOrigin(request)) return json({ ok: false, error: "cross_origin_forbidden" }, 403);
-      if (!env?.PADIEM_AI_ENGINE || typeof env.PADIEM_AI_ENGINE.fetch !== "function") return json({ ok: false, error: "engine_service_unavailable" }, 503);
-      const identity = engineIdentity(env);
-      if (!identity) return json({ ok: false, error: "engine_service_identity_unavailable" }, 503);
+      const credential = ingressCredential(env);
+      if (!credential) return json({ ok: false, error: "ingress_credential_unavailable" }, 503);
       const contentType = (request.headers.get("content-type") || "").split(";", 1)[0].trim().toLowerCase();
       if (contentType !== "application/json") return json({ ok: false, error: "unsupported_media_type" }, 415);
       const length = Number(request.headers.get("content-length") || 0);
@@ -224,23 +224,25 @@ export default {
         const status = code === "outside_knowledge_boundary" || code === "boundary_unavailable" ? 422 : (code === "reference_context_too_large" ? 413 : 400);
         return json({ ok: false, error: code }, status);
       }
-      const engineRequest = new Request(ENGINE_EXECUTE_URL, {
+      // V2: server-side HTTPS fetch to the fixed ingress URL. The caller/body
+      // cannot redirect this; only the ingress credential is sent. B61 forwards
+      // NO Engine caller/credential and NO browser Origin header.
+      const engineRequest = new Request(INGRESS_EXECUTE_URL, {
         method: "POST",
         headers: {
           "content-type": "application/json",
-          [ENGINE_CALLER_ID_HEADER]: identity.callerId,
-          [ENGINE_CREDENTIAL_HEADER]: identity.credential
+          "X-Padiem-Ingress-Credential": credential
         },
         body: JSON.stringify(buildEnginePayload(question, bounded))
       });
       let response;
-      try { response = await env.PADIEM_AI_ENGINE.fetch(engineRequest); }
-      catch { return json({ ok: false, error: "engine_request_failed" }, 502); }
+      try { response = await fetch(engineRequest); }
+      catch { return json({ ok: false, error: "ingress_request_failed" }, 502); }
       let payload;
       try { payload = await response.json(); }
-      catch { return json({ ok: false, error: "engine_invalid_response" }, 502); }
+      catch { return json({ ok: false, error: "ingress_invalid_response" }, 502); }
       if (!response.ok || payload?.ok !== true || typeof payload?.answer !== "string") {
-        return json({ ok: false, error: payload?.error?.code || "engine_execution_failed", retryable: Boolean(payload?.error?.retryable) }, response.status >= 400 && response.status <= 599 ? response.status : 502);
+        return json({ ok: false, error: payload?.error?.code || "ingress_execution_failed", retryable: Boolean(payload?.error?.retryable) }, response.status >= 400 && response.status <= 599 ? response.status : 502);
       }
       const cp = payload?.context_permission;
       if (!cp || cp.boundary_disposition !== "permitted" || Number(cp.context_filtered_count || 0) !== 0 || Number(cp.context_allowed_count || 0) < 1) {
@@ -250,6 +252,7 @@ export default {
         ok: true,
         answer: payload.answer,
         runtime: "padiem-ai-engine",
+        transport: "authenticated_ingress",
         reference_trust: "UNTRUSTED_REFERENCE",
         context_permission: {
           boundary_disposition: cp.boundary_disposition,
