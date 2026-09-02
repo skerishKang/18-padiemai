@@ -48,7 +48,8 @@ const seoHead = [
 html = html.replace(oldTitle, seoHead);
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
-for (const dir of ["css", "js", "images"]) {
+// Copy supporting directories.
+for (const dir of ["css", "js", "images", "html"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
     throw new Error(`Required asset directory is missing: static/${dir}`);
@@ -68,6 +69,24 @@ for (const [source, destination] of requiredFiles) {
     throw new Error(`Required publish file is missing: ${source}`);
   }
   copyFileSync(source, destination);
+}
+
+// Publish standalone showcase pages to clean root-level URLs.
+const showcasePages = [
+  { source: "pages/products.html", dest: "products/index.html" },
+  { source: "pages/design.html",  dest: "design/index.html"  },
+  { source: "pages/about.html",   dest: "about/index.html"   },
+  { source: "pages/contact.html", dest: "contact/index.html" },
+];
+
+for (const { source, dest } of showcasePages) {
+  const srcPath = join(root, "static", "html", source);
+  if (!existsSync(srcPath)) {
+    throw new Error(`Showcase page is missing: static/html/${source}`);
+  }
+  const destPath = join(publicDir, dest);
+  mkdirSync(join(publicDir, dest.split("/")[0]), { recursive: true });
+  copyFileSync(srcPath, destPath);
 }
 
 // Preserve legacy search-engine verification files without republishing the old site.
