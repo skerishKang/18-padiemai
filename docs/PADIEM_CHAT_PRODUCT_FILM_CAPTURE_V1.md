@@ -44,18 +44,39 @@ The source also visibly marks or disables several capabilities:
 
 These must not be staged as working features merely for the film.
 
+## Public-surface override
+
+A clean logged-out public preflight completed after this contract was first written. The live public surface is currently more restrictive than the source-visible UI.
+
+Publicly proven at preflight:
+
+- branded first viewport;
+- New Chat;
+- main composer;
+- Settings entry;
+- logged-out / disabled Login state.
+
+Not independently proven as exposed in the clean public state:
+
+- theme controls;
+- KR / EN switch;
+- Projects persistence/auth state;
+- active Search/Web Search/Deep Research.
+
+Therefore **public surface truth overrides the source-visible storyboard**. Do not force theme or locale shots if those controls are not actually exposed at capture time. Do not stage hidden or disabled controls merely to increase the apparent feature count.
+
 ## Recording story
 
 Target length: approximately 40–60 seconds.
 
-Preferred sequence:
+Preferred sequence, bounded by live public truth:
 
 1. Open the real public Padiem Chat surface in a clean/sanitized browser state.
 2. Hold briefly on the main first viewport so the composer and product identity are readable.
-3. Use New Chat or a safe recommended-prompt interaction only if the public surface behaves deterministically without private data.
-4. Show the composer and real navigation affordances without presenting disabled features as active.
-5. Open Settings and demonstrate one or two real theme transitions.
-6. Demonstrate KR → EN → KR.
+3. Use New Chat or another deterministic visible control without private data.
+4. Show the composer and real visible affordances without presenting disabled features as active.
+5. Open Settings only if the live public UI exposes it cleanly.
+6. Demonstrate theme or locale transitions only if those controls are actually visible and functional in that exact public state.
 7. Return to the main composer/conversation state and end on a clean product frame.
 
 Do not force every step if the public surface differs at capture time. Public truth beats the storyboard.
@@ -110,8 +131,13 @@ Public target:
 
 Do not commit the MP4 into GitHub or Netlify.
 
+The target object is currently absent. Existing approved media must remain untouched.
+
+The local preflight confirms `wrangler` is available but the currently proven OAuth path does not have R2-scoped write authority. Do not improvise a new token, enable R2, or mutate Cloudflare configuration simply to finish the film. Upload is allowed only through a separately proven safe R2 write path.
+
 Before the homepage registry is wired, acceptance requires:
 
+- approved upload authority;
 - upload success;
 - source/remote parity;
 - HTTP 200;
@@ -120,6 +146,19 @@ Before the homepage registry is wired, acceptance requires:
 - CDN cache behavior accepted under the existing R2 operations contract;
 - query-string normalization guard preserved;
 - no unintended extra public objects.
+
+## Drive archive
+
+A dedicated private `PADIEM_CHAT_PRODUCT_FILM_V1` archive has been created under the existing PADIEM media archive authority with:
+
+```text
+00_RAW
+01_EDIT
+02_FINAL
+03_EVIDENCE
+```
+
+Private Drive identifiers and paths are intentionally not recorded in this public repository document.
 
 ## Homepage integration boundary
 
@@ -145,7 +184,7 @@ Local/browser work is limited to tasks CENTRAL cannot perform directly:
 1. real screen recording;
 2. deterministic trimming/encoding to the accepted master;
 3. metadata/hash extraction;
-4. R2 upload only if the authenticated local Cloudflare CLI path is already available and safe.
+4. R2 upload only if an authenticated, already-proven safe R2 write path is available.
 
 Do not assign GitHub review, code audit, PR review, Netlify review, issue triage, or production acceptance to the local/browser worker.
 
