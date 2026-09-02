@@ -121,6 +121,13 @@ for (const { source, dest } of showcasePages) {
   if (!pageHtml.includes('</head>') || !pageHtml.includes('</body>')) {
     throw new Error(`Expected document boundaries were not found in static/html/${source}`);
   }
+
+  // Mode config must execute before the legacy scroll-scrub runtime so ALBUM can
+  // skip that background entirely while CURRENT remains byte-for-byte behaviorally
+  // equivalent after the guard returns false.
+  if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
+    pageHtml = pageHtml.replace('</body>', `  ${exhibitConfigScript}\n</body>`);
+  }
   if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
   }
@@ -150,10 +157,10 @@ for (const { source, dest } of showcasePages) {
   if (!pageHtml.includes('padiem-album-exhibit-v1.css')) {
     pageHtml = pageHtml.replace('</head>', `  ${albumExhibitStyle}\n</head>`);
   }
-  if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
+  if (!pageHtml.includes('padiem-exhibit-registry-v1.js')) {
     pageHtml = pageHtml.replace(
       '</body>',
-      `  ${exhibitConfigScript}\n  ${exhibitRegistryScript}\n  ${albumExhibitScript}\n</body>`,
+      `  ${exhibitRegistryScript}\n  ${albumExhibitScript}\n</body>`,
     );
   }
 
