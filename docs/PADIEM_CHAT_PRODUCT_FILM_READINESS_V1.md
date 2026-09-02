@@ -1,6 +1,6 @@
 # PADIEM Chat Product Film Readiness v1
 
-Status: **PRE-CAPTURE READY / R2 WRITE CREDENTIAL PENDING / MEDIA NOT YET CAPTURED**
+Status: **PRE-CAPTURE READY / MANUAL R2 WRITE CREDENTIAL PENDING / MEDIA NOT YET CAPTURED**
 
 Tracks Issue #32 and Draft PR #33.
 
@@ -95,7 +95,8 @@ PADIEM_MEDIA_BUCKET = FOUND
 WRANGLER_DISCOVERY = PASS
 WRANGLER_R2_WRITE_SCOPE = MISSING
 R2_BUCKET_SCOPED_CREDENTIAL = REQUIRED
-R2_WRITE_AUTHORITY = HOLD_PENDING_CREDENTIAL
+R2_CREDENTIAL_CREATION_PATH = MANUAL_DASHBOARD_LOGIN_REQUIRED
+R2_WRITE_AUTHORITY = HOLD_PENDING_MANUAL_CREDENTIAL
 TARGET_OBJECT = ABSENT
 OVERWRITE_ALLOWED = NO
 DELETE_ALLOWED = NO
@@ -104,7 +105,9 @@ WRONG_ACCOUNT_R2_ENABLE = FORBIDDEN
 CLOUDFLARE_CONFIG_MUTATION = NO
 ```
 
-After a safe bucket-scoped credential is created, do not upload a probe. Report only that the credential exists and is scoped correctly. Actual upload remains gated on the approved final master.
+Automated credential creation was not attempted beyond the authenticated boundary because the available browser session was not signed into Cloudflare and no owner credentials are available to CENTRAL/local automation. This is an intentional stop, not an implementation failure.
+
+The owner must create the bucket-scoped credential interactively in the existing production R2 account. After it is created, do not upload a probe. Report only that the credential exists and is scoped correctly. Actual upload remains gated on the approved final master.
 
 After the canonical object is eventually uploaded, require source/remote parity, HTTP 200, Range 206, Content-Range, cache and query-normalization acceptance before homepage wiring.
 
@@ -141,10 +144,10 @@ FAKE_CAPABILITY_BOUNDARY = LOCKED
 DRIVE_ARCHIVE = READY
 TARGET_R2_OBJECT = ABSENT
 R2_PRODUCTION_ACCOUNT = IDENTIFIED
-R2_WRITE_CREDENTIAL = PENDING
-R2_WRITE_AUTHORITY = HOLD_PENDING_CREDENTIAL
+R2_WRITE_CREDENTIAL = MANUAL_CREATION_PENDING
+R2_WRITE_AUTHORITY = HOLD_PENDING_MANUAL_CREDENTIAL
 RECORDING_EXECUTED = NO
 R2_UPLOAD_EXECUTED = NO
 HOMEPAGE_MEDIA_WIRED = NO
-FINAL_DISPOSITION = PRE_CAPTURE_READY_R2_CREDENTIAL_PENDING
+FINAL_DISPOSITION = PRE_CAPTURE_READY_MANUAL_R2_CREDENTIAL_PENDING
 ```
