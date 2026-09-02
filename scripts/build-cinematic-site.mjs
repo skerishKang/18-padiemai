@@ -82,12 +82,12 @@ for (const [source, destination] of requiredFiles) {
   copyFileSync(source, destination);
 }
 
-// Publish standalone cinematic worlds to clean root-level URLs.
+// Publish only the primary cinematic destinations. Company / Team / Contact
+// remain first-party drawer surfaces inside the home world and are reached via
+// compatibility redirects; do not republish the legacy standalone page shell.
 const showcasePages = [
   { source: "pages/products.html", dest: "products/index.html" },
   { source: "pages/design.html",  dest: "design/index.html"  },
-  { source: "pages/about.html",   dest: "about/index.html"   },
-  { source: "pages/contact.html", dest: "contact/index.html" },
 ];
 
 for (const { source, dest } of showcasePages) {
