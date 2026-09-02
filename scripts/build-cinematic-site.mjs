@@ -25,6 +25,7 @@ const newTitle = "<title>PADIEM | AI로 일을 다시 설계합니다</title>";
 const languageScript = '<script src="/js/padiem-cinematic-v2-2.js"></script>';
 const homeNavScript = '<script src="/js/padiem-home-nav-v1.js"></script>';
 const drawerTabsScript = '<script src="/js/padiem-home-drawer-tabs-v1.js"></script>';
+const worldScrubScript = '<script src="/js/padiem-scroll-scrub-v1.js"></script>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -96,9 +97,21 @@ for (const { source, dest } of showcasePages) {
   if (!existsSync(srcPath)) {
     throw new Error(`Showcase page is missing: static/html/${source}`);
   }
+
+  let pageHtml = readFileSync(srcPath, "utf8");
+  if (!pageHtml.includes('padiem-cinematic-worlds-v1.js')) {
+    throw new Error(`Cinematic world runtime is missing from static/html/${source}`);
+  }
+  if (!pageHtml.includes('</body>')) {
+    throw new Error(`Expected </body> was not found in static/html/${source}`);
+  }
+  if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
+    pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
+  }
+
   const destPath = join(publicDir, dest);
   mkdirSync(join(publicDir, dest.split("/")[0]), { recursive: true });
-  copyFileSync(srcPath, destPath);
+  writeFileSync(destPath, pageHtml, "utf8");
 }
 
 // Preserve search-engine verification files without republishing the old site.
