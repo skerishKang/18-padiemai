@@ -35,7 +35,7 @@
 .product-story .reader-title{margin-top:15px;font-family:var(--font-display);font-size:18px;line-height:1.05}.product-story .reader-copy{margin-top:13px;display:grid;gap:7px}.product-story .reader-line{height:7px;border-radius:999px;background:#d1cfc8}.product-story .reader-line:nth-child(2){width:92%}.product-story .reader-line:nth-child(3){width:73%}.product-story .reader-line.highlight{height:auto;padding:9px 10px;border-radius:8px;background:#e7edf1;border-left:2px solid #7ea8c5;font-size:8px;line-height:1.45}
 .product-story .companion-card{margin-top:14px;border:1px solid rgba(30,32,36,.11);border-radius:12px;background:#eceae4;padding:11px}.product-story .companion-card strong{display:block;font-size:9px}.product-story .companion-card p{margin:8px 0 0;font-size:8px;line-height:1.5;color:#565a61}.product-story .locator{margin-top:13px;padding-top:9px;border-top:1px solid rgba(30,32,36,.1);font-family:var(--font-label);font-size:6px;letter-spacing:.1em;color:#70747b}
 
-/* 03 LOVETREE — MVP01 / SRC064 ENTRY ORBIT */
+/* 03 LOVETREE — MVP01 ENTRY ORBIT */
 .product-love{background:#040407;color:#f5f1e9}
 .product-love::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,#10101a 0%,#08080d 30%,#030305 70%,#000 100%);pointer-events:none}
 .product-love::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 0 22%,rgba(0,0,0,.16) 38%,rgba(0,0,0,.58) 84%,rgba(0,0,0,.82) 100%);pointer-events:none;z-index:2}
