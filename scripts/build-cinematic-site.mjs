@@ -27,6 +27,17 @@ if (/\.r2\.dev|workers\.dev/i.test(exhibitRegistryText)) {
 const exhibitMediaUrls = [...exhibitRegistryText.matchAll(/\bmedia:\s*'([^']*)'/g)]
   .map(match => match[1].trim())
   .filter(Boolean);
+const exhibitHrefUrls = [...exhibitRegistryText.matchAll(/\bhref:\s*'([^']*)'/g)]
+  .map(match => match[1].trim())
+  .filter(Boolean);
+const allowedPublicHrefs = new Set([
+  "https://chat.padiem.net",
+]);
+for (const href of exhibitHrefUrls) {
+  if (!allowedPublicHrefs.has(href)) {
+    throw new Error(`Unapproved public exhibit CTA: ${href}`);
+  }
+}
 const requiredExhibitMedia = new Set([
   "https://media.padiem.net/design/orbitmorph-v1.mp4",
   "https://media.padiem.net/design/emotion-path-helix-v1.mp4",
