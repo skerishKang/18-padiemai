@@ -31,6 +31,10 @@ const liveExhibitStyle = '<link rel="stylesheet" href="/css/padiem-live-exhibits
 const liveExhibitScript = '<script src="/js/padiem-live-exhibits-v1.js"></script>';
 const productExhibitStyle = '<link rel="stylesheet" href="/css/padiem-product-exhibits-v1.css"/>';
 const productExhibitScript = '<script src="/js/padiem-product-exhibits-v1.js"></script>';
+const albumExhibitStyle = '<link rel="stylesheet" href="/css/padiem-album-exhibit-v1.css"/>';
+const exhibitConfigScript = '<script src="/js/padiem-exhibit-config-v1.js"></script>';
+const exhibitRegistryScript = '<script src="/js/padiem-exhibit-registry-v1.js"></script>';
+const albumExhibitScript = '<script src="/js/padiem-album-exhibit-v1.js"></script>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -121,8 +125,7 @@ for (const { source, dest } of showcasePages) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
   }
 
-  // Products and Design are separate exhibition worlds. Each receives only its
-  // own public-safe study runtime while sharing the same cinematic scroll-scrub.
+  // Preserve the accepted CURRENT renderers exactly as their own mode.
   if (source === 'pages/products.html') {
     if (!pageHtml.includes('padiem-product-exhibits-v1.css')) {
       pageHtml = pageHtml.replace('</head>', `  ${productExhibitStyle}\n</head>`);
@@ -139,6 +142,19 @@ for (const { source, dest } of showcasePages) {
     if (!pageHtml.includes('padiem-live-exhibits-v1.js')) {
       pageHtml = pageHtml.replace('</body>', `  ${liveExhibitScript}\n</body>`);
     }
+  }
+
+  // The Album/Collection renderer is parallel, not destructive. Its config
+  // chooses CURRENT or ALBUM per world, and ?exhibit=current|album can override
+  // the default for exact-head QA without changing source or media authority.
+  if (!pageHtml.includes('padiem-album-exhibit-v1.css')) {
+    pageHtml = pageHtml.replace('</head>', `  ${albumExhibitStyle}\n</head>`);
+  }
+  if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
+    pageHtml = pageHtml.replace(
+      '</body>',
+      `  ${exhibitConfigScript}\n  ${exhibitRegistryScript}\n  ${albumExhibitScript}\n</body>`,
+    );
   }
 
   const destPath = join(publicDir, dest);
