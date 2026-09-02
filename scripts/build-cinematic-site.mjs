@@ -12,6 +12,47 @@ import { join } from "node:path";
 const root = process.cwd();
 const publicDir = join(root, "public");
 const sourceHtml = join(root, "static", "html", "index1.html");
+const exhibitRegistryPath = join(root, "static", "js", "padiem-exhibit-registry-v1.js");
+
+// Album media is an explicit public authority boundary. Fail closed before any
+// publish output is created if a registry edit bypasses the R2/custom-domain
+// contract or reintroduces an infrastructure-style public URL.
+if (!existsSync(exhibitRegistryPath)) {
+  throw new Error("Required exhibit registry is missing: static/js/padiem-exhibit-registry-v1.js");
+}
+const exhibitRegistryText = readFileSync(exhibitRegistryPath, "utf8");
+if (/\.r2\.dev|workers\.dev/i.test(exhibitRegistryText)) {
+  throw new Error("Exhibit registry must not expose r2.dev or workers.dev URLs.");
+}
+const exhibitMediaUrls = [...exhibitRegistryText.matchAll(/\bmedia:\s*'([^']*)'/g)]
+  .map(match => match[1].trim())
+  .filter(Boolean);
+const requiredExhibitMedia = new Set([
+  "https://media.padiem.net/design/orbitmorph-v1.mp4",
+  "https://media.padiem.net/design/emotion-path-helix-v1.mp4",
+  "https://media.padiem.net/design/rotating-memory-index-v1.mp4",
+  "https://media.padiem.net/design/living-media-sphere-v1.mp4",
+  "https://media.padiem.net/products/lovetree-mvp01-walkthrough-v1.mp4",
+  "https://media.padiem.net/products/danjion-product-preview-v1.mp4",
+]);
+for (const required of requiredExhibitMedia) {
+  if (!exhibitMediaUrls.includes(required)) {
+    throw new Error(`Approved exhibit media is missing from the registry: ${required}`);
+  }
+}
+for (const src of exhibitMediaUrls) {
+  const url = new URL(src);
+  const validPath = url.pathname.startsWith("/design/") || url.pathname.startsWith("/products/");
+  if (url.origin !== "https://media.padiem.net" || !validPath) {
+    throw new Error(`Exhibit media must use https://media.padiem.net/design|products/: ${src}`);
+  }
+  if (url.search || url.hash) {
+    throw new Error(`Exhibit media URLs must not contain query strings or fragments: ${src}`);
+  }
+  if (!/-v\d+\.mp4$/i.test(url.pathname)) {
+    throw new Error(`Exhibit media filenames must be versioned and end in -vN.mp4: ${src}`);
+  }
+}
 
 // Always start from a clean publish directory so legacy committed/generated pages
 // cannot survive into a Netlify deploy.
@@ -123,8 +164,7 @@ for (const { source, dest } of showcasePages) {
   }
 
   // Mode config must execute before the legacy scroll-scrub runtime so ALBUM can
-  // skip that background entirely while CURRENT remains byte-for-byte behaviorally
-  // equivalent after the guard returns false.
+  // skip that background entirely while CURRENT remains behaviorally equivalent.
   if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${exhibitConfigScript}\n</body>`);
   }
