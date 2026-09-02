@@ -74,7 +74,7 @@ writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
 // Copy only runtime assets. Do NOT copy static/html/** wholesale: that tree still
 // contains archived/legacy page shells which must never reappear in production.
-for (const dir of ["css", "js", "images"]) {
+for (const dir of ["css", "js", "images", "videos"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
     throw new Error(`Required asset directory is missing: static/${dir}`);

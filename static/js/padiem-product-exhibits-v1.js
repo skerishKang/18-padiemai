@@ -50,61 +50,52 @@
     if (storyCompanion) storyCompanion.textContent = item.dataset.storyNote || '';
   }));
 
-  // Current LoveTree Limone MVP001 entry donor is the accepted Memory Orbit surface.
-  // Preserve the real product grammar (central welcome copy + orbital moments)
-  // without copying the original heavy runtime or personal/source media.
+  // Product 03 shows REAL LoveTree MVP01 production footage captured from the
+  // live deploy (lovetree-limone). No simulated reproduction.
+  const loveSteps = [
+    { label: 'ENTRY ORBIT', t: 1.5 },
+    { label: 'LIVING BOARD', t: 20.5 },
+    { label: 'RELATIONSHIPS', t: 27.5 },
+    { label: 'MEMORY DETAIL', t: 36.5 },
+    { label: 'DEEP EXPLORE', t: 42.5 },
+  ];
   const love = mount(frames[2], 'love', `
-    <span class="px-meta">MVP01 / ENTRY ORBIT · LOVETREE</span>
-    <div class="love-orbit" aria-label="LoveTree MVP01 Memory Orbit entry study">
-      <div class="orbit-brand">LOVETREE · MEMORY ORBIT</div>
-      <div class="orbit-world" aria-hidden="false">
-        <button class="orbit-card orbit-a visual" type="button" aria-label="Moment 01"><span class="orbit-type">PHOTO</span><span class="orbit-no">01</span></button>
-        <button class="orbit-card orbit-b memo" type="button" aria-label="Moment 02"><span class="orbit-type">MEMORY NOTE</span><strong>다시 듣고 싶은<br>그날의 한마디</strong><span class="orbit-no">02</span></button>
-        <button class="orbit-card orbit-c visual video" type="button" aria-label="Moment 03"><span class="orbit-play">▶</span><span class="orbit-type">VIDEO</span><span class="orbit-no">03</span></button>
-        <button class="orbit-card orbit-d visual" type="button" aria-label="Moment 04"><span class="orbit-type">PHOTO</span><span class="orbit-no">04</span></button>
-        <button class="orbit-card orbit-e memo" type="button" aria-label="Moment 05"><span class="orbit-type">MEMO</span><strong>처음 만난 계절을<br>기억해요.</strong><span class="orbit-no">05</span></button>
-        <button class="orbit-card orbit-f visual" type="button" aria-label="Moment 06"><span class="orbit-type">PHOTO</span><span class="orbit-no">06</span></button>
-        <button class="orbit-card orbit-g visual video" type="button" aria-label="Moment 07"><span class="orbit-play">▶</span><span class="orbit-type">VIDEO</span><span class="orbit-no">07</span></button>
-        <button class="orbit-card orbit-h visual" type="button" aria-label="Moment 08"><span class="orbit-type">PHOTO</span><span class="orbit-no">08</span></button>
+    <span class="px-meta">LIVE DEPLOY FOOTAGE / LOVETREE MVP01</span>
+    <div class="love-demo" aria-label="LoveTree MVP01 production walkthrough footage">
+      <video class="love-video" src="/videos/love-mvp01-walkthrough.mp4" poster="/videos/love-mvp01-poster.jpg" muted loop playsinline preload="metadata"></video>
+      <div class="love-demo-top"><span class="love-live"><i></i>REAL PRODUCTION · LOVETREE-LIMONE</span><span class="love-time">STEP 1 / 5</span></div>
+      <div class="love-demo-bar">
+        <button class="love-play" type="button" aria-label="영상 재생 또는 정지">❚❚</button>
+        <div class="love-steps" role="group" aria-label="MVP01 five step chapters">${loveSteps.map(step => `<button type="button" data-step-at="${step.t}">${step.label}</button>`).join('')}</div>
       </div>
-      <div class="orbit-center">
-        <span class="orbit-eyebrow">WELCOME BACK</span>
-        <strong>다시, 그 순간으로.</strong>
-        <p>기억은 아직 여기에서 이어지고 있어요.</p>
-        <div class="orbit-actions" aria-label="MVP01 entry actions">
-          <button type="button">이어 보던 순간</button>
-          <button type="button">첫 순간으로</button>
-          <button type="button">내 트리 보기</button>
-        </div>
-      </div>
-      <div class="orbit-status">WELCOME_IDLE · 40 MOMENTS</div>
-      <div class="orbit-hint">MOVE · TAP TO FOCUS</div>
     </div>
-    <div class="px-foot"><span>CURRENT MVP ENTRY GRAMMAR</span><span>MEMORY ORBIT · 40 MOMENTS</span></div>
+    <div class="px-foot"><span>ACTUAL MVP01 WALKTHROUGH · 5 STEPS · 58s</span><span>CAPTURED FROM LIVE DEPLOY</span></div>
   `);
-
-  love.querySelectorAll('.orbit-card').forEach(card => card.addEventListener('click', () => {
-    love.querySelectorAll('.orbit-card').forEach(node => node.classList.toggle('active', node === card));
+  const loveVideo = love.querySelector('video');
+  const lovePlay = love.querySelector('.love-play');
+  const loveTime = love.querySelector('.love-time');
+  const loveStepBtns = [...love.querySelectorAll('.love-steps button')];
+  const loveSyncStep = () => {
+    let idx = 0;
+    loveStepBtns.forEach((btn, i) => { if (loveVideo.currentTime >= parseFloat(btn.dataset.stepAt) - .1) idx = i; });
+    loveStepBtns.forEach((btn, i) => btn.classList.toggle('active', i === idx));
+    if (loveTime) loveTime.textContent = `STEP ${idx + 1} / 5`;
+  };
+  lovePlay.addEventListener('click', () => { if (loveVideo.paused) loveVideo.play(); else loveVideo.pause(); });
+  loveVideo.addEventListener('play', () => { lovePlay.textContent = '❚❚'; });
+  loveVideo.addEventListener('pause', () => { lovePlay.textContent = '▶'; });
+  loveVideo.addEventListener('timeupdate', loveSyncStep);
+  loveStepBtns.forEach(btn => btn.addEventListener('click', () => {
+    loveVideo.currentTime = parseFloat(btn.dataset.stepAt);
+    loveVideo.play();
   }));
-  love.querySelectorAll('.orbit-actions button').forEach(action => action.addEventListener('click', () => {
-    love.querySelectorAll('.orbit-actions button').forEach(node => node.classList.toggle('active', node === action));
-  }));
-
-  if (!reduced) {
-    let orbitX = 0;
-    let orbitY = 0;
-    const orbitWorld = love.querySelector('.orbit-world');
-    love.addEventListener('pointermove', event => {
-      const rect = love.getBoundingClientRect();
-      orbitX = ((event.clientX - rect.left) / rect.width - .5) * 2;
-      orbitY = ((event.clientY - rect.top) / rect.height - .5) * 2;
-      if (orbitWorld) orbitWorld.style.transform = `rotateX(${orbitY * -2.5}deg) rotateY(${orbitX * 4}deg) translate3d(${orbitX * 5}px,${orbitY * 3}px,0)`;
-    });
-    love.addEventListener('pointerleave', () => {
-      orbitX = 0;
-      orbitY = 0;
-      if (orbitWorld) orbitWorld.style.transform = '';
-    });
+  if (!reduced && 'IntersectionObserver' in window) {
+    new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) loveVideo.play().catch(() => {});
+        else loveVideo.pause();
+      });
+    }, { threshold: .35 }).observe(love);
   }
 
   const danji = mount(frames[3], 'danji', `
