@@ -27,6 +27,8 @@ const homeNavScript = '<script src="/js/padiem-home-nav-v1.js"></script>';
 const drawerTabsScript = '<script src="/js/padiem-home-drawer-tabs-v1.js"></script>';
 const worldScrubScript = '<script src="/js/padiem-scroll-scrub-v1.js"></script>';
 const homeMobileNavStyle = '<link rel="stylesheet" href="/css/padiem-home-mobile-nav-v1.css"/>';
+const liveExhibitStyle = '<link rel="stylesheet" href="/css/padiem-live-exhibits-v1.css"/>';
+const liveExhibitScript = '<script src="/js/padiem-live-exhibits-v1.js"></script>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -110,11 +112,23 @@ for (const { source, dest } of showcasePages) {
   if (!pageHtml.includes('padiem-cinematic-worlds-v1.js')) {
     throw new Error(`Cinematic world runtime is missing from static/html/${source}`);
   }
-  if (!pageHtml.includes('</body>')) {
-    throw new Error(`Expected </body> was not found in static/html/${source}`);
+  if (!pageHtml.includes('</head>') || !pageHtml.includes('</body>')) {
+    throw new Error(`Expected document boundaries were not found in static/html/${source}`);
   }
   if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
+  }
+
+  // Design is a live exhibition surface. Mount lightweight, public-safe studies
+  // of the canonical interaction structures without exposing source media,
+  // private Drive locators, or internal project assets.
+  if (source === 'pages/design.html') {
+    if (!pageHtml.includes('padiem-live-exhibits-v1.css')) {
+      pageHtml = pageHtml.replace('</head>', `  ${liveExhibitStyle}\n</head>`);
+    }
+    if (!pageHtml.includes('padiem-live-exhibits-v1.js')) {
+      pageHtml = pageHtml.replace('</body>', `  ${liveExhibitScript}\n</body>`);
+    }
   }
 
   const destPath = join(publicDir, dest);
