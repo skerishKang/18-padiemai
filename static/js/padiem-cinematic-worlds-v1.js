@@ -121,7 +121,8 @@
     if (!overlay || !DRAWER[language][key]) return;
     activeDrawerTab = key;
     const data = DRAWER[language][key];
-    overlay.dataset.panel = key;
+    const cssPanel = key === 'company' ? 'about' : key === 'contact' ? 'inquiry' : 'team';
+    overlay.dataset.panel = cssPanel;
     overlay.style.setProperty('--overlay-accent-rgb', key === 'contact' ? '143,207,255' : key === 'team' ? '153,194,229' : '228,188,116');
     overlayKicker.textContent = data.kicker;
     overlayTitle.textContent = data.title;
