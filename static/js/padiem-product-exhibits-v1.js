@@ -1,4 +1,12 @@
 (() => {
+  const config = window.PADIEM_EXHIBIT_CONFIG;
+  if (config) {
+    const params = new URLSearchParams(location.search);
+    const requested = params.get(config.queryParam);
+    const mode = config.allowedModes.includes(requested) ? requested : config.modes.products;
+    if (mode === 'album') return;
+  }
+
   if (!document.title.includes('PADIEM Products')) return;
 
   const frames = [...document.querySelectorAll('.world-media-frame')];
@@ -50,9 +58,6 @@
     if (storyCompanion) storyCompanion.textContent = item.dataset.storyNote || '';
   }));
 
-  // Current LoveTree Limone MVP001 entry donor is the accepted Memory Orbit surface.
-  // Preserve the real product grammar (central welcome copy + orbital moments)
-  // without copying the original heavy runtime or personal/source media.
   const love = mount(frames[2], 'love', `
     <span class="px-meta">MVP01 / ENTRY ORBIT · LOVETREE</span>
     <div class="love-orbit" aria-label="LoveTree MVP01 Memory Orbit entry study">
