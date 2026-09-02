@@ -135,13 +135,44 @@ for (const { source, dest } of showcasePages) {
   }
 
   if (source === 'pages/design.html') {
-    // Until an approved media integration explicitly marks a frame with
-    // data-padiem-design-video, production keeps the current first-party
-    // interaction studies. This makes the video runtime inert by default and
-    // prevents accidental publication of unapproved external media URLs.
-    const designVideoEnabled = pageHtml.includes('data-padiem-design-video');
+    // Until an approved media integration explicitly marks all four Design
+    // frames, production keeps the current first-party interaction studies.
+    // Once activated, fail closed on partial rollout, direct r2.dev exposure,
+    // cache-busting query strings, or non-versioned/non-canonical media URLs.
+    const designVideoMarkerCount = (pageHtml.match(/data-padiem-design-video/g) || []).length;
+    if (designVideoMarkerCount !== 0 && designVideoMarkerCount !== 4) {
+      throw new Error(`Design video integration must mark exactly four frames; found ${designVideoMarkerCount}.`);
+    }
+
+    const designVideoEnabled = designVideoMarkerCount === 4;
+    const designVideoSrcMatches = [...pageHtml.matchAll(/data-video-src="([^"]+)"/g)].map(match => match[1]);
+
+    if (!designVideoEnabled && designVideoSrcMatches.length) {
+      throw new Error("Design video sources exist without the four-frame activation marker.");
+    }
 
     if (designVideoEnabled) {
+      if (designVideoSrcMatches.length !== 4) {
+        throw new Error(`Design video integration requires exactly four source URLs; found ${designVideoSrcMatches.length}.`);
+      }
+      if (pageHtml.includes('.r2.dev')) {
+        throw new Error("Direct r2.dev media URLs are forbidden in the production Design page.");
+      }
+
+      for (const src of designVideoSrcMatches) {
+        const url = new URL(src);
+        const versionedMp4 = /-v\d+\.mp4$/i.test(url.pathname);
+        if (url.origin !== 'https://media.padiem.net' || !url.pathname.startsWith('/design/')) {
+          throw new Error(`Design media must use https://media.padiem.net/design/: ${src}`);
+        }
+        if (url.search || url.hash) {
+          throw new Error(`Design media URLs must not use query strings or fragments: ${src}`);
+        }
+        if (!versionedMp4) {
+          throw new Error(`Design media filename must be versioned and end in -vN.mp4: ${src}`);
+        }
+      }
+
       if (!pageHtml.includes('padiem-design-video-v1.css')) {
         pageHtml = pageHtml.replace('</head>', `  ${designVideoStyle}\n</head>`);
       }
