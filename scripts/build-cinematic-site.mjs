@@ -29,6 +29,8 @@ const worldScrubScript = '<script src="/js/padiem-scroll-scrub-v1.js"></script>'
 const homeMobileNavStyle = '<link rel="stylesheet" href="/css/padiem-home-mobile-nav-v1.css"/>';
 const liveExhibitStyle = '<link rel="stylesheet" href="/css/padiem-live-exhibits-v1.css"/>';
 const liveExhibitScript = '<script src="/js/padiem-live-exhibits-v1.js"></script>';
+const designVideoStyle = '<link rel="stylesheet" href="/css/padiem-design-video-v1.css"/>';
+const designVideoScript = '<script src="/js/padiem-design-video-v1.js"></script>';
 const productExhibitStyle = '<link rel="stylesheet" href="/css/padiem-product-exhibits-v1.css"/>';
 const productExhibitScript = '<script src="/js/padiem-product-exhibits-v1.js"></script>';
 
@@ -122,7 +124,7 @@ for (const { source, dest } of showcasePages) {
   }
 
   // Products and Design are separate exhibition worlds. Each receives only its
-  // own public-safe study runtime while sharing the same cinematic scroll-scrub.
+  // own public-safe runtime while sharing the same cinematic scroll-scrub.
   if (source === 'pages/products.html') {
     if (!pageHtml.includes('padiem-product-exhibits-v1.css')) {
       pageHtml = pageHtml.replace('</head>', `  ${productExhibitStyle}\n</head>`);
@@ -133,11 +135,26 @@ for (const { source, dest } of showcasePages) {
   }
 
   if (source === 'pages/design.html') {
-    if (!pageHtml.includes('padiem-live-exhibits-v1.css')) {
-      pageHtml = pageHtml.replace('</head>', `  ${liveExhibitStyle}\n</head>`);
-    }
-    if (!pageHtml.includes('padiem-live-exhibits-v1.js')) {
-      pageHtml = pageHtml.replace('</body>', `  ${liveExhibitScript}\n</body>`);
+    // Until an approved media integration explicitly marks a frame with
+    // data-padiem-design-video, production keeps the current first-party
+    // interaction studies. This makes the video runtime inert by default and
+    // prevents accidental publication of unapproved external media URLs.
+    const designVideoEnabled = pageHtml.includes('data-padiem-design-video');
+
+    if (designVideoEnabled) {
+      if (!pageHtml.includes('padiem-design-video-v1.css')) {
+        pageHtml = pageHtml.replace('</head>', `  ${designVideoStyle}\n</head>`);
+      }
+      if (!pageHtml.includes('padiem-design-video-v1.js')) {
+        pageHtml = pageHtml.replace('</body>', `  ${designVideoScript}\n</body>`);
+      }
+    } else {
+      if (!pageHtml.includes('padiem-live-exhibits-v1.css')) {
+        pageHtml = pageHtml.replace('</head>', `  ${liveExhibitStyle}\n</head>`);
+      }
+      if (!pageHtml.includes('padiem-live-exhibits-v1.js')) {
+        pageHtml = pageHtml.replace('</body>', `  ${liveExhibitScript}\n</body>`);
+      }
     }
   }
 
