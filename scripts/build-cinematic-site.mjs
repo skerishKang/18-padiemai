@@ -12,9 +12,56 @@ import { join } from "node:path";
 const root = process.cwd();
 const publicDir = join(root, "public");
 const sourceHtml = join(root, "static", "html", "index1.html");
+const exhibitRegistryPath = join(root, "static", "js", "padiem-exhibit-registry-v1.js");
 
-// Always start from a clean publish directory so legacy committed/generated pages
-// cannot survive into a Netlify deploy.
+if (!existsSync(exhibitRegistryPath)) {
+  throw new Error("Required exhibit registry is missing: static/js/padiem-exhibit-registry-v1.js");
+}
+const exhibitRegistryText = readFileSync(exhibitRegistryPath, "utf8");
+if (/\.r2\.dev|workers\.dev/i.test(exhibitRegistryText)) {
+  throw new Error("Exhibit registry must not expose r2.dev or workers.dev URLs.");
+}
+const exhibitMediaUrls = [...exhibitRegistryText.matchAll(/\bmedia:\s*'([^']*)'/g)]
+  .map(match => match[1].trim())
+  .filter(Boolean);
+const exhibitHrefUrls = [...exhibitRegistryText.matchAll(/\bhref:\s*'([^']*)'/g)]
+  .map(match => match[1].trim())
+  .filter(Boolean);
+const allowedPublicHrefs = new Set([
+  "https://chat.padiem.net",
+]);
+for (const href of exhibitHrefUrls) {
+  if (!allowedPublicHrefs.has(href)) {
+    throw new Error(`Unapproved public exhibit CTA: ${href}`);
+  }
+}
+const requiredExhibitMedia = new Set([
+  "https://media.padiem.net/design/orbitmorph-v1.mp4",
+  "https://media.padiem.net/design/emotion-path-helix-v1.mp4",
+  "https://media.padiem.net/design/rotating-memory-index-v1.mp4",
+  "https://media.padiem.net/design/living-media-sphere-v1.mp4",
+  "https://media.padiem.net/products/lovetree-mvp01-walkthrough-v1.mp4",
+  "https://media.padiem.net/products/danjion-product-preview-v1.mp4",
+]);
+for (const required of requiredExhibitMedia) {
+  if (!exhibitMediaUrls.includes(required)) {
+    throw new Error(`Approved exhibit media is missing from the registry: ${required}`);
+  }
+}
+for (const src of exhibitMediaUrls) {
+  const url = new URL(src);
+  const validPath = url.pathname.startsWith("/design/") || url.pathname.startsWith("/products/");
+  if (url.origin !== "https://media.padiem.net" || !validPath) {
+    throw new Error(`Exhibit media must use https://media.padiem.net/design|products/: ${src}`);
+  }
+  if (url.search || url.hash) {
+    throw new Error(`Exhibit media URLs must not contain query strings or fragments: ${src}`);
+  }
+  if (!/-v\d+\.mp4$/i.test(url.pathname)) {
+    throw new Error(`Exhibit media filenames must be versioned and end in -vN.mp4: ${src}`);
+  }
+}
+
 rmSync(publicDir, { recursive: true, force: true });
 mkdirSync(publicDir, { recursive: true });
 
@@ -66,9 +113,6 @@ if (!html.includes('padiem-home-mobile-nav-v1.css')) {
   html = html.replace('</head>', `${homeMobileNavStyle}</head>`);
 }
 
-// The legacy source markup still contains the previous navigation labels. Inject
-// the IA adapter before the existing language/overlay runtime so that the latter
-// binds to the final navigation semantics. The drawer-tab enhancer runs after it.
 html = html.replace(
   languageScript,
   `${homeNavScript}${languageScript}${drawerTabsScript}`,
@@ -76,8 +120,6 @@ html = html.replace(
 
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
-// Copy only runtime assets. Do NOT copy static/html/** wholesale: that tree still
-// contains archived/legacy page shells which must never reappear in production.
 for (const dir of ["css", "js", "images"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
@@ -100,9 +142,6 @@ for (const [source, destination] of requiredFiles) {
   copyFileSync(source, destination);
 }
 
-// Publish only the primary cinematic destinations. Company / Team / Contact
-// remain first-party drawer surfaces inside the home world and are reached via
-// compatibility redirects; do not republish the legacy standalone page shell.
 const showcasePages = [
   { source: "pages/products.html", dest: "products/index.html" },
   { source: "pages/design.html",  dest: "design/index.html"  },
@@ -122,9 +161,6 @@ for (const { source, dest } of showcasePages) {
     throw new Error(`Expected document boundaries were not found in static/html/${source}`);
   }
 
-  // Mode config must execute before the legacy scroll-scrub runtime so ALBUM can
-  // skip that background entirely while CURRENT remains byte-for-byte behaviorally
-  // equivalent after the guard returns false.
   if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${exhibitConfigScript}\n</body>`);
   }
@@ -132,7 +168,6 @@ for (const { source, dest } of showcasePages) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
   }
 
-  // Preserve the accepted CURRENT renderers exactly as their own mode.
   if (source === 'pages/products.html') {
     if (!pageHtml.includes('padiem-product-exhibits-v1.css')) {
       pageHtml = pageHtml.replace('</head>', `  ${productExhibitStyle}\n</head>`);
@@ -151,9 +186,6 @@ for (const { source, dest } of showcasePages) {
     }
   }
 
-  // The Album/Collection renderer is parallel, not destructive. Its config
-  // chooses CURRENT or ALBUM per world, and ?exhibit=current|album can override
-  // the default for exact-head QA without changing source or media authority.
   if (!pageHtml.includes('padiem-album-exhibit-v1.css')) {
     pageHtml = pageHtml.replace('</head>', `  ${albumExhibitStyle}\n</head>`);
   }
@@ -169,7 +201,6 @@ for (const { source, dest } of showcasePages) {
   writeFileSync(destPath, pageHtml, "utf8");
 }
 
-// Preserve search-engine verification files without republishing the old site.
 for (const file of [
   "googlef7d3aa2eaecfa367.html",
   "naver973c7ccb11cec92fb48885106f1bf365.html",
