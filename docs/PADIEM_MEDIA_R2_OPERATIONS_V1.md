@@ -137,14 +137,16 @@ HOMEPAGE_SURVIVES_MEDIA_FAILURE = YES
 
 The homepage must never require a successful video response in order to render the page or navigate the site.
 
-Every public video exhibit must have a poster/static fallback. JavaScript should treat video loading/playback failure as a non-fatal state.
+Every public video exhibit must have a first-party static fallback that does not depend on the R2 media origin. JavaScript should treat video loading/playback failure as a non-fatal state.
 
 Expected behavior:
 
-- video unavailable → poster remains visible;
+- video unavailable → fallback remains visible;
 - media custom domain unavailable → page remains usable;
 - media emergency block active → page remains usable;
-- `prefers-reduced-motion` → poster/static or reduced-motion presentation is acceptable.
+- `prefers-reduced-motion` → static/reduced-motion presentation is used without requiring video playback.
+
+The fallback may be lightweight HTML/CSS rather than a separate image object. A poster hosted only on the same R2 origin does **not** satisfy the independent-fallback requirement by itself.
 
 ## 10. Billing and budget alerts
 
@@ -195,7 +197,7 @@ Homepage behavior target:
 - loop where appropriate;
 - load/play only when the exhibit is near/in the viewport;
 - pause when out of view;
-- poster fallback always present.
+- independent first-party static fallback always present.
 
 Final media object names and checksums are recorded at upload/integration time; they are not embedded in this operations contract in advance.
 
