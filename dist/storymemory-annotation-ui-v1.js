@@ -1,4 +1,4 @@
-/* ===== B61 #1292 · StoryMemory Annotation Layer v1 · canonical-locator anchored ===== */
+/* ===== B61 #1129 · StoryMemory Annotation Layer v1 · bookmark exact-locator bridge ===== */
 (function(){
 'use strict';
 var STORE=window.__smAnnotationStoreModuleV1;
@@ -9,11 +9,83 @@ var COLORS=STORE.COLORS;
 var LOC_RE=STORE.LOC_RE;
 var MAX_ITEMS=STORE.MAX_ITEMS,MAX_NOTE=STORE.MAX_NOTE,MAX_TEXT=STORE.MAX_TEXT;
 var items=[],undoSlot=null,eraseMode=false,pendingSel=null;
+var MEMORY_KEY='storymemory.userMemories.v1';
 function esc(s){return (window.CSS&&CSS.escape)?CSS.escape(String(s)):String(s).replace(/["\\]/g,'\\$&');}
 var unitOf=STORE.unitOf;
 var sanitizeItem=STORE.sanitizeItem;
 function load(){items=STORE.load();}
 function save(){STORE.save(items);}
+
+function loadMemories(){
+  try{
+    var raw=localStorage.getItem(MEMORY_KEY);
+    if(!raw)return[];
+    var p=JSON.parse(raw);
+    return Array.isArray(p?.items)?p.items:[];
+  }catch(_){return[];}
+}
+function saveMemories(list){
+  try{localStorage.setItem(MEMORY_KEY,JSON.stringify({version:1,items:list}));}catch(_){}
+}
+function markMemoryClientUpdated(mem){
+  mem.clientUpdatedAt=Date.now();
+  mem.client_record_id=mem.client_record_id||('cm'+Date.now().toString(36)+Math.random().toString(36).slice(2,7));
+  return mem;
+}
+function deleteUserMemory(clientRecordId){
+  var ms=loadMemories();
+  var filtered=ms.filter(function(m){return m.client_record_id!==clientRecordId;});
+  var tombstones=ms.filter(function(m){return m.client_record_id===clientRecordId;}).map(function(m){
+    return{client_record_id:m.client_record_id,kind:'tombstone',deletedAt:Date.now()};
+  });
+  filtered=filtered.concat(tombstones);
+  saveMemories(filtered);
+}
+function storyMemoryGetExactBookmarkMemory(locator){
+  var ms=loadMemories();
+  for(var i=0;i<ms.length;i++){
+    var m=ms[i];
+    if(m.subtype==='bookmark'&&m.canonicalLocator===locator)return m;
+  }
+  return null;
+}
+function storyMemorySetExactBookmarkMemory(locator,active,metadata){
+  var ms=loadMemories();
+  var existing=storyMemoryGetExactBookmarkMemory(locator);
+  if(existing){
+    if(!active){
+      deleteUserMemory(existing.client_record_id);
+      return null;
+    }
+    Object.assign(existing,metadata||{});
+    markMemoryClientUpdated(existing);
+    saveMemories(ms);
+    return existing;
+  }
+  if(!active)return null;
+  var mem={
+    id:'mem'+Date.now().toString(36)+Math.random().toString(36).slice(2,7),
+    kind:'note',
+    subtype:'bookmark',
+    canonicalLocator:locator,
+    sourceSequence:metadata?.sourceSequence||null,
+    unitKey:metadata?.unitKey||null,
+    semanticPage:metadata?.semanticPage||null,
+    contentVersionKey:metadata?.contentVersionKey||null,
+    sourcePreview:metadata?.sourcePreview||null,
+    context:metadata?.context||null,
+    title:metadata?.title||locator,
+    body:'',
+    clientUpdatedAt:Date.now()
+  };
+  markMemoryClientUpdated(mem);
+  ms.push(mem);
+  saveMemories(ms);
+  return mem;
+}
+function syncBookmarkMemory(locator,active,metadata){
+  storyMemorySetExactBookmarkMemory(locator,active,metadata||{});
+}
 function byId(id){for(var i=0;i<items.length;i++)if(items[i].id===id)return items[i];return null;}
 function smalTextNodes(el){
   var out=[],w=document.createTreeWalker(el,NodeFilter.SHOW_TEXT,{acceptNode:function(n){
@@ -118,7 +190,16 @@ function doUndo(){
     var t=byId(op.id);if(t){t.note=op.prevNote;save();}
   }else if(op.kind==='bookmark'){
     var j=items.findIndex(function(x){return x.id===op.id;});
-    if(j>=0)items.splice(j,1);else items.push(op.item);
+    if(j>=0){
+      items.splice(j,1);
+      syncBookmarkMemory(op.item.locator,false);
+    }else{
+      items.push(op.item);
+      syncBookmarkMemory(op.item.locator,true,{
+        unitKey:op.item.unit,
+        context:op.item.label||''
+      });
+    }
     save();syncHeader();
   }
   syncToolbar();
@@ -145,24 +226,33 @@ function addItem(kind,c,extra){
 function toggleBookmark(){
   var el=document.querySelector('#readerPageBody [data-source-locator]');
   if(!el||!(window.storyMemoryIsAuthoritativeReaderMode&&storyMemoryIsAuthoritativeReaderMode()))return;
-  var unit=unitOf(el.getAttribute('data-source-locator'));
-  var ex=null;items.forEach(function(x){if(x.kind==='bookmark'&&x.unit===unit)ex=x;});
+  var locator=el.getAttribute('data-source-locator');
+  if(!locator)return;
+  var ex=null;items.forEach(function(x){if(x.kind==='bookmark'&&x.locator===locator)ex=x;});
   if(ex){
     items=items.filter(function(x){return x!==ex;});
     save();pushUndo({kind:'bookmark',id:ex.id,item:ex});
+    syncBookmarkMemory(ex.locator,false);
     if(window.showVoiceToast)showVoiceToast('책갈피 해제');
   }else{
-    var bk={id:'bk'+Date.now().toString(36),kind:'bookmark',locator:unit,unit:unit,label:(document.getElementById('readerChapterTitle')||{}).textContent||unit,createdAt:Date.now()};
+    var bk={id:'bk'+Date.now().toString(36),kind:'bookmark',locator:locator,unit:unitOf(locator),label:(document.getElementById('readerChapterTitle')||{}).textContent||unitOf(locator),createdAt:Date.now()};
     items.push(bk);save();pushUndo({kind:'bookmark',id:bk.id,item:bk});
-    if(window.showVoiceToast)showVoiceToast('🔖 책갈피 저장 · '+unit);
+    syncBookmarkMemory(locator,true,{
+      unitKey:unitOf(locator),
+      context:(document.getElementById('readerChapterTitle')||{}).textContent||'',
+      sourcePreview:null
+    });
+    if(window.showVoiceToast)showVoiceToast('🔖 책갈피 저장 · '+locator);
   }
   syncHeader();
 }
 function isBookmarked(){
   var el=document.querySelector('#readerPageBody [data-source-locator]');
   if(!el)return false;
-  var unit=unitOf(el.getAttribute('data-source-locator')),hit=false;
-  items.forEach(function(x){if(x.kind==='bookmark'&&x.unit===unit)hit=true;});
+  var locator=el.getAttribute('data-source-locator');
+  if(!locator)return false;
+  var hit=false;
+  items.forEach(function(x){if(x.kind==='bookmark'&&x.locator===locator)hit=true;});
   return hit;
 }
 var toolbar,bkBtn,pop,ta;
@@ -302,7 +392,10 @@ function init(){
     removeItem:removeItem,undo:doUndo,toggleBookmark:toggleBookmark,
     setErase:function(on){eraseMode=!!on;document.body.classList.toggle('smal-erase',eraseMode);syncToolbar();},
     renderAll:function(){busy=true;renderAll();busy=false;},
-    undoPending:function(){return undoSlot?undoSlot.kind:null;}
+    undoPending:function(){return undoSlot?undoSlot.kind:null;},
+    storyMemoryGetExactBookmarkMemory:storyMemoryGetExactBookmarkMemory,
+    storyMemorySetExactBookmarkMemory:storyMemorySetExactBookmarkMemory,
+    syncBookmarkMemory:syncBookmarkMemory
   };
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
