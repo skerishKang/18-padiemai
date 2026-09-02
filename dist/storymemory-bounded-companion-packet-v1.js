@@ -65,8 +65,9 @@ function buildBoundedCompanionPacketV1(opts){
   allowedAnnotations.sort(function(a,b){var c=String(a.locator).localeCompare(String(b.locator));return c!==0?c:String(a.id).localeCompare(String(b.id));});
   var selected_included=false;
   var selected_reasons=[];
-  var selLoc=rc?rc.selected_locator:null;
-  var selText=rc?rc.selected_text:null;
+  var selectedOverride=opts.selectedOverride&&typeof opts.selectedOverride==='object'?opts.selectedOverride:null;
+  var selLoc=selectedOverride?String(selectedOverride.locator||selectedOverride.canonical_locator||'')||null:(rc?rc.selected_locator:null);
+  var selText=selectedOverride?String(selectedOverride.text||selectedOverride.quote||'').slice(0,2000):(rc?rc.selected_text:null);
   if(!auth){
     selected_reasons.push('non_authoritative_reader');
     selLoc=null;selText=null;

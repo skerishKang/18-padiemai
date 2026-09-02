@@ -3574,11 +3574,13 @@ loadAnnotations();
 
 function currentSourceMeta(node=null){
   const verse=node?.closest?.('.verse');
+  const locatorNode=node?.closest?.('[data-source-locator]')||verse?.closest?.('[data-source-locator]');
   const verseNo=verse?.querySelector('.vn')?.textContent?.trim()||'';
   return {
     label:__smCurrentReaderLabel,
     page:readerPageIndex,
     verse:verseNo,
+    canonical_locator:locatorNode?.getAttribute?.('data-source-locator')||null,
     source:__smCurrentReaderLabel+(verseNo?' · '+verseNo+'절':'')+' · PAGE '+(readerPageIndex+1)
   };
 }
@@ -7451,5 +7453,6 @@ window.storyMemoryStaticWorkKeys=STORYMEMORY_STATIC_WORK_KEYS;
 <script src="storymemory-locator-progress-v1.js"></script>
 <script id="sm-knowledge-ceiling-v1" src="storymemory-knowledge-ceiling-policy-v1.js"></script>
 <script id="sm-bounded-companion-packet-v1" src="storymemory-bounded-companion-packet-v1.js"></script>
+<script id="sm-companion-adapter-v1" src="storymemory-companion-adapter-v1.js"></script>
 </body>
 </html>

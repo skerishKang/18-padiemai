@@ -224,7 +224,8 @@ async function storyMemorySubmitHybridQuestion(question,{selection=null,delay=80
 }
 window.storyMemorySubmitHybridQuestion=storyMemorySubmitHybridQuestion;
 
-// Rebind typed chat to the hybrid retrieval path. Legacy deterministic router remains the fallback.
+// #1129 live integration quarantine: keep legacy callable APIs, but never own live UI unless explicitly enabled for isolated diagnostics.
+if(window.__smLegacyHybridUIEnabled===true){
 sendChat=async function(){
   const input=document.getElementById('askInput');const q=input.value.trim();if(!q)return;
   const selection=selectedContextText?{quote:selectedContextText,source:selectedContextMeta?.source||__smCurrentReaderLabel}:null;
@@ -244,5 +245,7 @@ askPreset=function(key){
   const button=[...document.querySelectorAll('.quick button')].find(b=>b.dataset.q===key)||document.querySelector(`[data-q="${CSS.escape(key)}"]`);
   const q=button?.dataset.query||button?.textContent||key;return storyMemorySubmitHybridQuestion(q,{delay:100});
 };
+}
+window.__smLegacyHybridAIQuarantinedV1=true;
 
 document.documentElement.dataset.storymemoryBuild='v3.3.4-hybrid-ai-context';
