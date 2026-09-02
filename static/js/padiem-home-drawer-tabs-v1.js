@@ -48,6 +48,52 @@
     .padiem-company-drawer-tabs{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 22px;}
     .padiem-company-drawer-tabs button{border:1px solid rgba(35,63,86,.16);border-radius:999px;background:rgba(255,255,255,.23);color:rgba(17,42,62,.66);padding:8px 11px;font-family:var(--font-label);font-size:9px;letter-spacing:.12em;cursor:pointer;}
     .padiem-company-drawer-tabs button[aria-pressed="true"]{background:#17354e;color:#fff;border-color:#17354e;}
+
+    /* Issue #30: Company / Team / Contact are three views inside one shell.
+       Keep the accepted content styling, but lock the outer geometry so tabs do
+       not resize or shift the pearl-glass panel between views. */
+    @media (min-width:1181px){
+      .overlay[data-panel="about"] .overlay-panel,
+      .overlay[data-panel="team"] .overlay-panel,
+      .overlay[data-panel="inquiry"] .overlay-panel{
+        width:min(1160px,85vw)!important;
+        height:min(calc(100dvh - 28px),860px)!important;
+        max-height:calc(100dvh - 28px)!important;
+        grid-template-columns:minmax(260px,.65fr) minmax(0,1.35fr)!important;
+        column-gap:48px!important;
+        padding:clamp(40px,4vw,58px) clamp(44px,4.5vw,64px)!important;
+      }
+      .overlay[data-panel="about"] .overlay-panel::before,
+      .overlay[data-panel="team"] .overlay-panel::before,
+      .overlay[data-panel="inquiry"] .overlay-panel::before{left:33%!important;}
+    }
+
+    @media (max-width:1180px) and (min-width:761px){
+      .overlay[data-panel="about"] .overlay-panel,
+      .overlay[data-panel="team"] .overlay-panel,
+      .overlay[data-panel="inquiry"] .overlay-panel{
+        width:min(1040px,92vw)!important;
+        height:min(calc(100dvh - 28px),860px)!important;
+        max-height:calc(100dvh - 28px)!important;
+        grid-template-columns:minmax(200px,.55fr) minmax(0,1.45fr)!important;
+        column-gap:28px!important;
+        padding:34px 32px!important;
+      }
+      .overlay[data-panel="about"] .overlay-panel::before,
+      .overlay[data-panel="team"] .overlay-panel::before,
+      .overlay[data-panel="inquiry"] .overlay-panel::before{left:27.5%!important;}
+    }
+
+    @media (max-width:760px){
+      .overlay[data-panel="about"] .overlay-panel,
+      .overlay[data-panel="team"] .overlay-panel,
+      .overlay[data-panel="inquiry"] .overlay-panel{
+        width:100%!important;
+        height:92dvh!important;
+        min-height:92dvh!important;
+        max-height:92dvh!important;
+      }
+    }
   `;
   document.head.appendChild(style);
 })();
