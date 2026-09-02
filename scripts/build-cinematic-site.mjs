@@ -59,8 +59,9 @@ html = html.replace(
 
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
-// Copy supporting directories.
-for (const dir of ["css", "js", "images", "html"]) {
+// Copy only runtime assets. Do NOT copy static/html/** wholesale: that tree still
+// contains archived/legacy page shells which must never reappear in production.
+for (const dir of ["css", "js", "images"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
     throw new Error(`Required asset directory is missing: static/${dir}`);
@@ -100,7 +101,7 @@ for (const { source, dest } of showcasePages) {
   copyFileSync(srcPath, destPath);
 }
 
-// Preserve legacy search-engine verification files without republishing the old site.
+// Preserve search-engine verification files without republishing the old site.
 for (const file of [
   "googlef7d3aa2eaecfa367.html",
   "naver973c7ccb11cec92fb48885106f1bf365.html",
