@@ -1,182 +1,152 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <div data-include="/html/components/meta.html"></div>
-  <title>Design - PadiemAI</title>
-  <meta name="description" content="파디엠 디자인 쇼룸. 사람별 기억책장, LP 플레이어, 메모리테이프, 인피니트 비디오월 등 디자인 아카이브를 영상과 설명으로 만나보세요.">
-  <link rel="stylesheet" href="/css/style.css">
-  <link rel="stylesheet" href="/css/components/video-showcase.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#06080d" />
+  <meta name="description" content="PADIEM Design — 기억, 감정, 움직임과 인터랙션을 독창적인 구조로 설계하는 파디엠 디자인 아카이브." />
+  <title>PADIEM Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/padiem-cinematic-v2-1.css" />
+  <link rel="stylesheet" href="/css/padiem-cinematic-v2-2.css" />
+  <link rel="stylesheet" href="/css/padiem-cinematic-v2-3.css" />
+  <link rel="stylesheet" href="/css/padiem-cinematic-v2-4.css" />
+  <link rel="stylesheet" href="/css/padiem-cinematic-worlds-v1.css" />
 </head>
-<body>
-  <div data-include="/html/components/header.html"></div>
+<body class="world-body" data-font="suite">
+  <div class="progress-line" data-world-progress aria-hidden="true"></div>
+  <div class="world-page">
+    <header class="nav world-nav">
+      <nav class="nav-inner" aria-label="주요 메뉴">
+        <a class="logo" href="/" aria-label="PADIEM 홈">
+          <svg class="logo-mark" viewBox="0 0 32 32" fill="none" aria-hidden="true"><path d="M6 25V7h8.5c5.2 0 8.5 2.8 8.5 7.1 0 4.4-3.3 7.2-8.5 7.2H10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M10 11h4.5c2.5 0 4 1.1 4 3.1s-1.5 3.2-4 3.2H10" stroke="url(#wg)" stroke-width="1.6" stroke-linecap="round"/><defs><linearGradient id="wg" x1="10" y1="11" x2="19" y2="19"><stop stop-color="#8BCBFF"/><stop offset="1" stop-color="#F0C77C"/></linearGradient></defs></svg>
+          <span>PADIEM</span>
+        </a>
+        <div class="nav-links">
+          <a class="nav-link" href="/#solutions">Solutions</a>
+          <a class="nav-link" href="/#evolution">Evolution</a>
+          <a class="nav-link" href="/products/">Products</a>
+          <a class="nav-link" href="/design/" aria-current="page">Design</a>
+          <a class="nav-link" href="#company" data-world-drawer="company">Company</a>
+        </div>
+        <div class="world-nav-tools">
+          <div class="world-lang" aria-label="Language"><button type="button" data-world-lang="ko">KO</button><span>/</span><button type="button" data-world-lang="en">EN</button></div>
+          <a class="nav-cta" href="https://chat.padiem.net" aria-label="Padiem Chat">Padiem Chat</a>
+        </div>
+      </nav>
+    </header>
 
-  <!-- 페이지 헤더 -->
-  <section class="page-header design-header">
-    <div class="container">
-      <h1>Design</h1>
-      <p class="page-subtitle">파디엠 디자인 아카이브를 만나보세요<br>AI와 디자인, 기억과 감정이 만나는 공간</p>
+    <main>
+      <section class="world-hero">
+        <div class="world-hero-top reveal">
+          <div class="world-hero-index">
+            <p class="world-overline"><strong>DESIGN ARCHIVE</strong> / PADIEM</p>
+            <p class="world-overline">MEMORY · EMOTION · MOTION · DISCOVERY</p>
+          </div>
+          <p class="world-hero-note" data-copy-ko="파디엠의 디자인은 화면을 꾸미는 일이 아니라, 기억과 감정과 정보를 어떤 구조로 경험하게 할 것인가를 설계하는 일입니다." data-copy-en="PADIEM design is not decoration. It defines the structure through which people experience memory, emotion and information.">파디엠의 디자인은 화면을 꾸미는 일이 아니라, 기억과 감정과 정보를 어떤 구조로 경험하게 할 것인가를 설계하는 일입니다.</p>
+        </div>
+        <div class="world-hero-bottom">
+          <h1 class="world-display reveal" data-delay="100">Design<span class="ghost">as behavior.</span></h1>
+          <aside class="world-hero-ledger reveal" data-delay="220" aria-label="Design archive index">
+            <dl>
+              <div><dt>01</dt><dd>사람별 기억책장 · Person memory</dd></div>
+              <div><dt>02</dt><dd>LP 플레이어 · Memory playback</dd></div>
+              <div><dt>03</dt><dd>메모리테이프 · Continuous memory</dd></div>
+              <div><dt>04</dt><dd>인피니트 비디오월 · Moving archive</dd></div>
+            </dl>
+          </aside>
+        </div>
+      </section>
+
+      <section class="world-scene" style="--scene-rgb:175,211,241">
+        <div class="world-scene-head reveal"><span class="world-scene-code">DESIGN / 01</span><span class="world-scene-status"><i></i> MEMORY STRUCTURE</span></div>
+        <div class="world-scene-body">
+          <div class="world-copy reveal" data-delay="80">
+            <p class="world-kicker">PERSON MEMORY SHELF</p>
+            <h2 class="world-title" data-copy-ko="기억을 사람별 공간으로 정리합니다." data-copy-en="Memory becomes a space organized by people.">기억을 사람별 공간으로 정리합니다.</h2>
+            <p class="world-summary" data-copy-ko="사람별 기억책장은 사진을 날짜순으로만 쌓지 않고, 한 사람과 연결된 순간들을 하나의 공간적 구조로 모아 다시 발견하게 하는 인터페이스입니다." data-copy-en="The Person Memory Shelf gathers moments connected to a person into a spatial structure instead of reducing memory to a chronological photo list.">사람별 기억책장은 사진을 날짜순으로만 쌓지 않고, 한 사람과 연결된 순간들을 하나의 공간적 구조로 모아 다시 발견하게 하는 인터페이스입니다.</p>
+            <div class="world-actions"><span class="world-action-secondary" data-copy-ko="공개 영상 준비 중" data-copy-en="Public media in preparation">공개 영상 준비 중</span></div>
+          </div>
+          <div class="world-media reveal" data-delay="170"><div class="world-media-frame"><span class="world-media-label">MEMORY / PERSON / SHELF</span><div class="world-media-message"><strong>사람별<br/>기억책장</strong><span>SPATIAL MEMORY</span></div></div></div>
+        </div>
+        <div class="world-scene-foot reveal"><div class="world-tags"><span>Person</span><span>Memory</span><span>Spatial</span><span>Discovery</span></div><span class="world-number">01</span></div>
+      </section>
+
+      <section class="world-scene" style="--scene-rgb:239,196,123">
+        <div class="world-scene-head reveal"><span class="world-scene-code">DESIGN / 02</span><span class="world-scene-status"><i></i> PLAYBACK METAPHOR</span></div>
+        <div class="world-scene-body">
+          <div class="world-copy reveal" data-delay="80">
+            <p class="world-kicker">LP PLAYER · MEMORY PLAYBACK</p>
+            <h2 class="world-title" data-copy-ko="기억을 고르는 대신, 재생합니다." data-copy-en="Instead of selecting memory, play it.">기억을 고르는 대신, 재생합니다.</h2>
+            <p class="world-summary" data-copy-ko="LP 플레이어는 기억을 파일 목록처럼 탐색하지 않고 음악을 재생하듯 시간과 감정의 흐름을 따라 경험하게 하는 인터랙션 메타포입니다." data-copy-en="The LP Player treats memory not as a file list but as a temporal and emotional flow that can be played like music.">LP 플레이어는 기억을 파일 목록처럼 탐색하지 않고 음악을 재생하듯 시간과 감정의 흐름을 따라 경험하게 하는 인터랙션 메타포입니다.</p>
+            <div class="world-actions"><span class="world-action-secondary" data-copy-ko="공개 영상 준비 중" data-copy-en="Public media in preparation">공개 영상 준비 중</span></div>
+          </div>
+          <div class="world-media reveal" data-delay="170"><div class="world-media-frame"><span class="world-media-label">LP / ROTATION / TIME</span><div class="world-media-message"><strong>LP<br/>PLAYER</strong><span>MEMORY PLAYBACK</span></div></div></div>
+        </div>
+        <div class="world-scene-foot reveal"><div class="world-tags"><span>Rotation</span><span>Time</span><span>Playback</span><span>Emotion</span></div><span class="world-number">02</span></div>
+      </section>
+
+      <section class="world-scene" style="--scene-rgb:183,205,229">
+        <div class="world-scene-head reveal"><span class="world-scene-code">DESIGN / 03</span><span class="world-scene-status"><i></i> MECHANICS FIRST</span></div>
+        <div class="world-scene-body">
+          <div class="world-copy reveal" data-delay="80">
+            <p class="world-kicker">MEMORY TAPE · CONTINUOUS RIBBON</p>
+            <h2 class="world-title" data-copy-ko="지나온 경로가 하나의 기록으로 풀립니다." data-copy-en="The path you travel unrolls as one continuous record.">지나온 경로가 하나의 기록으로 풀립니다.</h2>
+            <p class="world-summary" data-copy-ko="메모리테이프의 핵심은 카드 장식이 아니라 물성입니다. 사용자의 이동 경로를 따라 실제 롤이 굴러가고, 하나의 연속된 리본처럼 기억이 풀려 나오는 구조를 목표로 합니다." data-copy-en="Memory Tape is defined by mechanics, not card decoration: a real rolling metaphor and one continuous ribbon that records the user's path.">메모리테이프의 핵심은 카드 장식이 아니라 물성입니다. 사용자의 이동 경로를 따라 실제 롤이 굴러가고, 하나의 연속된 리본처럼 기억이 풀려 나오는 구조를 목표로 합니다.</p>
+            <div class="world-actions"><span class="world-action-secondary">MECHANICS FIRST → VISUAL FIDELITY → CONTENT</span></div>
+          </div>
+          <div class="world-media reveal" data-delay="170"><div class="world-media-frame"><span class="world-media-label">ROLL / RIBBON / PATH</span><div class="world-media-message"><strong>MEMORY<br/>TAPE</strong><span>CONTINUOUS INTERACTION</span></div></div></div>
+        </div>
+        <div class="world-scene-foot reveal"><div class="world-tags"><span>Roll</span><span>Ribbon</span><span>Path</span><span>3D</span></div><span class="world-number">03</span></div>
+      </section>
+
+      <section class="world-scene" style="--scene-rgb:153,194,229">
+        <div class="world-scene-head reveal"><span class="world-scene-code">DESIGN / 04</span><span class="world-scene-status"><i></i> MOVING FIELD</span></div>
+        <div class="world-scene-body">
+          <div class="world-copy reveal" data-delay="80">
+            <p class="world-kicker">INFINITE VIDEO WALL</p>
+            <h2 class="world-title" data-copy-ko="수많은 순간이 하나의 움직이는 장면이 됩니다." data-copy-en="Many moments become one moving field.">수많은 순간이 하나의 움직이는 장면이 됩니다.</h2>
+            <p class="world-summary" data-copy-ko="인피니트 비디오월은 수많은 Moving Moment가 동시에 존재하는 고밀도 필드입니다. 하나의 카드보다 전체 장면의 흐름과 발견 경험이 먼저 보이는 구조입니다." data-copy-en="Infinite Video Wall is a dense field where many moving moments coexist. The flow of the whole scene comes before any single card.">인피니트 비디오월은 수많은 Moving Moment가 동시에 존재하는 고밀도 필드입니다. 하나의 카드보다 전체 장면의 흐름과 발견 경험이 먼저 보이는 구조입니다.</p>
+            <div class="world-actions"><span class="world-action-secondary" data-copy-ko="공개 영상 준비 중" data-copy-en="Public media in preparation">공개 영상 준비 중</span></div>
+          </div>
+          <div class="world-media reveal" data-delay="170"><div class="world-media-frame"><span class="world-media-label">VIDEO / FIELD / DISCOVERY</span><div class="world-media-message"><strong>INFINITE<br/>VIDEO WALL</strong><span>MOVING ARCHIVE</span></div></div></div>
+        </div>
+        <div class="world-scene-foot reveal"><div class="world-tags"><span>Field</span><span>Motion</span><span>Archive</span><span>Discovery</span></div><span class="world-number">04</span></div>
+      </section>
+
+      <section class="world-scene world-archive-intro" style="--scene-rgb:205,190,238">
+        <div class="world-scene-head reveal"><span class="world-scene-code">ARCHIVE / NEXT</span><span class="world-scene-status"><i></i> CURATING</span></div>
+        <div>
+          <div class="world-copy reveal"><p class="world-kicker">MORE INTERACTION STRUCTURES</p><h2 class="world-title" data-copy-ko="하나의 템플릿보다, 서로 다른 경험 구조를 축적합니다." data-copy-en="We accumulate distinct interaction structures instead of one reusable template.">하나의 템플릿보다, 서로 다른 경험 구조를 축적합니다.</h2></div>
+          <div class="world-archive-grid">
+            <article class="world-archive-tile feature reveal"><span class="tile-index">05 / 3D MEMORY SHELF</span><div><h2>3D<br/>기억책장</h2><div class="tile-line"></div><p data-copy-ko="기억을 평면 목록이 아니라 공간 탐색 대상으로 바꾸는 3D 구조." data-copy-en="A 3D structure that turns memory from a flat list into a spatial exploration.">기억을 평면 목록이 아니라 공간 탐색 대상으로 바꾸는 3D 구조.</p></div></article>
+            <article class="world-archive-tile medium reveal" data-delay="80"><span class="tile-index">06 / ROTATING MEMORY INDEX</span><div><h2>로테이팅<br/>메모리 인덱스</h2><div class="tile-line"></div><p data-copy-ko="한 Moment씩 집중해 넘겨보는 sequential reader 구조." data-copy-en="A sequential reader for focusing on one Moment at a time.">한 Moment씩 집중해 넘겨보는 sequential reader 구조.</p></div></article>
+            <article class="world-archive-tile small reveal"><span class="tile-index">07 / MOMENT REVEAL</span><div><h2>모먼트<br/>리빌</h2><div class="tile-line"></div><p data-copy-ko="같은 인물과 순간의 상태 변화를 정합된 프레임 위에서 드러내는 reveal interaction." data-copy-en="A reveal interaction that exposes state changes across aligned frames of the same person and moment.">같은 인물과 순간의 상태 변화를 정합된 프레임 위에서 드러내는 reveal interaction.</p></div></article>
+            <article class="world-archive-tile wide reveal" data-delay="100"><span class="tile-index">EDITORIAL ARCHIVE PRINCIPLE</span><div><h2>Content before chrome.</h2><div class="tile-line"></div><p data-copy-ko="모든 콘텐츠를 같은 카드 비율로 자르지 않습니다. 원본 비율, 중요도, 여백과 편집 리듬이 UI보다 먼저입니다." data-copy-en="Not every piece of content is forced into the same card ratio. Native proportion, importance, negative space and editorial rhythm come before UI chrome.">모든 콘텐츠를 같은 카드 비율로 자르지 않습니다. 원본 비율, 중요도, 여백과 편집 리듬이 UI보다 먼저입니다.</p></div></article>
+          </div>
+        </div>
+        <div class="world-scene-foot"><div class="world-tags"><span>Native ratio</span><span>Editorial rhythm</span><span>Mechanics</span><span>Motion</span></div><span class="world-number">05+</span></div>
+      </section>
+    </main>
+
+    <footer class="world-footer"><span>© PADIEM CO., LTD.</span><span>DESIGN · MEMORY · MOTION · INTERACTION</span></footer>
+  </div>
+
+  <div id="worldCompanyOverlay" class="overlay" hidden aria-hidden="true" aria-modal="true" role="dialog" aria-labelledby="worldDrawerTitle">
+    <div class="overlay-backdrop" data-world-drawer-close></div>
+    <div class="overlay-panel" role="document">
+      <button class="overlay-close" type="button" data-world-drawer-close aria-label="닫기"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+      <p id="worldDrawerKicker" class="overlay-kicker mono"></p>
+      <h2 id="worldDrawerTitle" class="overlay-title"></h2>
+      <p id="worldDrawerLead" class="overlay-lead"></p>
+      <div id="worldDrawerBody" class="overlay-body"></div>
     </div>
-  </section>
+  </div>
 
-  <main>
-    <!-- 디자인 1: 사람별 기억책장 -->
-    <section class="video-showcase-section fade-in">
-      <div class="container">
-        <div class="showcase-item">
-          <div class="showcase-media">
-            <div class="video-wrapper">
-              <div class="video-placeholder" data-design="person-memory-shelf">
-                <div class="placeholder-content">
-                  <i class="fas fa-play"></i>
-                  <p>영상 준비 중</p>
-                </div>
-                <div class="video-tag">Coming Soon</div>
-              </div>
-            </div>
-          </div>
-          <div class="showcase-content">
-            <h2 class="showcase-title">사람별 기억책장</h2>
-            <p class="showcase-subtitle">Personal Memory Shelf</p>
-            <div class="showcase-description">
-              <p>사람마다의 기억을 시각화한 개인 맞춤형 책장 인터페이스. 각 사람의 기억 조각이 책장 속에서 공간적으로 엮이며, 클릭과 스크롤을 통해 추억의 시간 순서를 떠다닐 수 있다.</p>
-              <ul class="feature-list">
-                <li>개인 기억 시각화</li>
-                <li>시간 흐름 기반 내비게이션</li>
-                <li>감정 태그 시스템</li>
-                <li>공유 및 협업 기능</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 디자인 2: LP 플레이어 -->
-    <section class="video-showcase-section bg-light fade-in">
-      <div class="container">
-        <div class="showcase-item reverse">
-          <div class="showcase-media">
-            <div class="video-wrapper">
-              <div class="video-placeholder" data-design="lp-player">
-                <div class="placeholder-content">
-                  <i class="fas fa-play"></i>
-                  <p>영상 준비 중</p>
-                </div>
-                <div class="video-tag">Coming Soon</div>
-              </div>
-            </div>
-          </div>
-          <div class="showcase-content">
-            <h2 class="showcase-title">LP 플레이어</h2>
-            <p class="showcase-subtitle">LP Player — Memory Playback Interface</p>
-            <div class="showcase-description">
-              <p>레코드 판처럼 돌아가는 기억 재생 인터페이스. 시간이 흐르면서 회상이 스쳐오르는 감성적인 재생 경험. 기억의 끊김 없는 흐름을 음악처럼 부드럽게 이어준다.</p>
-              <ul class="feature-list">
-                <li>시간 기반 회상 재생</li>
-                <li>감정 워이브 시각화</li>
-                <li>음성/텍스트 동시 재생</li>
-                <li>기억 큐레이션 도구</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 디자인 3: 메모리테이프 -->
-    <section class="video-showcase-section fade-in">
-      <div class="container">
-        <div class="showcase-item">
-          <div class="showcase-media">
-            <div class="video-wrapper">
-              <div class="video-placeholder" data-design="memory-tape">
-                <div class="placeholder-content">
-                  <i class="fas fa-play"></i>
-                  <p>영상 준비 중</p>
-                </div>
-                <div class="video-tag">Coming Soon</div>
-              </div>
-            </div>
-          </div>
-          <div class="showcase-content">
-            <h2 class="showcase-title">메모리테이프</h2>
-            <p class="showcase-subtitle">Memory Tape — Temporal Memory Interface</p>
-            <div class="showcase-description">
-              <p>메모리 테이프는 기억을 선형의 테이프처럼 되감고 빨리강하는 인터페이스. 특정 시점의 대화, 사진, 감정 데이터를 실시간 스크러빙으로 탐색한다.</p>
-              <ul class="feature-list">
-                <li>시간축 스크러빙</li>
-                <li>멀티모달 기억 재생</li>
-                <li>감정 흐름 분석</li>
-                <li>음성 기록 동기화</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 디자인 4: 인피니트 비디오월 -->
-    <section class="video-showcase-section bg-light fade-in">
-      <div class="container">
-        <div class="showcase-item reverse">
-          <div class="showcase-media">
-            <div class="video-wrapper">
-              <div class="video-placeholder" data-design="infinite-video-wall">
-                <div class="placeholder-content">
-                  <i class="fas fa-play"></i>
-                  <p>영상 준비 중</p>
-                </div>
-                <div class="video-tag">Coming Soon</div>
-              </div>
-            </div>
-          </div>
-          <div class="showcase-content">
-            <h2 class="showcase-title">인피니트 비디오월</h2>
-            <p class="showcase-subtitle">Infinite Video Wall — Memory Grid Interface</p>
-            <div class="showcase-description">
-              <p> 무한히 확장되는 기억의 벽. 사진, 영상, 메모가 격자 형태로 펼쳐지며, 줌과 스크롤을 통해 세부 기억으로 파고든다. 관계와 시간의 연결 고리를 시각적으로 탐색한다.</p>
-              <ul class="feature-list">
-                <li>무한 확장 그리드</li>
-                <li>관계 맺음선 시각화</li>
-                <li>AI 기반 기억 클러스터링</li>
-                <li>멀티터치 조작</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 준비 중인 디자인 -->
-    <section class="video-showcase-section fade-in">
-      <div class="container">
-        <div class="showcase-item">
-          <div class="showcase-media">
-            <div class="video-wrapper">
-              <div class="video-placeholder" data-design="coming-soon">
-                <div class="placeholder-content">
-                  <i class="fas fa-cube"></i>
-                  <p>영상 준비 중</p>
-                </div>
-                <div class="video-tag">Coming Soon</div>
-              </div>
-            </div>
-          </div>
-          <div class="showcase-content">
-            <h2 class="showcase-title">준비 중인 디자인</h2>
-            <p class="showcase-subtitle">3D 기억책장 / 로테이팅 메모리 인덱스</p>
-            <div class="showcase-description">
-              <p>파디엠 디자인은 계속 성장합니다. 3D 기억책장과 로테이팅 메모리 인덱스 등 새로운 디자인 프로젝트가 준비 중입니다.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <div data-include="/html/components/footer.html"></div>
-  <script src="/js/include.js"></script>
-  <script src="/js/main.js"></script>
-  <script src="/js/mobile-menu.js"></script>
+  <script src="/js/padiem-cinematic-worlds-v1.js"></script>
 </body>
 </html>

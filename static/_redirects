@@ -6,29 +6,35 @@
 /html/index1.html                /            301!
 /html/index.html                 /            301!
 
-# Canonicalize Products / Design sub-paths to clean URLs.
+# Canonicalize Products / Design sub-paths to clean cinematic-world URLs.
 /products/index.html             /products/   301!
 /products.html                   /products/   301!
 /design/index.html               /design/     301!
 /design.html                     /design/     301!
-/about/index.html                /about/      301!
-/contact/index.html              /contact/    301!
 
-# Legacy company/team/contact content is consolidated into the current homepage overlays.
-/html/pages/about/company        /            301!
-/html/pages/about/company.html   /            301!
-/html/pages/about/team           /            301!
-/html/pages/about/team.html      /            301!
-/html/pages/about/contact        /            301!
-/html/pages/about/contact.html   /            301!
+# Company / Team / Contact are information drawers inside the canonical home world.
+# Keep these redirects temporary (302) until the owner accepts the new drawer IA in production.
+/about/index.html                /?panel=company 302!
+/about/                          /?panel=company 302!
+/team/                           /?panel=team    302!
+/contact/index.html              /?panel=contact 302!
+/contact/                        /?panel=contact 302!
+
+# Legacy company/team/contact content is consolidated into the current homepage drawer system.
+/html/pages/about/company        /?panel=company 301!
+/html/pages/about/company.html   /?panel=company 301!
+/html/pages/about/team           /?panel=team    301!
+/html/pages/about/team.html      /?panel=team    301!
+/html/pages/about/contact        /?panel=contact 301!
+/html/pages/about/contact.html   /?panel=contact 301!
 
 # Legacy technology/service content is consolidated into the current Solutions section.
-/html/pages/ai-tech/*            /            301!
-/html/pages/services/*           /            301!
-/html/pages/education/*          /            301!
-/html/pages/success/*            /            301!
-/html/pages/about/careers        /            301!
-/html/pages/about/careers.html   /            301!
+/html/pages/ai-tech/*            /#solutions     301!
+/html/pages/services/*           /#solutions     301!
+/html/pages/education/*          /#solutions     301!
+/html/pages/success/*            /#evolution     301!
+/html/pages/about/careers        /?panel=company 301!
+/html/pages/about/careers.html   /?panel=company 301!
 
 # Removed legacy pages have no current equivalent; return a real 404 rather than a soft-404 redirect.
 /html/pages/*                    /404.html    404!

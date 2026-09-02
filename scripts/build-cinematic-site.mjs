@@ -23,6 +23,10 @@ let html = readFileSync(sourceHtml, "utf8");
 const oldTitle = "<title>PADIEM Cinematic Pearl Glass Demo V2</title>";
 const newTitle = "<title>PADIEM | AI로 일을 다시 설계합니다</title>";
 const languageScript = '<script src="/js/padiem-cinematic-v2-2.js"></script>';
+const homeNavScript = '<script src="/js/padiem-home-nav-v1.js"></script>';
+const drawerTabsScript = '<script src="/js/padiem-home-drawer-tabs-v1.js"></script>';
+const worldScrubScript = '<script src="/js/padiem-scroll-scrub-v1.js"></script>';
+const homeMobileNavStyle = '<link rel="stylesheet" href="/css/padiem-home-mobile-nav-v1.css"/>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -32,6 +36,9 @@ if (html.includes('rel="canonical"')) {
 }
 if (!html.includes(languageScript)) {
   throw new Error("Expected language runtime script was not found; refusing to publish without the KO/EN language runtime.");
+}
+if (!html.includes('</head>')) {
+  throw new Error("Expected </head> was not found in cinematic source.");
 }
 
 const seoHead = [
@@ -46,10 +53,24 @@ const seoHead = [
 ].join("");
 
 html = html.replace(oldTitle, seoHead);
+
+if (!html.includes('padiem-home-mobile-nav-v1.css')) {
+  html = html.replace('</head>', `${homeMobileNavStyle}</head>`);
+}
+
+// The legacy source markup still contains the previous navigation labels. Inject
+// the IA adapter before the existing language/overlay runtime so that the latter
+// binds to the final navigation semantics. The drawer-tab enhancer runs after it.
+html = html.replace(
+  languageScript,
+  `${homeNavScript}${languageScript}${drawerTabsScript}`,
+);
+
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
-// Copy supporting directories.
-for (const dir of ["css", "js", "images", "html"]) {
+// Copy only runtime assets. Do NOT copy static/html/** wholesale: that tree still
+// contains archived/legacy page shells which must never reappear in production.
+for (const dir of ["css", "js", "images"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
     throw new Error(`Required asset directory is missing: static/${dir}`);
@@ -71,12 +92,12 @@ for (const [source, destination] of requiredFiles) {
   copyFileSync(source, destination);
 }
 
-// Publish standalone showcase pages to clean root-level URLs.
+// Publish only the primary cinematic destinations. Company / Team / Contact
+// remain first-party drawer surfaces inside the home world and are reached via
+// compatibility redirects; do not republish the legacy standalone page shell.
 const showcasePages = [
   { source: "pages/products.html", dest: "products/index.html" },
   { source: "pages/design.html",  dest: "design/index.html"  },
-  { source: "pages/about.html",   dest: "about/index.html"   },
-  { source: "pages/contact.html", dest: "contact/index.html" },
 ];
 
 for (const { source, dest } of showcasePages) {
@@ -84,12 +105,24 @@ for (const { source, dest } of showcasePages) {
   if (!existsSync(srcPath)) {
     throw new Error(`Showcase page is missing: static/html/${source}`);
   }
+
+  let pageHtml = readFileSync(srcPath, "utf8");
+  if (!pageHtml.includes('padiem-cinematic-worlds-v1.js')) {
+    throw new Error(`Cinematic world runtime is missing from static/html/${source}`);
+  }
+  if (!pageHtml.includes('</body>')) {
+    throw new Error(`Expected </body> was not found in static/html/${source}`);
+  }
+  if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
+    pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
+  }
+
   const destPath = join(publicDir, dest);
   mkdirSync(join(publicDir, dest.split("/")[0]), { recursive: true });
-  copyFileSync(srcPath, destPath);
+  writeFileSync(destPath, pageHtml, "utf8");
 }
 
-// Preserve legacy search-engine verification files without republishing the old site.
+// Preserve search-engine verification files without republishing the old site.
 for (const file of [
   "googlef7d3aa2eaecfa367.html",
   "naver973c7ccb11cec92fb48885106f1bf365.html",
@@ -100,4 +133,4 @@ for (const file of [
   }
 }
 
-console.log("Built canonical single-page PADIEM cinematic site.");
+console.log("Built canonical PADIEM cinematic site and worlds.");
