@@ -1,0 +1,16 @@
+/* PADIEM Design video runtime v1.
+   This stylesheet is inert until a Design frame carries data-padiem-design-video.
+   The existing first-party frame content remains the independent fallback. */
+
+[data-padiem-design-video]{position:relative;isolation:isolate}
+[data-padiem-design-video]>.padiem-design-video{position:absolute;inset:0;z-index:6;width:100%;height:100%;object-fit:cover;border-radius:inherit;background:#05070a;opacity:0;pointer-events:none;transition:opacity .45s ease}
+[data-padiem-design-video][data-video-state="ready"]>.padiem-design-video,
+[data-padiem-design-video][data-video-state="playing"]>.padiem-design-video,
+[data-padiem-design-video][data-video-state="paused"]>.padiem-design-video{opacity:1}
+[data-padiem-design-video][data-video-state="loading"]::after{content:"MEDIA / LOADING";position:absolute;z-index:7;right:14px;bottom:12px;font-family:var(--font-label);font-size:7px;letter-spacing:.14em;color:rgba(255,255,255,.44);pointer-events:none}
+[data-padiem-design-video][data-video-state="fallback"]>.padiem-design-video,
+[data-padiem-design-video][data-video-state="idle"]>.padiem-design-video{opacity:0}
+
+@media(prefers-reduced-motion:reduce){
+  [data-padiem-design-video]>.padiem-design-video{display:none!important}
+}
