@@ -1,0 +1,84 @@
+/* PADIEM Product live exhibits v1
+   Product truth translated into lightweight public-safe studies.
+   No private source, personal media, invented production data or internal locators. */
+
+.product-exhibit{position:absolute;inset:0;overflow:hidden;border-radius:inherit;isolation:isolate;font-family:var(--font-body);color:#f7f8fb}
+.product-exhibit *{box-sizing:border-box}
+.product-exhibit button{font:inherit;color:inherit}
+.product-exhibit .px-meta{position:absolute;z-index:12;top:15px;left:17px;font-family:var(--font-label);font-size:7px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.product-exhibit .px-foot{position:absolute;z-index:12;left:17px;right:17px;bottom:13px;display:flex;justify-content:space-between;gap:12px;font-family:var(--font-label);font-size:7px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+.product-exhibit button:focus-visible{outline:2px solid rgba(143,207,255,.88);outline-offset:3px}
+
+/* 01 PADIEM CHAT */
+.product-chat{background:radial-gradient(circle at 68% 22%,rgba(76,148,212,.2),transparent 30%),linear-gradient(145deg,#080b11,#05070b 70%)}
+.product-chat::before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.03),transparent 38%,rgba(240,199,124,.025));pointer-events:none}
+.product-chat .chat-shell{position:absolute;inset:12% 7% 13%;display:grid;grid-template-rows:auto 1fr auto;border:1px solid rgba(255,255,255,.12);border-radius:24px;background:rgba(10,14,21,.62);backdrop-filter:blur(18px);box-shadow:0 30px 70px rgba(0,0,0,.42)}
+.product-chat .chat-top{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid rgba(255,255,255,.08);font-family:var(--font-label);font-size:7px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.54)}
+.product-chat .chat-live{display:inline-flex;align-items:center;gap:6px}.product-chat .chat-live i{width:6px;height:6px;border-radius:50%;background:#8bcfff;box-shadow:0 0 12px rgba(139,207,255,.7)}
+.product-chat .chat-thread{display:flex;flex-direction:column;justify-content:center;gap:12px;padding:18px 8%}
+.product-chat .bubble{max-width:78%;padding:11px 14px;border-radius:16px;font-size:11px;line-height:1.5}
+.product-chat .bubble.user{align-self:flex-end;background:rgba(139,207,255,.11);border:1px solid rgba(139,207,255,.2)}
+.product-chat .bubble.ai{align-self:flex-start;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.09);color:rgba(255,255,255,.82)}
+.product-chat .composer{margin:0 14px 14px;border:1px solid rgba(255,255,255,.13);border-radius:18px;background:rgba(255,255,255,.045);padding:12px}
+.product-chat .composer-row{display:flex;align-items:center;gap:10px}
+.product-chat .composer-placeholder{flex:1;font-size:11px;color:rgba(255,255,255,.46)}
+.product-chat .send-orb{width:27px;height:27px;border:0;border-radius:50%;background:linear-gradient(135deg,#8bcfff,#e8c483);color:#0a0d12;cursor:pointer}
+.product-chat .tool-row{display:flex;gap:6px;margin-top:9px;flex-wrap:wrap}.product-chat .tool-chip{border:1px solid rgba(255,255,255,.1);border-radius:999px;background:transparent;padding:5px 8px;font-family:var(--font-label);font-size:6.5px;letter-spacing:.08em;color:rgba(255,255,255,.46);cursor:pointer}.product-chat .tool-chip.active{border-color:rgba(139,207,255,.42);background:rgba(139,207,255,.08);color:#d8efff}
+
+/* 02 STORYMEMORY */
+.product-story{background:linear-gradient(135deg,#e9e7e1,#d7d5cf);color:#17191d}
+.product-story .px-meta,.product-story .px-foot{color:rgba(20,22,26,.48)}
+.product-story .story-shell{position:absolute;inset:12% 4% 13%;display:grid;grid-template-columns:24% 50% 26%;border:1px solid rgba(30,32,36,.12);border-radius:22px;background:#f6f4ef;box-shadow:0 24px 50px rgba(25,27,30,.16);overflow:hidden}
+.product-story .story-zone{min-width:0;padding:14px}.product-story .story-zone+.story-zone{border-left:1px solid rgba(30,32,36,.1)}
+.product-story .zone-label{font-family:var(--font-label);font-size:6.5px;letter-spacing:.14em;color:rgba(20,22,26,.45)}
+.product-story .memory-rail{display:grid;gap:7px;margin-top:14px}.product-story .memory-item{border:1px solid rgba(30,32,36,.1);border-radius:10px;background:#ebe8e1;padding:8px;text-align:left;font-size:8px;line-height:1.35;cursor:pointer}.product-story .memory-item.active{background:#dfe9f1;border-color:#aac7dd}
+.product-story .reader-title{margin-top:15px;font-family:var(--font-display);font-size:18px;line-height:1.05}.product-story .reader-copy{margin-top:13px;display:grid;gap:7px}.product-story .reader-line{height:7px;border-radius:999px;background:#d1cfc8}.product-story .reader-line:nth-child(2){width:92%}.product-story .reader-line:nth-child(3){width:73%}.product-story .reader-line.highlight{height:auto;padding:9px 10px;border-radius:8px;background:#e7edf1;border-left:2px solid #7ea8c5;font-size:8px;line-height:1.45}
+.product-story .companion-card{margin-top:14px;border:1px solid rgba(30,32,36,.11);border-radius:12px;background:#eceae4;padding:11px}.product-story .companion-card strong{display:block;font-size:9px}.product-story .companion-card p{margin:8px 0 0;font-size:8px;line-height:1.5;color:#565a61}.product-story .locator{margin-top:13px;padding-top:9px;border-top:1px solid rgba(30,32,36,.1);font-family:var(--font-label);font-size:6px;letter-spacing:.1em;color:#70747b}
+
+/* 03 LOVETREE — MVP01 ENTRY ORBIT */
+.product-love{background:#040407;color:#f5f1e9}
+.product-love::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,#10101a 0%,#08080d 30%,#030305 70%,#000 100%);pointer-events:none}
+.product-love::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,transparent 0 22%,rgba(0,0,0,.16) 38%,rgba(0,0,0,.58) 84%,rgba(0,0,0,.82) 100%);pointer-events:none;z-index:2}
+.product-love .love-orbit{position:absolute;inset:10% 3.5% 13%;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:23px;background:rgba(2,2,5,.42);box-shadow:0 30px 70px rgba(0,0,0,.38)}
+.product-love .orbit-brand{position:absolute;z-index:8;left:15px;top:13px;font-family:var(--font-label);font-size:7px;letter-spacing:.2em;font-weight:700;color:rgba(245,241,233,.82)}
+.product-love .orbit-world{position:absolute;z-index:3;inset:0;perspective:900px;transform-style:preserve-3d;transition:transform .18s ease-out;will-change:transform}
+.product-love .orbit-card{position:absolute;z-index:3;border:1px solid rgba(255,255,255,.13);border-radius:10px;overflow:hidden;background:#111;box-shadow:0 18px 40px rgba(0,0,0,.46);cursor:pointer;transition:transform .25s ease,filter .25s ease,border-color .2s ease;transform:rotate(var(--rot,0deg)) translateZ(var(--z,0))}
+.product-love .orbit-card.visual{background:radial-gradient(circle at 30% 20%,rgba(216,143,156,.55),transparent 24%),radial-gradient(circle at 75% 68%,rgba(120,146,201,.48),transparent 26%),linear-gradient(145deg,#24212a,#0a0a0f 68%)}
+.product-love .orbit-card.visual::before{content:"";position:absolute;inset:7px;border:1px solid rgba(255,255,255,.1);border-radius:7px;background:linear-gradient(135deg,rgba(255,255,255,.06),transparent 44%)}
+.product-love .orbit-card.video{background:radial-gradient(circle at 65% 28%,rgba(169,154,201,.5),transparent 28%),linear-gradient(145deg,#191821,#07070b)}
+.product-love .orbit-card.memo{padding:10px;background:linear-gradient(145deg,#f4f0e8,#d8d3ca);color:#181619;text-align:left}
+.product-love .orbit-card.memo strong{position:absolute;left:10px;right:9px;bottom:22px;font-family:var(--font-display);font-size:8px;line-height:1.28;color:#3d3735}
+.product-love .orbit-type{position:absolute;left:8px;top:8px;font-family:var(--font-label);font-size:5.5px;letter-spacing:.14em;color:rgba(255,255,255,.64)}
+.product-love .orbit-card.memo .orbit-type{color:#766e64}.product-love .orbit-no{position:absolute;right:8px;bottom:7px;font-family:var(--font-label);font-size:5.5px;letter-spacing:.12em;color:rgba(255,255,255,.48)}.product-love .orbit-card.memo .orbit-no{color:#81786e}
+.product-love .orbit-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.28);background:rgba(4,4,8,.56);font-size:7px}
+.product-love .orbit-card:hover,.product-love .orbit-card.active{filter:brightness(1.2);border-color:rgba(245,241,233,.66);box-shadow:0 22px 55px rgba(0,0,0,.6),0 0 0 1px rgba(216,143,156,.16)}
+.product-love .orbit-a{left:6%;top:20%;width:16%;height:37%;--rot:-7deg;--z:-25px}.product-love .orbit-b{left:24%;top:7%;width:14%;height:28%;--rot:5deg;--z:35px}.product-love .orbit-c{right:22%;top:8%;width:16%;height:34%;--rot:-3deg;--z:10px}.product-love .orbit-d{right:4%;top:25%;width:15%;height:39%;--rot:7deg;--z:-35px}.product-love .orbit-e{left:8%;bottom:7%;width:17%;height:28%;--rot:4deg;--z:18px}.product-love .orbit-f{left:28%;bottom:2%;width:13%;height:26%;--rot:-5deg;--z:-10px}.product-love .orbit-g{right:27%;bottom:1%;width:15%;height:28%;--rot:5deg;--z:26px}.product-love .orbit-h{right:7%;bottom:4%;width:13%;height:24%;--rot:-6deg;--z:-18px}
+.product-love .orbit-center{position:absolute;z-index:7;left:50%;top:50%;width:46%;transform:translate(-50%,-50%);text-align:center;pointer-events:none}
+.product-love .orbit-eyebrow{display:block;margin-bottom:8px;font-family:var(--font-label);font-size:6px;letter-spacing:.25em;color:#b5afbe}
+.product-love .orbit-center>strong{display:block;font-family:var(--font-display);font-size:clamp(18px,2.5vw,30px);letter-spacing:-.055em;line-height:.95;font-weight:650}.product-love .orbit-center>p{margin:10px 0 0;font-size:8px;color:#aaa6b3}
+.product-love .orbit-actions{margin-top:13px;display:flex;justify-content:center;gap:5px;flex-wrap:wrap;pointer-events:auto}.product-love .orbit-actions button{border:1px solid rgba(255,255,255,.15);border-radius:999px;background:rgba(8,8,12,.34);padding:6px 8px;font-size:6.5px;color:#d9d4dd;cursor:pointer;backdrop-filter:blur(7px)}.product-love .orbit-actions button.active{background:#eee9e0;color:#0a090d;border-color:#eee9e0}
+.product-love .orbit-status,.product-love .orbit-hint{position:absolute;z-index:8;bottom:10px;font-family:var(--font-label);font-size:5.5px;letter-spacing:.12em;color:#686573}.product-love .orbit-status{left:12px}.product-love .orbit-hint{right:12px}
+
+/* 04 DANJION */
+.product-danji{background:linear-gradient(135deg,#f1eadf,#dfd4c6);color:#2d2a25}
+.product-danji .px-meta,.product-danji .px-foot{color:rgba(45,42,37,.5)}
+.product-danji .danji-shell{position:absolute;inset:11% 5% 13%;display:grid;grid-template-columns:42% 58%;border:1px solid rgba(61,54,45,.13);border-radius:22px;background:#f8f3eb;box-shadow:0 24px 48px rgba(72,57,42,.14);overflow:hidden}
+.product-danji .danji-controls{padding:15px;border-right:1px solid rgba(61,54,45,.1)}.product-danji .danji-mark{font-family:var(--font-display);font-size:20px}.product-danji .danji-sub{margin-top:5px;font-size:8px;color:#787068}.product-danji .search-box{margin-top:14px;padding:9px 10px;border:1px solid rgba(61,54,45,.13);border-radius:10px;background:white;font-size:8px;color:#8a8279}.product-danji .work-tabs{display:grid;gap:7px;margin-top:12px}.product-danji .work-tab{border:1px solid rgba(61,54,45,.11);border-radius:10px;background:#eee6da;padding:8px;text-align:left;font-size:8px;cursor:pointer}.product-danji .work-tab.active{background:#dce7df;border-color:#aac4b3}
+.product-danji .work-stage{position:relative;padding:16px;overflow:hidden}.product-danji .work-stage::before{content:"";position:absolute;inset:-20%;background:radial-gradient(circle at 65% 35%,var(--work-accent,rgba(146,186,160,.35)),transparent 34%);transition:background .35s ease}.product-danji .work-label{position:relative;font-family:var(--font-label);font-size:6.5px;letter-spacing:.13em;color:#746c63}.product-danji .work-title{position:relative;margin-top:20px;font-family:var(--font-display);font-size:24px;line-height:1}.product-danji .work-person{position:relative;margin-top:9px;font-size:8px;color:#6f675f}.product-danji .benefit{position:absolute;left:16px;right:16px;bottom:17px;padding-top:10px;border-top:1px solid rgba(61,54,45,.12);display:grid;grid-template-columns:1fr auto;gap:10px;font-size:8px}.product-danji .benefit strong{font-size:9px}
+
+/* 05 AI FREE RADAR */
+.product-radar{background:linear-gradient(145deg,#101218,#08090c);color:#f3f3ef}
+.product-radar .radar-board{position:absolute;inset:12% 5% 13%;display:grid;grid-template-columns:1.35fr .65fr;grid-template-rows:1fr 1fr;gap:8px}
+.product-radar .radar-card{position:relative;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.045);padding:13px;text-align:left;cursor:pointer;overflow:hidden}.product-radar .radar-card.primary{grid-row:1/3;background:linear-gradient(155deg,rgba(174,190,255,.14),rgba(255,255,255,.035))}.product-radar .radar-card.active{border-color:rgba(174,190,255,.55);box-shadow:inset 0 0 0 1px rgba(174,190,255,.12)}
+.product-radar .benefit-label{font-family:var(--font-label);font-size:6.5px;letter-spacing:.15em;color:rgba(255,255,255,.46)}.product-radar .benefit-big{display:block;margin-top:14px;font-family:var(--font-display);font-size:25px;line-height:.98}.product-radar .radar-card:not(.primary) .benefit-big{font-size:15px}.product-radar .evidence-row{position:absolute;left:13px;right:13px;bottom:12px;display:flex;justify-content:space-between;gap:8px;font-family:var(--font-label);font-size:6px;letter-spacing:.08em;color:rgba(255,255,255,.42)}.product-radar .evidence-dot{display:inline-flex;align-items:center;gap:5px}.product-radar .evidence-dot::before{content:"";width:5px;height:5px;border-radius:50%;background:#9db2ff;box-shadow:0 0 9px rgba(157,178,255,.55)}
+
+@media(max-width:760px){
+  .product-exhibit .px-meta{top:11px;left:12px}.product-exhibit .px-foot{left:12px;right:12px;bottom:10px}
+  .product-chat .chat-shell{inset:13% 5% 14%}.product-chat .chat-thread{padding:14px 7%;gap:8px}.product-chat .bubble{font-size:9px}.product-chat .tool-chip{padding:4px 6px}
+  .product-story .story-shell{inset:13% 3% 14%;grid-template-columns:28% 72%}.product-story .story-zone.companion{display:none}.product-story .story-zone{padding:10px}.product-story .reader-title{font-size:14px}
+  .product-love .love-orbit{inset:13% 3% 14%}.product-love .orbit-brand{left:10px;top:10px;font-size:5.5px}.product-love .orbit-center{width:54%}.product-love .orbit-center>strong{font-size:18px}.product-love .orbit-center>p{font-size:6.5px}.product-love .orbit-actions{gap:3px;margin-top:9px}.product-love .orbit-actions button{font-size:5.5px;padding:5px 6px}.product-love .orbit-card{border-radius:7px}.product-love .orbit-card.memo strong{font-size:6px;left:6px;right:5px;bottom:15px}.product-love .orbit-type,.product-love .orbit-no{font-size:4.5px}.product-love .orbit-a{width:18%;height:31%}.product-love .orbit-b{width:16%;height:22%}.product-love .orbit-c{width:18%;height:28%;right:18%}.product-love .orbit-d{width:17%;height:31%;right:2%}.product-love .orbit-e{width:18%;height:23%}.product-love .orbit-f{width:15%;height:20%}.product-love .orbit-g{width:17%;height:22%}.product-love .orbit-h{width:15%;height:19%}.product-love .orbit-status,.product-love .orbit-hint{font-size:4.5px;bottom:7px}
+  .product-danji .danji-shell{inset:13% 4% 14%;grid-template-columns:46% 54%}.product-danji .danji-controls,.product-danji .work-stage{padding:11px}.product-danji .danji-mark{font-size:16px}.product-danji .work-title{font-size:18px}.product-danji .benefit{left:11px;right:11px;bottom:12px;grid-template-columns:1fr;font-size:7px}
+  .product-radar .radar-board{inset:13% 4% 14%;grid-template-columns:1fr 1fr}.product-radar .radar-card.primary{grid-row:auto;grid-column:1/3}.product-radar .benefit-big{font-size:18px}.product-radar .radar-card:not(.primary) .benefit-big{font-size:12px}
+}
+
+@media(prefers-reduced-motion:reduce){.product-exhibit *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
