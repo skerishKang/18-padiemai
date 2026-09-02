@@ -1,0 +1,205 @@
+/* PADIEM home mobile navigation
+   Keeps the desktop cinematic IA reachable below 760px without changing
+   the existing desktop rail. The sheet deliberately shares the pearl/glass
+   language of the Company drawer. */
+
+.home-mobile-menu-toggle,
+.home-mobile-menu {
+  display:none;
+}
+
+@media (max-width:760px) {
+  .home-mobile-menu-toggle {
+    appearance:none;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    min-height:34px;
+    padding:7px 10px;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:999px;
+    background:rgba(5,12,21,.38);
+    backdrop-filter:blur(14px) saturate(1.1);
+    -webkit-backdrop-filter:blur(14px) saturate(1.1);
+    color:rgba(255,255,255,.82);
+    font-family:var(--font-label);
+    font-size:9px;
+    font-weight:600;
+    letter-spacing:.13em;
+    cursor:pointer;
+  }
+
+  .home-mobile-menu-toggle:hover,
+  .home-mobile-menu-toggle[aria-expanded="true"] {
+    color:#fff;
+    border-color:rgba(255,255,255,.38);
+    background:rgba(255,255,255,.11);
+  }
+
+  .home-mobile-menu-toggle-lines {
+    position:relative;
+    width:13px;
+    height:9px;
+  }
+
+  .home-mobile-menu-toggle-lines::before,
+  .home-mobile-menu-toggle-lines::after {
+    content:"";
+    position:absolute;
+    left:0;
+    width:13px;
+    height:1px;
+    background:currentColor;
+    transition:transform .25s ease, top .25s ease;
+  }
+
+  .home-mobile-menu-toggle-lines::before { top:2px; }
+  .home-mobile-menu-toggle-lines::after { top:7px; }
+  .home-mobile-menu-toggle[aria-expanded="true"] .home-mobile-menu-toggle-lines::before {
+    top:4px;
+    transform:rotate(45deg);
+  }
+  .home-mobile-menu-toggle[aria-expanded="true"] .home-mobile-menu-toggle-lines::after {
+    top:4px;
+    transform:rotate(-45deg);
+  }
+
+  .home-mobile-menu {
+    position:fixed;
+    inset:0;
+    z-index:160;
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    isolation:isolate;
+  }
+
+  .home-mobile-menu[hidden] { display:none; }
+
+  .home-mobile-menu-backdrop {
+    position:absolute;
+    inset:0;
+    background:linear-gradient(180deg,rgba(3,9,16,.22),rgba(5,14,23,.52));
+    backdrop-filter:blur(7px) saturate(1.04);
+    -webkit-backdrop-filter:blur(7px) saturate(1.04);
+  }
+
+  .home-mobile-menu-panel {
+    position:relative;
+    width:100%;
+    max-height:82dvh;
+    overflow:auto;
+    padding:22px 20px 30px;
+    border-top:1px solid rgba(255,255,255,.72);
+    border-radius:30px 30px 0 0;
+    background:
+      linear-gradient(148deg,rgba(245,250,255,.92),rgba(207,224,238,.80) 58%,rgba(239,225,199,.63)),
+      rgba(222,233,242,.80);
+    backdrop-filter:blur(40px) saturate(1.25) brightness(1.06);
+    -webkit-backdrop-filter:blur(40px) saturate(1.25) brightness(1.06);
+    box-shadow:0 -28px 84px rgba(7,27,45,.28), inset 0 1px 0 rgba(255,255,255,.9);
+    color:#173247;
+    animation:homeMobileSheetIn .42s cubic-bezier(.2,.82,.2,1) both;
+  }
+
+  .home-mobile-menu-panel::before {
+    content:"";
+    display:block;
+    width:42px;
+    height:4px;
+    margin:0 auto 24px;
+    border-radius:99px;
+    background:rgba(46,76,98,.20);
+  }
+
+  .home-mobile-menu-meta {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:18px;
+    padding-bottom:16px;
+    border-bottom:1px solid rgba(49,79,103,.18);
+    font-family:var(--font-label);
+    font-size:9px;
+    font-weight:650;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:rgba(35,67,94,.50);
+  }
+
+  .home-mobile-menu-meta strong {
+    color:#153149;
+    font-weight:700;
+  }
+
+  .home-mobile-menu-links {
+    display:grid;
+    margin-top:5px;
+  }
+
+  .home-mobile-menu-link {
+    display:grid;
+    grid-template-columns:38px minmax(0,1fr) auto;
+    align-items:center;
+    gap:12px;
+    min-height:66px;
+    border-bottom:1px solid rgba(49,79,103,.16);
+    color:#18324a;
+  }
+
+  .home-mobile-menu-index {
+    font-family:var(--font-label);
+    font-size:9px;
+    letter-spacing:.12em;
+    color:rgba(39,75,103,.42);
+  }
+
+  .home-mobile-menu-label {
+    font-family:var(--font-display);
+    font-size:clamp(22px,7vw,29px);
+    font-weight:580;
+    letter-spacing:-.045em;
+  }
+
+  .home-mobile-menu-arrow {
+    font-family:var(--font-label);
+    font-size:12px;
+    color:rgba(39,75,103,.38);
+  }
+
+  .home-mobile-menu-link:focus-visible {
+    outline:2px solid rgba(73,137,187,.72);
+    outline-offset:-2px;
+  }
+
+  .home-mobile-menu-foot {
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding-top:18px;
+    font-family:var(--font-label);
+    font-size:8px;
+    letter-spacing:.13em;
+    text-transform:uppercase;
+    color:rgba(35,67,94,.43);
+  }
+
+  body.home-mobile-menu-open { overflow:hidden; }
+
+  @keyframes homeMobileSheetIn {
+    from { opacity:0; transform:translateY(44px); }
+    to { opacity:1; transform:none; }
+  }
+}
+
+@media (max-width:430px) {
+  .home-mobile-menu-toggle { padding:7px 9px; }
+  .home-mobile-menu-toggle-text { display:none; }
+  .home-mobile-menu-panel { padding-left:18px; padding-right:18px; }
+}
+
+@media (prefers-reduced-motion:reduce) {
+  .home-mobile-menu-panel { animation:none!important; }
+  .home-mobile-menu-toggle-lines::before,
+  .home-mobile-menu-toggle-lines::after { transition:none!important; }
+}
