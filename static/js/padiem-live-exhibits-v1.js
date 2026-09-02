@@ -1,4 +1,12 @@
 (() => {
+  const config = window.PADIEM_EXHIBIT_CONFIG;
+  if (config) {
+    const params = new URLSearchParams(location.search);
+    const requested = params.get(config.queryParam);
+    const mode = config.allowedModes.includes(requested) ? requested : config.modes.design;
+    if (mode === 'album') return;
+  }
+
   const frames = [...document.querySelectorAll('.world-media-frame')];
   if (frames.length < 4 || !document.title.includes('PADIEM Design')) return;
 
@@ -108,8 +116,6 @@
     requestAnimationFrame(animateField);
   }
 
-  // These studies replace the old "media preparing" treatment. Keep the page
-  // copy intact, but accurately label the public-safe interaction previews.
   document.querySelectorAll('.world-action-secondary').forEach((pill, index) => {
     if (index > 3) return;
     if (pill.textContent.includes('MECHANICS FIRST')) return;
