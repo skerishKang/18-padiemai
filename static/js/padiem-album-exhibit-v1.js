@@ -21,6 +21,7 @@
   if (!hero || !items.length) return;
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hasIntersectionObserver = 'IntersectionObserver' in window;
   const esc = value => String(value ?? '').replace(/[&<>'\"]/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '\"': '&quot;'
   })[char]);
@@ -173,7 +174,7 @@
 
   const ensureVideo = () => {
     const item = items[selected];
-    if (!item.media || reduced) {
+    if (!item.media || reduced || !hasIntersectionObserver) {
       detachVideo();
       return;
     }
@@ -214,7 +215,7 @@
     status.textContent = item.status || 'PADIEM DESIGN ORIGINAL';
     section.style.setProperty('--album-accent-rgb', item.accent);
     disc.style.setProperty('--album-accent-rgb', item.accent);
-    play.hidden = !item.media || reduced || failedMedia.has(item.media);
+    play.hidden = !item.media || reduced || !hasIntersectionObserver || failedMedia.has(item.media);
 
     if (item.href) {
       openLink.hidden = false;
@@ -303,7 +304,7 @@
     play.hidden = true;
   });
 
-  if ('IntersectionObserver' in window) {
+  if (hasIntersectionObserver) {
     new IntersectionObserver(entries => {
       entries.forEach(entry => {
         inView = entry.isIntersecting;
@@ -312,8 +313,7 @@
       });
     }, { threshold: .22, rootMargin: '120px 0px 120px' }).observe(section);
   } else {
-    inView = true;
-    ensureVideo();
+    detachVideo('fallback', 'STATIC FALLBACK');
   }
 
   document.addEventListener('visibilitychange', () => {
