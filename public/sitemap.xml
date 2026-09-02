@@ -1,1 +1,9 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"><sitemap><loc>https://padiemai.netlify.app/ko/sitemap.xml</loc><lastmod>2025-05-21T10:00:00+09:00</lastmod></sitemap><sitemap><loc>https://padiemai.netlify.app/en/sitemap.xml</loc></sitemap></sitemapindex>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://padiem.net/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

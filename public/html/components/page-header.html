@@ -1,0 +1,51 @@
+<section class="service-header" style="background: linear-gradient(rgba(13, 17, 23, 0.6), rgba(13, 17, 23, 0.6)), url('/images/page-header-bg1.jpg') no-repeat center/cover; height: 520px; display: flex; align-items: flex-start; justify-content: center; text-align: center; background-position: center center; background-size: cover; position: relative; overflow: hidden;">
+    <div class="container" style="padding-top: 150px; z-index: 2; position: relative;">
+        <h1 style="font-size: 3rem; margin-bottom: 20px; color: white;" data-title></h1>
+        <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem; color: #f0f0f0;" data-description></p>
+        <div class="hero-buttons">
+            <a href="https://padiemai.wordpress.com/" class="btn glow-effect" target="_blank">Blog</a>
+            <a href="#" class="btn btn-secondary">AIRTT</a>
+        </div>
+    </div>
+</section>
+
+<style>
+@media (max-width: 768px) {
+    .service-header {
+        height: 550px !important;
+    }
+    .service-header .container {
+        padding-top: 160px !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .service-header {
+        height: 580px !important;
+    }
+    .service-header .container {
+        padding-top: 170px !important;
+    }
+    .service-header h1 {
+        font-size: 2.5rem !important;
+    }
+    .service-header p {
+        margin-bottom: 50px !important;
+    }
+}
+</style>
+
+<!-- 이미지 헤더 -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const ph = document.currentScript.parentElement;
+    const imgName = ph.getAttribute('data-image');
+    if(imgName) {
+      const img = document.createElement('img');
+      img.src = '/images/ai-tech/voice_recognition/' + imgName;
+      img.alt = ph.getAttribute('data-title') || '';
+      img.style = 'width:100%;max-width:600px;display:block;margin:0 auto 2rem;';
+      ph.insertBefore(img, ph.firstChild);
+    }
+  });
+</script> 

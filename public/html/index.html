@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padiem</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #f5f5f5;
+            padding: 1rem;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            width: 300px;
+            height: 300px;
+            object-fit: contain;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2.5rem;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            position: relative;
+        }
+
+        @media (max-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .container {
+                padding: 0 0.5rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .card h2 {
+                font-size: 1.3rem;
+            }
+
+            .card h2 .en {
+                font-size: 1rem;
+            }
+
+            .card p {
+                font-size: 0.95rem;
+            }
+
+            .card p .en {
+                font-size: 0.85rem;
+            }
+
+            .card-content {
+                padding: 1.2rem;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            height: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .grid:hover::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .grid:hover .card:not(:hover) {
+            opacity: 0.2;
+            filter: grayscale(100%);
+            background-color: rgba(0, 0, 0, 0.8);
+            transform: scale(0.98);
+        }
+
+        .card:hover {
+            transform: translateY(-5px) scale(1.02);
+            z-index: 2;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            background: #333;
+        }
+
+        .card:hover h2,
+        .card:hover p {
+            color: #fff;
+        }
+
+        .card:hover h2 .en {
+            color: #aaa;
+        }
+
+        .card:hover p .en {
+            color: #999;
+        }
+
+        .card h2 {
+            color: #333;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card h2 .en {
+            display: block;
+            font-size: 1.1rem;
+            margin-top: 0.5rem;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .card p {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card p .en {
+            display: block;
+            margin-top: 0.5rem;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        .card:first-child:hover .card-content {
+            background-color: rgba(144, 238, 144, 0.15);
+        }
+
+        .card:nth-child(2):hover .card-content {
+            background-color: rgba(135, 206, 235, 0.15);
+        }
+
+        .card:nth-child(3):hover .card-content {
+            background-color: rgba(147, 112, 219, 0.15);
+        }
+
+        .card img {
+            width: 100% !important;
+            height: 250px !important;
+            object-fit: contain !important;
+            background: #fff !important;
+            display: block;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            height: calc(100% - 250px);
+            transition: all 0.3s ease;
+        }
+
+        .grid:hover .card:not(:hover) .card-content {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+            display: block;
+        }
+
+        @media (hover: none) {
+            .grid:hover::after {
+                display: none;
+            }
+
+            .grid:hover .card:not(:hover) {
+                opacity: 1;
+                filter: none;
+                background-color: white;
+                transform: none;
+            }
+
+            .card:hover {
+                transform: none;
+                background: white;
+            }
+
+            .card:hover h2,
+            .card:hover p {
+                color: inherit;
+            }
+
+            .card:hover h2 .en {
+                color: #666;
+            }
+
+            .card:hover p .en {
+                color: #888;
+            }
+
+            .card-content {
+                background: white !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="/html/index1.html"><img src="images/index/padiemlogo-removebg-preview.png" alt="Padiem Company" class="logo"></a>
+            <a href="/html/index1.html" style="text-decoration:none;"><h1>AI로 비즈니스의 <br>미래를 창조합니다</h1></a>
+        </div>
+        <div class="grid">
+            <a href="index1.html" class="card">
+                <img src="images/index/ngkai1.gif" alt="AI 혁신">
+                <div class="card-content">
+                    <h2>Padiem AI
+                        <span class="en">Padiem AI</span>
+                    </h2>
+                    <p>PadiemAI는 최첨단 인공지능 기술을 통해 기업의 디지털 혁신을 지원합니다.
+음성인식, 컴퓨터 비전, 자연어 처리 등 다양한 AI 기술로 비즈니스의 가치를 높여드립니다.
+<span class="en">
+PadiemAI supports digital innovation for companies with cutting-edge AI technology.
+We enhance business value with a variety of AI technologies such as speech recognition, computer vision, and natural language processing.
+</span>
+                </div>
+                <p style="margin-top:1rem; color:#d32f2f; font-weight:bold; text-align:center;">현재 공사중입니다. (사이트 준비중)</p>
+            </a>
+
+            <div class="card">
+                <img src="images/index/ipu.jpg" alt="시스템 통합">
+                <div class="card-content">
+                    <h2>Padiem
+                        <span class="en">Padiem</span>
+                    </h2>
+                    <p>파디엠은 취약계층의 안전을 위해 스마트 보안 디바이스(IPU)와 AI 기술을 제공합니다.
+모두가 안전한 세상을 만들기 위해 혁신적인 솔루션을 개발합니다.
+<span class="en">
+Padiem provides smart security devices (IPU) and AI technology for the safety of vulnerable groups.
+We develop innovative solutions for a safer world.
+</span>
+                    </p>
+                    <p style="margin-top:1rem; color:#d32f2f; font-weight:bold; text-align:center;">현재 공사중입니다. (사이트 준비중)</p>
+                </div>
+            </div>
+            
+            <div class="card">
+                <img src="images/index/자산-760-removebg-preview.png" alt="AI 기반 맞춤형 교육 시스템" style="width: 100%; height: 250px; object-fit: cover;">
+                <div class="card-content">
+                    <h2>광주인공지능청년협회
+                        <span class="en">GAIYA</span>
+                    </h2>
+                    <p>광주인공지능청년협회는 광주 지역에서 인공지능을 연구하고 사업화하는 청년 기업들이 모인 협회입니다.
+청년들의 혁신과 협력을 통해 광주 인공지능 산업의 성장을 이끌고 있습니다.
+<span class="en">
+GAIYA is an association of young companies in Gwangju dedicated to AI research and business.
+Through innovation and collaboration, we drive the growth of the AI industry in Gwangju.
+</span>
+                    </p>
+                    <p style="margin-top:1rem; color:#d32f2f; font-weight:bold; text-align:center;">현재 공사중입니다. (사이트 준비중)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

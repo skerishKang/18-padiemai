@@ -3,4 +3,12 @@
 /hugo/
 .cursor/
 *.zip
-*.txt 
+*.txt
+
+# Embedded git repo
+gaiya/
+
+# Temp/upload directories
+.tmp.driveupload/
+.kilo/
+backup/ 
