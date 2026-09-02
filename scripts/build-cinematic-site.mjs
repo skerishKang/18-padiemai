@@ -23,6 +23,8 @@ let html = readFileSync(sourceHtml, "utf8");
 const oldTitle = "<title>PADIEM Cinematic Pearl Glass Demo V2</title>";
 const newTitle = "<title>PADIEM | AI로 일을 다시 설계합니다</title>";
 const languageScript = '<script src="/js/padiem-cinematic-v2-2.js"></script>';
+const homeNavScript = '<script src="/js/padiem-home-nav-v1.js"></script>';
+const drawerTabsScript = '<script src="/js/padiem-home-drawer-tabs-v1.js"></script>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -46,6 +48,15 @@ const seoHead = [
 ].join("");
 
 html = html.replace(oldTitle, seoHead);
+
+// The legacy source markup still contains the previous navigation labels. Inject
+// the IA adapter before the existing language/overlay runtime so that the latter
+// binds to the final navigation semantics. The drawer-tab enhancer runs after it.
+html = html.replace(
+  languageScript,
+  `${homeNavScript}${languageScript}${drawerTabsScript}`,
+);
+
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
 // Copy supporting directories.
@@ -71,7 +82,7 @@ for (const [source, destination] of requiredFiles) {
   copyFileSync(source, destination);
 }
 
-// Publish standalone showcase pages to clean root-level URLs.
+// Publish standalone cinematic worlds to clean root-level URLs.
 const showcasePages = [
   { source: "pages/products.html", dest: "products/index.html" },
   { source: "pages/design.html",  dest: "design/index.html"  },
@@ -100,4 +111,4 @@ for (const file of [
   }
 }
 
-console.log("Built canonical single-page PADIEM cinematic site.");
+console.log("Built canonical PADIEM cinematic site and worlds.");
