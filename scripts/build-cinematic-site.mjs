@@ -7,12 +7,21 @@ import {
   rmSync,
   writeFileSync,
 } from "node:fs";
+import { execFileSync } from "node:child_process";
 import { join } from "node:path";
 
 const root = process.cwd();
 const publicDir = join(root, "public");
 const sourceHtml = join(root, "static", "html", "index1.html");
 const exhibitRegistryPath = join(root, "static", "js", "padiem-exhibit-registry-v1.js");
+const phase1ManifestDir = join(root, "static", "data", "padiem-v5");
+const phase1RouteShellSource = join(root, "static", "html", "pages", "padiem-v5-route-foundation.html");
+
+execFileSync(
+  process.execPath,
+  [join(root, "scripts", "validate-padiem-v5-foundation.mjs")],
+  { stdio: "inherit" },
+);
 
 if (!existsSync(exhibitRegistryPath)) {
   throw new Error("Required exhibit registry is missing: static/js/padiem-exhibit-registry-v1.js");
@@ -120,7 +129,7 @@ html = html.replace(
 
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
-for (const dir of ["css", "js", "images"]) {
+for (const dir of ["css", "js", "images", "data"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
     throw new Error(`Required asset directory is missing: static/${dir}`);
@@ -141,6 +150,57 @@ for (const [source, destination] of requiredFiles) {
   }
   copyFileSync(source, destination);
 }
+
+if (!existsSync(phase1RouteShellSource)) {
+  throw new Error("PADIEM v5 Phase 1 route foundation shell is missing.");
+}
+const phase1RouteShellDir = join(publicDir, "_padiem-v5", "route");
+mkdirSync(phase1RouteShellDir, { recursive: true });
+copyFileSync(phase1RouteShellSource, join(phase1RouteShellDir, "index.html"));
+
+const familyManifest = JSON.parse(readFileSync(join(phase1ManifestDir, "family-manifest.json"), "utf8"));
+const representativeManifest = JSON.parse(readFileSync(join(phase1ManifestDir, "representative-runtime-manifest.json"), "utf8"));
+const collectionManifest = JSON.parse(readFileSync(join(phase1ManifestDir, "collection-membership-manifest.json"), "utf8"));
+const ecosystemManifest = JSON.parse(readFileSync(join(phase1ManifestDir, "ecosystem-case-manifest.json"), "utf8"));
+const routeShellTarget = "/_padiem-v5/route/index.html";
+const phase1RouteRules = [
+  `/selected                       ${routeShellTarget} 200`,
+  `/works                          ${routeShellTarget} 200`,
+  `/lab                            ${routeShellTarget} 200`,
+  `/ecosystem                      ${routeShellTarget} 200`,
+];
+
+for (const collection of collectionManifest.collections.filter(item => item.routeEnabled)) {
+  phase1RouteRules.push(`/collections/${collection.routeId} ${routeShellTarget} 200`);
+}
+phase1RouteRules.push("/collections/* /404.html 404!");
+
+const representativeFamilyIds = new Set(
+  representativeManifest.records.filter(item => item.routeEnabled).map(item => item.familyId),
+);
+for (const family of familyManifest.records.filter(item => item.routeEnabled)) {
+  phase1RouteRules.push(`/works/lovetree/${family.stableId} ${routeShellTarget} 200`);
+  if (representativeFamilyIds.has(family.stableId)) {
+    phase1RouteRules.push(`/experience/lovetree/${family.stableId} ${routeShellTarget} 200`);
+  }
+}
+phase1RouteRules.push("/works/lovetree/* /404.html 404!");
+phase1RouteRules.push("/experience/lovetree/* /404.html 404!");
+
+for (const item of ecosystemManifest.cases.filter(item => item.routeEnabled && item.routeId)) {
+  phase1RouteRules.push(`/ecosystem/${item.routeId} ${routeShellTarget} 200`);
+  phase1RouteRules.push(`/experience/ecosystem/${item.routeId} ${routeShellTarget} 200`);
+}
+phase1RouteRules.push("/ecosystem/* /404.html 404!");
+phase1RouteRules.push("/experience/ecosystem/* /404.html 404!");
+
+const redirectsPath = join(publicDir, "_redirects");
+const baseRedirects = readFileSync(redirectsPath, "utf8").trimEnd();
+writeFileSync(
+  redirectsPath,
+  `${baseRedirects}\n\n# PADIEM v5 Phase 1 route foundation. Exact authority-backed rewrites precede real 404 catches.\n${phase1RouteRules.join("\n")}\n`,
+  "utf8",
+);
 
 const showcasePages = [
   { source: "pages/products.html", dest: "products/index.html" },
@@ -211,4 +271,4 @@ for (const file of [
   }
 }
 
-console.log("Built canonical PADIEM cinematic site and worlds.");
+console.log("Built canonical PADIEM cinematic site and worlds with Phase 1 route foundation.");

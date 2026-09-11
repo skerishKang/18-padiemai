@@ -1,0 +1,34 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestType": "padiem-v5-representative-runtime-manifest",
+  "authority": "OWNER_APPROVED_PHASE1_20260911",
+  "coverage": "PARTIAL_AUTHORITY",
+  "records": [
+    {
+      "familyId": "S47",
+      "familyIdentity": "S47",
+      "representativeRuntimeId": "S47_V4.2.5",
+      "version": "V4.2.5",
+      "authority": "OWNER_LOCKED",
+      "publicVisibility": "PUBLIC",
+      "runtimeClass": "ADAPTER_WRAPPED",
+      "repairState": "APPROVED_PUBLIC_REPRESENTATIVE",
+      "mobileFallbackState": "AUTHORITY_UNSPECIFIED",
+      "routeEnabled": true
+    }
+  ],
+  "blockedVariants": [
+    {
+      "familyId": "S47",
+      "variantId": "S47_LEGACY_PATH_MISMATCH",
+      "state": "DO_NOT_REUSE_VARIANT",
+      "reason": "old broken S47 path-mismatch public candidate"
+    },
+    {
+      "familyId": "S68",
+      "variantId": "S68_V2_MISSING_ASSETS",
+      "state": "DO_NOT_REUSE_VARIANT",
+      "reason": "S68 V2 general build with missing assets"
+    }
+  ]
+}

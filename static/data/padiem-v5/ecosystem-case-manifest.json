@@ -1,0 +1,143 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestType": "padiem-v5-ecosystem-case-manifest",
+  "authority": "OWNER_APPROVED_PHASE1_20260911",
+  "declaredCaseCount": 5,
+  "declaredPublicRuntimeCount": 6,
+  "coverage": "PARTIAL_LABEL_AUTHORITY",
+  "cases": [
+    {
+      "stableId": "ECOSYSTEM_CASE_SLOT_01",
+      "routeId": null,
+      "label": "LABEL_AUTHORITY_PENDING",
+      "labelAuthority": "PENDING",
+      "publicVisibility": "AUTHORITY_PENDING",
+      "routeEnabled": false,
+      "version": null,
+      "representativeRuntime": null,
+      "runtimeClass": "DIRECT_HOST",
+      "collectionMembership": [],
+      "archetype": "AUTHORITY_PENDING",
+      "repairState": "AUTHORITY_PENDING",
+      "mobileFallbackState": "AUTHORITY_UNSPECIFIED",
+      "runtimes": [
+        {
+          "stableId": "ECOSYSTEM_RUNTIME_SLOT_01",
+          "label": "LABEL_AUTHORITY_PENDING",
+          "labelAuthority": "PENDING",
+          "runtimeClass": "DIRECT_HOST",
+          "publicVisibility": "AUTHORITY_PENDING",
+          "routeEnabled": false
+        }
+      ]
+    },
+    {
+      "stableId": "ECOSYSTEM_CASE_SLOT_02",
+      "routeId": null,
+      "label": "LABEL_AUTHORITY_PENDING",
+      "labelAuthority": "PENDING",
+      "publicVisibility": "AUTHORITY_PENDING",
+      "routeEnabled": false,
+      "version": null,
+      "representativeRuntime": null,
+      "runtimeClass": "DIRECT_HOST",
+      "collectionMembership": [],
+      "archetype": "AUTHORITY_PENDING",
+      "repairState": "AUTHORITY_PENDING",
+      "mobileFallbackState": "AUTHORITY_UNSPECIFIED",
+      "runtimes": [
+        {
+          "stableId": "ECOSYSTEM_RUNTIME_SLOT_02",
+          "label": "LABEL_AUTHORITY_PENDING",
+          "labelAuthority": "PENDING",
+          "runtimeClass": "DIRECT_HOST",
+          "publicVisibility": "AUTHORITY_PENDING",
+          "routeEnabled": false
+        }
+      ]
+    },
+    {
+      "stableId": "ECOSYSTEM_CASE_SLOT_03",
+      "routeId": null,
+      "label": "LABEL_AUTHORITY_PENDING",
+      "labelAuthority": "PENDING",
+      "publicVisibility": "AUTHORITY_PENDING",
+      "routeEnabled": false,
+      "version": null,
+      "representativeRuntime": null,
+      "runtimeClass": "DIRECT_HOST",
+      "collectionMembership": [],
+      "archetype": "AUTHORITY_PENDING",
+      "repairState": "AUTHORITY_PENDING",
+      "mobileFallbackState": "AUTHORITY_UNSPECIFIED",
+      "runtimes": [
+        {
+          "stableId": "ECOSYSTEM_RUNTIME_SLOT_03",
+          "label": "LABEL_AUTHORITY_PENDING",
+          "labelAuthority": "PENDING",
+          "runtimeClass": "DIRECT_HOST",
+          "publicVisibility": "AUTHORITY_PENDING",
+          "routeEnabled": false
+        }
+      ]
+    },
+    {
+      "stableId": "ECOSYSTEM_CASE_SLOT_04",
+      "routeId": null,
+      "label": "LABEL_AUTHORITY_PENDING",
+      "labelAuthority": "PENDING",
+      "publicVisibility": "AUTHORITY_PENDING",
+      "routeEnabled": false,
+      "version": null,
+      "representativeRuntime": null,
+      "runtimeClass": "DIRECT_HOST",
+      "collectionMembership": [],
+      "archetype": "AUTHORITY_PENDING",
+      "repairState": "AUTHORITY_PENDING",
+      "mobileFallbackState": "AUTHORITY_UNSPECIFIED",
+      "runtimes": [
+        {
+          "stableId": "ECOSYSTEM_RUNTIME_SLOT_04",
+          "label": "LABEL_AUTHORITY_PENDING",
+          "labelAuthority": "PENDING",
+          "runtimeClass": "DIRECT_HOST",
+          "publicVisibility": "AUTHORITY_PENDING",
+          "routeEnabled": false
+        }
+      ]
+    },
+    {
+      "stableId": "SASILRO",
+      "routeId": "sasilro",
+      "label": "SASILRO",
+      "labelAuthority": "OWNER_LOCKED",
+      "publicVisibility": "PUBLIC",
+      "routeEnabled": true,
+      "version": null,
+      "representativeRuntime": "SASILRO_06_HERO",
+      "runtimeClass": "DIRECT_HOST",
+      "collectionMembership": [],
+      "archetype": "AUTHORITY_PENDING",
+      "repairState": "NO_ACTIVE_REPAIR_FLAG",
+      "mobileFallbackState": "AUTHORITY_UNSPECIFIED",
+      "runtimes": [
+        {
+          "stableId": "SASILRO_06_HERO",
+          "label": "06 Hero",
+          "labelAuthority": "OWNER_LOCKED",
+          "runtimeClass": "DIRECT_HOST",
+          "publicVisibility": "PUBLIC",
+          "routeEnabled": true
+        },
+        {
+          "stableId": "SASILRO_07_WORKSPACE",
+          "label": "07 Workspace",
+          "labelAuthority": "OWNER_LOCKED",
+          "runtimeClass": "DIRECT_HOST",
+          "publicVisibility": "PUBLIC",
+          "routeEnabled": true
+        }
+      ]
+    }
+  ]
+}

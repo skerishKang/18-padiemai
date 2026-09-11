@@ -1,0 +1,115 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestType": "padiem-v5-runtime-class-repair-ledger",
+  "authority": "OWNER_APPROVED_PHASE1_20260911",
+  "classAuthority": {
+    "DIRECT_HOST": [
+      "S14",
+      "S16",
+      "S24",
+      "S28",
+      "S39",
+      "S46",
+      "S54",
+      "S55",
+      "S60",
+      "S61",
+      "S62",
+      "S66",
+      "S72",
+      "S13",
+      "S15",
+      "S52"
+    ],
+    "ADAPTER_WRAPPED": [
+      "S74",
+      "S73",
+      "S70",
+      "S47",
+      "S69",
+      "S26",
+      "S27",
+      "S67",
+      "S11",
+      "S58"
+    ],
+    "FIX_REQUIRED": [
+      "S57",
+      "S65",
+      "S36",
+      "S68",
+      "S12"
+    ],
+    "DESKTOP_PRIMARY_MOBILE_FALLBACK": [
+      "S01",
+      "S12",
+      "S25",
+      "S35",
+      "S36"
+    ],
+    "DONOR_ONLY": [
+      "S21",
+      "S43",
+      "S44",
+      "S45",
+      "S38"
+    ],
+    "PARTIAL_INTERACTION_RECONCILIATION": [
+      "C04"
+    ],
+    "INTERNAL_RESEARCH": [
+      "C16"
+    ],
+    "DO_NOT_REUSE_VARIANT": [
+      "C12-2",
+      "S47_LEGACY_PATH_MISMATCH",
+      "S68_V2_MISSING_ASSETS"
+    ]
+  },
+  "qaClearedDoNotReintroduceAsBlocker": [
+    "S46",
+    "S73",
+    "S74",
+    "C12-3",
+    "S67",
+    "S14"
+  ],
+  "realRemainingIssues": [
+    {
+      "stableId": "S19",
+      "issue": "performance ~43fps"
+    },
+    {
+      "stableId": "S63",
+      "issue": "story preview ~23fps"
+    },
+    {
+      "stableId": "S57",
+      "issue": "real media replacement"
+    },
+    {
+      "stableId": "S65",
+      "issue": "42 image assets"
+    },
+    {
+      "stableId": "S36",
+      "issue": "CTA 404"
+    },
+    {
+      "stableId": "C14",
+      "issue": "96 photo assets"
+    },
+    {
+      "stableId": "C04",
+      "issue": "interaction hint mismatch"
+    },
+    {
+      "stableId": "C12-2",
+      "issue": "broken/do-not-reuse"
+    }
+  ],
+  "ecosystemRuntimeClass": {
+    "classification": "DIRECT_HOST",
+    "declaredRuntimeCount": 6
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestType": "padiem-v5-viewport-fallback-manifest",
+  "authority": "OWNER_APPROVED_PHASE1_20260911",
+  "defaultPolicy": "RESPONSIVE_NATIVE_WHERE_AUTHORITY_EXISTS",
+  "records": [
+    {
+      "familyId": "S01",
+      "desktopMode": "PRIMARY",
+      "mobileMode": "FALLBACK_REQUIRED",
+      "fallbackVisualAuthority": "PENDING",
+      "routeBehavior": "SAME_FAMILY_ID"
+    },
+    {
+      "familyId": "S12",
+      "desktopMode": "PRIMARY",
+      "mobileMode": "FALLBACK_REQUIRED",
+      "fallbackVisualAuthority": "PENDING",
+      "routeBehavior": "SAME_FAMILY_ID"
+    },
+    {
+      "familyId": "S25",
+      "desktopMode": "PRIMARY",
+      "mobileMode": "FALLBACK_REQUIRED",
+      "fallbackVisualAuthority": "PENDING",
+      "routeBehavior": "SAME_FAMILY_ID"
+    },
+    {
+      "familyId": "S35",
+      "desktopMode": "PRIMARY",
+      "mobileMode": "FALLBACK_REQUIRED",
+      "fallbackVisualAuthority": "PENDING",
+      "routeBehavior": "SAME_FAMILY_ID"
+    },
+    {
+      "familyId": "S36",
+      "desktopMode": "PRIMARY",
+      "mobileMode": "FALLBACK_REQUIRED",
+      "fallbackVisualAuthority": "PENDING",
+      "routeBehavior": "SAME_FAMILY_ID"
+    }
+  ]
+}

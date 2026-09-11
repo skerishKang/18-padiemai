@@ -1,0 +1,45 @@
+{
+  "schemaVersion": "1.0.0",
+  "manifestType": "padiem-v5-previous-next-order-manifest",
+  "authority": "OWNER_APPROVED_PHASE1_20260911",
+  "navigationMode": "CONTEXTUAL",
+  "contexts": [
+    {
+      "contextId": "HOME_LOCKED_DEFAULT",
+      "status": "OWNER_LOCKED",
+      "sequence": [
+        "S74",
+        "S73",
+        "S70",
+        "S68",
+        "S57",
+        "S47"
+      ]
+    },
+    {
+      "contextId": "HOME_LOCKED_S57_REPAIR_FALLBACK",
+      "status": "CONDITIONAL",
+      "condition": "S57_REAL_MEDIA_REPAIR_INCOMPLETE_AT_HOME_INTEGRATION_GATE",
+      "sequence": [
+        "S74",
+        "S73",
+        "S70",
+        "S68",
+        "S46",
+        "S47"
+      ]
+    },
+    {
+      "contextId": "SELECTED_WORK_LEAD",
+      "status": "PARTIAL_AUTHORITY",
+      "sequence": [
+        "S46"
+      ]
+    }
+  ],
+  "rules": {
+    "wrap": false,
+    "preserveContextAcrossDetailExperience": true,
+    "restoreDetailScrollFilterWhereApplicable": true
+  }
+}
