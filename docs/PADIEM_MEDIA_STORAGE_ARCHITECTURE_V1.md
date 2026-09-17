@@ -257,6 +257,8 @@ https://media.padiem.net/design/rotating-memory-index/memory-071-v1.mp4
 
 The shared set excludes `024`, `046`, `047`, and `071`, because those four indices are intentionally overridden by C14-local featured videos.
 
+The `-v1` suffix belongs to the public object identity only. The deterministic runtime rewrite maps the original authored `v3-NNN.mp4` and `memory-NNN.mp4` paths to these immutable public object URLs; it must not rename or mutate the Drive source/master files.
+
 Poster/image assets may remain with the Netlify-served artwork package unless a separate size/performance audit proves that moving them to R2 is necessary. This policy does not move small authored static assets to R2 by default.
 
 ### 9.4 C14 execution gate after audit
