@@ -65,7 +65,7 @@ This enables long cache TTLs without relying on query-string cache busting.
 
 The production requirement is to maximize CDN cache hits and minimize R2 origin reads.
 
-For media routes such as `/design/*` and `/products/*`:
+For media routes such as `/design/*`, `/products/*`, and approved `/shared/*` media namespaces:
 
 - mark eligible media responses for CDN caching;
 - use a long edge TTL appropriate for immutable versioned objects;
@@ -119,6 +119,7 @@ An emergency rule must exist or be ready to activate that blocks only public med
 ```text
 media.padiem.net/design/*
 media.padiem.net/products/*
+media.padiem.net/shared/*
 ```
 
 The kill switch is for abnormal usage, suspected abuse, or unexpected billing risk.
