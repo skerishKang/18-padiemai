@@ -29,6 +29,8 @@ Target R2 bucket name: `padiem-media`.
 
 The canonical storage-role authority is `docs/PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` (Issue #47). Under that policy, R2 is a **production publish layer**, not a mirror of Google Drive or a full source/master archive. Large interactive source packages must be network-audited first and only the minimum production-required publish set should be added to R2.
 
+For C14 / Rotating Memory Index, the empirical Network audit has completed. The audited full-fidelity video publish set is 4 C14-local featured videos plus 85 interaction-lazy shared C12 videos. The 85 shared videos must be published once under the approved shared LoveTree namespace rather than duplicated per artwork. Exact topology and audit evidence are recorded in `PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` and Issues #46/#47.
+
 ## 3. Public access boundary
 
 Production media must not use an `*.r2.dev` public URL.
@@ -220,6 +222,17 @@ HOMEPAGE_SURVIVES_MEDIA_FAILURE = YES
 BUDGET_ALERT = ON | EXISTING | MANUAL_REQUIRED_ACCEPTED
 MONTHLY_USAGE_REVIEW = DOCUMENTED
 PRODUCTION_MEDIA_LINK = ALLOWED
+```
+
+For a new large interactive publish set such as C14, the following additional gates apply before upload or runtime rewrite:
+
+```text
+NETWORK_LOADING_AUDIT = PASS
+MINIMUM_PUBLISH_SET = DECIDED
+R2_AUTH = PASS
+KEY_COLLISION_SCAN = PASS
+LOCAL_REMOTE_SHA256 = PASS
+REPRESENTATIVE_HTTP_200_206 = PASS
 ```
 
 If any safety-critical item fails, disposition is:
