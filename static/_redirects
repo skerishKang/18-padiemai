@@ -12,6 +12,10 @@
 /design/index.html               /design/     301!
 /design.html                     /design/     301!
 
+# Living Media Sphere bootstrap: preserve original Drive MP4 bytes until R2 migration.
+/design/living-media-sphere/assets/video-moment.mp4 https://drive.google.com/uc?export=download&id=1gGauL7rpqVRjfjFeRikrmk3pywrIKU87 302!
+/design/living-media-sphere/assets/video-season.mp4 https://drive.google.com/uc?export=download&id=1F9NJf0fJ0FbAOhLuZQZLbBvzUv7p5Bim 302!
+
 # Company / Team / Contact are information drawers inside the canonical home world.
 # Keep these redirects temporary (302) until the owner accepts the new drawer IA in production.
 /about/index.html                /?panel=company 302!
