@@ -51,6 +51,7 @@
       copyKo: '밝은 오브젝트의 궤도에서 어두운 우주 공간으로 전환되며, 미디어가 고정된 카드가 아니라 살아 있는 구체와 장처럼 느껴지게 합니다.',
       copyEn: 'Media shifts from luminous orbit to dark space, behaving like a living sphere and field rather than a fixed card.',
       tags: ['Sphere', 'Orbit', 'Media', 'Field'],
+      href: '/design/living-media-sphere/',
       media: 'https://media.padiem.net/design/living-media-sphere-v1.mp4',
       duration: '20s',
       accent: '176,238,215',

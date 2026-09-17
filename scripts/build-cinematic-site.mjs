@@ -29,6 +29,7 @@ const exhibitHrefUrls = [...exhibitRegistryText.matchAll(/\bhref:\s*'([^']*)'/g)
   .filter(Boolean);
 const allowedPublicHrefs = new Set([
   "https://chat.padiem.net",
+  "/design/living-media-sphere/",
 ]);
 for (const href of exhibitHrefUrls) {
   if (!allowedPublicHrefs.has(href)) {
