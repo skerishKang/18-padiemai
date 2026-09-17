@@ -236,6 +236,8 @@ LOCAL_REMOTE_SHA256 = PASS
 REPRESENTATIVE_HTTP_200_206 = PASS
 ```
 
+C14 currently satisfies the first two additional gates. Its next blocker is `R2_AUTH=PASS`; no upload should be attempted with the previously rejected token.
+
 If any safety-critical item fails, disposition is:
 
 ```text
