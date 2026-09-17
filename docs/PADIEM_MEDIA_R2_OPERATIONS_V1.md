@@ -27,6 +27,8 @@ If media traffic becomes abnormal or spend risk appears, disable media delivery 
 
 Target R2 bucket name: `padiem-media`.
 
+The canonical storage-role authority is `docs/PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` (Issue #47). Under that policy, R2 is a **production publish layer**, not a mirror of Google Drive or a full source/master archive. Large interactive source packages must be network-audited first and only the minimum production-required publish set should be added to R2.
+
 ## 3. Public access boundary
 
 Production media must not use an `*.r2.dev` public URL.
@@ -229,5 +231,7 @@ HOLD_R2_PRODUCTION_MEDIA_INTEGRATION
 ## 14. Change control
 
 Changes to R2 bucket exposure, custom-domain routing, cache-key behavior, WAF/rate limits, billing safeguards, or emergency behavior are operational changes and must be reflected in Issue #17 or a successor canonical issue before production rollout.
+
+Changes to the **storage-role split** itself — Drive authority, R2 publish-only role, shared-media policy, or production media provider — must also be reflected in Issue #47 and `docs/PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` or its successor.
 
 Do not weaken a cost-safety control merely to keep videos playing. Media availability is deliberately the lowest-priority item in the failure hierarchy.
