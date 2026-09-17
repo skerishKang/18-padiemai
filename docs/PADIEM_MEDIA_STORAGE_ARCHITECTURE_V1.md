@@ -120,7 +120,7 @@ A shared namespace must be introduced only after source lineage and checksum ide
 Before publishing to an existing key:
 
 ```text
-same key + same SHA-256      => SKIP_IDENTICAL
+same key + same SHA-256       => SKIP_IDENTICAL
 same key + different SHA-256 => STOP_CONFLICT
 ```
 
@@ -171,7 +171,7 @@ Their checksum and delivery validation authority remains `docs/PADIEM_PUBLIC_MED
 
 C14 (`Rotating Memory Index`) is the first explicit application of this policy to a large interactive source package.
 
-Confirmed local staging facts:
+Confirmed staging facts:
 
 ```text
 C14_SOURCE_COMPLETE=true
@@ -184,25 +184,114 @@ SHARED_VIDEO_TOTAL_BYTES=1941541194
 BROWSER_SMOKE=PASS
 ```
 
-The source package references 85 C12 shared videos in addition to four featured local videos.
+### 9.1 Empirical browser Network audit
 
-**Decision:** do not bulk-upload the 85 shared videos merely because the HTML references them.
+The read-only browser audit completed with `C14_NETWORK_AUDIT=PASS` and no source/Git/R2/Netlify/production mutation.
 
-The C14 gate is now:
-
-1. preserve the confirmed source/staging package unchanged;
-2. perform a read-only network-loading audit;
-3. determine the minimum production publish set;
-4. decide whether any shared namespace is justified;
-5. only then restore/repair R2 authentication if R2 publication is required;
-6. publish only approved objects after key/SHA conflict checks;
-7. apply deterministic runtime path rewriting without changing the authored interaction/design contract;
-8. use Draft PR + Netlify Preview + owner visual approval before production.
-
-Until steps 1–4 are complete:
+Observed behavior:
 
 ```text
-C14_R2_BULK_UPLOAD=HOLD
+INITIAL_VIDEO_REQUEST_COUNT=4
+INITIAL_FEATURED_VIDEO_REQUEST_COUNT=4
+INITIAL_SHARED_VIDEO_REQUEST_COUNT=0
+INITIAL_VIDEO_TRANSFER_BYTES=976952
+INITIAL_POSTER_REQUEST_COUNT=45
+DRAWER_OPEN_SHARED_VIDEO_REQUEST_COUNT=0
+
+CLICK_001_VIDEO_REQUEST_COUNT=1
+CLICK_001_STATUS=404
+CLICK_001_RANGE=bytes=0-
+
+CLICK_058_VIDEO_REQUEST_COUNT=1
+CLICK_058_STATUS=404
+CLICK_058_RANGE=bytes=0-
+
+FEATURED_CLICK_STATUS=206
+FEATURED_PRELOAD_BEHAVIOR=4 featured videos preload metadata on initial load
+VIEWER_CLOSE_TRANSFER_BEHAVIOR=no additional media request; viewer media removed
+
+MOBILE_INITIAL_SHARED_VIDEO_REQUEST_COUNT=0
+MOBILE_CLICK_SHARED_VIDEO_REQUEST_COUNT=1
+FULL_89_INDEX_CAPABILITY_REQUIRES_ALL_VIDEO_URLS=YES
+```
+
+The two shared-video `404` responses are expected in local staging because the original relative C12 corpus path is not served there. They prove that the shared video URL is requested only after the corresponding Index item is activated.
+
+### 9.2 Publish-set conclusion
+
+The Network audit establishes two different facts that must not be conflated:
+
+1. **Initial bandwidth dependency:** only the four featured videos are requested initially, via `preload="metadata"`; the 85 C12 shared videos are not eager-loaded.
+2. **Full functional dependency:** the authored 89-item Index can open every item, so all 85 non-featured shared video URLs must remain publicly resolvable for full-fidelity standalone publication.
+
+Therefore the minimum video publish set for full-fidelity C14 is:
+
+```text
+FEATURED_C14_VIDEO_OBJECTS=4
+SHARED_C12_VIDEO_OBJECTS=85
+TOTAL_VIDEO_OBJECTS_REQUIRED=89
+```
+
+This does **not** mean 1.94 GB is transferred at page load. The 85 shared videos are interaction-lazy.
+
+### 9.3 Required object topology
+
+The 85 C12 videos must be published once as a shared LoveTree corpus, not duplicated inside the C14 artwork namespace.
+
+Approved target topology:
+
+```text
+https://media.padiem.net/shared/lovetree/videos-v3/v3-001-v1.mp4
+...
+https://media.padiem.net/shared/lovetree/videos-v3/v3-089-v1.mp4
+```
+
+The four C14-local featured overrides remain artwork-specific:
+
+```text
+https://media.padiem.net/design/rotating-memory-index/memory-024-v1.mp4
+https://media.padiem.net/design/rotating-memory-index/memory-046-v1.mp4
+https://media.padiem.net/design/rotating-memory-index/memory-047-v1.mp4
+https://media.padiem.net/design/rotating-memory-index/memory-071-v1.mp4
+```
+
+The shared set excludes `024`, `046`, `047`, and `071`, because those four indices are intentionally overridden by C14-local featured videos.
+
+Poster/image assets may remain with the Netlify-served artwork package unless a separate size/performance audit proves that moving them to R2 is necessary. This policy does not move small authored static assets to R2 by default.
+
+### 9.4 C14 execution gate after audit
+
+The previous `BULK_UPLOAD_BEFORE_NETWORK_AUDIT=HOLD` has been satisfied. The next gate is now R2 authentication and collision-safe publication of the approved 89-object video set.
+
+Before any upload:
+
+```text
+R2_AUTH=PASS
+BUCKET=padiem-media
+KEY_COLLISION_SCAN=PASS
+SAME_KEY_SAME_SHA=SKIP_IDENTICAL
+SAME_KEY_DIFFERENT_SHA=STOP_CONFLICT
+DELETE=FORBIDDEN
+OVERWRITE_UNKNOWN=FORBIDDEN
+```
+
+After publication, verify at minimum:
+
+- local ↔ remote checksum parity;
+- public HTTP 200/206 behavior;
+- representative shared objects `001`, `058`, `089`;
+- all four featured objects;
+- runtime click-through for a shared and featured Index item;
+- no eager shared-video loading introduced by the URL rewrite.
+
+Only after these checks may the deterministic runtime rewrite and Draft Preview proceed.
+
+Current disposition:
+
+```text
+C14_NETWORK_AUDIT=PASS
+C14_PUBLISH_SET_DECISION=PASS
+C14_R2_AUTH=BLOCKED_UNTIL_VALID_TOKEN
 C14_RUNTIME_REWRITE=HOLD
 C14_PRODUCTION_MERGE=HOLD
 ```
@@ -249,7 +338,7 @@ A single artwork implementation must not silently redefine global media architec
 When uncertain, use this order:
 
 ```text
-SOURCE/MASTER?       -> Google Drive
+SOURCE/MASTER?        -> Google Drive
 CODE/CONTRACT/LEDGER? -> GitHub
 PUBLIC RUNTIME MEDIA? -> Cloudflare R2
 NOT YET PROVEN NEEDED? -> DO NOT PUBLISH YET
