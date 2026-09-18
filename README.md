@@ -11,7 +11,7 @@ Netlify builds the cinematic site with:
 ```toml
 [build]
   publish = "public"
-  command = "node scripts/smoke-exhibit-runtime.mjs && node scripts/smoke-runtime-resilience.mjs && node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
+  command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
 ```
 
 Primary source/publish relationship:
@@ -168,6 +168,7 @@ Current public product set:
 - StoryMemory
 - LoveTree
 - 단지온
+- AI 무료 레이더 (preparing/secondary)
 
 Padiem Chat is the approved live external CTA:
 

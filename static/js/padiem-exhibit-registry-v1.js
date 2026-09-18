@@ -119,7 +119,23 @@
       media: 'https://media.padiem.net/products/danjion-product-preview-v1.mp4',
       accent: '174,226,191',
       glyph: 'DJ',
-    },  ];
+    },
+    {
+      id: 'ai-radar',
+      no: '05',
+      title: 'AI Free Radar',
+      titleKo: 'AI 무료 레이더',
+      kicker: 'CURATING / OPPORTUNITY DISCOVERY',
+      status: 'PREPARING',
+      copyKo: '무료·프로모션 AI/API 기회를 혜택 중심으로 발견하고 조건과 근거를 함께 보여주는 큐레이션 제품입니다.',
+      copyEn: 'A curated discovery product for free and promotional AI/API opportunities, centered on benefits, conditions and evidence.',
+      tags: ['Discovery', 'Benefit', 'Evidence', 'Urgency'],
+      href: '',
+      media: '',
+      accent: '248,214,137',
+      glyph: 'AR',
+    },
+  ];
 
   window.PADIEM_EXHIBIT_REGISTRY = Object.freeze({
     design: Object.freeze(design.map(Object.freeze)),
