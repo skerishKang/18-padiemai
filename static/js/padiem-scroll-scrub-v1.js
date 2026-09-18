@@ -107,7 +107,7 @@
   layer.dataset.mediaState = 'loading';
   layer.innerHTML = `
     <div class="world-scroll-video-poster" aria-hidden="true"></div>
-    <video muted playsinline preload="metadata" crossorigin="anonymous" aria-hidden="true"></video>
+    <video muted playsinline preload="metadata" aria-hidden="true"></video>
     <div class="world-scroll-video-tone" aria-hidden="true"></div>
     <div class="world-scroll-video-vignette" aria-hidden="true"></div>
     <p class="world-scroll-video-status" role="status" aria-live="polite"></p>
