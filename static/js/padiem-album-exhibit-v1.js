@@ -105,7 +105,7 @@
   shelf.innerHTML = items.map((item, index) => {
     const initialTitle = localizedTitle(item);
     return `
-    <button class="px-album-sleeve" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
+    <button class="px-album-sleeve${item.poster ? ' has-poster' : ''}" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
       <span class="px-sleeve-edge"></span>
       <span class="px-sleeve-face">
         ${item.poster ? `<img class="px-sleeve-poster" src="${esc(item.poster)}" alt="" loading="lazy" decoding="async" />` : ''}
