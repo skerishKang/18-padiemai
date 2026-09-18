@@ -121,6 +121,9 @@ if (!html.includes('padiem-home-mobile-nav-v1.css')) {
 if (!html.includes('padiem-runtime-v1.js')) {
   throw new Error("The shared runtime script is missing from static/html/index1.html; it must load before the home cinematic runtimes.");
 }
+if (!html.includes('padiem-media-v1.js')) {
+  throw new Error("The media config script is missing from static/html/index1.html; runtimes read public media URLs from it.");
+}
 if (html.indexOf('padiem-runtime-v1.js') > html.indexOf('padiem-cinematic-v2-1.js')) {
   throw new Error("The shared runtime must load before the home cinematic runtimes in static/html/index1.html.");
 }
@@ -177,6 +180,9 @@ for (const { source, dest } of showcasePages) {
   // reads preferences and animation scheduling through it.
   if (!pageHtml.includes('padiem-runtime-v1.js')) {
     throw new Error(`The shared runtime script is missing from static/html/${source}; it must load before the page world runtime.`);
+  }
+  if (!pageHtml.includes('padiem-media-v1.js')) {
+    throw new Error(`The media config script is missing from static/html/${source}; runtimes read public media URLs from it.`);
   }
   if (pageHtml.indexOf('padiem-runtime-v1.js') > pageHtml.indexOf('padiem-cinematic-worlds-v1.js')) {
     throw new Error(`The shared runtime must load before the page world runtime in static/html/${source}.`);
