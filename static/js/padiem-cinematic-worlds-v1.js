@@ -89,14 +89,15 @@
     }
   };
 
+  const storage = (window.PADIEM_RUNTIME && window.PADIEM_RUNTIME.storage) || { available: false, read: () => null, write: () => {} };
   const langButtons = [...document.querySelectorAll('[data-world-lang]')];
-  let language = localStorage.getItem('padiem-language') || (/^ko/i.test(navigator.language || '') ? 'ko' : 'en');
+  let language = storage.read('padiem-language') || (/^ko/i.test(navigator.language || '') ? 'ko' : 'en');
   if (!DRAWER[language]) language = 'ko';
 
   const applyLanguage = next => {
     if (!DRAWER[next]) return;
     language = next;
-    localStorage.setItem('padiem-language', next);
+    storage.write('padiem-language', next);
     document.documentElement.lang = next;
     document.body.dataset.lang = next;
     langButtons.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.worldLang === next)));
@@ -105,6 +106,9 @@
       if (value) element.textContent = value;
     });
     if (overlay && !overlay.hidden) renderDrawer(activeDrawerTab);
+    // Runtimes that mount their own copy (exhibits, product scenes) re-apply the
+    // language from this event instead of guessing the current locale.
+    document.dispatchEvent(new CustomEvent('padiem:language', { detail: { language: next } }));
   };
   langButtons.forEach(button => button.addEventListener('click', () => applyLanguage(button.dataset.worldLang)));
 

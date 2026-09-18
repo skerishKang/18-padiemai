@@ -114,6 +114,17 @@ if (!html.includes('padiem-home-mobile-nav-v1.css')) {
   html = html.replace('</head>', `${homeMobileNavStyle}</head>`);
 }
 
+// Script order carries meaning here: the shared runtime publishes the storage adapter and the
+// gated frame loop that the cinematic runtimes below it use, so it must stay first. This is a
+// fail-closed source contract instead of an injection, because injecting it would silently
+// reorder it behind a runtime that already ran.
+if (!html.includes('padiem-runtime-v1.js')) {
+  throw new Error("The shared runtime script is missing from static/html/index1.html; it must load before the home cinematic runtimes.");
+}
+if (html.indexOf('padiem-runtime-v1.js') > html.indexOf('padiem-cinematic-v2-1.js')) {
+  throw new Error("The shared runtime must load before the home cinematic runtimes in static/html/index1.html.");
+}
+
 html = html.replace(
   languageScript,
   `${homeNavScript}${languageScript}${drawerTabsScript}`,
@@ -162,6 +173,14 @@ for (const { source, dest } of showcasePages) {
     throw new Error(`Expected document boundaries were not found in static/html/${source}`);
   }
 
+  // Same fail-closed ordering contract as the homepage: every runtime below the shared runtime
+  // reads preferences and animation scheduling through it.
+  if (!pageHtml.includes('padiem-runtime-v1.js')) {
+    throw new Error(`The shared runtime script is missing from static/html/${source}; it must load before the page world runtime.`);
+  }
+  if (pageHtml.indexOf('padiem-runtime-v1.js') > pageHtml.indexOf('padiem-cinematic-worlds-v1.js')) {
+    throw new Error(`The shared runtime must load before the page world runtime in static/html/${source}.`);
+  }
   if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${exhibitConfigScript}\n</body>`);
   }

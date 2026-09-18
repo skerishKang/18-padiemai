@@ -32,24 +32,40 @@
   const mountedScenes = [];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // Exhibit copy follows the site language broadcast by the page runtime. Strings that need a
+  // line break carry `data-copy-html`, because a <br> cannot survive a textContent swap.
+  const language = () => (document.body.dataset.lang === 'en' ? 'en' : 'ko');
+  const applyCopy = root => {
+    const current = language();
+    root.querySelectorAll('[data-copy-ko][data-copy-en]').forEach(element => {
+      const value = current === 'ko' ? element.dataset.copyKo : element.dataset.copyEn;
+      if (!value) return;
+      if (element.hasAttribute('data-copy-html')) element.innerHTML = value;
+      else element.textContent = value;
+    });
+  };
+  document.addEventListener('padiem:language', () => applyCopy(document));
+
   const mount = (kind, html) => {
     const frame = frames.get(kind);
     frame.innerHTML = `<div class="live-exhibit exhibit-${kind}" data-live-exhibit="${kind}">${html}</div>`;
     frame.classList.add('has-live-exhibit');
     const scene = frame.closest('.world-scene');
     if (scene) mountedScenes.push(scene);
-    return frame.querySelector('[data-live-exhibit]');
+    const mounted = frame.querySelector('[data-live-exhibit]');
+    applyCopy(mounted);
+    return mounted;
   };
 
   const shelf = mount('shelf', `
     <span class="exhibit-meta">LIVE STUDY / PERSON MEMORY SHELF</span>
     <div class="shelf-glow"></div>
     <div class="shelf-books" aria-label="Interactive person memory shelf study">
-      <button class="memory-book" style="--book:linear-gradient(160deg,#a56079,#6c3549);--rz:-3deg" aria-label="Memory volume one"><span>첫 번째<br>기억</span></button>
-      <button class="memory-book" style="--book:linear-gradient(160deg,#7c8e6f,#4b5e42);--rz:2deg" aria-label="Memory volume two"><span>함께한<br>시간</span></button>
-      <button class="memory-book active" style="--book:linear-gradient(160deg,#9a735d,#5e4437);--rz:-1deg" aria-label="Memory volume three"><span>우리의<br>장면</span></button>
-      <button class="memory-book" style="--book:linear-gradient(160deg,#65758f,#3e495e);--rz:3deg" aria-label="Memory volume four"><span>다시<br>만난 날</span></button>
-      <button class="memory-book" style="--book:linear-gradient(160deg,#a67a55,#6e4d34);--rz:-2deg" aria-label="Memory volume five"><span>남겨진<br>온도</span></button>
+      <button class="memory-book" style="--book:linear-gradient(160deg,#a56079,#6c3549);--rz:-3deg" aria-label="Memory volume one"><span data-copy-html data-copy-ko="첫 번째<br>기억" data-copy-en="First<br>memory">첫 번째<br>기억</span></button>
+      <button class="memory-book" style="--book:linear-gradient(160deg,#7c8e6f,#4b5e42);--rz:2deg" aria-label="Memory volume two"><span data-copy-html data-copy-ko="함께한<br>시간" data-copy-en="Time<br>together">함께한<br>시간</span></button>
+      <button class="memory-book active" style="--book:linear-gradient(160deg,#9a735d,#5e4437);--rz:-1deg" aria-label="Memory volume three"><span data-copy-html data-copy-ko="우리의<br>장면" data-copy-en="Our<br>scenes">우리의<br>장면</span></button>
+      <button class="memory-book" style="--book:linear-gradient(160deg,#65758f,#3e495e);--rz:3deg" aria-label="Memory volume four"><span data-copy-html data-copy-ko="다시<br>만난 날" data-copy-en="The day<br>we met">다시<br>만난 날</span></button>
+      <button class="memory-book" style="--book:linear-gradient(160deg,#a67a55,#6e4d34);--rz:-2deg" aria-label="Memory volume five"><span data-copy-html data-copy-ko="남겨진<br>온도" data-copy-en="Kept<br>warmth">남겨진<br>온도</span></button>
     </div>
     <div class="shelf-base"></div>
     <div class="exhibit-foot"><span>PERSON → SPACE → RECALL</span><span>SELECT A VOLUME</span></div>
@@ -134,9 +150,15 @@
       const x = pointerX * 13 + Math.sin(progress * Math.PI * 2) * 5;
       const y = pointerY * 9 + Math.cos(progress * Math.PI * 2) * 4;
       glassField.style.transform = `translate3d(${x}px,${y}px,0) rotateX(${pointerY * -1.5}deg) rotateY(${pointerX * 2}deg)`;
-      requestAnimationFrame(animateField);
     };
-    requestAnimationFrame(animateField);
+    // Per-frame work only while the field is on screen and the tab is active.
+    const runtime = window.PADIEM_RUNTIME;
+    if (runtime && runtime.frameLoop) {
+      runtime.frameLoop(wall, animateField);
+    } else {
+      const loop = () => { animateField(); requestAnimationFrame(loop); };
+      requestAnimationFrame(loop);
+    }
   }
 
   // Relabel study pills inside the scenes that actually mounted, so the copy follows its scene
