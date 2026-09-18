@@ -241,9 +241,9 @@ The 85 C12 videos must be published once as a shared LoveTree corpus, not duplic
 Approved target topology:
 
 ```text
-https://media.padiem.net/shared/lovetree/videos-v3/v3-001-v1.mp4
+https://media.padiem.net/shared/lovetree-v3/v3-001-v1.mp4
 ...
-https://media.padiem.net/shared/lovetree/videos-v3/v3-089-v1.mp4
+https://media.padiem.net/shared/lovetree-v3/v3-089-v1.mp4
 ```
 
 The four C14-local featured overrides remain artwork-specific:
@@ -263,11 +263,12 @@ Poster/image assets may remain with the Netlify-served artwork package unless a 
 
 ### 9.4 C14 execution gate after audit
 
-The previous `BULK_UPLOAD_BEFORE_NETWORK_AUDIT=HOLD` has been satisfied. The next gate is now R2 authentication and collision-safe publication of the approved 89-object video set.
+The previous `BULK_UPLOAD_BEFORE_NETWORK_AUDIT=HOLD` has been satisfied. The measured publish set and the main-based Draft integration are now complete. R2 publication remains a **separate owner-authorized mutation gate**.
 
 Before any upload:
 
 ```text
+OWNER_R2_APPLY_APPROVAL=PASS
 R2_AUTH=PASS
 BUCKET=padiem-media
 KEY_COLLISION_SCAN=PASS
@@ -277,24 +278,26 @@ DELETE=FORBIDDEN
 OVERWRITE_UNKNOWN=FORBIDDEN
 ```
 
+The publisher is dry-run by default. Existing versioned keys may be skipped only after parity is proven; existence alone is not sufficient.
+
 After publication, verify at minimum:
 
-- local ↔ remote checksum parity;
+- local ↔ remote SHA-256 acceptance/parity evidence;
 - public HTTP 200/206 behavior;
 - representative shared objects `001`, `058`, `089`;
 - all four featured objects;
 - runtime click-through for a shared and featured Index item;
 - no eager shared-video loading introduced by the URL rewrite.
 
-Only after these checks may the deterministic runtime rewrite and Draft Preview proceed.
+A Draft Preview may use the final versioned URLs before the objects are published so structure, routing, and rewrite behavior can be reviewed without R2 mutation. **Production merge remains forbidden** until the approved objects are published and the final media/readback/visual gates pass.
 
 Current disposition:
 
 ```text
 C14_NETWORK_AUDIT=PASS
 C14_PUBLISH_SET_DECISION=PASS
-C14_R2_AUTH=BLOCKED_UNTIL_VALID_TOKEN
-C14_RUNTIME_REWRITE=HOLD
+C14_MAIN_BASED_DRAFT_PREVIEW=PASS
+C14_R2_APPLY=HOLD_OWNER_APPROVAL
 C14_PRODUCTION_MERGE=HOLD
 ```
 
