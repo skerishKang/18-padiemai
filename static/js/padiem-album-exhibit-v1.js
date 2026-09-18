@@ -108,6 +108,8 @@
     <button class="px-album-sleeve" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
       <span class="px-sleeve-edge"></span>
       <span class="px-sleeve-face">
+        ${item.poster ? `<img class="px-sleeve-poster" src="${esc(item.poster)}" alt="" loading="lazy" decoding="async" />` : ''}
+        <span class="px-sleeve-poster-shade" aria-hidden="true"></span>
         <span class="px-sleeve-meta"><b>${esc(item.no)}</b><em>${esc(item.status || 'DESIGN STUDY')}</em></span>
         <span class="px-sleeve-glyph">${esc(item.glyph)}</span>
         <span class="px-sleeve-title" data-copy-ko="${esc(item.titleKo || item.title)}" data-copy-en="${esc(item.title)}">${esc(initialTitle)}</span>
@@ -201,6 +203,8 @@
 
   const renderCopy = item => {
     const lang = currentLanguage();
+    if (item.poster) video.poster = item.poster;
+    else video.removeAttribute('poster');
     copyIndex.textContent = item.no;
     copyRule.style.setProperty('--accent-rgb', item.accent);
     kicker.textContent = item.kicker;
