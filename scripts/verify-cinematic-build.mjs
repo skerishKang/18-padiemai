@@ -63,6 +63,9 @@ const registry = readFileSync(join(root, "static/js/padiem-exhibit-registry-v1.j
 if (registry.includes("lovetree.limone.dev")) {
   throw new Error("Unapproved personal LoveTree CTA domain remains in the exhibit registry.");
 }
+if (!registry.includes("'/design/rotating-memory-index/'")) {
+  throw new Error("Approved Rotating Memory Index route CTA is missing from the exhibit registry.");
+}
 if (!registry.includes("'/design/living-media-sphere/'")) {
   throw new Error("Approved Living Media Sphere route CTA is missing from the exhibit registry.");
 }
