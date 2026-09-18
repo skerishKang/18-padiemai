@@ -72,7 +72,7 @@ DRIVE_AS_CDN            = DENIED (media.padiem.net remains the only video origin
 
 ## 6. Verification
 
-The deploy command is the whole gate, and the same command runs locally:
+The deploy command is the whole gate, and the same command runs locally as `npm run build:check`:
 
 ```bash
 node scripts/build-cinematic-site.mjs \
@@ -84,5 +84,6 @@ node scripts/build-cinematic-site.mjs \
 `verify-cinematic-build.mjs` asserts that every route is regenerated (`/`, `/products/`, `/design/`,
 `/design/rotating-memory-index/`, `/design/living-media-sphere/`), that the work resolves to both
 public media origins with versioned keys, and that no private source path, MP4 binary or debug script
-reaches the publish output. `node scripts/publish-rotating-memory-index-media-r2.mjs` prints the
-approved publish set (4 + 85 = 89 objects) and mutates nothing.
+reaches the publish output. `npm run media:plan` prints the approved publish set
+(4 + 85 = 89 objects) and mutates nothing; only `npm run media:apply` publishes, and it refuses to
+overwrite an existing immutable key.

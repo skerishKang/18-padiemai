@@ -11,8 +11,11 @@ Netlify builds the cinematic site with:
 ```toml
 [build]
   publish = "public"
-  command = "node scripts/build-cinematic-site.mjs"
+  command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
 ```
+
+The same chain is `npm run build:check`, and the media publish gates are `npm run media:plan`
+(dry run, no mutation) and `npm run media:apply` (owner-approved publish only).
 
 Primary source/publish relationship:
 
