@@ -2,8 +2,8 @@
  * PADIEM public media publish — Design / 03 Rotating Memory Index
  *
  * Dry-run by default. --apply is the only mutating path.
- * Existing versioned objects are immutable: they are skipped only after the public
- * object's byte length and single-part ETag match the local source exactly.
+ * Existing versioned objects are immutable: they are skipped only after byte parity is
+ * proven (single-part ETag/MD5 fast path, streamed SHA-256 fallback for multipart ETags).
  */
 
 import { existsSync, readdirSync, statSync, createReadStream } from "node:fs";
