@@ -553,7 +553,7 @@ body.px-exhibit-album main > .world-scene {
     linear-gradient(90deg,rgba(3,5,9,.24),transparent 48%,rgba(3,5,9,.12));
 }
 
-.px-sleeve-face:has(.px-sleeve-poster) .px-sleeve-glyph {
+.px-album-sleeve.has-poster .px-sleeve-glyph {
   opacity: 0;
 }
 
