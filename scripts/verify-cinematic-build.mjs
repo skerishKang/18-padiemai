@@ -97,11 +97,11 @@ for (const stale of ["assets/video-moment.mp4", "assets/video-season.mp4"]) {
   if (sphere.includes(stale)) throw new Error(`Living Media Sphere output still contains local media path ${stale}`);
 }
 
-for (const origin of [
-  "https://media.padiem.net/design/rotating-memory-index/",
-  "https://media.padiem.net/shared/lovetree-v3/",
-]) {
-  if (!rotating.includes(origin)) throw new Error(`Rotating Memory Index output does not resolve to ${origin}`);
+if (!rotating.includes("https://media.padiem.net/design/rotating-memory-index/")) {
+  throw new Error("Rotating Memory Index output does not resolve to its approved featured-media origin.");
+}
+if (rotating.includes("https://media.padiem.net/shared/lovetree-v3/")) {
+  throw new Error("Deferred shared LoveTree films must not be public dependencies in the current release.");
 }
 for (const leaked of ["12_러브트리", "assets/featured-videos/", "videos-v3/"]) {
   if (rotating.includes(leaked)) throw new Error(`Rotating Memory Index output leaks a non-public media path: ${leaked}`);
@@ -109,8 +109,13 @@ for (const leaked of ["12_러브트리", "assets/featured-videos/", "videos-v3/"
 if (!rotating.includes("https://media.padiem.net/design/rotating-memory-index/memory-")) {
   throw new Error("Rotating Memory Index featured films do not resolve to versioned public keys.");
 }
-if (!rotating.includes("memory-024-v1.mp4") || !rotating.includes("v3-'+p+'-v1.mp4")) {
-  throw new Error("Rotating Memory Index output does not use versioned media keys.");
+for (const featured of ["024", "046", "047", "071"]) {
+  if (!rotating.includes(`memory-${featured}-v1.mp4`)) {
+    throw new Error(`Rotating Memory Index output is missing approved featured film memory-${featured}-v1.mp4.`);
+  }
+}
+if (!rotating.includes("film publication deferred")) {
+  throw new Error("Rotating Memory Index output is missing the deferred-film poster fallback.");
 }
 
 const posterDir = join(root, "rotating-memory-index-source/assets/index-posters");
