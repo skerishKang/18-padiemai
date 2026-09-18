@@ -14,28 +14,82 @@ Netlify builds the cinematic site with:
   command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
 ```
 
-The same chain is `npm run build:check`, and the media publish gates are `npm run media:plan`
-(dry run, no mutation) and `npm run media:apply` (owner-approved publish only).
-
 Primary source/publish relationship:
 
 ```text
 static/html/index1.html                -> public/index.html
 static/html/pages/products.html        -> public/products/index.html
 static/html/pages/design.html          -> public/design/index.html
+static/design/living-media-sphere/**    -> public/design/living-media-sphere/**
+rotating-memory-index-source/**         -> public/design/rotating-memory-index/**
 static/css/**                          -> public/css/**
 static/js/**                           -> public/js/**
 static/images/**                       -> public/images/**
-static/design/living-media-sphere/**   -> public/design/living-media-sphere/**
-rotating-memory-index-source/**        -> public/design/rotating-memory-index/**
 ```
 
-`static/html/**` is a source tree. It is **not** copied wholesale into `public/html/**`; this prevents legacy page shells from surviving in a deployment.
+`static/html/**` is a source tree. It is **not** copied wholesale into `public/html/**`; this prevents legacy page shells from surviving in a deployment. `public/` is generated output and is not source authority.
 
-`public/` is generated output and is not tracked in Git. Both Design exhibits are built from their
-source locations, so a clean clone reproduces every published route with one command (see
-`package.json` → `build:check`). Video binaries never enter Git; approved films are published to the
-public media origin (`media.padiem.net`) and referenced from there.
+Local repository gates:
+
+```bash
+npm run build:check
+npm run smoke:exhibits
+npm run smoke:runtime
+npm run media:plan
+```
+
+
+Exhibit scenes mount by a stable identifier (`data-exhibit` on `.world-media-frame`), never by
+document order or page title. Keep the source markup, the runtime scene tables and the exhibit
+registry in sync with:
+
+```bash
+node scripts/smoke-exhibit-runtime.mjs
+```
+
+## Shared browser runtime
+
+`static/js/padiem-runtime-v1.js` loads first on every page and owns the two things runtimes must
+not implement themselves:
+
+```text
+PADIEM_RUNTIME.storage    safe preference storage (language, font choice)
+PADIEM_RUNTIME.frameLoop  animation scheduling that is gated by visibility and motion preference
+```
+
+Rules:
+
+- No site runtime reads `localStorage` directly. Private browsing, blocked site data and embedded
+  webviews make storage access throw; the adapter keeps values in memory for the session so
+  navigation and language state keep working.
+- Per-frame work only runs while it can be seen: the loop pauses when the tab is hidden, when the
+  scene leaves the viewport and when the visitor prefers reduced motion. Hidden scenes perform no
+  per-frame DOM work (issue #56).
+
+The `KO / EN` control broadcasts `padiem:language` on `document`. Runtimes that mount their own copy
+re-apply it from that event (and from `document.body.dataset.lang` at mount time) instead of
+reading the locale themselves.
+
+Documented copy behavior:
+
+```text
+Homepage / Products / Design chrome        KO + EN, swapped by the page runtime
+data-copy-ko / data-copy-en pairs          follow the active language, no page reload
+Live exhibit scene labels (shelf books)    KO + EN via data-copy pairs
+Exhibit scene meta, HUD and aria-labels    English art direction, intentionally not translated
+Product exhibit narrative copy             KO-first narrative; EN strings are an owner/design
+                                           decision, tracked rather than invented at runtime
+```
+
+Verify the runtime contract with:
+
+```bash
+node scripts/smoke-runtime-resilience.mjs
+```
+
+It exercises the adapter in a sandbox with throwing/missing storage, a hidden tab, an off-screen
+element and reduced motion, then sweeps the source for direct `localStorage` access, ungated
+animation loops and incomplete copy pairs.
 
 ## PADIEM public information architecture
 

@@ -7,20 +7,39 @@
     if (mode === 'album') return;
   }
 
-  if (!document.title.includes('PADIEM Products')) return;
+  // Scenes are addressed by registry id, not by document order or page title. The ids below are
+  // the exhibit registry ids; scripts/smoke-exhibit-runtime.mjs keeps markup, runtime and
+  // registry in sync so a reorder or a title change can never mount the wrong scene.
+  const SCENES = [
+    ['padiem-chat', 'chat'],
+    ['storymemory', 'story'],
+    ['lovetree', 'love'],
+    ['danjion', 'danji'],
+    ['ai-radar', 'radar'],
+  ];
 
-  const frames = [...document.querySelectorAll('.world-media-frame')];
-  if (frames.length < 5) return;
+  if (!location.pathname.startsWith('/products')) return;
+
+  const frames = new Map();
+  for (const [id, kind] of SCENES) {
+    const frame = document.querySelector(`.world-media-frame[data-exhibit="${id}"]`);
+    if (!frame) {
+      console.warn(`[padiem-product-exhibits] missing exhibit frame: ${id}`);
+      return;
+    }
+    frames.set(kind, frame);
+  }
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const mount = (frame, kind, html) => {
+  const mount = (kind, html) => {
+    const frame = frames.get(kind);
     frame.innerHTML = `<div class="product-exhibit product-${kind}" data-product-exhibit="${kind}">${html}</div>`;
     frame.classList.add('has-live-exhibit');
     return frame.querySelector('[data-product-exhibit]');
   };
 
-  const chat = mount(frames[0], 'chat', `
+  const chat = mount('chat', `
     <span class="px-meta">LIVE PRODUCT STUDY / PADIEM CHAT</span>
     <div class="chat-shell" aria-label="Padiem Chat composer study">
       <div class="chat-top"><span>PADIEM CHAT</span><span class="chat-live"><i></i>READY</span></div>
@@ -39,7 +58,7 @@
     chat.querySelectorAll('.tool-chip').forEach(node => node.classList.toggle('active', node === chip));
   }));
 
-  const story = mount(frames[1], 'story', `
+  const story = mount('story', `
     <span class="px-meta">PUBLIC-SAFE STUDY / STORYMEMORY</span>
     <div class="story-shell" aria-label="StoryMemory three-zone context workspace study">
       <section class="story-zone rail"><span class="zone-label">01 / CONTEXT + MEMORY</span><div class="memory-rail">
@@ -58,7 +77,7 @@
     if (storyCompanion) storyCompanion.textContent = item.dataset.storyNote || '';
   }));
 
-  const love = mount(frames[2], 'love', `
+  const love = mount('love', `
     <span class="px-meta">MVP01 / ENTRY ORBIT · LOVETREE</span>
     <div class="love-orbit" aria-label="LoveTree MVP01 Memory Orbit entry study">
       <div class="orbit-brand">LOVETREE · MEMORY ORBIT</div>
@@ -112,7 +131,7 @@
     });
   }
 
-  const danji = mount(frames[3], 'danji', `
+  const danji = mount('danji', `
     <span class="px-meta">PRODUCT STUDY / DANJION</span>
     <div class="danji-shell" aria-label="Living Neighbor Shop study">
       <div class="danji-controls"><div class="danji-mark">단지온</div><div class="danji-sub">같은 단지에서 일하는 이웃을 먼저 발견합니다.</div><div class="search-box">가게와 서비스 찾기</div><div class="work-tabs">
@@ -136,7 +155,7 @@
     if (workStage) workStage.style.setProperty('--work-accent', tab.dataset.workAccent || 'rgba(125,178,151,.38)');
   }));
 
-  const radar = mount(frames[4], 'radar', `
+  const radar = mount('radar', `
     <span class="px-meta">EDITORIAL STUDY / AI FREE RADAR</span>
     <div class="radar-board" aria-label="AI Free Radar benefit-first editorial study">
       <button class="radar-card primary active" type="button"><span class="benefit-label">BENEFIT FIRST / STUDY</span><strong class="benefit-big">지금<br>무료인가?</strong><span class="evidence-row"><span class="evidence-dot">EVIDENCE READY</span><span>CONDITION CHECK</span></span></button>

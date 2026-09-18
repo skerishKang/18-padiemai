@@ -128,7 +128,7 @@
 
   if (reduced) return;
 
-  const frame = () => {
+  const step = () => {
     smoothed += (target - smoothed) * 0.14;
     if (ready && video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) {
       const desired = smoothed * Math.max(0, video.duration - 0.05);
@@ -136,8 +136,14 @@
         try { video.currentTime = desired; } catch {}
       }
     }
-    requestAnimationFrame(frame);
   };
 
-  frame();
+  // The scrub frame only advances while the tab is active; a backgrounded tab must not seek.
+  const runtime = window.PADIEM_RUNTIME;
+  if (runtime && runtime.frameLoop) {
+    runtime.frameLoop(layer, step, { onResume: () => { smoothed = target; } });
+  } else {
+    const loop = () => { step(); requestAnimationFrame(loop); };
+    requestAnimationFrame(loop);
+  }
 })();

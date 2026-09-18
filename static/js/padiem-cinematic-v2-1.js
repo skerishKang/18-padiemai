@@ -1,10 +1,12 @@
 (() => {
+const runtime = window.PADIEM_RUNTIME || {};
+const storage = runtime.storage || { available: false, read: () => null, write: () => {} };
 const fontButtons = [...document.querySelectorAll('[data-font-choice]')];
-const savedFont = localStorage.getItem('padiem-font-choice') || 'suite';
+const savedFont = storage.read('padiem-font-choice') || 'suite';
 const applyFont = name => {
 document.body.dataset.font = name;
 fontButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.fontChoice === name));
-localStorage.setItem('padiem-font-choice', name);
+storage.write('padiem-font-choice', name);
 };
 fontButtons.forEach(btn => btn.addEventListener('click', () => applyFont(btn.dataset.fontChoice)));
 applyFont(savedFont);
@@ -202,7 +204,6 @@ const pathObserver = new MutationObserver(cleanTechnologyOriginCopy);
 pathObserver.observe(pathRoot, { childList: true, subtree: true, characterData: true });
 }
 
-// Public media origin only: the previous user-scoped CloudFront URL must not ship in production.
 const VIDEO_URL = 'https://media.padiem.net/home/cinematic-scroll-v1.mp4';
 const video = document.getElementById('scrollVideo');
 const canvas = document.getElementById('frameCanvas');
@@ -242,7 +243,7 @@ else revealVideo();
 video.addEventListener('error', () => {}, { once: true });
 video.load();
 
-function frame() {
+function scrubStep() {
 smoothed += (target - smoothed) * 0.14;
 if (mediaReady && video.readyState >= 2 && Number.isFinite(video.duration) && video.duration > 0) {
 const desired = smoothed * Math.max(0, video.duration - 0.05);
@@ -250,13 +251,21 @@ if (Math.abs(video.currentTime - desired) > 0.075 && !video.seeking) {
 try { video.currentTime = desired; } catch {}
 }
 }
-requestAnimationFrame(frame);
 }
 
 addEventListener('scroll', update, { passive: true });
 addEventListener('resize', update);
 update();
-frame();
+
+// The scroll scrub only runs while it is visible, the tab is active and the
+// visitor has not asked for reduced motion; otherwise the frame is static.
+const scrubElement = video.closest('section') || video.parentElement || video;
+if (runtime.frameLoop) {
+runtime.frameLoop(scrubElement, scrubStep, { onResume: () => { smoothed = target; } });
+} else if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+const loop = () => { scrubStep(); requestAnimationFrame(loop); };
+requestAnimationFrame(loop);
+}
 
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const revealEls = [...document.querySelectorAll('.reveal')];

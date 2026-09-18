@@ -136,6 +136,14 @@ if (!html.includes('padiem-home-mobile-nav-v1.css')) {
   html = html.replace('</head>', `${homeMobileNavStyle}</head>`);
 }
 
+// Script order is a fail-closed contract: the shared runtime must load before cinematic code.
+if (!html.includes('padiem-runtime-v1.js')) {
+  throw new Error("The shared runtime script is missing from static/html/index1.html; it must load before the home cinematic runtimes.");
+}
+if (html.indexOf('padiem-runtime-v1.js') > html.indexOf('padiem-cinematic-v2-1.js')) {
+  throw new Error("The shared runtime must load before the home cinematic runtimes in static/html/index1.html.");
+}
+
 // The legacy source markup still contains the previous navigation labels. Inject
 // the IA adapter before the existing language/overlay runtime so that the latter
 // binds to the final navigation semantics. The drawer-tab enhancer runs after it.
@@ -194,6 +202,13 @@ for (const { source, dest } of showcasePages) {
   }
   if (!pageHtml.includes('</head>') || !pageHtml.includes('</body>')) {
     throw new Error(`Expected document boundaries were not found in static/html/${source}`);
+  }
+
+  if (!pageHtml.includes('padiem-runtime-v1.js')) {
+    throw new Error(`The shared runtime script is missing from static/html/${source}; it must load before the page world runtime.`);
+  }
+  if (pageHtml.indexOf('padiem-runtime-v1.js') > pageHtml.indexOf('padiem-cinematic-worlds-v1.js')) {
+    throw new Error(`The shared runtime must load before the page world runtime in static/html/${source}.`);
   }
   if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
