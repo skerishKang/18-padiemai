@@ -22,9 +22,8 @@ const workPrefix = "design/rotating-memory-index";
 const featuredSource = join(sourceRoot, "assets", "featured-videos");
 const expectedFeatured = 4;
 
-const sharedPrefix = "shared/lovetree-v3";
-const sharedSource = join(sourceRoot, "shared-videos");
-const expectedShared = 85;
+const deferredSharedPrefix = "shared/lovetree-v3";
+const deferredSharedCount = 85;
 
 const versioned = name => name.replace(/\.mp4$/i, "-v1.mp4");
 const plan = [];
@@ -41,27 +40,22 @@ const collect = (directory, prefix, matcher) => {
 };
 
 collect(featuredSource, workPrefix, /^memory-\d{3}\.mp4$/i);
-collect(sharedSource, sharedPrefix, /^v3-\d{3}\.mp4$/i);
 
 const featured = plan.filter(entry => entry.key.startsWith(`${workPrefix}/`));
-const shared = plan.filter(entry => entry.key.startsWith(`${sharedPrefix}/`));
 if (featured.length !== expectedFeatured) {
   throw new Error(`Expected ${expectedFeatured} featured films, found ${featured.length}. Refusing to publish a partial work.`);
 }
-if (shared.length !== expectedShared) {
-  throw new Error(`Expected ${expectedShared} shared corpus films, found ${shared.length}. Refusing to publish a partial set.`);
-}
 
 const totalBytes = plan.reduce((sum, entry) => sum + entry.bytes, 0);
-console.log(`Approved publish set: ${featured.length} featured + ${shared.length} shared = ${plan.length} objects (${(totalBytes / 1024 / 1024).toFixed(1)} MiB)`);
-console.log(`  ${workPrefix}/    -> work-owned films`);
-console.log(`  ${sharedPrefix}/  -> shared corpus, published once for all works`);
+console.log(`Approved CURRENT publish set: ${featured.length} featured = ${plan.length} objects (${(totalBytes / 1024 / 1024).toFixed(1)} MiB)`);
+console.log(`  ${workPrefix}/    -> work-owned films approved for the current release`);
+console.log(`  ${deferredSharedPrefix}/  -> ${deferredSharedCount} shared films DEFERRED; keep in Drive until separately approved`);
 for (const entry of plan) {
   console.log(`    ${entry.key} (${(entry.bytes / 1024 / 1024).toFixed(2)} MiB)`);
 }
 
 if (!APPLY) {
-  console.log("\nDRY RUN: nothing was uploaded. Re-run with --apply only after owner approval of this publish set.");
+  console.log("\nDRY RUN: nothing was uploaded. Only the 4 currently approved featured films are in this plan.");
   process.exit(0);
 }
 
@@ -175,5 +169,6 @@ for (const [index, entry] of plan.entries()) {
   published += 1;
 }
 
-console.log(`\nPublished and parity-verified ${published} object(s); verified/skipped ${skipped} existing immutable object(s).`);
-console.log("Next: verify HTTP Range 206 and cache behavior for representative/new keys, then record accepted objects in the public media ledger.");
+console.log(`\nPublished and parity-verified ${published} current-release object(s); verified/skipped ${skipped} existing immutable object(s).`);
+console.log("The 85 shared LoveTree films remain deferred in Drive and are not part of this publish action.");
+console.log("Next: verify HTTP Range 206 and cache behavior for the 4 featured keys, then record accepted objects in the public media ledger.");
