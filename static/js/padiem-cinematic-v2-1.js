@@ -204,7 +204,14 @@ const pathObserver = new MutationObserver(cleanTechnologyOriginCopy);
 pathObserver.observe(pathRoot, { childList: true, subtree: true, characterData: true });
 }
 
-const VIDEO_URL = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260729_102822_0e6c87e8-c141-4744-bf32-ad30db296371.mp4';
+// The hero film URL and the failure copy come from the shared media config; a runtime must not
+// define its own public media URL (#50).
+const media = window.PADIEM_MEDIA || {};
+const fallbackCopy = media.fallbackCopy || {
+ko: '영상을 불러오지 못해 정지 화면으로 표시합니다.',
+en: 'The film could not be loaded, so a still frame is shown.',
+};
+const VIDEO_URL = (media.home && media.home.scrollFilm) || '';
 const video = document.getElementById('scrollVideo');
 const canvas = document.getElementById('frameCanvas');
 const poster = document.getElementById('poster');
@@ -220,19 +227,68 @@ target = clamp(scrollY / max, 0, 1);
 progressLine.style.transform = `scaleX(${target})`;
 };
 
+const mediaLanguage = () => (document.body.dataset.lang === 'en' ? 'en' : 'ko');
+const mediaStatusStyle = document.createElement('style');
+mediaStatusStyle.dataset.padiemMedia = 'fallback-v1';
+mediaStatusStyle.textContent = `
+.hero-media-status{
+  position:fixed;
+  left:50%;
+  bottom:26px;
+  transform:translateX(-50%);
+  margin:0;
+  padding:9px 16px;
+  border:1px solid rgba(255,255,255,.22);
+  border-radius:999px;
+  background:rgba(4,8,14,.72);
+  color:rgba(255,255,255,.82);
+  font-size:11.5px;
+  letter-spacing:.01em;
+  text-align:center;
+  opacity:0;
+  pointer-events:none;
+  transition:opacity .4s ease;
+  z-index:11;
+}
+html[data-media-state="error"] .hero-media-status{opacity:1;}
+`;
+document.head.appendChild(mediaStatusStyle);
+
+const mediaStatus = document.createElement('p');
+mediaStatus.className = 'hero-media-status';
+mediaStatus.setAttribute('role', 'status');
+mediaStatus.setAttribute('aria-live', 'polite');
+document.body.appendChild(mediaStatus);
+
+// A film that cannot play keeps the poster frame and says so, instead of failing silently (#50).
+const showMediaFallback = () => {
+mediaReady = false;
+document.documentElement.dataset.mediaState = 'error';
+canvas.style.opacity = '1';
+video.style.opacity = '0';
+poster.style.opacity = '1';
+mediaStatus.textContent = fallbackCopy[mediaLanguage()] || fallbackCopy.ko;
+};
+document.addEventListener('padiem:language', () => {
+if (document.documentElement.dataset.mediaState === 'error') mediaStatus.textContent = fallbackCopy[mediaLanguage()] || fallbackCopy.ko;
+});
+
 const revealVideo = () => {
 if (mediaReady) return;
 mediaReady = true;
+document.documentElement.dataset.mediaState = 'ready';
 canvas.style.opacity = '0';
 video.style.opacity = '1';
 poster.style.opacity = '0';
 };
 
-video.crossOrigin = 'anonymous';
+// No `crossOrigin`: the first-party media origin does not send CORS headers and nothing here
+// reads pixels from the video, so requesting it anonymously only made playback fail (#50).
 video.muted = true;
 video.playsInline = true;
 video.preload = 'metadata';
-video.src = VIDEO_URL;
+if (VIDEO_URL) video.src = VIDEO_URL;
+else showMediaFallback();
 video.addEventListener('loadedmetadata', () => {
 try { video.currentTime = 0.01; } catch {}
 }, { once: true });
@@ -240,7 +296,7 @@ video.addEventListener('loadeddata', () => {
 if (video.requestVideoFrameCallback) video.requestVideoFrameCallback(revealVideo);
 else revealVideo();
 }, { once: true });
-video.addEventListener('error', () => {}, { once: true });
+video.addEventListener('error', showMediaFallback, { once: true });
 video.load();
 
 function scrubStep() {
