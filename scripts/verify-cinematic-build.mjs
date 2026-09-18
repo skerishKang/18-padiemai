@@ -15,6 +15,7 @@ const requiredInputs = [
 ];
 
 const requiredOutputs = [
+  "public/index.html",
   "public/products/index.html",
   "public/design/index.html",
   "public/design/rotating-memory-index/index.html",
@@ -48,10 +49,13 @@ if (existsSync(join(root, ".git"))) {
   if (trackedMp4) throw new Error(`MP4 binaries must not be tracked in Git:\n${trackedMp4}`);
 }
 
+const home = readFileSync(join(publicDir, "index.html"), "utf8");
 const design = readFileSync(join(publicDir, "design/index.html"), "utf8");
 const products = readFileSync(join(publicDir, "products/index.html"), "utf8");
 const rotating = readFileSync(join(publicDir, "design/rotating-memory-index/index.html"), "utf8");
+const sphere = readFileSync(join(publicDir, "design/living-media-sphere/index.html"), "utf8");
 const registry = readFileSync(join(root, "static/js/padiem-exhibit-registry-v1.js"), "utf8");
+
 if (registry.includes("lovetree.limone.dev")) {
   throw new Error("Unapproved personal LoveTree CTA domain remains in the exhibit registry.");
 }
@@ -62,8 +66,10 @@ if (!registry.includes("'/design/living-media-sphere/'")) {
 for (const marker of ["F:/", "G:\\", "Drive file", "folder ID"]) {
   if (rotating.includes(marker)) throw new Error(`Public Rotating Memory Index HTML exposes private source metadata: ${marker}`);
 }
-if (rotating.includes(legacyCloudfrontMarker)) {
-  throw new Error("Generated output still exposes the user-scoped CloudFront media origin.");
+for (const [label, html] of [["home", home], ["rotating", rotating], ["sphere", sphere]]) {
+  if (html.includes(legacyCloudfrontMarker)) {
+    throw new Error(`${label} output still exposes the user-scoped CloudFront media origin.`);
+  }
 }
 
 for (const [label, html] of [["design", design], ["products", products]]) {
@@ -71,12 +77,23 @@ for (const [label, html] of [["design", design], ["products", products]]) {
     if (!html.includes(marker)) throw new Error(`${label} output is missing ${marker}`);
   }
 }
+
 for (const marker of ["padiem-design-archive-attribution", "BY PADIEM", "PADIEM DESIGN ARCHIVE · 03"]) {
   if (!rotating.includes(marker)) throw new Error(`Rotating Memory Index output is missing ${marker}`);
 }
+for (const marker of [
+  "id=\"padiem-design-archive-attribution\"",
+  "BY PADIEM",
+  "DESIGN ARCHIVE / STUDY 04",
+  "https://media.padiem.net/design/living-media-sphere/video-moment-v1.mp4",
+  "https://media.padiem.net/design/living-media-sphere/video-season-v1.mp4",
+]) {
+  if (!sphere.includes(marker)) throw new Error(`Living Media Sphere output is missing ${marker}`);
+}
+for (const stale of ["assets/video-moment.mp4", "assets/video-season.mp4"]) {
+  if (sphere.includes(stale)) throw new Error(`Living Media Sphere output still contains local media path ${stale}`);
+}
 
-// Media policy: work-owned films resolve to the work prefix, the reused C12 corpus resolves to
-// the shared publish namespace, and no private source path may survive into the output.
 for (const origin of [
   "https://media.padiem.net/design/rotating-memory-index/",
   "https://media.padiem.net/shared/lovetree-v3/",
@@ -86,7 +103,6 @@ for (const origin of [
 for (const leaked of ["12_러브트리", "assets/featured-videos/", "videos-v3/"]) {
   if (rotating.includes(leaked)) throw new Error(`Rotating Memory Index output leaks a non-public media path: ${leaked}`);
 }
-// Published objects are versioned and immutable; an unversioned key must never ship.
 if (!rotating.includes("https://media.padiem.net/design/rotating-memory-index/memory-")) {
   throw new Error("Rotating Memory Index featured films do not resolve to versioned public keys.");
 }
@@ -117,6 +133,10 @@ if (debugArtifacts.length) {
 if (!registry.includes("https://media.padiem.net/design/rotating-memory-index-v1.mp4")) {
   throw new Error("Approved Rotating Memory Index film is missing from the exhibit registry.");
 }
+if (!home.includes("https://media.padiem.net/home/cinematic-scroll-v1.mp4")) {
+  throw new Error("Home output is missing the approved first-party cinematic media origin.");
+}
+
 const sourceFiles = [
   join(root, "static/js/padiem-cinematic-v2-1.js"),
   join(root, "static/js/padiem-scroll-scrub-v1.js"),
