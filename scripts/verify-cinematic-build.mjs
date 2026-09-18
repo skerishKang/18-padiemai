@@ -26,6 +26,7 @@ const requiredOutputs = [
   "public/js/padiem-exhibit-registry-v1.js",
   "public/js/padiem-cinematic-v2-1.js",
   "public/js/padiem-scroll-scrub-v1.js",
+  "public/js/padiem-media-v1.js",
   "public/css/padiem-album-exhibit-v1.css",
 ];
 
@@ -141,19 +142,36 @@ if (debugArtifacts.length) {
 if (!registry.includes("https://media.padiem.net/design/rotating-memory-index-v1.mp4")) {
   throw new Error("Approved Rotating Memory Index film is missing from the exhibit registry.");
 }
-const cinematicMediaFiles = [
-  join(root, "static/js/padiem-cinematic-v2-1.js"),
-  join(root, "static/js/padiem-scroll-scrub-v1.js"),
-  join(publicDir, "js/padiem-cinematic-v2-1.js"),
-  join(publicDir, "js/padiem-scroll-scrub-v1.js"),
+const mediaConfigFiles = [
+  join(root, "static/js/padiem-media-v1.js"),
+  join(publicDir, "js/padiem-media-v1.js"),
 ];
-for (const mediaFile of cinematicMediaFiles) {
+for (const mediaFile of mediaConfigFiles) {
   const mediaSource = readFileSync(mediaFile, "utf8");
   if (mediaSource.includes(legacyCloudfrontMarker)) {
     throw new Error(`User-scoped CloudFront URL remains in ${mediaFile}.`);
   }
   if (!mediaSource.includes("https://media.padiem.net/home/cinematic-scroll-v1.mp4")) {
-    throw new Error(`Approved first-party cinematic media URL is missing from ${mediaFile}.`);
+    throw new Error(`Approved first-party cinematic media URL is missing from centralized media config ${mediaFile}.`);
+  }
+}
+
+const cinematicRuntimeFiles = [
+  join(root, "static/js/padiem-cinematic-v2-1.js"),
+  join(root, "static/js/padiem-scroll-scrub-v1.js"),
+  join(publicDir, "js/padiem-cinematic-v2-1.js"),
+  join(publicDir, "js/padiem-scroll-scrub-v1.js"),
+];
+for (const runtimeFile of cinematicRuntimeFiles) {
+  const runtimeSource = readFileSync(runtimeFile, "utf8");
+  if (runtimeSource.includes(legacyCloudfrontMarker)) {
+    throw new Error(`User-scoped CloudFront URL remains in ${runtimeFile}.`);
+  }
+  if (runtimeSource.includes("https://media.padiem.net/home/cinematic-scroll-v1.mp4")) {
+    throw new Error(`Cinematic runtime duplicates the centralized home-film URL in ${runtimeFile}.`);
+  }
+  if (!runtimeSource.includes("PADIEM_MEDIA")) {
+    throw new Error(`Cinematic runtime does not consume centralized PADIEM_MEDIA in ${runtimeFile}.`);
   }
 }
 
