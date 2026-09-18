@@ -100,10 +100,10 @@ const rotatingIndexSource = join(root, "rotating-memory-index-source", "index.ht
 const rotatingIndexAssets = join(root, "rotating-memory-index-source", "assets");
 const rotatingIndexDestination = join(publicDir, "design", "rotating-memory-index");
 const rotatingIndexMediaBase = "https://media.padiem.net/design/rotating-memory-index/";
-// The 85 index films are the shared C12 `videos-v3` corpus, reused by more than one work.
-// Per the R2 publish-only policy they are published once under a shared namespace instead
-// of being duplicated inside this work's prefix. See docs/PADIEM_DESIGN_03_MEDIA_PUBLISH_SET_V1.md.
-const sharedLovetreeCorpusBase = "https://media.padiem.net/shared/lovetree-v3/";
+// Only the four work-owned featured films are approved for the current public release.
+// The 85 shared C12 films remain in Drive until their corresponding memories are explicitly
+// approved for public release. Index entries still expose their poster/still preview without
+// requesting an unpublished video. See docs/PADIEM_DESIGN_03_MEDIA_PUBLISH_SET_V1.md.
 const rotatingIndexAttributionCss = '<style id="padiem-design-archive-attribution">.rmi-attribution{position:fixed;z-index:65;left:28px;top:23px;display:flex;align-items:flex-end;gap:8px;font-size:13px;font-weight:760;line-height:1}.rmi-attribution .rmi-by{font-size:7px;letter-spacing:.17em;color:rgba(16,16,15,.52);text-transform:uppercase}.rmi-archive-meta{position:fixed;z-index:65;right:28px;top:25px;display:flex;gap:11px;font-size:8px;letter-spacing:.17em;color:rgba(16,16,15,.52);text-transform:uppercase}.rmi-archive-meta strong{color:#10100f}.rmi-about-toggle{position:absolute;opacity:0}.rmi-about-trigger{position:fixed;z-index:66;left:28px;top:58px;border:0;border-left:2px solid #10100f;background:rgba(255,255,255,.58);padding:7px 9px;color:rgba(16,16,15,.55);font-size:7px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer}.rmi-about{position:fixed;z-index:67;left:28px;top:91px;width:min(315px,calc(100% - 56px));padding:18px;background:rgba(247,246,242,.94);border:1px solid rgba(16,16,15,.14);opacity:0;pointer-events:none;transition:.22s}.rmi-about-toggle:checked~.rmi-about{opacity:1;pointer-events:auto}.rmi-about-close{float:right;font-size:18px;cursor:pointer}.rmi-about h2{margin:16px 0 9px;font-size:25px}.rmi-about p{font-size:9px;line-height:1.6;color:rgba(16,16,15,.62)}.rmi-about-meta{display:flex;gap:12px;margin-top:17px;padding-top:12px;border-top:1px solid rgba(16,16,15,.14);font-size:7px;letter-spacing:.15em}.rmi-signature{position:fixed;z-index:65;left:28px;bottom:23px;font-size:7px;letter-spacing:.16em;color:rgba(16,16,15,.52);text-transform:uppercase}@media(max-width:760px){.rmi-attribution{left:14px;top:14px}.rmi-archive-meta{display:none}.rmi-about-trigger{left:14px;top:47px}.rmi-about{left:14px;top:78px;width:calc(100% - 28px)}.rmi-signature{left:14px;bottom:14px;max-width:48%;font-size:6px}}</style>';
 
 if (!html.includes(oldTitle)) {
@@ -242,15 +242,23 @@ if (!existsSync(rotatingIndexSource) || !existsSync(rotatingIndexAssets)) {
 const rotatingIndexHtml = readFileSync(rotatingIndexSource, "utf8")
   .replace(/<title>[^<]*<\/title>/i, "<title>PADIEM Design / Rotating Memory Index</title>")
   .replace(/assets\/featured-videos\/memory-(\d+)\.mp4/g, `${rotatingIndexMediaBase}memory-$1-v1.mp4`)
-  .replace(/\.\.\/\.\.\/12_러브트리_리빙미디어스피어_인터랙티브대문_V1\/assets\/videos-v3\//g, sharedLovetreeCorpusBase)
+  // The authored source points 85 Index items at the private C12 shared-video corpus.
+  // Those films are not approved for this release. Remove that production dependency and
+  // keep a poster-only viewer for deferred items, while preserving the four featured videos.
+  .replace(
+    "var indexGrid=document.getElementById('indexGrid'),fullVideoBase='../../12_러브트리_리빙미디어스피어_인터랙티브대문_V1/assets/videos-v3/';",
+    "var indexGrid=document.getElementById('indexGrid');",
+  )
+  .replace(
+    "var local={24:'024',46:'046',47:'047',71:'071'}[no],src=local?'assets/featured-videos/memory-'+local+'.mp4':fullVideoBase+'v3-'+p+'.mp4';openMedia('video',src,'assets/index-posters/poster-'+p+'.jpg',title,'LoveTree film · '+p+' / 089');",
+    "var local={24:'024',46:'046',47:'047',71:'071'}[no];if(local){var src='assets/featured-videos/memory-'+local+'.mp4';openMedia('video',src,'assets/index-posters/poster-'+p+'.jpg',title,'LoveTree film · '+p+' / 089');}else{var poster='assets/index-posters/poster-'+p+'.jpg';openMedia('image',poster,poster,title,'LoveTree memory · '+p+' / 089 · film publication deferred');}",
+  )
   // The index-item override also resolves a featured film at click time. That concatenation
   // has to be rewritten as well, otherwise the published work points at a work-local file.
   .replace(
     "'assets/featured-videos/memory-'+local+'.mp4'",
     `'${rotatingIndexMediaBase}memory-'+local+'-v1.mp4'`,
   )
-  // Shared corpus keys are versioned and immutable like every other public media object.
-  .replace("fullVideoBase+'v3-'+p+'.mp4'", "fullVideoBase+'v3-'+p+'-v1.mp4'")
   .replace(/<header class="topbar">[\s\S]*?<\/header>/i, "")
   .replace(/<div class="caption">[\s\S]*?<\/div>/i, "")
   .replace("</head>", `${rotatingIndexAttributionCss}</head>`)
@@ -262,15 +270,18 @@ for (const unresolved of ["12_러브트리", "assets/featured-videos/", "videos-
     throw new Error(`Rotating Memory Index output still references a non-public media path: ${unresolved}`);
   }
 }
-if (!rotatingIndexHtml.includes(rotatingIndexMediaBase) || !rotatingIndexHtml.includes(sharedLovetreeCorpusBase)) {
-  throw new Error("Rotating Memory Index output does not resolve to both the work and the shared public media origins.");
+if (!rotatingIndexHtml.includes(rotatingIndexMediaBase)) {
+  throw new Error("Rotating Memory Index featured films do not resolve to the approved work media origin.");
 }
-// Published objects are versioned and immutable; an unversioned key must never ship.
+if (rotatingIndexHtml.includes("https://media.padiem.net/shared/lovetree-v3/")) {
+  throw new Error("Deferred shared LoveTree films must not be public dependencies in the current release.");
+}
+// Published featured objects are versioned and immutable; an unversioned key must never ship.
 if (!rotatingIndexHtml.includes("-v1.mp4")) {
   throw new Error("Rotating Memory Index output does not use versioned public media keys.");
 }
-if (/memory-\d+\.mp4|v3-'\+p\+'\.mp4/.test(rotatingIndexHtml)) {
-  throw new Error("Rotating Memory Index output still references an unversioned media key.");
+if (/memory-\d+\.mp4/.test(rotatingIndexHtml)) {
+  throw new Error("Rotating Memory Index output still references an unversioned featured media key.");
 }
 
 mkdirSync(rotatingIndexDestination, { recursive: true });
