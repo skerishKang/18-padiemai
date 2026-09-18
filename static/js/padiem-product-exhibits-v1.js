@@ -15,7 +15,6 @@
     ['storymemory', 'story'],
     ['lovetree', 'love'],
     ['danjion', 'danji'],
-    ['ai-radar', 'radar'],
   ];
 
   if (!location.pathname.startsWith('/products')) return;
@@ -155,16 +154,4 @@
     if (workStage) workStage.style.setProperty('--work-accent', tab.dataset.workAccent || 'rgba(125,178,151,.38)');
   }));
 
-  const radar = mount('radar', `
-    <span class="px-meta">EDITORIAL STUDY / AI FREE RADAR</span>
-    <div class="radar-board" aria-label="AI Free Radar benefit-first editorial study">
-      <button class="radar-card primary active" type="button"><span class="benefit-label">BENEFIT FIRST / STUDY</span><strong class="benefit-big">지금<br>무료인가?</strong><span class="evidence-row"><span class="evidence-dot">EVIDENCE READY</span><span>CONDITION CHECK</span></span></button>
-      <button class="radar-card" type="button"><span class="benefit-label">DISCOVERY</span><strong class="benefit-big">무료 범위</strong><span class="evidence-row"><span>OFFICIAL SOURCE</span></span></button>
-      <button class="radar-card" type="button"><span class="benefit-label">URGENCY</span><strong class="benefit-big">종료 조건</strong><span class="evidence-row"><span>VERIFY FIRST</span></span></button>
-    </div>
-    <div class="px-foot"><span>BENEFIT → EVIDENCE → CONDITION</span><span>NO INVENTED OFFER</span></div>
-  `);
-  radar.querySelectorAll('.radar-card').forEach(card => card.addEventListener('click', () => {
-    radar.querySelectorAll('.radar-card').forEach(node => node.classList.toggle('active', node === card));
-  }));
 })();
