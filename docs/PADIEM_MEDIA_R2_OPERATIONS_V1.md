@@ -236,7 +236,7 @@ LOCAL_REMOTE_SHA256 = PASS
 REPRESENTATIVE_HTTP_200_206 = PASS
 ```
 
-C14 currently satisfies the first two additional gates. Its next blocker is `R2_AUTH=PASS`; no upload should be attempted with the previously rejected token.
+C14 currently satisfies the Network audit and minimum-publish-set gates, and its main-based Draft Preview is green. R2 publication is still a separate owner-authorized action: do not run `--apply` until explicit approval is given, and at that point require fresh `R2_AUTH=PASS`, collision/parity preflight, and the remaining public-delivery checks.
 
 If any safety-critical item fails, disposition is:
 
