@@ -17,6 +17,9 @@
   if (mode !== 'album') return;
 
   const items = registry[pageKey];
+  const defaultSelected = pageKey === 'design'
+    ? Math.max(0, items.findIndex(item => item.no === '03'))
+    : 0;
   const hero = document.querySelector('.world-hero');
   if (!hero || !items.length) return;
 
@@ -51,7 +54,7 @@
         <span class="px-album-eyebrow">${pageKey === 'design' ? 'PADIEM / DESIGN PRESSING 001' : 'PADIEM / PRODUCT FILM ARCHIVE'}</span>
         <h2>${pageKey === 'design' ? 'Interaction, pressed into motion.' : 'Products, selected like records.'}</h2>
       </div>
-      <div class="px-album-counter" aria-live="polite"><strong>01</strong><span>/ ${String(items.length).padStart(2, '0')}</span></div>
+      <div class="px-album-counter" aria-live="polite"><strong>${esc(items[defaultSelected]?.no || '01')}</strong><span>/ ${String(items.length).padStart(2, '0')}</span></div>
     </div>
 
     <div class="px-album-stage">
@@ -105,7 +108,7 @@
   shelf.innerHTML = items.map((item, index) => {
     const initialTitle = localizedTitle(item);
     return `
-    <button class="px-album-sleeve${item.poster ? ' has-poster' : ''}" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
+    <button class="px-album-sleeve${item.poster ? ' has-poster' : ''}" type="button" role="option" aria-selected="${index === defaultSelected}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
       <span class="px-sleeve-edge"></span>
       <span class="px-sleeve-face">
         ${item.poster ? `<img class="px-sleeve-poster" src="${esc(item.poster)}" alt="" loading="lazy" decoding="async" />` : ''}
@@ -140,7 +143,7 @@
   const next = section.querySelector('.px-next');
   const disc = section.querySelector('.px-album-disc');
 
-  let selected = 0;
+  let selected = defaultSelected;
   let inView = false;
   let loadedSrc = '';
   let pointerStart = null;
@@ -344,5 +347,5 @@
     else if (inView) ensureVideo();
   });
 
-  select(0);
+  select(defaultSelected);
 })();
