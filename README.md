@@ -23,9 +23,16 @@ static/html/pages/design.html          -> public/design/index.html
 static/css/**                          -> public/css/**
 static/js/**                           -> public/js/**
 static/images/**                       -> public/images/**
+static/design/living-media-sphere/**   -> public/design/living-media-sphere/**
+rotating-memory-index-source/**        -> public/design/rotating-memory-index/**
 ```
 
 `static/html/**` is a source tree. It is **not** copied wholesale into `public/html/**`; this prevents legacy page shells from surviving in a deployment.
+
+`public/` is generated output and is not tracked in Git. Both Design exhibits are built from their
+source locations, so a clean clone reproduces every published route with one command (see
+`package.json` → `build:check`). Video binaries never enter Git; approved films are published to the
+public media origin (`media.padiem.net`) and referenced from there.
 
 ## PADIEM public information architecture
 

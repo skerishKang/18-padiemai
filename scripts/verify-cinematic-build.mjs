@@ -10,6 +10,7 @@ const requiredInputs = [
   "static/js/padiem-exhibit-config-v1.js",
   "static/js/padiem-exhibit-registry-v1.js",
   "static/css/padiem-album-exhibit-v1.css",
+  "static/design/living-media-sphere/index.html",
   "rotating-memory-index-source/index.html",
   "rotating-memory-index-source/assets/index-posters",
 ];

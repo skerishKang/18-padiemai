@@ -20,13 +20,8 @@ backup/
 /PUBLIC_MEDIA_STAGING/
 
 # Generated build output. The source of truth is static/** plus rotating-memory-index-source/**;
-# the deploy rebuilds these on every Netlify run, so they stay out of Git.
-/public/design/rotating-memory-index/
-/public/js/padiem-*.js
-/public/css/padiem-*.css
-
-# Living Media Sphere route staging: created and removed inside the build.
-/.netlify-design-stage/
+# Netlify rebuilds public/ on every deploy, so the publish directory stays out of Git.
+/public/
 
 # Local build/deploy and browser inspection state.
 /.netlify/

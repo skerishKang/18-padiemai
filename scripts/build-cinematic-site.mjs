@@ -67,18 +67,13 @@ for (const src of exhibitMediaUrls) {
   }
 }
 
-// Living Media Sphere still keeps its source in the committed publish output, so stage it
-// before the publish directory is wiped and restore it afterwards. Doing this inside the
-// build keeps the deploy on one cross-platform command instead of a shell stage/copy chain.
+// Exhibits live in the source tree, not in the publish output: every route is generated from
+// a source location so that a clean clone reproduces production without staged copies.
+const sphereSource = join(root, "static", "design", "living-media-sphere");
 const sphereRoute = join(publicDir, "design", "living-media-sphere");
-const stageDir = join(root, ".netlify-design-stage");
-const sphereStage = join(stageDir, "living-media-sphere");
-rmSync(stageDir, { recursive: true, force: true });
-if (!existsSync(sphereRoute)) {
-  throw new Error("Living Media Sphere source is missing from public/design/living-media-sphere; refusing to build without an approved work.");
+if (!existsSync(join(sphereSource, "index.html"))) {
+  throw new Error("Living Media Sphere source is missing: static/design/living-media-sphere/index.html");
 }
-mkdirSync(stageDir, { recursive: true });
-cpSync(sphereRoute, sphereStage, { recursive: true });
 
 // Always start from a clean publish directory so legacy committed/generated pages
 // cannot survive into a Netlify deploy.
@@ -162,10 +157,9 @@ for (const dir of ["css", "js", "images"]) {
   cpSync(source, join(publicDir, dir), { recursive: true });
 }
 
-// Restore the staged Living Media Sphere route into the regenerated publish output.
+// Publish the Living Media Sphere route from its source location.
 mkdirSync(join(publicDir, "design"), { recursive: true });
-cpSync(sphereStage, sphereRoute, { recursive: true });
-rmSync(stageDir, { recursive: true, force: true });
+cpSync(sphereSource, sphereRoute, { recursive: true });
 
 const requiredFiles = [
   [join(root, "static", "_redirects"), join(publicDir, "_redirects")],
