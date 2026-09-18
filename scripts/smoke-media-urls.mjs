@@ -92,6 +92,9 @@ for (const file of fallbackFiles) {
   }
   if (!source.includes("aria-live")) failures.push(`${file}: the failure state is not announced (aria-live missing)`);
   if (!source.includes("padiem:language")) failures.push(`${file}: the failure copy does not follow the active language`);
+  if (/crossorigin\\s*=|\\.crossOrigin\\s*=/.test(source)) {
+    failures.push(`${file}: crossOrigin must stay unset for first-party media playback`);
+  }
 }
 
 // 6 — the config is published and referenced before the runtimes that read it.
