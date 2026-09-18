@@ -76,13 +76,13 @@
       </div>
 
       <article class="px-album-copy">
-        <div class="px-album-copy-index"><span></span><em></em></div>
+        <div class="px-album-copy-index"><span></span><em></em><a class="px-album-open" href="#" rel="noopener" hidden></a></div>
         <p class="px-album-kicker"></p>
         <h3 class="px-album-title"></h3>
+        <p class="px-album-destination" hidden></p>
         <p class="px-album-summary"></p>
         <div class="px-album-tags"></div>
         <div class="px-album-actions">
-          <a class="px-album-open" href="#" target="_blank" rel="noopener" hidden>OPEN PRODUCT ↗</a>
           <span class="px-album-status"></span>
         </div>
       </article>
@@ -105,9 +105,11 @@
   shelf.innerHTML = items.map((item, index) => {
     const initialTitle = localizedTitle(item);
     return `
-    <button class="px-album-sleeve" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
+    <button class="px-album-sleeve${item.poster ? ' has-poster' : ''}" type="button" role="option" aria-selected="${index === 0}" data-index="${index}" style="--item-accent:${esc(item.accent)}">
       <span class="px-sleeve-edge"></span>
       <span class="px-sleeve-face">
+        ${item.poster ? `<img class="px-sleeve-poster" src="${esc(item.poster)}" alt="" loading="lazy" decoding="async" />` : ''}
+        <span class="px-sleeve-poster-shade" aria-hidden="true"></span>
         <span class="px-sleeve-meta"><b>${esc(item.no)}</b><em>${esc(item.status || 'DESIGN STUDY')}</em></span>
         <span class="px-sleeve-glyph">${esc(item.glyph)}</span>
         <span class="px-sleeve-title" data-copy-ko="${esc(item.titleKo || item.title)}" data-copy-en="${esc(item.title)}">${esc(initialTitle)}</span>
@@ -129,6 +131,7 @@
   const kicker = section.querySelector('.px-album-kicker');
   const title = section.querySelector('.px-album-title');
   const summary = section.querySelector('.px-album-summary');
+  const destination = section.querySelector('.px-album-destination');
   const tags = section.querySelector('.px-album-tags');
   const openLink = section.querySelector('.px-album-open');
   const status = section.querySelector('.px-album-status');
@@ -200,6 +203,8 @@
 
   const renderCopy = item => {
     const lang = currentLanguage();
+    if (item.poster) video.poster = item.poster;
+    else video.removeAttribute('poster');
     copyIndex.textContent = item.no;
     copyRule.style.setProperty('--accent-rgb', item.accent);
     kicker.textContent = item.kicker;
@@ -218,11 +223,29 @@
     play.hidden = !item.media || reduced || !hasIntersectionObserver || failedMedia.has(item.media);
 
     if (item.href) {
+      const external = /^https?:\/\//i.test(item.href);
       openLink.hidden = false;
       openLink.href = item.href;
+      openLink.textContent = pageKey === 'products' ? 'WEBSITE ↗' : 'VIEW WORK ↗';
+      openLink.target = external ? '_blank' : '_self';
+      if (external) {
+        try {
+          destination.textContent = new URL(item.href).hostname;
+          destination.hidden = false;
+        } catch {
+          destination.textContent = item.href;
+          destination.hidden = false;
+        }
+      } else {
+        destination.textContent = '';
+        destination.hidden = true;
+      }
     } else {
       openLink.hidden = true;
       openLink.removeAttribute('href');
+      openLink.removeAttribute('target');
+      destination.textContent = '';
+      destination.hidden = true;
     }
   };
 
