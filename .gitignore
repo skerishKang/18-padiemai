@@ -11,4 +11,30 @@ gaiya/
 # Temp/upload directories
 .tmp.driveupload/
 .kilo/
-backup/ 
+backup/
+
+# Public media policy: exhibit HTML/stills stay in Git, video binaries live in R2.
+/rotating-memory-index-source/**/*.mp4
+/rotating-memory-index-source/SOURCE_MANIFEST.json
+/rotating-memory-index-source/ASSET_REPORT.md
+/PUBLIC_MEDIA_STAGING/
+
+# Generated build output. The source of truth is static/** plus rotating-memory-index-source/**;
+# the deploy rebuilds these on every Netlify run, so they stay out of Git.
+/public/design/rotating-memory-index/
+/public/js/padiem-*.js
+/public/css/padiem-*.css
+
+# Living Media Sphere route staging: created and removed inside the build.
+/.netlify-design-stage/
+
+# Local build/deploy and browser inspection state.
+/.netlify/
+/.wrangler/
+/.playwright-mcp/
+/.workbuddy-ai/
+/.tmp/
+/rmi-live-*.png
+/rmi-local-*.png
+/design-album-local.png
+/products-album-local.png 

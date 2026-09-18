@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "rm -rf .netlify-design-stage && mkdir -p .netlify-design-stage && cp -R public/design/living-media-sphere .netlify-design-stage/living-media-sphere && node scripts/build-cinematic-site.mjs && mkdir -p public/design && cp -R .netlify-design-stage/living-media-sphere public/design/living-media-sphere && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && rm -rf .netlify-design-stage"
+  command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
   environment = { NODE_VERSION = "22" }
 
 [[ignore_files]]

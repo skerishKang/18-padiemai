@@ -16,7 +16,7 @@
     }
   }
 
-  const DEFAULT_VIDEO = 'https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260729_102822_0e6c87e8-c141-4744-bf32-ad30db296371.mp4';
+  const DEFAULT_VIDEO = 'https://media.padiem.net/home/cinematic-scroll-v1.mp4';
   const videoUrl = document.body.dataset.worldScrollVideo || DEFAULT_VIDEO;
   if (!videoUrl) return;
 

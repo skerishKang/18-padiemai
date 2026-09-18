@@ -3,6 +3,7 @@ import {
   cpSync,
   existsSync,
   mkdirSync,
+  readdirSync,
   readFileSync,
   rmSync,
   writeFileSync,
@@ -14,6 +15,9 @@ const publicDir = join(root, "public");
 const sourceHtml = join(root, "static", "html", "index1.html");
 const exhibitRegistryPath = join(root, "static", "js", "padiem-exhibit-registry-v1.js");
 
+// The exhibit registry is the public authority for every Design / Product scene.
+// Refuse to publish if it is missing, exposes a non-approved origin, or drops an
+// approved public CTA or film.
 if (!existsSync(exhibitRegistryPath)) {
   throw new Error("Required exhibit registry is missing: static/js/padiem-exhibit-registry-v1.js");
 }
@@ -63,6 +67,21 @@ for (const src of exhibitMediaUrls) {
   }
 }
 
+// Living Media Sphere still keeps its source in the committed publish output, so stage it
+// before the publish directory is wiped and restore it afterwards. Doing this inside the
+// build keeps the deploy on one cross-platform command instead of a shell stage/copy chain.
+const sphereRoute = join(publicDir, "design", "living-media-sphere");
+const stageDir = join(root, ".netlify-design-stage");
+const sphereStage = join(stageDir, "living-media-sphere");
+rmSync(stageDir, { recursive: true, force: true });
+if (!existsSync(sphereRoute)) {
+  throw new Error("Living Media Sphere source is missing from public/design/living-media-sphere; refusing to build without an approved work.");
+}
+mkdirSync(stageDir, { recursive: true });
+cpSync(sphereRoute, sphereStage, { recursive: true });
+
+// Always start from a clean publish directory so legacy committed/generated pages
+// cannot survive into a Netlify deploy.
 rmSync(publicDir, { recursive: true, force: true });
 mkdirSync(publicDir, { recursive: true });
 
@@ -83,6 +102,15 @@ const albumExhibitStyle = '<link rel="stylesheet" href="/css/padiem-album-exhibi
 const exhibitConfigScript = '<script src="/js/padiem-exhibit-config-v1.js"></script>';
 const exhibitRegistryScript = '<script src="/js/padiem-exhibit-registry-v1.js"></script>';
 const albumExhibitScript = '<script src="/js/padiem-album-exhibit-v1.js"></script>';
+const rotatingIndexSource = join(root, "rotating-memory-index-source", "index.html");
+const rotatingIndexAssets = join(root, "rotating-memory-index-source", "assets");
+const rotatingIndexDestination = join(publicDir, "design", "rotating-memory-index");
+const rotatingIndexMediaBase = "https://media.padiem.net/design/rotating-memory-index/";
+// The 85 index films are the shared C12 `videos-v3` corpus, reused by more than one work.
+// Per the R2 publish-only policy they are published once under a shared namespace instead
+// of being duplicated inside this work's prefix. See docs/PADIEM_DESIGN_03_MEDIA_PUBLISH_SET_V1.md.
+const sharedLovetreeCorpusBase = "https://media.padiem.net/shared/lovetree-v3/";
+const rotatingIndexAttributionCss = '<style id="padiem-design-archive-attribution">.rmi-attribution{position:fixed;z-index:65;left:28px;top:23px;display:flex;align-items:flex-end;gap:8px;font-size:13px;font-weight:760;line-height:1}.rmi-attribution .rmi-by{font-size:7px;letter-spacing:.17em;color:rgba(16,16,15,.52);text-transform:uppercase}.rmi-archive-meta{position:fixed;z-index:65;right:28px;top:25px;display:flex;gap:11px;font-size:8px;letter-spacing:.17em;color:rgba(16,16,15,.52);text-transform:uppercase}.rmi-archive-meta strong{color:#10100f}.rmi-about-toggle{position:absolute;opacity:0}.rmi-about-trigger{position:fixed;z-index:66;left:28px;top:58px;border:0;border-left:2px solid #10100f;background:rgba(255,255,255,.58);padding:7px 9px;color:rgba(16,16,15,.55);font-size:7px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer}.rmi-about{position:fixed;z-index:67;left:28px;top:91px;width:min(315px,calc(100% - 56px));padding:18px;background:rgba(247,246,242,.94);border:1px solid rgba(16,16,15,.14);opacity:0;pointer-events:none;transition:.22s}.rmi-about-toggle:checked~.rmi-about{opacity:1;pointer-events:auto}.rmi-about-close{float:right;font-size:18px;cursor:pointer}.rmi-about h2{margin:16px 0 9px;font-size:25px}.rmi-about p{font-size:9px;line-height:1.6;color:rgba(16,16,15,.62)}.rmi-about-meta{display:flex;gap:12px;margin-top:17px;padding-top:12px;border-top:1px solid rgba(16,16,15,.14);font-size:7px;letter-spacing:.15em}.rmi-signature{position:fixed;z-index:65;left:28px;bottom:23px;font-size:7px;letter-spacing:.16em;color:rgba(16,16,15,.52);text-transform:uppercase}@media(max-width:760px){.rmi-attribution{left:14px;top:14px}.rmi-archive-meta{display:none}.rmi-about-trigger{left:14px;top:47px}.rmi-about{left:14px;top:78px;width:calc(100% - 28px)}.rmi-signature{left:14px;bottom:14px;max-width:48%;font-size:6px}}</style>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -114,6 +142,9 @@ if (!html.includes('padiem-home-mobile-nav-v1.css')) {
   html = html.replace('</head>', `${homeMobileNavStyle}</head>`);
 }
 
+// The legacy source markup still contains the previous navigation labels. Inject
+// the IA adapter before the existing language/overlay runtime so that the latter
+// binds to the final navigation semantics. The drawer-tab enhancer runs after it.
 html = html.replace(
   languageScript,
   `${homeNavScript}${languageScript}${drawerTabsScript}`,
@@ -121,6 +152,8 @@ html = html.replace(
 
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
+// Copy only runtime assets. Do NOT copy static/html/** wholesale: that tree still
+// contains archived/legacy page shells which must never reappear in production.
 for (const dir of ["css", "js", "images"]) {
   const source = join(root, "static", dir);
   if (!existsSync(source)) {
@@ -128,6 +161,11 @@ for (const dir of ["css", "js", "images"]) {
   }
   cpSync(source, join(publicDir, dir), { recursive: true });
 }
+
+// Restore the staged Living Media Sphere route into the regenerated publish output.
+mkdirSync(join(publicDir, "design"), { recursive: true });
+cpSync(sphereStage, sphereRoute, { recursive: true });
+rmSync(stageDir, { recursive: true, force: true });
 
 const requiredFiles = [
   [join(root, "static", "_redirects"), join(publicDir, "_redirects")],
@@ -143,6 +181,9 @@ for (const [source, destination] of requiredFiles) {
   copyFileSync(source, destination);
 }
 
+// Publish only the primary cinematic destinations. Company / Team / Contact
+// remain first-party drawer surfaces inside the home world and are reached via
+// compatibility redirects; do not republish the legacy standalone page shell.
 const showcasePages = [
   { source: "pages/products.html", dest: "products/index.html" },
   { source: "pages/design.html",  dest: "design/index.html"  },
@@ -161,14 +202,12 @@ for (const { source, dest } of showcasePages) {
   if (!pageHtml.includes('</head>') || !pageHtml.includes('</body>')) {
     throw new Error(`Expected document boundaries were not found in static/html/${source}`);
   }
-
-  if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
-    pageHtml = pageHtml.replace('</body>', `  ${exhibitConfigScript}\n</body>`);
-  }
   if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
   }
 
+  // Products and Design are separate exhibition worlds. Each receives only its
+  // own public-safe study runtime while sharing the same cinematic scroll-scrub.
   if (source === 'pages/products.html') {
     if (!pageHtml.includes('padiem-product-exhibits-v1.css')) {
       pageHtml = pageHtml.replace('</head>', `  ${productExhibitStyle}\n</head>`);
@@ -190,11 +229,11 @@ for (const { source, dest } of showcasePages) {
   if (!pageHtml.includes('padiem-album-exhibit-v1.css')) {
     pageHtml = pageHtml.replace('</head>', `  ${albumExhibitStyle}\n</head>`);
   }
+  if (!pageHtml.includes('padiem-exhibit-config-v1.js')) {
+    pageHtml = pageHtml.replace('</body>', `  ${exhibitConfigScript}\n</body>`);
+  }
   if (!pageHtml.includes('padiem-exhibit-registry-v1.js')) {
-    pageHtml = pageHtml.replace(
-      '</body>',
-      `  ${exhibitRegistryScript}\n  ${albumExhibitScript}\n</body>`,
-    );
+    pageHtml = pageHtml.replace('</body>', `  ${exhibitRegistryScript}\n  ${albumExhibitScript}\n</body>`);
   }
 
   const destPath = join(publicDir, dest);
@@ -202,6 +241,53 @@ for (const { source, dest } of showcasePages) {
   writeFileSync(destPath, pageHtml, "utf8");
 }
 
+// Publish the complete Design / 03 source world. HTML and still assets stay in
+// the Netlify publish output; only MP4 objects use the public media origin.
+if (!existsSync(rotatingIndexSource) || !existsSync(rotatingIndexAssets)) {
+  throw new Error("Rotating Memory Index source package is missing.");
+}
+const rotatingIndexHtml = readFileSync(rotatingIndexSource, "utf8")
+  .replace(/<title>[^<]*<\/title>/i, "<title>PADIEM Design / Rotating Memory Index</title>")
+  .replace(/assets\/featured-videos\/memory-(\d+)\.mp4/g, `${rotatingIndexMediaBase}memory-$1-v1.mp4`)
+  .replace(/\.\.\/\.\.\/12_러브트리_리빙미디어스피어_인터랙티브대문_V1\/assets\/videos-v3\//g, sharedLovetreeCorpusBase)
+  // The index-item override also resolves a featured film at click time. That concatenation
+  // has to be rewritten as well, otherwise the published work points at a work-local file.
+  .replace(
+    "'assets/featured-videos/memory-'+local+'.mp4'",
+    `'${rotatingIndexMediaBase}memory-'+local+'-v1.mp4'`,
+  )
+  // Shared corpus keys are versioned and immutable like every other public media object.
+  .replace("fullVideoBase+'v3-'+p+'.mp4'", "fullVideoBase+'v3-'+p+'-v1.mp4'")
+  .replace(/<header class="topbar">[\s\S]*?<\/header>/i, "")
+  .replace(/<div class="caption">[\s\S]*?<\/div>/i, "")
+  .replace("</head>", `${rotatingIndexAttributionCss}</head>`)
+  .replace("<body>", '<body data-padiem-world="rotating-memory-index"><div class="rmi-attribution"><span class="mark" aria-hidden="true"></span><span>LoveTree</span><span class="rmi-by">BY PADIEM</span></div><div class="rmi-archive-meta"><span>DESIGN ARCHIVE / STUDY 03</span><strong>2026</strong></div><input class="rmi-about-toggle" id="rmiAboutToggle" type="checkbox"><label class="rmi-about-trigger" for="rmiAboutToggle">PADIEM / ABOUT THIS WORK</label><div class="rmi-about"><label class="rmi-about-close" for="rmiAboutToggle" aria-label="Close">×</label><div class="rmi-about-kicker">PADIEM DESIGN ARCHIVE · STUDY 03</div><h2>Rotating Memory Index</h2><p>An index-led memory experience where selecting one moment transforms the card and opens the next layer of the archive.</p><div class="rmi-about-meta"><span>CREATED BY PADIEM</span><span>FOR LOVETREE</span><span>2026</span></div></div><div class="rmi-signature">PADIEM DESIGN ARCHIVE · 03&nbsp;&nbsp; / &nbsp;&nbsp;MEMORY · MOTION · INTERACTION</div>');
+// Fail closed: the published work must not carry work-local media paths or the private C12
+// source path. Every film has to resolve to an approved public media origin instead.
+for (const unresolved of ["12_러브트리", "assets/featured-videos/", "videos-v3/"]) {
+  if (rotatingIndexHtml.includes(unresolved)) {
+    throw new Error(`Rotating Memory Index output still references a non-public media path: ${unresolved}`);
+  }
+}
+if (!rotatingIndexHtml.includes(rotatingIndexMediaBase) || !rotatingIndexHtml.includes(sharedLovetreeCorpusBase)) {
+  throw new Error("Rotating Memory Index output does not resolve to both the work and the shared public media origins.");
+}
+// Published objects are versioned and immutable; an unversioned key must never ship.
+if (!rotatingIndexHtml.includes("-v1.mp4")) {
+  throw new Error("Rotating Memory Index output does not use versioned public media keys.");
+}
+if (/memory-\d+\.mp4|v3-'\+p\+'\.mp4/.test(rotatingIndexHtml)) {
+  throw new Error("Rotating Memory Index output still references an unversioned media key.");
+}
+
+mkdirSync(rotatingIndexDestination, { recursive: true });
+writeFileSync(join(rotatingIndexDestination, "index.html"), rotatingIndexHtml, "utf8");
+cpSync(rotatingIndexAssets, join(rotatingIndexDestination, "assets"), {
+  recursive: true,
+  filter: source => !source.toLowerCase().endsWith(".mp4"),
+});
+
+// Preserve search-engine verification files without republishing the old site.
 for (const file of [
   "googlef7d3aa2eaecfa367.html",
   "naver973c7ccb11cec92fb48885106f1bf365.html",
