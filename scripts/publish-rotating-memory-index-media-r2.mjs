@@ -1,29 +1,13 @@
 /**
  * PADIEM public media publish — Design / 03 Rotating Memory Index
  *
- * Policy (Issue #47: Drive authority + R2 publish-only, PR #48):
- *   - Google Drive is the source/master authority. The corpus is NOT mirrored to R2 wholesale.
- *   - R2 (media.padiem.net) is the production publish layer: only objects that the approved
- *     production runtime actually addresses are published.
- *   - A corpus shared by more than one work is published once under a shared namespace and
- *     referenced from each work, instead of being duplicated per work prefix.
- *   - Published objects are immutable. This script never overwrites an existing object;
- *     a re-cut has to be published under a new versioned key.
- *
- * Measured runtime loading contract (read-only audit, Issue #46):
- *   - first entry: 0 shared films requested; 4 featured films at preload="metadata";
- *     89 posters requested lazily by the browser as the index grid scrolls.
- *   - index click: exactly one film requested, on demand, at click time.
- *   => nothing eager, nothing bulk: the approved publish set is the 4 work-owned featured
- *      films plus the 85 shared corpus films the index addresses = 89 objects.
- *      See docs/PADIEM_DESIGN_03_MEDIA_PUBLISH_SET_V1.md.
- *
- * Usage:
- *   node scripts/publish-rotating-memory-index-media-r2.mjs           # plan only, no mutation (default)
- *   node scripts/publish-rotating-memory-index-media-r2.mjs --apply   # publish missing objects
+ * Dry-run by default. --apply is the only mutating path.
+ * Existing versioned objects are immutable: they are skipped only after the public
+ * object's byte length and single-part ETag match the local source exactly.
  */
 
-import { existsSync, readdirSync, statSync } from "node:fs";
+import { existsSync, readdirSync, statSync, createReadStream } from "node:fs";
+import { createHash } from "node:crypto";
 import { join } from "node:path";
 import { spawnSync } from "node:child_process";
 
@@ -34,21 +18,17 @@ const sourceRoot = join(root, "rotating-memory-index-source");
 const bucket = "padiem-media";
 const publicOrigin = "https://media.padiem.net/";
 
-// Work-owned objects. These are built by this work and published under its own prefix.
 const workPrefix = "design/rotating-memory-index";
 const featuredSource = join(sourceRoot, "assets", "featured-videos");
 const expectedFeatured = 4;
 
-// Shared C12 `videos-v3` corpus. Owned by the Living Memory source material and reused by the
-// index; published once here and referenced by every work that needs it.
 const sharedPrefix = "shared/lovetree-v3";
 const sharedSource = join(sourceRoot, "shared-videos");
 const expectedShared = 85;
 
-// Published keys are versioned and immutable, matching the public media naming rule the build
-// enforces. Source names stay untouched: `memory-024.mp4` publishes as `memory-024-v1.mp4`.
 const versioned = name => name.replace(/\.mp4$/i, "-v1.mp4");
 const plan = [];
+
 const collect = (directory, prefix, matcher) => {
   if (!existsSync(directory)) throw new Error(`Publish source is missing: ${directory}`);
   for (const name of readdirSync(directory).sort()) {
@@ -85,31 +65,68 @@ if (!APPLY) {
   process.exit(0);
 }
 
-const objectExists = async key => {
-  const response = await fetch(`${publicOrigin}${key}`, { method: "HEAD" });
-  if (response.status === 200) return true;
+const md5File = file => new Promise((resolve, reject) => {
+  const hash = createHash("md5");
+  const stream = createReadStream(file);
+  stream.on("error", reject);
+  stream.on("data", chunk => hash.update(chunk));
+  stream.on("end", () => resolve(hash.digest("hex")));
+});
+
+const inspectExisting = async entry => {
+  const response = await fetch(`${publicOrigin}${entry.key}`, { method: "HEAD", cache: "no-store" });
   if (response.status === 404) return false;
-  throw new Error(`Cannot verify immutability for ${key}: public media origin returned ${response.status}`);
+  if (response.status !== 200) {
+    throw new Error(`Cannot verify immutability for ${entry.key}: public media origin returned ${response.status}`);
+  }
+
+  const contentLength = Number(response.headers.get("content-length"));
+  if (!Number.isFinite(contentLength) || contentLength !== entry.bytes) {
+    throw new Error(
+      `IMMUTABLE KEY CONFLICT for ${entry.key}: remote bytes=${response.headers.get("content-length")} local bytes=${entry.bytes}`,
+    );
+  }
+
+  const etag = (response.headers.get("etag") || "").replace(/^W\//, "").replace(/^"|"$/g, "");
+  if (!/^[a-f0-9]{32}$/i.test(etag)) {
+    throw new Error(
+      `Cannot prove byte parity for existing immutable object ${entry.key}: missing/non-single-part ETag (${etag || "none"}). Refusing to skip.`,
+    );
+  }
+
+  const localMd5 = await md5File(entry.file);
+  if (etag.toLowerCase() !== localMd5.toLowerCase()) {
+    throw new Error(`IMMUTABLE KEY CONFLICT for ${entry.key}: remote ETag does not match local source.`);
+  }
+
+  return true;
 };
 
 let published = 0;
 let skipped = 0;
 for (const [index, entry] of plan.entries()) {
-  if (await objectExists(entry.key)) {
+  if (await inspectExisting(entry)) {
     skipped += 1;
-    console.log(`[${index + 1}/${plan.length}] IMMUTABLE existing object, not overwriting: ${entry.key}`);
+    console.log(`[${index + 1}/${plan.length}] VERIFIED immutable existing object, not overwriting: ${entry.key}`);
     continue;
   }
+
   console.log(`[${index + 1}/${plan.length}] publish ${entry.key}`);
   const wrangler = process.platform === "win32" ? "wrangler.cmd" : "wrangler";
   const result = spawnSync(
     wrangler,
     ["r2", "object", "put", `${bucket}/${entry.key}`, "--remote", "--file", entry.file, "--content-type", "video/mp4"],
-    { stdio: "inherit", shell: true, env: { ...process.env, CLOUDFLARE_API_TOKEN: undefined } },
+    { stdio: "inherit", shell: true, env: process.env },
   );
   if (result.status !== 0) throw new Error(`Publish failed for ${entry.key}`);
+
+  // Do not count a write as accepted until the public immutable key is visible and
+  // byte-identical to the source. This also catches wrong-account/wrong-bucket writes.
+  if (!(await inspectExisting(entry))) {
+    throw new Error(`Publish verification failed for ${entry.key}: object is still absent from the public origin.`);
+  }
   published += 1;
 }
 
-console.log(`\nPublished ${published} object(s); skipped ${skipped} already-published immutable object(s).`);
-console.log("Next: verify source<->remote parity, HTTP 200 and Range 206 for the newly published keys, then record them in the public media ledger.");
+console.log(`\nPublished and parity-verified ${published} object(s); verified/skipped ${skipped} existing immutable object(s).`);
+console.log("Next: verify HTTP Range 206 and cache behavior for representative/new keys, then record accepted objects in the public media ledger.");
