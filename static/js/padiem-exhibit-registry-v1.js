@@ -119,7 +119,8 @@
       media: 'https://media.padiem.net/products/danjion-product-preview-v1.mp4',
       accent: '174,226,191',
       glyph: 'DJ',
-    },  ];
+    },
+  ];
 
   window.PADIEM_EXHIBIT_REGISTRY = Object.freeze({
     design: Object.freeze(design.map(Object.freeze)),
