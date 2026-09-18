@@ -39,6 +39,7 @@
       copyKo: '오른쪽 인덱스와 카드가 선택에 반응하며 형태를 바꿉니다. 목록을 읽는 대신, 인덱스 자체가 기억을 탐색하는 인터랙션이 됩니다.',
       copyEn: 'The right-side index and cards transform with selection, turning the index itself into the memory navigation.',
       tags: ['Index', 'Card', 'Rotation', 'Response'],
+      href: '/design/rotating-memory-index/',
       media: 'https://media.padiem.net/design/rotating-memory-index-v1.mp4',
       poster: '',
       duration: '17s',
