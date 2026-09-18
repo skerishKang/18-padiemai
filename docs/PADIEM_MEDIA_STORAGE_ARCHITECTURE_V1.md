@@ -217,36 +217,30 @@ FULL_89_INDEX_CAPABILITY_REQUIRES_ALL_VIDEO_URLS=YES
 
 The two shared-video `404` responses are expected in local staging because the original relative C12 corpus path is not served there. They prove that the shared video URL is requested only after the corresponding Index item is activated.
 
-### 9.2 Publish-set conclusion
+### 9.2 Publication decision
 
 The Network audit establishes two different facts that must not be conflated:
 
-1. **Initial bandwidth dependency:** only the four featured videos are requested initially, via `preload="metadata"`; the 85 C12 shared videos are not eager-loaded.
-2. **Full functional dependency:** the authored 89-item Index can open every item, so all 85 non-featured shared video URLs must remain publicly resolvable for full-fidelity standalone publication.
+1. **Authored capability:** the source can address 85 shared C12 films from the Index.
+2. **Current publication authority:** only media explicitly approved for the current public release may be copied from Drive to R2.
 
-Therefore the minimum video publish set for full-fidelity C14 is:
+A runtime/source reference does not itself authorize publication.
 
-```text
-FEATURED_C14_VIDEO_OBJECTS=4
-SHARED_C12_VIDEO_OBJECTS=85
-TOTAL_VIDEO_OBJECTS_REQUIRED=89
-```
-
-This does **not** mean 1.94 GB is transferred at page load. The 85 shared videos are interaction-lazy.
-
-### 9.3 Required object topology
-
-The 85 C12 videos must be published once as a shared LoveTree corpus, not duplicated inside the C14 artwork namespace.
-
-Approved target topology:
+Current release decision:
 
 ```text
-https://media.padiem.net/shared/lovetree-v3/v3-001-v1.mp4
-...
-https://media.padiem.net/shared/lovetree-v3/v3-089-v1.mp4
+FEATURED_C14_VIDEO_OBJECTS_APPROVED_NOW=4
+SHARED_C12_VIDEO_OBJECTS_DEFERRED=85
+CURRENT_R2_PUBLISH_SET=4
+R2_BULK_CORPUS_UPLOAD=DENIED
 ```
 
-The four C14-local featured overrides remain artwork-specific:
+The 85 shared films stay in Google Drive. They may be promoted later, individually or as part of a
+separately approved release, when the corresponding memory/content is actually made public.
+
+### 9.3 Current and future object topology
+
+Current approved work-owned objects:
 
 ```text
 https://media.padiem.net/design/rotating-memory-index/memory-024-v1.mp4
@@ -255,47 +249,50 @@ https://media.padiem.net/design/rotating-memory-index/memory-047-v1.mp4
 https://media.padiem.net/design/rotating-memory-index/memory-071-v1.mp4
 ```
 
-The shared set excludes `024`, `046`, `047`, and `071`, because those four indices are intentionally overridden by C14-local featured videos.
+Reserved future shared namespace:
 
-The `-v1` suffix belongs to the public object identity only. The deterministic runtime rewrite maps the original authored `v3-NNN.mp4` and `memory-NNN.mp4` paths to these immutable public object URLs; it must not rename or mutate the Drive source/master files.
+```text
+https://media.padiem.net/shared/lovetree-v3/v3-NNN-v1.mp4
+```
 
-Poster/image assets may remain with the Netlify-served artwork package unless a separate size/performance audit proves that moving them to R2 is necessary. This policy does not move small authored static assets to R2 by default.
+That namespace is a naming/deduplication contract, **not** authorization to publish all 85 objects now.
 
-### 9.4 C14 execution gate after audit
+The public RMI route keeps all 89 poster/index entries. For the 85 deferred films, the current runtime
+opens the poster/still preview and performs no shared-video request. When a deferred memory is later
+approved, its immutable shared object can be published once and that item can be promoted without
+duplicating media into the artwork namespace.
 
-The previous `BULK_UPLOAD_BEFORE_NETWORK_AUDIT=HOLD` has been satisfied. The measured publish set and the main-based Draft integration are now complete. R2 publication remains a **separate owner-authorized mutation gate**.
+### 9.4 C14 execution gate
 
-Before any upload:
+Before any current-release upload:
 
 ```text
 OWNER_R2_APPLY_APPROVAL=PASS
 R2_AUTH=PASS
 BUCKET=padiem-media
+CURRENT_APPROVED_OBJECT_COUNT=4
 KEY_COLLISION_SCAN=PASS
 SAME_KEY_SAME_SHA=SKIP_IDENTICAL
 SAME_KEY_DIFFERENT_SHA=STOP_CONFLICT
 DELETE=FORBIDDEN
 OVERWRITE_UNKNOWN=FORBIDDEN
+SHARED_85_UPLOAD=FORBIDDEN_WITHOUT_NEW_APPROVAL
 ```
-
-The publisher is dry-run by default. Existing versioned keys may be skipped only after parity is proven; existence alone is not sufficient.
 
 After publication, verify at minimum:
 
-- local ↔ remote SHA-256 acceptance/parity evidence;
+- local ↔ remote parity for the four featured films;
 - public HTTP 200/206 behavior;
-- representative shared objects `001`, `058`, `089`;
-- all four featured objects;
-- runtime click-through for a shared and featured Index item;
-- no eager shared-video loading introduced by the URL rewrite.
-
-A Draft Preview may use the final versioned URLs before the objects are published so structure, routing, and rewrite behavior can be reviewed without R2 mutation. **Production merge remains forbidden** until the approved objects are published and the final media/readback/visual gates pass.
+- actual playback for 024 / 046 / 047 / 071;
+- deferred Index entries do not request unpublished shared video URLs;
+- no eager/shared-video loading is introduced.
 
 Current disposition:
 
 ```text
 C14_NETWORK_AUDIT=PASS
-C14_PUBLISH_SET_DECISION=PASS
+C14_CURRENT_PUBLISH_SET=4
+C14_SHARED_85=DEFERRED
 C14_MAIN_BASED_DRAFT_PREVIEW=PASS
 C14_R2_APPLY=HOLD_OWNER_APPROVAL
 C14_PRODUCTION_MERGE=HOLD
