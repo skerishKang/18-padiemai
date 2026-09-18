@@ -75,6 +75,39 @@ Verify the runtime contract with:
 node scripts/smoke-runtime-resilience.mjs
 ```
 
+## Public media
+
+Approved origins:
+
+```text
+https://media.padiem.net     every public film and still (Cloudflare R2 behind the CDN)
+https://padiem.net           the site itself
+https://chat.padiem.net      the product entry link
+```
+
+Who owns what:
+
+```text
+static/js/padiem-media-v1.js            high-churn page-level films + failure copy
+static/js/padiem-exhibit-registry-v1.js Design / Product exhibit media (the authority)
+```
+
+Rules:
+
+- A runtime never defines its own public media URL: it reads `PADIEM_MEDIA` (or the exhibit
+  registry for exhibit items). One canonical definition per film — a media move is one file.
+- A film that cannot play must stay usable and observable: the still frame remains, the container
+  records `data-media-state` (`loading` / `ready` / `error`), and a `role="status"`
+  `aria-live="polite"` line shows the shared copy in the active language. Failure is never silent.
+- Do not set `crossOrigin` on first-party films. The media origin does not send CORS headers and
+  nothing reads pixels from the video, so requesting it anonymously only blocks playback.
+
+Verify the media contract with:
+
+```bash
+node scripts/smoke-media-urls.mjs
+```
+
 It exercises the adapter in a sandbox with throwing/missing storage, a hidden tab, an off-screen
 element and reduced motion, then sweeps the source for direct `localStorage` access, ungated
 animation loops and incomplete copy pairs.
