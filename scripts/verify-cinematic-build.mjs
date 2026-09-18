@@ -151,8 +151,8 @@ for (const mediaFile of mediaConfigFiles) {
   if (mediaSource.includes(legacyCloudfrontMarker)) {
     throw new Error(`User-scoped CloudFront URL remains in ${mediaFile}.`);
   }
-  if (!mediaSource.includes("https://media.padiem.net/home/cinematic-scroll-v1.mp4")) {
-    throw new Error(`Approved first-party cinematic media URL is missing from centralized media config ${mediaFile}.`);
+  if (!mediaSource.includes("https://media.padiem.net") || !mediaSource.includes("home/cinematic-scroll-v1.mp4")) {
+    throw new Error(`Approved first-party cinematic media origin/path is missing from centralized media config ${mediaFile}.`);
   }
 }
 
