@@ -112,9 +112,8 @@ Rotating Memory Index must be described around the **right-side index / card tra
 2. StoryMemory
 3. LoveTree
 4. DanjiOn
-5. AI Free Radar
 
-Real public footage currently exists only for LoveTree and DanjiOn.
+Real public footage currently exists only for LoveTree and DanjiOn. Padiem Chat film capture is tracked separately in #32; StoryMemory remains screenshot/film-empty until a public-safe capture is approved.
 
 ## 10. Acceptance matrix
 

@@ -70,7 +70,6 @@ The absence of a video currently means only that a **public media revision has n
 
 - Padiem Chat — public product footage not yet approved.
 - StoryMemory — public product footage not yet approved; current UI is still changing and the final walkthrough master has not been selected.
-- AI Free Radar — public product footage not yet approved / preparing.
 
 Do not fill these slots with synthetic or fabricated product footage merely for visual symmetry. Once an approved product walkthrough exists, publish it through the normal versioned-object procedure below.
 

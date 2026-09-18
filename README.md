@@ -156,7 +156,6 @@ Current public product set:
 - StoryMemory
 - LoveTree
 - 단지온
-- AI 무료 레이더 (preparing/secondary)
 
 Padiem Chat is the approved live external CTA:
 
