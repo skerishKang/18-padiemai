@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
+  command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs && node scripts/smoke-exhibit-runtime.mjs && node scripts/smoke-runtime-resilience.mjs"
   environment = { NODE_VERSION = "22" }
 
 [[ignore_files]]
