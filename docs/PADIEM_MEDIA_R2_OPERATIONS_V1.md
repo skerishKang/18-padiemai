@@ -29,7 +29,7 @@ Target R2 bucket name: `padiem-media`.
 
 The canonical storage-role authority is `docs/PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` (Issue #47). Under that policy, R2 is a **production publish layer**, not a mirror of Google Drive or a full source/master archive. Large interactive source packages must be network-audited first and only the minimum production-required publish set should be added to R2.
 
-For C14 / Rotating Memory Index, the empirical Network audit has completed. The audited full-fidelity video publish set is 4 C14-local featured videos plus 85 interaction-lazy shared C12 videos. The 85 shared videos must be published once under the approved shared LoveTree namespace rather than duplicated per artwork. Exact topology and audit evidence are recorded in `PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` and Issues #46/#47.
+For C14 / Rotating Memory Index, the empirical Network audit has completed. The current approved R2 publish set is the four C14-local featured videos only. The 85 interaction-lazy shared C12 videos remain in Drive until the corresponding memories/content receive separate public-release approval. The shared LoveTree namespace is reserved for later deduplicated publication; it is not authorization for a bulk upload.
 
 ## 3. Public access boundary
 
@@ -236,7 +236,7 @@ LOCAL_REMOTE_SHA256 = PASS
 REPRESENTATIVE_HTTP_200_206 = PASS
 ```
 
-C14 currently satisfies the Network audit and minimum-publish-set gates, and its main-based Draft Preview is green. R2 publication is still a separate owner-authorized action: do not run `--apply` until explicit approval is given, and at that point require fresh `R2_AUTH=PASS`, collision/parity preflight, and the remaining public-delivery checks.
+C14 currently satisfies the Network audit and current-release publish-set gates, and its main-based Draft Preview is green. The current R2 plan contains exactly four featured films. The 85 shared films remain deferred and must not be included unless a later explicit release decision promotes them. R2 publication is still a separate owner-authorized action.
 
 If any safety-critical item fails, disposition is:
 

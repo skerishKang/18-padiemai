@@ -1,0 +1,13 @@
+{
+  "name": "padiem-site",
+  "private": true,
+  "version": "0.0.0",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "build:check": "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs",
+    "media:plan": "node scripts/publish-rotating-memory-index-media-r2.mjs",
+    "media:apply": "node scripts/publish-rotating-memory-index-media-r2.mjs --apply"
+  }
+}

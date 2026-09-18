@@ -4,6 +4,8 @@ const file = 'public/design/living-media-sphere/index.html';
 let html = fs.readFileSync(file, 'utf8');
 
 function replaceExactly(from, to, label) {
+  // Idempotent: the published markup is already attributed, so a re-run must be a no-op.
+  if (html.includes(to)) return;
   const count = html.split(from).length - 1;
   if (count !== 1) {
     throw new Error(`PADIEM attribution failed: expected exactly one ${label}, found ${count}`);

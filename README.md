@@ -11,7 +11,7 @@ Netlify builds the cinematic site with:
 ```toml
 [build]
   publish = "public"
-  command = "node scripts/build-cinematic-site.mjs"
+  command = "node scripts/build-cinematic-site.mjs && node scripts/switch-living-media-r2.mjs && node scripts/apply-living-media-padiem-attribution.mjs && node scripts/verify-cinematic-build.mjs"
 ```
 
 Primary source/publish relationship:
@@ -20,12 +20,24 @@ Primary source/publish relationship:
 static/html/index1.html                -> public/index.html
 static/html/pages/products.html        -> public/products/index.html
 static/html/pages/design.html          -> public/design/index.html
+static/design/living-media-sphere/**    -> public/design/living-media-sphere/**
+rotating-memory-index-source/**         -> public/design/rotating-memory-index/**
 static/css/**                          -> public/css/**
 static/js/**                           -> public/js/**
 static/images/**                       -> public/images/**
 ```
 
-`static/html/**` is a source tree. It is **not** copied wholesale into `public/html/**`; this prevents legacy page shells from surviving in a deployment.
+`static/html/**` is a source tree. It is **not** copied wholesale into `public/html/**`; this prevents legacy page shells from surviving in a deployment. `public/` is generated output and is not source authority.
+
+Local repository gates:
+
+```bash
+npm run build:check
+npm run smoke:exhibits
+npm run smoke:runtime
+npm run media:plan
+```
+
 
 Exhibit scenes mount by a stable identifier (`data-exhibit` on `.world-media-frame`), never by
 document order or page title. Keep the source markup, the runtime scene tables and the exhibit

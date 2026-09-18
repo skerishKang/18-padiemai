@@ -9,6 +9,9 @@ const replacements = new Map([
 ]);
 
 for (const [from, to] of replacements) {
+  // Idempotent: a re-run on an already switched working tree must not fail, but any
+  // other unexpected state still stops the build.
+  if (html.includes(to)) continue;
   if (!html.includes(from)) {
     throw new Error(`Living Media Sphere R2 switch failed: missing ${from}`);
   }
