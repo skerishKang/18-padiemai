@@ -27,6 +27,14 @@ static/images/**                       -> public/images/**
 
 `static/html/**` is a source tree. It is **not** copied wholesale into `public/html/**`; this prevents legacy page shells from surviving in a deployment.
 
+Exhibit scenes mount by a stable identifier (`data-exhibit` on `.world-media-frame`), never by
+document order or page title. Keep the source markup, the runtime scene tables and the exhibit
+registry in sync with:
+
+```bash
+node scripts/smoke-exhibit-runtime.mjs
+```
+
 ## PADIEM public information architecture
 
 The site intentionally uses different navigation grammars for different kinds of content.

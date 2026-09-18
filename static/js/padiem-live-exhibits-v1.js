@@ -7,18 +7,41 @@
     if (mode === 'album') return;
   }
 
-  const frames = [...document.querySelectorAll('.world-media-frame')];
-  if (frames.length < 4 || !document.title.includes('PADIEM Design')) return;
+  // Scenes are addressed by the stable identifiers declared in the source markup: never by
+  // document order or page title. Reordering content or changing the SEO title must not change
+  // which runtime mounts, and a missing frame must fail closed instead of mounting a shifted set.
+  const SCENES = [
+    ['person-memory-shelf', 'shelf'],
+    ['vinyl-memory-player', 'lp'],
+    ['memory-tape', 'tape'],
+    ['infinite-video-wall', 'wall'],
+  ];
 
+  if (!location.pathname.startsWith('/design')) return;
+
+  const frames = new Map();
+  for (const [id, kind] of SCENES) {
+    const frame = document.querySelector(`.world-media-frame[data-exhibit="${id}"]`);
+    if (!frame) {
+      console.warn(`[padiem-live-exhibits] missing exhibit frame: ${id}`);
+      return;
+    }
+    frames.set(kind, frame);
+  }
+
+  const mountedScenes = [];
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const mount = (frame, kind, html) => {
+  const mount = (kind, html) => {
+    const frame = frames.get(kind);
     frame.innerHTML = `<div class="live-exhibit exhibit-${kind}" data-live-exhibit="${kind}">${html}</div>`;
     frame.classList.add('has-live-exhibit');
+    const scene = frame.closest('.world-scene');
+    if (scene) mountedScenes.push(scene);
     return frame.querySelector('[data-live-exhibit]');
   };
 
-  const shelf = mount(frames[0], 'shelf', `
+  const shelf = mount('shelf', `
     <span class="exhibit-meta">LIVE STUDY / PERSON MEMORY SHELF</span>
     <div class="shelf-glow"></div>
     <div class="shelf-books" aria-label="Interactive person memory shelf study">
@@ -36,7 +59,7 @@
     shelf.querySelectorAll('.memory-book').forEach(node => node.classList.toggle('active', node === book));
   }));
 
-  const lp = mount(frames[1], 'lp', `
+  const lp = mount('lp', `
     <span class="exhibit-meta">LIVE STUDY / VINYL MEMORY PLAYER</span>
     <div class="lp-window" aria-hidden="true"></div>
     <div class="turntable" aria-label="Interactive vinyl memory player study">
@@ -54,7 +77,7 @@
     lpToggle.textContent = playing ? 'PAUSE MEMORY' : 'PLAY MEMORY';
   });
 
-  const tape = mount(frames[2], 'tape', `
+  const tape = mount('tape', `
     <span class="exhibit-meta">LIVE STUDY / MEMORY TAPE</span>
     <div class="tape-grid"></div>
     <svg class="tape-svg" viewBox="0 0 800 480" preserveAspectRatio="none" aria-hidden="true">
@@ -84,7 +107,7 @@
     ['004','-68%','5%','30px','8deg'],['005','-25%','2%','85px','-5deg'],['006','22%','7%','15px','7deg'],['007','61%','4%','-55px','-11deg'],
     ['008','-52%','42%','-15px','9deg'],['009','-5%','38%','65px','-6deg'],['010','43%','40%','5px','8deg']
   ];
-  const wall = mount(frames[3], 'wall', `
+  const wall = mount('wall', `
     <span class="exhibit-meta">LIVE STUDY / LIQUID GLASS VIDEO FIELD</span>
     <div class="glass-field" aria-label="Interactive moving memory field study">
       ${wallCards.map(([no,x,y,z,ry]) => `<button class="glass-memory" data-no="LT-${no}" style="--x:${x};--y:${y};--z:${z};--ry:${ry}" aria-label="Moving moment ${no}"></button>`).join('')}
@@ -116,9 +139,12 @@
     requestAnimationFrame(animateField);
   }
 
-  document.querySelectorAll('.world-action-secondary').forEach((pill, index) => {
-    if (index > 3) return;
-    if (pill.textContent.includes('MECHANICS FIRST')) return;
-    pill.textContent = 'LIVE INTERACTION STUDY';
+  // Relabel study pills inside the scenes that actually mounted, so the copy follows its scene
+  // instead of the pill's position in the document.
+  mountedScenes.forEach(scene => {
+    scene.querySelectorAll('.world-action-secondary').forEach(pill => {
+      if (pill.textContent.includes('MECHANICS FIRST')) return;
+      pill.textContent = 'LIVE INTERACTION STUDY';
+    });
   });
 })();
