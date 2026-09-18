@@ -9,7 +9,7 @@
 import { existsSync, readdirSync, statSync, createReadStream } from "node:fs";
 import { createHash } from "node:crypto";
 import { join } from "node:path";
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 
 const APPLY = process.argv.includes("--apply");
 
@@ -65,12 +65,40 @@ if (!APPLY) {
   process.exit(0);
 }
 
-const md5File = file => new Promise((resolve, reject) => {
-  const hash = createHash("md5");
+const hashFile = (file, algorithm) => new Promise((resolve, reject) => {
+  const hash = createHash(algorithm);
   const stream = createReadStream(file);
   stream.on("error", reject);
   stream.on("data", chunk => hash.update(chunk));
   stream.on("end", () => resolve(hash.digest("hex")));
+});
+
+const hashRemoteObject = entry => new Promise((resolve, reject) => {
+  const wrangler = process.platform === "win32" ? "wrangler.cmd" : "wrangler";
+  const child = spawn(
+    wrangler,
+    ["r2", "object", "get", `${bucket}/${entry.key}`, "--remote", "--pipe"],
+    {
+      stdio: ["ignore", "pipe", "inherit"],
+      shell: process.platform === "win32",
+      env: process.env,
+    },
+  );
+
+  const hash = createHash("sha256");
+  let bytes = 0;
+  child.stdout.on("data", chunk => {
+    bytes += chunk.length;
+    hash.update(chunk);
+  });
+  child.on("error", reject);
+  child.on("close", code => {
+    if (code !== 0) {
+      reject(new Error(`Remote parity read failed for ${entry.key} (wrangler exit ${code})`));
+      return;
+    }
+    resolve({ sha256: hash.digest("hex"), bytes });
+  });
 });
 
 const inspectExisting = async entry => {
@@ -88,15 +116,34 @@ const inspectExisting = async entry => {
   }
 
   const etag = (response.headers.get("etag") || "").replace(/^W\//, "").replace(/^"|"$/g, "");
-  if (!/^[a-f0-9]{32}$/i.test(etag)) {
-    throw new Error(
-      `Cannot prove byte parity for existing immutable object ${entry.key}: missing/non-single-part ETag (${etag || "none"}). Refusing to skip.`,
-    );
+
+  // Fast path: a single-part R2 object exposes the content MD5 as a 32-hex ETag.
+  if (/^[a-f0-9]{32}$/i.test(etag)) {
+    const localMd5 = await hashFile(entry.file, "md5");
+    if (etag.toLowerCase() !== localMd5.toLowerCase()) {
+      throw new Error(`IMMUTABLE KEY CONFLICT for ${entry.key}: remote ETag does not match local source.`);
+    }
+    return true;
   }
 
-  const localMd5 = await md5File(entry.file);
-  if (etag.toLowerCase() !== localMd5.toLowerCase()) {
-    throw new Error(`IMMUTABLE KEY CONFLICT for ${entry.key}: remote ETag does not match local source.`);
+  // Multipart R2 objects use a composite ETag (hash-partCount), so ETag cannot prove
+  // whole-object equality. Fall back to a bounded-memory remote stream SHA-256 check.
+  // This costs one authenticated read of that object, but avoids false failures after
+  // a successful multipart upload while preserving the immutable-key conflict stop.
+  console.warn(
+    `Non-single-part ETag for ${entry.key} (${etag || "none"}); verifying full remote bytes with SHA-256.`,
+  );
+  const [localSha256, remote] = await Promise.all([
+    hashFile(entry.file, "sha256"),
+    hashRemoteObject(entry),
+  ]);
+  if (remote.bytes !== entry.bytes) {
+    throw new Error(
+      `IMMUTABLE KEY CONFLICT for ${entry.key}: remote streamed bytes=${remote.bytes} local bytes=${entry.bytes}`,
+    );
+  }
+  if (remote.sha256.toLowerCase() !== localSha256.toLowerCase()) {
+    throw new Error(`IMMUTABLE KEY CONFLICT for ${entry.key}: remote SHA-256 does not match local source.`);
   }
 
   return true;
