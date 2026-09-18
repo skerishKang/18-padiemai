@@ -23,6 +23,8 @@ const requiredOutputs = [
   "public/design/living-media-sphere/assets",
   "public/js/padiem-album-exhibit-v1.js",
   "public/js/padiem-exhibit-registry-v1.js",
+  "public/js/padiem-cinematic-v2-1.js",
+  "public/js/padiem-scroll-scrub-v1.js",
   "public/css/padiem-album-exhibit-v1.css",
 ];
 
@@ -133,17 +135,19 @@ if (debugArtifacts.length) {
 if (!registry.includes("https://media.padiem.net/design/rotating-memory-index-v1.mp4")) {
   throw new Error("Approved Rotating Memory Index film is missing from the exhibit registry.");
 }
-if (!home.includes("https://media.padiem.net/home/cinematic-scroll-v1.mp4")) {
-  throw new Error("Home output is missing the approved first-party cinematic media origin.");
-}
-
-const sourceFiles = [
+const cinematicMediaFiles = [
   join(root, "static/js/padiem-cinematic-v2-1.js"),
   join(root, "static/js/padiem-scroll-scrub-v1.js"),
+  join(publicDir, "js/padiem-cinematic-v2-1.js"),
+  join(publicDir, "js/padiem-scroll-scrub-v1.js"),
 ];
-for (const sourceFile of sourceFiles) {
-  if (readFileSync(sourceFile, "utf8").includes(legacyCloudfrontMarker)) {
-    throw new Error(`User-scoped CloudFront URL remains in ${sourceFile}.`);
+for (const mediaFile of cinematicMediaFiles) {
+  const mediaSource = readFileSync(mediaFile, "utf8");
+  if (mediaSource.includes(legacyCloudfrontMarker)) {
+    throw new Error(`User-scoped CloudFront URL remains in ${mediaFile}.`);
+  }
+  if (!mediaSource.includes("https://media.padiem.net/home/cinematic-scroll-v1.mp4")) {
+    throw new Error(`Approved first-party cinematic media URL is missing from ${mediaFile}.`);
   }
 }
 
