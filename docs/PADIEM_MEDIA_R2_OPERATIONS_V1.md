@@ -27,6 +27,10 @@ If media traffic becomes abnormal or spend risk appears, disable media delivery 
 
 Target R2 bucket name: `padiem-media`.
 
+The canonical storage-role authority is `docs/PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` (Issue #47). Under that policy, R2 is a **production publish layer**, not a mirror of Google Drive or a full source/master archive. Large interactive source packages must be network-audited first and only the minimum production-required publish set should be added to R2.
+
+For C14 / Rotating Memory Index, the empirical Network audit has completed. The audited full-fidelity video publish set is 4 C14-local featured videos plus 85 interaction-lazy shared C12 videos. The 85 shared videos must be published once under the approved shared LoveTree namespace rather than duplicated per artwork. Exact topology and audit evidence are recorded in `PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` and Issues #46/#47.
+
 ## 3. Public access boundary
 
 Production media must not use an `*.r2.dev` public URL.
@@ -61,7 +65,7 @@ This enables long cache TTLs without relying on query-string cache busting.
 
 The production requirement is to maximize CDN cache hits and minimize R2 origin reads.
 
-For media routes such as `/design/*` and `/products/*`:
+For media routes such as `/design/*`, `/products/*`, and approved `/shared/*` media namespaces:
 
 - mark eligible media responses for CDN caching;
 - use a long edge TTL appropriate for immutable versioned objects;
@@ -115,6 +119,7 @@ An emergency rule must exist or be ready to activate that blocks only public med
 ```text
 media.padiem.net/design/*
 media.padiem.net/products/*
+media.padiem.net/shared/*
 ```
 
 The kill switch is for abnormal usage, suspected abuse, or unexpected billing risk.
@@ -220,6 +225,19 @@ MONTHLY_USAGE_REVIEW = DOCUMENTED
 PRODUCTION_MEDIA_LINK = ALLOWED
 ```
 
+For a new large interactive publish set such as C14, the following additional gates apply before upload or runtime rewrite:
+
+```text
+NETWORK_LOADING_AUDIT = PASS
+MINIMUM_PUBLISH_SET = DECIDED
+R2_AUTH = PASS
+KEY_COLLISION_SCAN = PASS
+LOCAL_REMOTE_SHA256 = PASS
+REPRESENTATIVE_HTTP_200_206 = PASS
+```
+
+C14 currently satisfies the Network audit and minimum-publish-set gates, and its main-based Draft Preview is green. R2 publication is still a separate owner-authorized action: do not run `--apply` until explicit approval is given, and at that point require fresh `R2_AUTH=PASS`, collision/parity preflight, and the remaining public-delivery checks.
+
 If any safety-critical item fails, disposition is:
 
 ```text
@@ -229,5 +247,7 @@ HOLD_R2_PRODUCTION_MEDIA_INTEGRATION
 ## 14. Change control
 
 Changes to R2 bucket exposure, custom-domain routing, cache-key behavior, WAF/rate limits, billing safeguards, or emergency behavior are operational changes and must be reflected in Issue #17 or a successor canonical issue before production rollout.
+
+Changes to the **storage-role split** itself — Drive authority, R2 publish-only role, shared-media policy, or production media provider — must also be reflected in Issue #47 and `docs/PADIEM_MEDIA_STORAGE_ARCHITECTURE_V1.md` or its successor.
 
 Do not weaken a cost-safety control merely to keep videos playing. Media availability is deliberately the lowest-priority item in the failure hierarchy.
