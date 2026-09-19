@@ -1,0 +1,186 @@
+name: Products Poster Frame Capture
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/products-poster-frame-capture.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  capture-approved-public-product-frames:
+    if: github.head_ref == 'ops/68-product-poster-capture'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Check out exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Require exact evidence-only branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+          test "${GITHUB_HEAD_REF}" = "ops/68-product-poster-capture"
+          echo "PRODUCTION_MUTATION=0"
+
+      - name: Install ffmpeg
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      - name: Read approved immutable public films
+        shell: bash
+        run: |
+          set -euo pipefail
+          out=".tmp/product-poster-capture"
+          mkdir -p "$out/source" "$out/frames/lovetree" "$out/frames/danjion"
+
+          curl --fail --location --silent --show-error \
+            --output "$out/source/lovetree.mp4" \
+            "https://media.padiem.net/products/lovetree-mvp01-walkthrough-v1.mp4"
+          curl --fail --location --silent --show-error \
+            --output "$out/source/danjion.mp4" \
+            "https://media.padiem.net/products/danjion-product-preview-v1.mp4"
+
+          echo "cd390fcc8374c762769a0915b9847c02d25d94d04e815ddb3d43081b0e6945eb  $out/source/lovetree.mp4" | sha256sum -c -
+          echo "0b456e58903d25010dceae4dd754e735173a8493128b2740dd3cb06c1f8aee81  $out/source/danjion.mp4" | sha256sum -c -
+
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,pix_fmt -of json "$out/source/lovetree.mp4" > "$out/lovetree-metadata.json"
+          ffprobe -v error -show_entries format=duration,size -show_entries stream=codec_name,width,height,pix_fmt -of json "$out/source/danjion.mp4" > "$out/danjion-metadata.json"
+
+      - name: Extract representative review candidates
+        shell: bash
+        run: |
+          set -euo pipefail
+          out=".tmp/product-poster-capture"
+          for t in 5 15 25 35 45 55; do
+            ffmpeg -hide_banner -loglevel error -y -ss "$t" -i "$out/source/lovetree.mp4" \
+              -frames:v 1 -an -c:v libwebp -quality 88 "$out/frames/lovetree/frame-${t}s.webp"
+            ffmpeg -hide_banner -loglevel error -y -ss "$t" -i "$out/source/danjion.mp4" \
+              -frames:v 1 -an -c:v libwebp -quality 88 "$out/frames/danjion/frame-${t}s.webp"
+          done
+
+      - name: Verify frame and source contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root=Path(".tmp/product-poster-capture")
+          expected={
+              "lovetree":{
+                  "url":"https://media.padiem.net/products/lovetree-mvp01-walkthrough-v1.mp4",
+                  "sha256":"cd390fcc8374c762769a0915b9847c02d25d94d04e815ddb3d43081b0e6945eb",
+                  "duration":58.04,
+              },
+              "danjion":{
+                  "url":"https://media.padiem.net/products/danjion-product-preview-v1.mp4",
+                  "sha256":"0b456e58903d25010dceae4dd754e735173a8493128b2740dd3cb06c1f8aee81",
+                  "duration":59.366667,
+              },
+          }
+          times=[5,15,25,35,45,55]
+          for key, item in expected.items():
+              meta=json.loads((root/f"{key}-metadata.json").read_text())
+              video=next(s for s in meta["streams"] if s.get("codec_name"))
+              assert (video.get("width"),video.get("height"))==(1440,900), (key,video)
+              duration=float(meta["format"]["duration"])
+              assert abs(duration-item["duration"]) < 0.25, (key,duration)
+              frames=list((root/"frames"/key).glob("*.webp"))
+              assert len(frames)==len(times), (key,len(frames))
+              assert all(p.stat().st_size>10_000 for p in frames), key
+
+          evidence={
+              "purpose":"Issue #68 read-only poster candidate extraction",
+              "production_mutation":False,
+              "sources":expected,
+              "candidate_times_seconds":times,
+              "candidate_frame_count":12,
+          }
+          (root/"capture-evidence.json").write_text(
+              json.dumps(evidence,ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8",
+          )
+          print("PRODUCT_POSTER_CANDIDATE_CAPTURE=PASS")
+          print("PUBLIC_SOURCE_HASH_PARITY=PASS")
+          print("CANDIDATE_FRAME_COUNT=12")
+          print("PRODUCTION_MUTATION=0")
+          PY
+
+      - name: Package selected final Album posters
+        shell: bash
+        run: |
+          set -euo pipefail
+          out=".tmp/product-poster-capture"
+          mkdir -p "$out/final"
+          cp "$out/frames/lovetree/frame-25s.webp" "$out/final/lovetree-mvp01-still-v1.webp"
+          cp "$out/frames/danjion/frame-5s.webp" "$out/final/danjion-product-still-v1.webp"
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root=Path(".tmp/product-poster-capture/final")
+          def sha(path):
+              h=hashlib.sha256()
+              with path.open("rb") as f:
+                  for chunk in iter(lambda:f.read(1024*1024),b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          manifest={
+              "issue":68,
+              "production_mutation":False,
+              "lovetree":{
+                  "source_film":"https://media.padiem.net/products/lovetree-mvp01-walkthrough-v1.mp4",
+                  "source_film_sha256":"cd390fcc8374c762769a0915b9847c02d25d94d04e815ddb3d43081b0e6945eb",
+                  "source_time_seconds":25,
+                  "poster_file":"lovetree-mvp01-still-v1.webp",
+                  "poster_sha256":sha(root/"lovetree-mvp01-still-v1.webp"),
+              },
+              "danjion":{
+                  "source_film":"https://media.padiem.net/products/danjion-product-preview-v1.mp4",
+                  "source_film_sha256":"0b456e58903d25010dceae4dd754e735173a8493128b2740dd3cb06c1f8aee81",
+                  "source_time_seconds":5,
+                  "poster_file":"danjion-product-still-v1.webp",
+                  "poster_sha256":sha(root/"danjion-product-still-v1.webp"),
+              },
+          }
+          (root/"final-poster-manifest.json").write_text(
+              json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8",
+          )
+          print("LOVETREE_POSTER_TIME=25")
+          print("DANJION_POSTER_TIME=5")
+          print("FINAL_POSTER_PACKAGE=PASS")
+          print("PRODUCTION_MUTATION=0")
+          PY
+
+      - name: Upload selected final poster package
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-68-product-poster-final
+          path: .tmp/product-poster-capture/final
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload private review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-68-product-poster-candidates
+          path: |
+            .tmp/product-poster-capture/frames
+            .tmp/product-poster-capture/*-metadata.json
+            .tmp/product-poster-capture/capture-evidence.json
+          if-no-files-found: error
+          retention-days: 7
