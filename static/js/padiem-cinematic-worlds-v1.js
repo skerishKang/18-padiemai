@@ -193,27 +193,26 @@
 
     let reveal = 0;
     let targetReveal = 0;
-    let revealFrame = 0;
     const paintReveal = () => {
       hero.style.setProperty('--reveal', `${(reveal * 100).toFixed(2)}%`);
       if (fragments) fragments.style.setProperty('--reveal', `${(reveal * 100).toFixed(2)}%`);
       if (bar) bar.style.width = `${(reveal * 100).toFixed(2)}%`;
     };
-    const animateReveal = () => {
-      revealFrame = 0;
+    const stepReveal = () => {
       const delta = targetReveal - reveal;
-      if (Math.abs(delta) < .001) {
-        reveal = targetReveal;
-        paintReveal();
-        return;
-      }
+      if (Math.abs(delta) < .001) return;
       reveal += delta * .12;
       paintReveal();
-      revealFrame = requestAnimationFrame(animateReveal);
     };
+    const heroLoop = window.PADIEM_RUNTIME && typeof window.PADIEM_RUNTIME.frameLoop === 'function'
+      ? window.PADIEM_RUNTIME.frameLoop(hero, stepReveal)
+      : null;
     const setReveal = (value, announce = false) => {
       targetReveal = Math.max(0, Math.min(1, value));
-      if (!revealFrame) revealFrame = requestAnimationFrame(animateReveal);
+      if (!heroLoop) {
+        reveal = targetReveal;
+        paintReveal();
+      }
       if (announce && status) status.textContent = targetReveal > .5 ? 'Design film revealed.' : 'Design film masked.';
     };
     const markFailed = () => {
