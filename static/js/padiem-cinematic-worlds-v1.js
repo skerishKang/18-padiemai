@@ -174,4 +174,88 @@
   });
 
   applyLanguage(language);
+
+  const setupWorldHeroMedia = () => {
+    const hero = document.querySelector('[data-design-hero]');
+    const video = document.querySelector('[data-world-hero-video]');
+    const layer = document.querySelector('[data-world-hero-media]');
+    const fragments = document.querySelector('[data-world-hero-fragments]');
+    const bar = document.querySelector('[data-world-hero-reveal-bar]');
+    const status = document.querySelector('[data-world-hero-media-status]');
+    if (!hero || !video || !layer) return;
+
+    const media = window.PADIEM_MEDIA || {};
+    const designMedia = media.design || {};
+    const fallbackCopy = () => (media.fallbackCopy && media.fallbackCopy[document.body.dataset.lang === 'en' ? 'en' : 'ko']) || '';
+    if (!designMedia.heroFilm || !designMedia.heroPoster) return;
+    video.poster = designMedia.heroPoster;
+    layer.style.backgroundImage = `url("${designMedia.heroPoster}")`;
+
+    let reveal = 0;
+    let targetReveal = 0;
+    let revealFrame = 0;
+    const paintReveal = () => {
+      hero.style.setProperty('--reveal', `${(reveal * 100).toFixed(2)}%`);
+      if (fragments) fragments.style.setProperty('--reveal', `${(reveal * 100).toFixed(2)}%`);
+      if (bar) bar.style.width = `${(reveal * 100).toFixed(2)}%`;
+    };
+    const animateReveal = () => {
+      revealFrame = 0;
+      const delta = targetReveal - reveal;
+      if (Math.abs(delta) < .001) {
+        reveal = targetReveal;
+        paintReveal();
+        return;
+      }
+      reveal += delta * .12;
+      paintReveal();
+      revealFrame = requestAnimationFrame(animateReveal);
+    };
+    const setReveal = (value, announce = false) => {
+      targetReveal = Math.max(0, Math.min(1, value));
+      if (!revealFrame) revealFrame = requestAnimationFrame(animateReveal);
+      if (announce && status) status.textContent = targetReveal > .5 ? 'Design film revealed.' : 'Design film masked.';
+    };
+    const markFailed = () => {
+      layer.dataset.mediaState = 'failed';
+      video.removeAttribute('src');
+      video.load();
+      setReveal(0);
+      if (status) status.textContent = fallbackCopy();
+    };
+    document.addEventListener('padiem:language', () => {
+      if (layer.dataset.mediaState === 'failed' && status) status.textContent = fallbackCopy();
+    });
+    if (reduced || (navigator.connection && navigator.connection.saveData)) {
+      layer.dataset.mediaState = 'poster';
+      setReveal(0);
+      return;
+    }
+    video.addEventListener('loadeddata', () => { layer.dataset.mediaState = 'ready'; }, { once: true });
+    video.addEventListener('error', markFailed, { once: true });
+    video.src = designMedia.heroFilm;
+    video.load();
+    const play = () => video.play().catch(() => { layer.dataset.mediaState = 'paused'; });
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => entries.forEach(entry => entry.isIntersecting ? play() : video.pause()), { threshold: .12 }).observe(hero);
+    else play();
+
+    hero.addEventListener('pointermove', event => {
+      const rect = hero.getBoundingClientRect();
+      setReveal((event.clientX - rect.left) / rect.width);
+    });
+    hero.addEventListener('pointerleave', () => setReveal(reveal));
+    hero.addEventListener('keydown', event => {
+      if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
+      event.preventDefault();
+      if (event.key === 'Home') setReveal(0, true);
+      else if (event.key === 'End') setReveal(1, true);
+      else setReveal(reveal + (event.key === 'ArrowRight' ? .08 : -.08), true);
+    });
+    hero.tabIndex = 0;
+    targetReveal = 0;
+    reveal = 0;
+    paintReveal();
+  };
+
+  setupWorldHeroMedia();
 })();
