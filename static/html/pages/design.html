@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta name="theme-color" content="#06080d" />
   <meta name="description" content="PADIEM Design — 기억, 감정, 움직임과 인터랙션을 독창적인 구조로 설계하는 파디엠 디자인 아카이브." />
+  <link rel="icon" href="/images/index/favicon.ico" type="image/x-icon" />
   <title>PADIEM Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -41,7 +42,16 @@
     </header>
 
     <main>
-      <section class="world-hero">
+      <section class="world-hero world-hero-cinematic" data-design-hero>
+        <div class="world-hero-media" data-world-hero-media data-media-state="poster" aria-hidden="true">
+          <video data-world-hero-video muted loop playsinline preload="none"></video>
+          <div class="world-hero-media-fragments" data-world-hero-fragments></div>
+          <div class="world-hero-media-tone"></div>
+          <div class="world-hero-media-vignette"></div>
+          <div class="world-hero-media-noise"></div>
+        </div>
+        <div class="world-hero-reveal-meter" aria-hidden="true"><span data-world-hero-reveal-bar></span></div>
+        <span class="world-hero-media-status" data-world-hero-media-status role="status" aria-live="polite"></span>
         <div class="world-hero-top reveal">
           <div class="world-hero-index">
             <p class="world-overline"><strong>DESIGN ARCHIVE</strong> / PADIEM</p>
