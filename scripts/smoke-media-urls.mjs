@@ -64,12 +64,26 @@ for (const file of runtimeFiles) {
 }
 
 // 3 — one canonical definition per film.
-const canonicalFilms = ["home/cinematic-scroll-v1.mp4"];
+const canonicalFilms = [
+  "home/cinematic-scroll-v1.mp4",
+  "design/hero/padiem-design-human-cinematic-v1.mp4",
+  "design/hero/padiem-design-human-cinematic-v1.webp",
+];
 for (const film of canonicalFilms) {
   const defining = runtimeFiles.filter(file => read(file).includes(film));
   if (defining.length !== 1) {
     failures.push(`${film} is defined in ${defining.length} files (${defining.join(", ")}); exactly one definition is allowed`);
   }
+}
+
+// 3b — Design hero playback reads the centralized media contract and exposes an accessible fallback.
+const worldRuntime = read("static/js/padiem-cinematic-worlds-v1.js");
+const designPage = read("static/html/pages/design.html");
+for (const marker of ["PADIEM_MEDIA", "media.design", "heroFilm", "heroPoster", "fallbackCopy"]) {
+  if (!worldRuntime.includes(marker)) failures.push(`static/js/padiem-cinematic-worlds-v1.js: missing Design hero media marker ${marker}`);
+}
+for (const marker of ["data-world-hero-video", "data-world-hero-media-status", 'role="status"', 'aria-live="polite"']) {
+  if (!designPage.includes(marker)) failures.push(`static/html/pages/design.html: missing Design hero fallback marker ${marker}`);
 }
 
 // 4 — exhibit media stays in the registry, on the approved origin.
@@ -127,5 +141,5 @@ if (failures.length) {
 }
 
 console.log(
-  `Public media smoke check passed: ${registryMedia.length} exhibit films on ${MEDIA_ORIGIN}, 1 canonical home film, observable fallbacks.`,
+  `Public media smoke check passed: ${registryMedia.length} exhibit films on ${MEDIA_ORIGIN}, Home + Design canonical cinematic media, observable fallbacks.`,
 );
