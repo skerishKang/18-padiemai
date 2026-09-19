@@ -85,6 +85,10 @@ for (const [label, html] of [["design", design], ["products", products]]) {
   }
 }
 
+for (const marker of ["world-hero-cinematic", "data-world-hero-video", "data-world-hero-media-status"]) {
+  if (!design.includes(marker)) throw new Error(`Design output is missing cinematic hero contract marker: ${marker}`);
+}
+
 for (const marker of ["padiem-design-archive-attribution", "BY PADIEM", "PADIEM DESIGN ARCHIVE · 03"]) {
   if (!rotating.includes(marker)) throw new Error(`Rotating Memory Index output is missing ${marker}`);
 }
@@ -154,16 +158,25 @@ for (const mediaFile of mediaConfigFiles) {
   if (mediaSource.includes(legacyCloudfrontMarker)) {
     throw new Error(`User-scoped CloudFront URL remains in ${mediaFile}.`);
   }
-  if (!mediaSource.includes("https://media.padiem.net") || !mediaSource.includes("home/cinematic-scroll-v1.mp4")) {
-    throw new Error(`Approved first-party cinematic media origin/path is missing from centralized media config ${mediaFile}.`);
+  for (const requiredMedia of [
+    "https://media.padiem.net",
+    "home/cinematic-scroll-v1.mp4",
+    "design/hero/padiem-design-human-cinematic-v1.mp4",
+    "design/hero/padiem-design-human-cinematic-v1.webp",
+  ]) {
+    if (!mediaSource.includes(requiredMedia)) {
+      throw new Error(`Approved first-party cinematic media contract is missing from centralized media config ${mediaFile}: ${requiredMedia}`);
+    }
   }
 }
 
 const cinematicRuntimeFiles = [
   join(root, "static/js/padiem-cinematic-v2-1.js"),
   join(root, "static/js/padiem-scroll-scrub-v1.js"),
+  join(root, "static/js/padiem-cinematic-worlds-v1.js"),
   join(publicDir, "js/padiem-cinematic-v2-1.js"),
   join(publicDir, "js/padiem-scroll-scrub-v1.js"),
+  join(publicDir, "js/padiem-cinematic-worlds-v1.js"),
 ];
 for (const runtimeFile of cinematicRuntimeFiles) {
   const runtimeSource = readFileSync(runtimeFile, "utf8");
