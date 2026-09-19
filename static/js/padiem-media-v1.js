@@ -17,11 +17,15 @@
   const build = path => `${origin}/${String(path).replace(/^\/+/, '')}`;
 
   window.PADIEM_MEDIA = Object.freeze({
-    version: '1.0.0',
+    version: '1.1.0',
     origin,
     build,
     home: Object.freeze({
       scrollFilm: build('home/cinematic-scroll-v1.mp4'),
+    }),
+    design: Object.freeze({
+      heroFilm: build('design/hero/padiem-design-human-cinematic-v1.mp4'),
+      heroPoster: build('design/hero/padiem-design-human-cinematic-v1.webp'),
     }),
     fallbackCopy: Object.freeze({
       ko: '영상을 불러오지 못해 정지 화면으로 표시합니다.',
