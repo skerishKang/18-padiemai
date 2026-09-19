@@ -117,6 +117,63 @@ jobs:
           print("PRODUCTION_MUTATION=0")
           PY
 
+      - name: Package selected final Album posters
+        shell: bash
+        run: |
+          set -euo pipefail
+          out=".tmp/product-poster-capture"
+          mkdir -p "$out/final"
+          cp "$out/frames/lovetree/frame-25s.webp" "$out/final/lovetree-mvp01-still-v1.webp"
+          cp "$out/frames/danjion/frame-5s.webp" "$out/final/danjion-product-still-v1.webp"
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root=Path(".tmp/product-poster-capture/final")
+          def sha(path):
+              h=hashlib.sha256()
+              with path.open("rb") as f:
+                  for chunk in iter(lambda:f.read(1024*1024),b""):
+                      h.update(chunk)
+              return h.hexdigest()
+
+          manifest={
+              "issue":68,
+              "production_mutation":False,
+              "lovetree":{
+                  "source_film":"https://media.padiem.net/products/lovetree-mvp01-walkthrough-v1.mp4",
+                  "source_film_sha256":"cd390fcc8374c762769a0915b9847c02d25d94d04e815ddb3d43081b0e6945eb",
+                  "source_time_seconds":25,
+                  "poster_file":"lovetree-mvp01-still-v1.webp",
+                  "poster_sha256":sha(root/"lovetree-mvp01-still-v1.webp"),
+              },
+              "danjion":{
+                  "source_film":"https://media.padiem.net/products/danjion-product-preview-v1.mp4",
+                  "source_film_sha256":"0b456e58903d25010dceae4dd754e735173a8493128b2740dd3cb06c1f8aee81",
+                  "source_time_seconds":5,
+                  "poster_file":"danjion-product-still-v1.webp",
+                  "poster_sha256":sha(root/"danjion-product-still-v1.webp"),
+              },
+          }
+          (root/"final-poster-manifest.json").write_text(
+              json.dumps(manifest,ensure_ascii=False,indent=2)+"\n",
+              encoding="utf-8",
+          )
+          print("LOVETREE_POSTER_TIME=25")
+          print("DANJION_POSTER_TIME=5")
+          print("FINAL_POSTER_PACKAGE=PASS")
+          print("PRODUCTION_MUTATION=0")
+          PY
+
+      - name: Upload selected final poster package
+        uses: actions/upload-artifact@v4
+        with:
+          name: issue-68-product-poster-final
+          path: .tmp/product-poster-capture/final
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Upload private review artifact
         uses: actions/upload-artifact@v4
         with:
