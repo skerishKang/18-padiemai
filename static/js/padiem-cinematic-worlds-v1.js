@@ -174,4 +174,75 @@
   });
 
   applyLanguage(language);
+
+  const setupWorldHeroMedia = () => {
+    const video = document.querySelector('[data-world-hero-video]');
+    const layer = document.querySelector('[data-world-hero-media]');
+    const status = document.querySelector('[data-world-hero-media-status]');
+    if (!video || !layer) return;
+
+    const media = window.PADIEM_MEDIA || {};
+    const designMedia = media.design || {};
+    if (!designMedia.heroFilm || !designMedia.heroPoster) {
+      layer.dataset.mediaState = 'failed';
+      return;
+    }
+
+    video.poster = designMedia.heroPoster;
+    layer.style.backgroundImage = `url("${designMedia.heroPoster}")`;
+
+    const failureCopy = () => {
+      const lang = document.body.dataset.lang === 'en' ? 'en' : 'ko';
+      return (media.fallbackCopy && media.fallbackCopy[lang]) || '';
+    };
+
+    const markFailed = () => {
+      layer.dataset.mediaState = 'failed';
+      video.removeAttribute('src');
+      video.load();
+      if (status) status.textContent = failureCopy();
+    };
+
+    document.addEventListener('padiem:language', () => {
+      if (layer.dataset.mediaState === 'failed' && status) status.textContent = failureCopy();
+    });
+
+    const saveData = Boolean(navigator.connection && navigator.connection.saveData);
+    if (reduced || saveData) {
+      layer.dataset.mediaState = 'poster';
+      return;
+    }
+
+    video.addEventListener('loadeddata', () => {
+      layer.dataset.mediaState = 'ready';
+      if (status) status.textContent = '';
+    }, { once: true });
+    video.addEventListener('error', markFailed, { once: true });
+
+    video.src = designMedia.heroFilm;
+    video.load();
+
+    const safePlay = () => {
+      if (layer.dataset.mediaState === 'failed') return;
+      video.play()
+        .then(() => { layer.dataset.mediaState = 'ready'; })
+        .catch(() => { layer.dataset.mediaState = 'paused'; });
+    };
+
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(entries => {
+        const visible = entries.some(entry => entry.isIntersecting && entry.intersectionRatio > .12);
+        if (visible) safePlay();
+        else if (!video.paused) {
+          video.pause();
+          layer.dataset.mediaState = 'paused';
+        }
+      }, { threshold: [0, .12, .5] });
+      observer.observe(layer.closest('.world-hero') || layer);
+    } else {
+      safePlay();
+    }
+  };
+
+  setupWorldHeroMedia();
 })();
