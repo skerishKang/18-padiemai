@@ -105,7 +105,7 @@ const rotatingIndexMediaBase = "https://media.padiem.net/design/rotating-memory-
 // The 85 shared C12 films remain in Drive until their corresponding memories are explicitly
 // approved for public release. Index entries still expose their poster/still preview without
 // requesting an unpublished video. See docs/PADIEM_DESIGN_03_MEDIA_PUBLISH_SET_V1.md.
-const rotatingIndexAttributionCss = '<style id="padiem-design-archive-attribution">.rmi-attribution{position:fixed;z-index:65;left:28px;top:23px;display:flex;align-items:flex-end;gap:8px;font-size:13px;font-weight:760;line-height:1}.rmi-attribution .rmi-by{font-size:7px;letter-spacing:.17em;color:rgba(16,16,15,.52);text-transform:uppercase}.rmi-archive-meta{position:fixed;z-index:65;right:28px;top:25px;display:flex;gap:11px;font-size:8px;letter-spacing:.17em;color:rgba(16,16,15,.52);text-transform:uppercase}.rmi-archive-meta strong{color:#10100f}.rmi-about-toggle{position:absolute;opacity:0}.rmi-about-trigger{position:fixed;z-index:66;left:28px;top:58px;border:0;border-left:2px solid #10100f;background:rgba(255,255,255,.58);padding:7px 9px;color:rgba(16,16,15,.55);font-size:7px;letter-spacing:.17em;text-transform:uppercase;cursor:pointer}.rmi-about{position:fixed;z-index:67;left:28px;top:91px;width:min(315px,calc(100% - 56px));padding:18px;background:rgba(247,246,242,.94);border:1px solid rgba(16,16,15,.14);opacity:0;pointer-events:none;transition:.22s}.rmi-about-toggle:checked~.rmi-about{opacity:1;pointer-events:auto}.rmi-about-close{float:right;font-size:18px;cursor:pointer}.rmi-about h2{margin:16px 0 9px;font-size:25px}.rmi-about p{font-size:9px;line-height:1.6;color:rgba(16,16,15,.62)}.rmi-about-meta{display:flex;gap:12px;margin-top:17px;padding-top:12px;border-top:1px solid rgba(16,16,15,.14);font-size:7px;letter-spacing:.15em}.rmi-signature{position:fixed;z-index:65;left:28px;bottom:23px;font-size:7px;letter-spacing:.16em;color:rgba(16,16,15,.52);text-transform:uppercase}@media(max-width:760px){.rmi-attribution{left:14px;top:14px}.rmi-archive-meta{display:none}.rmi-about-trigger{left:14px;top:47px}.rmi-about{left:14px;top:78px;width:calc(100% - 28px)}.rmi-signature{left:14px;bottom:14px;max-width:48%;font-size:6px}}</style>';
+const rotatingIndexAttributionCss = '<style id="padiem-design-archive-attribution">.brand{align-items:flex-end}.brand .mark{align-self:center}.brand .rmi-by{font-size:7px;font-weight:650;line-height:1;letter-spacing:.17em;color:var(--muted);text-transform:uppercase;margin-left:-3px}@media(max-width:760px){.brand .rmi-by{font-size:6px;letter-spacing:.14em}}</style>';
 
 if (!html.includes(oldTitle)) {
   throw new Error("Expected cinematic source title was not found; refusing to publish an unreviewed head change.");
@@ -281,10 +281,28 @@ const rotatingIndexHtml = readFileSync(rotatingIndexSource, "utf8")
     "'assets/featured-videos/memory-'+local+'.mp4'",
     `'${rotatingIndexMediaBase}memory-'+local+'-v1.mp4'`,
   )
-  .replace(/<header class="topbar">[\s\S]*?<\/header>/i, "")
-  .replace(/<div class="caption">[\s\S]*?<\/div>/i, "")
+  // Preserve the authored LoveTree chrome. PADIEM attribution is added inside the
+  // existing wordmark row instead of replacing the topbar/caption composition.
   .replace("</head>", `${rotatingIndexAttributionCss}</head>`)
-  .replace("<body>", '<body data-padiem-world="rotating-memory-index"><div class="rmi-attribution"><span class="mark" aria-hidden="true"></span><span>LoveTree</span><span class="rmi-by">BY PADIEM</span></div><div class="rmi-archive-meta"><span>DESIGN ARCHIVE / STUDY 03</span><strong>2026</strong></div><input class="rmi-about-toggle" id="rmiAboutToggle" type="checkbox"><label class="rmi-about-trigger" for="rmiAboutToggle">PADIEM / ABOUT THIS WORK</label><div class="rmi-about"><label class="rmi-about-close" for="rmiAboutToggle" aria-label="Close">×</label><div class="rmi-about-kicker">PADIEM DESIGN ARCHIVE · STUDY 03</div><h2>Rotating Memory Index</h2><p>An index-led memory experience where selecting one moment transforms the card and opens the next layer of the archive.</p><div class="rmi-about-meta"><span>CREATED BY PADIEM</span><span>FOR LOVETREE</span><span>2026</span></div></div><div class="rmi-signature">PADIEM DESIGN ARCHIVE · 03&nbsp;&nbsp; / &nbsp;&nbsp;MEMORY · MOTION · INTERACTION</div>');
+  .replace("<body>", '<body data-padiem-world="rotating-memory-index">')
+  .replace(
+    '<div class="brand"><span class="mark"></span>LoveTree</div>',
+    '<div class="brand"><span class="mark"></span>LoveTree<span class="rmi-by">BY PADIEM</span></div>',
+  );
+if (!rotatingIndexHtml.includes('<header class="topbar">') ||
+    !rotatingIndexHtml.includes('id="captionTitle"') ||
+    !rotatingIndexHtml.includes('id="captionType"')) {
+  throw new Error("Rotating Memory Index output must preserve the authored LoveTree topbar and dynamic caption.");
+}
+if (!rotatingIndexHtml.includes('LoveTree<span class="rmi-by">BY PADIEM</span>')) {
+  throw new Error("Rotating Memory Index output is missing the minimal BY PADIEM maker signature.");
+}
+for (const displacedOverlay of ["rmi-about", "rmi-archive-meta", "rmi-signature", "rmi-attribution"]) {
+  if (rotatingIndexHtml.includes(displacedOverlay)) {
+    throw new Error(`Rotating Memory Index output contains displaced archive chrome: ${displacedOverlay}`);
+  }
+}
+
 // Fail closed: the published work must not carry work-local media paths or the private C12
 // source path. Every film has to resolve to an approved public media origin instead.
 for (const unresolved of ["12_러브트리", "assets/featured-videos/", "videos-v3/"]) {
