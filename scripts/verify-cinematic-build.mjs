@@ -85,8 +85,29 @@ for (const [label, html] of [["design", design], ["products", products]]) {
   }
 }
 
-for (const marker of ["padiem-design-archive-attribution", "BY PADIEM", "PADIEM DESIGN ARCHIVE · 03"]) {
-  if (!rotating.includes(marker)) throw new Error(`Rotating Memory Index output is missing ${marker}`);
+for (const marker of [
+  "padiem-design-archive-attribution",
+  "BY PADIEM",
+  '<header class="topbar">',
+  'id="captionTitle"',
+  'id="captionType"',
+  "Memory pages · portraits, films & words · 2026",
+]) {
+  if (!rotating.includes(marker)) throw new Error(`Rotating Memory Index output is missing authored/fidelity marker ${marker}`);
+}
+if (!rotating.includes('<div class="brand"><span class="mark"></span>LoveTree<span class="rmi-by">BY PADIEM</span></div>')) {
+  throw new Error("Rotating Memory Index output does not keep BY PADIEM adjacent to the authored LoveTree wordmark.");
+}
+for (const displacedOverlay of ["rmi-about", "rmi-archive-meta", "rmi-signature", "rmi-attribution"]) {
+  if (rotating.includes(displacedOverlay)) {
+    throw new Error(`Rotating Memory Index output contains displaced archive chrome: ${displacedOverlay}`);
+  }
+}
+if (!design.includes("03 / ROTATING MEMORY INDEX")) {
+  throw new Error("Design static fallback does not identify Rotating Memory Index as canonical archive study 03.");
+}
+if (design.includes("06 / ROTATING MEMORY INDEX")) {
+  throw new Error("Design static fallback still exposes stale Rotating Memory Index archive number 06.");
 }
 for (const marker of [
   "id=\"padiem-design-archive-attribution\"",
