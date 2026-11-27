@@ -14,6 +14,32 @@ const publicDir = join(root, "public");
 const sourceHtml = join(root, "static", "html", "index1.html");
 const exhibitRegistryPath = join(root, "static", "js", "padiem-exhibit-registry-v1.js");
 
+// One build-time source of truth for the header, mobile menu and language controls.
+// Every canonical page receives the same markup before deployment.
+const sharedHeaderHtml = readFileSync(join(root, "static", "components", "cinematic-header-v1.html"), "utf8").trim();
+const sharedHeaderStyle = '<link rel="stylesheet" href="/css/padiem-shared-header-v1.css"/>';
+const sharedHeaderScript = '<script src="/js/padiem-shared-header-v1.js"></script>';
+const sharedMobileStyle = '<link rel="stylesheet" href="/css/padiem-home-mobile-nav-v1.css"/>';
+function withSharedHeader(source, notFound = false) {
+  let result = source;
+  if (notFound) {
+    if (!result.includes('<body>')) throw new Error("404 source body not found.");
+    result = result.replace('<body>', '<body class="site-not-found">' + sharedHeaderHtml);
+    result = result.replace('</head>', '<link rel="stylesheet" href="/css/padiem-cinematic-v2-1.css"/></head>');
+  } else {
+    const headerRx = /<header\s+class="nav(?: world-nav)?"[\s\S]*?<\/header>/;
+    if (!headerRx.test(result)) throw new Error("Canonical cinematic header was not found.");
+    result = result.replace(headerRx, sharedHeaderHtml);
+  }
+  if (!result.includes('padiem-home-mobile-nav-v1.css')) {
+    result = result.replace('</head>', sharedMobileStyle + '</head>');
+  }
+  if (!result.includes('padiem-shared-header-v1.css')) {
+    result = result.replace('</head>', sharedHeaderStyle + '</head>');
+  }
+  return result;
+}
+
 // The exhibit registry is the public authority for every Design / Product scene.
 // Refuse to publish if it is missing, exposes a non-approved origin, or drops an
 // approved public CTA or film.
@@ -21,6 +47,10 @@ if (!existsSync(exhibitRegistryPath)) {
   throw new Error("Required exhibit registry is missing: static/js/padiem-exhibit-registry-v1.js");
 }
 const exhibitRegistryText = readFileSync(exhibitRegistryPath, "utf8");
+// #87: keep the build registry and canonical product heading on the approved state.
+if (!exhibitRegistryText.includes("kicker: 'PRODUCT PREVIEW / LIVING NEIGHBOR SHOP'")) {
+  throw new Error("DANJION kicker must retain the representative-approved PRODUCT PREVIEW state.");
+}
 if (/\.r2\.dev|workers\.dev/i.test(exhibitRegistryText)) {
   throw new Error("Exhibit registry must not expose r2.dev or workers.dev URLs.");
 }
@@ -153,9 +183,12 @@ if (html.indexOf('padiem-runtime-v1.js') > html.indexOf('padiem-cinematic-v2-1.j
 // binds to the final navigation semantics. The drawer-tab enhancer runs after it.
 html = html.replace(
   languageScript,
-  `${homeNavScript}${languageScript}${drawerTabsScript}`,
+  `${sharedHeaderScript}${homeNavScript}${languageScript}${drawerTabsScript}`,
 );
 
+html = withSharedHeader(html);
+if (!html.includes('<video id="scrollVideo"')) throw new Error("Home video tag not found.");
+html = html.replace('<video id="scrollVideo"', '<video poster="/images/posters/home-cinematic-first-frame.webp" id="scrollVideo"');
 writeFileSync(join(publicDir, "index.html"), html, "utf8");
 
 // Copy only runtime assets. Do NOT copy static/html/** wholesale: that tree still
@@ -185,6 +218,10 @@ for (const [source, destination] of requiredFiles) {
   }
   copyFileSync(source, destination);
 }
+// The published 404 page uses the same canonical header and keeps its original body copy.
+let notFoundHtml = withSharedHeader(readFileSync(join(root, "static", "404.html"), "utf8"), true);
+notFoundHtml = notFoundHtml.replace('</body>', '<script src="/js/padiem-runtime-v1.js"></script>' + sharedHeaderScript + '</body>');
+writeFileSync(join(publicDir, "404.html"), notFoundHtml, "utf8");
 
 // Publish only the primary cinematic destinations. Company / Team / Contact
 // remain first-party drawer surfaces inside the home world and are reached via
@@ -200,7 +237,7 @@ for (const { source, dest } of showcasePages) {
     throw new Error(`Showcase page is missing: static/html/${source}`);
   }
 
-  let pageHtml = readFileSync(srcPath, "utf8");
+  let pageHtml = withSharedHeader(readFileSync(srcPath, "utf8"));
   if (!pageHtml.includes('padiem-cinematic-worlds-v1.js')) {
     throw new Error(`Cinematic world runtime is missing from static/html/${source}`);
   }
@@ -217,6 +254,10 @@ for (const { source, dest } of showcasePages) {
   if (pageHtml.indexOf('padiem-runtime-v1.js') > pageHtml.indexOf('padiem-cinematic-worlds-v1.js')) {
     throw new Error(`The shared runtime must load before the page world runtime in static/html/${source}.`);
   }
+  // Shared header runtime precedes the world runtime (language and drawer listeners).
+  const worldRuntimeScript = '<script src="/js/padiem-cinematic-worlds-v1.js"></script>';
+  if (!pageHtml.includes(worldRuntimeScript)) throw new Error("World runtime script not found.");
+  pageHtml = pageHtml.replace(worldRuntimeScript, sharedHeaderScript + worldRuntimeScript);
   if (!pageHtml.includes('padiem-scroll-scrub-v1.js')) {
     pageHtml = pageHtml.replace('</body>', `  ${worldScrubScript}\n</body>`);
   }
