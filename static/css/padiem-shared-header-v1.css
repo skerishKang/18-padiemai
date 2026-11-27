@@ -111,6 +111,12 @@
 html[data-media-state="error"] body .hero-media-status {
   bottom:8px; max-width:calc(100vw - 36px);
 }
+/* A video error notification must not cover KO/EN controls in the open menu. */
+body.home-mobile-menu-open .hero-media-status,
+body.home-mobile-menu-open .world-scroll-video-status {
+  opacity:0!important;
+  visibility:hidden!important;
+}
 
 /* #88: Album's actual first frame, not its development placeholder, remains on failure. */
 .px-album-media.has-poster .px-album-fallback {

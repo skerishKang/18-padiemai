@@ -22,6 +22,7 @@
     build,
     home: Object.freeze({
       scrollFilm: build('home/cinematic-scroll-v1.mp4'),
+      scrollPoster: '/images/posters/home-cinematic-first-frame.webp',
     }),
     fallbackCopy: Object.freeze({
       ko: '영상을 불러오지 못해 정지 화면으로 표시합니다.',
