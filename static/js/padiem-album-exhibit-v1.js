@@ -65,7 +65,6 @@
         <video class="px-album-video" muted loop playsinline preload="metadata" aria-label="Selected exhibit film"></video>
         <div class="px-album-fallback" aria-hidden="true">
           <span class="px-album-glyph"></span>
-          <small>PADIEM ORIGINAL INTERACTION</small>
         </div>
         <div class="px-album-media-top">
           <span class="px-album-signal"><i></i><b>SELECTED FILM</b></span>
@@ -168,7 +167,7 @@
     });
   };
 
-  const detachVideo = (state = 'fallback', message = 'STATIC FALLBACK') => {
+  const detachVideo = (state = 'fallback', message = '') => {
     video.pause();
     video.removeAttribute('src');
     video.load();
@@ -206,6 +205,9 @@
 
   const renderCopy = item => {
     const lang = currentLanguage();
+    media.classList.toggle("has-poster", Boolean(item.poster));
+    if (item.poster) media.style.setProperty("--album-poster", `url("${item.poster}")`);
+    else media.style.removeProperty("--album-poster");
     if (item.poster) video.poster = item.poster;
     else video.removeAttribute('poster');
     copyIndex.textContent = item.no;
@@ -339,7 +341,7 @@
       });
     }, { threshold: .22, rootMargin: '120px 0px 120px' }).observe(section);
   } else {
-    detachVideo('fallback', 'STATIC FALLBACK');
+    detachVideo('fallback', '');
   }
 
   document.addEventListener('visibilitychange', () => {

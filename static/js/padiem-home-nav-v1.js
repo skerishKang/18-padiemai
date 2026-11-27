@@ -19,7 +19,7 @@
   // sheet instead of hiding the primary destinations below 760px.
   const navInner = document.querySelector('.nav-inner');
   const chatCta = document.querySelector('.nav-cta');
-  if (navInner && chatCta) {
+  if (navInner && chatCta && !navInner.querySelector('.site-menu-toggle')) {
     const menuButton = document.createElement('button');
     menuButton.type = 'button';
     menuButton.className = 'home-mobile-menu-toggle';

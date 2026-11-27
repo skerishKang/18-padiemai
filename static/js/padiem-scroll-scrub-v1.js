@@ -23,7 +23,11 @@
     en: 'The film could not be loaded, so a still frame is shown.',
   };
   const DEFAULT_VIDEO = (media.home && media.home.scrollFilm) || '';
+  // The Products and Design cinematic hero currently reuse this same film.
+  // Show its actual first frame on those pages, not the album's separate poster.
+  const DEFAULT_POSTER = (media.home && media.home.scrollPoster) || '';
   const videoUrl = document.body.dataset.worldScrollVideo || DEFAULT_VIDEO;
+  const posterUrl = document.body.dataset.worldScrollPoster || DEFAULT_POSTER;
   if (!videoUrl) return;
 
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -77,16 +81,19 @@
     body.world-body > .world-page{position:relative;z-index:10;}
     .world-scroll-video-status{
       position:fixed;
-      left:50%;
-      bottom:26px;
-      transform:translateX(-50%);
+      left:var(--pad,24px);
+      top:82px;
+      bottom:auto;
+      transform:none;
+      max-width:calc(100vw - 36px);
       margin:0;
-      padding:9px 16px;
+      padding:5px 10px;
       border:1px solid rgba(255,255,255,.22);
       border-radius:999px;
       background:rgba(4,8,14,.72);
       color:rgba(255,255,255,.82);
-      font-size:11.5px;
+      font-size:10.5px;
+      line-height:1.25;
       letter-spacing:.01em;
       text-align:center;
       opacity:0;
@@ -95,6 +102,7 @@
       z-index:11;
     }
     .world-scroll-video-layer[data-media-state="error"] .world-scroll-video-status{opacity:1;}
+    .world-scroll-video-status.is-settled{opacity:0!important;}
     .world-scroll-video-layer[data-media-state="error"] .world-scroll-video-poster{opacity:1;}
     @media (prefers-reduced-motion: reduce){
       .world-scroll-video-layer video{display:none;}
@@ -117,6 +125,12 @@
   const video = layer.querySelector('video');
   const poster = layer.querySelector('.world-scroll-video-poster');
   const status = layer.querySelector('.world-scroll-video-status');
+  if (posterUrl) {
+    video.poster = posterUrl;
+    poster.style.backgroundImage = `linear-gradient(180deg,rgba(2,5,11,.35),rgba(2,5,11,.08) 45%,rgba(2,5,11,.42)),url("${posterUrl}")`;
+    poster.style.backgroundSize = 'cover';
+    poster.style.backgroundPosition = 'center';
+  }
   const currentLanguage = () => (document.body.dataset.lang === 'en' ? 'en' : 'ko');
   const statusCopy = () => fallbackCopy[currentLanguage()] || fallbackCopy.ko;
   document.addEventListener('padiem:language', () => {
@@ -125,6 +139,7 @@
   let target = 0;
   let smoothed = 0;
   let ready = false;
+  let hideStatusTimer = null;
 
   const updateTarget = () => {
     const max = Math.max(1, document.documentElement.scrollHeight - innerHeight);
@@ -150,6 +165,8 @@
 
   video.addEventListener('loadeddata', () => {
     ready = true;
+    clearTimeout(hideStatusTimer);
+    status.classList.remove('is-settled');
     layer.dataset.mediaState = 'ready';
     video.style.opacity = '.72';
     poster.style.opacity = '.18';
@@ -163,6 +180,10 @@
     video.style.opacity = '0';
     poster.style.opacity = '1';
     status.textContent = statusCopy();
+    status.classList.remove('is-settled');
+    clearTimeout(hideStatusTimer);
+    // Keep the failure accessible, then dismiss its visual pill after a short hold.
+    hideStatusTimer = setTimeout(() => status.classList.add('is-settled'), 2800);
   }, { once: true });
 
   video.load();
