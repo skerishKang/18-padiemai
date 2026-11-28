@@ -5,19 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex,follow">
   <title>페이지를 찾을 수 없습니다 | PADIEM</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2/fonts/variable/woff2/SUIT-Variable.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUITE@2/fonts/variable/woff2/SUITE-Variable.css">
   <style>
-    :root{color-scheme:dark;font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;background:#06080d;color:#fff}
-    body{margin:0;min-height:100vh;display:grid;place-items:center;background:#06080d}
-    main{max-width:680px;padding:48px 28px;text-align:center}
-    p{color:rgba(255,255,255,.68);line-height:1.7}
-    main > a{display:inline-block;margin-top:20px;padding:11px 18px;border-radius:999px;background:#fff;color:#06080d;text-decoration:none;font-weight:700}
+    /* #92-4 한 쪽만 맨 글꼴이던 404: 다른 쪽과 같은 글꼴·여백·바닥글을 쓴다. */
+    :root{color-scheme:dark;background:#06080d;color:#fff}
+    body{margin:0;min-height:100vh;display:flex;flex-direction:column;background:#06080d;
+      font-family:"SUIT Variable","IBM Plex Sans KR",system-ui,sans-serif;letter-spacing:-.012em}
+    .not-found-main{flex:1;display:grid;place-items:center;max-width:680px;margin:0 auto;padding:48px var(--pad,28px);text-align:center}
+    .not-found-main h1{font-family:"SUITE Variable","SUIT Variable",system-ui,sans-serif;font-weight:520;letter-spacing:-.058em;line-height:1.01;margin:0;font-size:clamp(32px,4vw,52px)}
+    .not-found-main p{color:rgba(255,255,255,.68);line-height:1.72;font-size:15px;word-break:keep-all;overflow-wrap:anywhere}
+    .not-found-main a{display:inline-block;margin-top:20px;padding:11px 18px;border-radius:999px;background:#fff;color:#06080d;text-decoration:none;font-weight:680;font-size:12px}
   </style>
 </head>
 <body>
-  <main>
+  <main class="not-found-main">
     <h1>페이지를 찾을 수 없습니다.</h1>
     <p>이전 PADIEM 사이트의 일부 주소는 현재 홈페이지 개편과 함께 종료되었습니다.</p>
     <a href="/">PADIEM 홈페이지로 이동</a>
   </main>
+  <footer class="footer"><span>© PADIEM CO., LTD.</span><span>AI · AX · PUBLIC AGENT · MULTIMODAL</span></footer>
 </body>
 </html>

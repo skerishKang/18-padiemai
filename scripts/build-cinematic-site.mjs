@@ -25,7 +25,14 @@ function withSharedHeader(source, notFound = false) {
   if (notFound) {
     if (!result.includes('<body>')) throw new Error("404 source body not found.");
     result = result.replace('<body>', '<body class="site-not-found">' + sharedHeaderHtml);
-    result = result.replace('</head>', '<link rel="stylesheet" href="/css/padiem-cinematic-v2-1.css"/></head>');
+    // #92: the not-found page carries the same shared styling as every other page,
+    // so its type, spacing and footer are the site's own and not browser defaults.
+    result = result.replace('</head>',
+      '<link rel="stylesheet" href="/css/padiem-cinematic-v2-1.css"/>' +
+      '<link rel="stylesheet" href="/css/padiem-cinematic-v2-2.css"/>' +
+      '<link rel="stylesheet" href="/css/padiem-cinematic-v2-3.css"/>' +
+      '<link rel="stylesheet" href="/css/padiem-cinematic-v2-4.css"/>' +
+      '</head>');
   } else {
     const headerRx = /<header\s+class="nav(?: world-nav)?"[\s\S]*?<\/header>/;
     if (!headerRx.test(result)) throw new Error("Canonical cinematic header was not found.");
