@@ -770,3 +770,25 @@ body.px-exhibit-album main > .world-scene {
   .px-album-sleeve,
   .px-album-nav { transition: none !important; }
 }
+
+/* #92-3 카드 넘기기 이름 잘림: 카드가 서로 겹쳐 옆 카드의 이름표를 가렸다.
+   이름과 상태 이름표는 가운데(선택) 카드에만 보여 주고, 이름표 줄은 카드 폭 안에서 줄인다. */
+.px-album-sleeve:not(.is-selected) .px-sleeve-title,
+.px-album-sleeve:not(.is-selected) .px-sleeve-meta em {
+  display: none;
+}
+
+.px-album-sleeve.is-selected .px-sleeve-title {
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.px-sleeve-meta {
+  gap: .35rem;
+}
+
+.px-album-sleeve.is-selected .px-sleeve-meta em {
+  min-width: 0;
+  max-width: calc(100% - 2.4rem);
+  letter-spacing: .1em;
+}
